@@ -1,0 +1,821 @@
+/* ======================== Variable ======================== */
+:root {
+	--ff-text: "Inter-Regular", Helvetica;
+	--clr-toggle-button: #728a1a;
+	--clr-button: #bbb;
+	--clr-arrow: #000;
+	--clr-text-produk: #212121;
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div {
+	display: block;
+}
+
+/* ======================== Main Home Page ======================== */
+.main-page-container {
+	height: 100vh;
+	width: 100vw;
+	font-family: var(--ff-body);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
+
+.horizontal-line {
+	overflow: hidden;
+	margin-bottom: 31px;
+	padding-top: 15px;
+}
+
+hr {
+	height: 3px;
+	color: #f0f3f7;
+	background-color: #f0f3f7;
+	border: 1px solid;
+}
+
+/* ======================== Slide Banner ======================== */
+/* ======================== Images Banner ======================== */
+.slide-banner-container {
+	margin-bottom: 35px;
+}
+
+.slide-event-banner {
+	border-radius: 10px;
+	width: 80%;
+	margin-left: 10%;
+	position: relative;
+	height: 300px;
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+}
+
+.mySlides {
+	border-radius: 30px;
+	display: none;
+	position: relative;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.mySlides.active {
+	display: block;
+}
+
+.mySlides img {
+	object-fit: contain;
+	text-align: center;
+	position: relative;
+	margin: auto;
+	width: 100%;
+	bottom: 50%;
+	max-height: 400%;
+	object-position: center;
+}
+
+/* ======================== Button Banner ======================== */
+.prev,
+.next {
+	background-color: var(--clr-button);
+	cursor: pointer;
+	position: absolute;
+	top: 40%;
+	color: var(--clr-arrow);
+	font-weight: bold;
+	user-select: none;
+	font-size: 50px;
+	border-radius: 100px;
+	height: 50px;
+	width: 50px;
+	margin: 5px;
+	transition: 0.6s ease;
+	opacity: 0;
+}
+
+.visible {
+	opacity: 1;
+}
+
+.chevron {
+	margin-bottom: 10px;
+}
+
+.next {
+	right: 0;
+}
+
+.prev:hover,
+.next:hover {
+	animation-name: fade;
+	background-color: var(--clr-toggle-button);
+	transform: scale(1.1);
+}
+
+/* ======================== Dot Banner ======================== */
+.dot-slide-character-banner {
+	text-align: center;
+	user-select: none;
+	position: absolute;
+	bottom: 8px;
+	left: 20px;
+}
+
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: var(--clr-button);
+	border-radius: 50%;
+	display: inline-block;
+	transition: 0.6s ease;
+}
+
+.dot.active,
+.dot:hover {
+	background-color: var(--clr-toggle-button);
+	transform: scale(1.2);
+}
+
+.fade {
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* ======================== Kategori Produk ======================== */
+/* ======================== Kategori Produk Container ======================== */
+.kategori-produk-container {
+	font-family: var(--ff-text);
+	border: 1px solid;
+	border-color: #f0f3f7;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px #6d758880;
+	width: 80%;
+	margin-left: 10%;
+	position: relative;
+	height: 500px;
+	margin-bottom: 55px;
+}
+
+.title {
+	position: relative;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	cursor: default;
+}
+
+.title h1 {
+	font-family: var(--ff-text);
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--clr-text-produk);
+}
+
+/* ======================== Produk ======================== */
+.kategori-wrapper {
+	width: 100%;
+	position: relative;
+	height: 80%;
+	display: flex;
+	overflow: hidden;
+}
+
+.kategori-wrapper img {
+	object-fit: contain;
+	text-align: center;
+	position: relative;
+	margin: auto;
+	width: 100%;
+	transition: 0.4s ease;
+}
+
+.kategori-wrapper img:hover {
+	transform: scale(1.1);
+}
+
+/* ======================== Button Kategori ======================== */
+.big-category a,
+.wide-category a {
+	position: absolute;
+	border-radius: 5px;
+	background-color: #ffffff;
+	margin-left: 10px;
+	bottom: 10px;
+	padding: 10px;
+	padding: 6px;
+	transition: 0.5s ease;
+	cursor: pointer;
+}
+
+.big-category a:hover,
+.wide-category a:hover {
+	background-color: var(--clr-green);
+	box-shadow: 0 0 20px 3px rgba(63, 138, 20, 0.575);
+}
+
+/* ======================== Big Category ======================== */
+.big-category {
+	border-radius: 10px;
+	position: relative;
+	height: 100%;
+	width: 50%;
+	margin-left: 18px;
+	margin-right: 18px;
+	overflow: hidden;
+}
+
+.big-category-title h2 {
+	font-family: var(--ff-text);
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--clr-text-produk);
+}
+
+.right-arrow {
+	position: relative;
+	padding-top: 4px;
+	transform: scale(2.5, 1.3);
+}
+
+/* ======================== Wide Category ======================== */
+.wide-category {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin-right: 18px;
+	gap: 15px;
+	position: relative;
+}
+
+[id^="kategori-"] {
+	display: flex;
+	align-items: center;
+	border-radius: 10px;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.wide-category img {
+	width: 100%;
+	height: 100%;
+}
+
+.wide-category-title h2 {
+	font-family: var(--ff-text);
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--clr-text-produk);
+}
+
+/* ======================== Produk Terlaris dan Produk Terlaris ======================== */
+/* ======================== Produk Terlaris Container dan Produk Terlaris ======================== */
+.produk-terlaris-container,
+.produk-terbaru-container {
+	font-family: var(--ff-text);
+	width: 80%;
+	margin-left: 10%;
+	position: relative;
+	height: 440px;
+	margin-bottom: 55px;
+	overflow: hidden;
+}
+
+/* ======================== Title ======================== */
+.title-produk-terlaris,
+.title-produk-terbaru {
+	display: flex;
+	position: relative;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.title-produk-terlaris h1,
+.title-produk-terbaru h1 {
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--clr-text-produk);
+	margin-right: 20px;
+	cursor: default;
+}
+
+.title-produk-terlaris a,
+.title-produk-terbaru a {
+	font-size: 17px;
+	font-weight: 700;
+	color: var(--clr-green);
+	margin-top: 7px;
+	transition: 0.4s ease;
+	cursor: pointer;
+}
+
+.title-produk-terlaris a:hover,
+.title-produk-terbaru a:hover {
+	text-shadow: 1px 1px #728a1a7e;
+}
+
+/* ======================== Card Barang ======================== */
+/* ======================== Card Barang Container ======================== */
+.card-barang-container {
+	width: 100%;
+	height: 368px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.card-barang {
+	width: 15%;
+	border-radius: 10px;
+	margin-left: 3px;
+	margin-right: 3px;
+	box-shadow: 0 0 10px 1px #9d9d9d40;
+}
+
+/* ======================== Barang ======================== */
+.gambar-barang {
+	height: 50%;
+	display: flex;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin: 8px;
+}
+
+.gambar-barang img {
+	max-height: 100%;
+	object-position: center;
+	transition: 0.4s ease;
+}
+
+.gambar-barang img:hover {
+	transform: scale(1.1);
+}
+
+/* ======================== Info Barang ======================== */
+.info-barang-container {
+	padding-top: 15px;
+	margin-left: 17px;
+	width: 216px;
+	height: 168px;
+}
+
+.info-barang-container h3,
+p {
+	font-size: 15px;
+	font-weight: 400;
+	color: #000000;
+	margin-bottom: 6px;
+}
+
+.info-barang-container h4 {
+	font-size: 18px;
+	font-weight: 600;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+.info-barang-container span {
+	color: #eeff00;
+	font-size: 15px;
+}
+
+.info-barang-container p {
+	color: #6d7588;
+	margin-bottom: 20px;
+}
+
+/* ======================== Button ======================== */
+.button-beli {
+	position: relative;
+	border-radius: 5px;
+	background-color: var(--clr-green);
+	margin-top: auto;
+	margin-left: auto;
+	margin-right: 18px;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 5px;
+	width: 70px;
+	text-align: center;
+	transition: 0.5s ease;
+	cursor: pointer;
+}
+
+.button-beli:hover {
+	background-color: #155f04b2;
+	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.486);
+}
+
+/* ======================== Artikel ======================== */
+/* ======================== Artikel Container ======================== */
+.artikel-edukasi-container {
+	font-family: var(--ff-text);
+	width: 80%;
+	margin-left: 10%;
+	position: relative;
+	height: 440px;
+	margin-bottom: 200px;
+}
+
+/* ======================== Title ======================== */
+.title-artikel-edukasi {
+	display: flex;
+	position: relative;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.title-artikel-edukasi h1 {
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--clr-text-produk);
+	margin-right: 20px;
+	cursor: default;
+}
+
+.title-artikel-edukasi a {
+	font-size: 17px;
+	font-weight: 700;
+	color: var(--clr-green);
+	margin-top: 7px;
+	transition: 0.4s ease;
+	cursor: pointer;
+}
+
+.title-artikel-edukasi a:hover {
+	text-shadow: 1px 1px #728a1a7e;
+}
+
+/* ======================== Card Artikel ======================== */
+.card-artikel-container {
+	width: 100%;
+	height: 368px;
+	display: flex;
+	transition: 0.5s ease-in-out;
+}
+
+.card-artikel {
+	width: 30%;
+	border-radius: 10px;
+	margin-left: 10px;
+	margin-right: 3px;
+	box-shadow: 0 0 10px 1px #9d9d9d40;
+	overflow: hidden;
+	transform: translateX(0%);
+	transition: 0.5s ease-in-out;
+}
+
+.card-artikel:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 15px 2px #9d9d9d60;
+}
+
+.card-artikel-container {
+	display: flex;
+	position: relative;
+}
+
+.prev-button,
+.next-button {
+	background-color: var(--clr-button);
+	cursor: pointer;
+	position: absolute;
+	top: 40%;
+	color: var(--clr-arrow);
+	font-weight: bold;
+	user-select: none;
+	font-size: 50px;
+	border-radius: 100px;
+	height: 50px;
+	width: 50px;
+	margin: 5px;
+	transition: 0.6s ease;
+}
+
+.chevron {
+	margin-bottom: 10px;
+}
+
+.next-button {
+	right: 0;
+}
+
+.prev-button:hover,
+.next-button:hover {
+	animation-name: fade;
+	background-color: var(--clr-toggle-button);
+	transform: scale(1.1);
+}
+
+/* ======================== Gambar Artikel ======================== */
+.gambar-artikel {
+	height: 50%;
+	display: flex;
+	border-radius: 5px;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin: 8px;
+	position: relative;
+}
+
+.gambar-artikel img {
+	max-height: 200%;
+	object-fit: contain;
+	object-position: center;
+	transition: 0.4s ease;
+}
+
+.gambar-artikel img:hover {
+	transform: scale(1.1);
+}
+
+/* ======================== Info Artikel ======================== */
+.info-artikel-container {
+	position: absolute;
+	margin-top: 2px;
+	margin-left: 12px;
+	width: 94.8%;
+	height: 160px;
+}
+
+.info-artikel-container a {
+	cursor: pointer;
+}
+
+.info-artikel-container a:hover {
+	text-decoration: underline;
+	color: var(--clr-green);
+}
+
+.info-artikel-container h3 {
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--clr-green);
+	margin-bottom: 6px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.info-artikel-container h4 {
+	font-size: 14px;
+	font-weight: 400;
+	margin-bottom: 10px;
+	color: #6d7588;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.info-artikel-container p {
+	font-size: 13px;
+	font-weight: 400;
+	margin-bottom: 6px;
+	color: #6d7588;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	cursor: default;
+}
+
+.icon-time {
+	position: relative;
+	top: 2px;
+}
+
+/* ======================== Responsive ======================== */
+@media only screen and (max-width: 2048px) and (min-width: 1921px) {
+	/* ======================== Produk Terlaris dan Produk Terbaru ======================== */
+	.button-beli {
+		margin-top: auto;
+		margin-left: auto;
+		margin-right: 2px;
+	}
+
+	/* ======================== Artikel ======================== */
+	.card-artikel-container {
+		gap: 15px;
+	}
+}
+
+@media only screen and (max-width: 1728px) and (min-width: 1281px) {
+	/* ======================== Kategori Produk ======================== */
+	.big-category img {
+		object-fit: contain;
+		text-align: center;
+		width: 120%;
+		max-height: 200%;
+		object-position: center;
+	}
+
+	/* ======================== Produk Terlaris dan Produk Terbaru ======================== */
+	.button-beli {
+		margin-top: auto;
+		margin-left: auto;
+		margin-right: 40px;
+	}
+}
+
+@media only screen and (max-width: 1440px) and (min-width: 1281px) {
+	/* ======================== Main Home Page ======================== */
+	.horizontal-line {
+		overflow: hidden;
+		margin-bottom: 8px;
+		padding-top: 8px;
+	}
+
+	/* ======================== Slide Banner ======================== */
+	.slide-event-banner {
+		position: relative;
+		height: 270px;
+	}
+
+	.mySlides img {
+		width: 100%;
+		bottom: 20%;
+		max-height: 300%;
+	}
+
+	/* ======================== Kategori Produk ======================== */
+	.kategori-produk-container {
+		height: 500px;
+		margin-bottom: 55px;
+	}
+
+	.big-category img {
+		object-position: center;
+		width: 135%;
+		max-height: 120%;
+		object-position: center;
+	}
+
+	/* ======================== Produk Terlaris dan Produk Terbaru ======================== */
+	.info-barang-container p {
+		margin-bottom: 22px;
+	}
+
+	.card-barang-container {
+		width: 120.4%;
+		height: 370px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.button-beli {
+		margin-top: auto;
+		margin-left: auto;
+		margin-right: 40px;
+	}
+
+	/* ======================== Artikel ======================== */
+	.info-artikel-container h3 {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+
+	.info-artikel-container h4 {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+	}
+}
+
+@media only screen and (max-width: 1280px) {
+	/* ======================== Main Home Page ======================== */
+	.horizontal-line {
+		overflow: hidden;
+		margin-bottom: 18px;
+		padding-top: 8px;
+	}
+
+	/* ======================== Slide Banner ======================== */
+	.slide-event-banner {
+		position: relative;
+		height: 250px;
+	}
+
+	.mySlides {
+		height: 100%;
+		object-fit: contain;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+
+	.mySlides img {
+		width: 100%;
+		bottom: 20%;
+		max-height: 300%;
+	}
+
+	/* ======================== Kategori Produk ======================== */
+	.kategori-produk-container {
+		height: 420px;
+		margin-bottom: 55px;
+	}
+
+	.kategori-wrapper {
+		height: 76.5%;
+		display: flex;
+		overflow: hidden;
+	}
+
+	.big-category {
+		height: 100%;
+		border-radius: 10px;
+		justify-content: space-between;
+	}
+
+	.big-category img {
+		object-fit: contain;
+		text-align: center;
+		width: 120%;
+		max-height: 200%;
+		object-position: center;
+	}
+
+	/* ======================== Produk Terlaris dan Produk Terbaru ======================== */
+	.card-barang-container {
+		width: 150.5%;
+		height: 370px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	/* ======================== Artikel ======================== */
+	.artikel-edukasi-container {
+		margin-bottom: 150px;
+	}
+
+	.info-artikel-container {
+		overflow: hidden;
+		width: 200px;
+	}
+
+	.info-artikel-container h3 {
+		font-size: 17px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+
+	.info-artikel-container h4 {
+		font-size: 14px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+	}
+
+	.info-artikel-container p {
+		font-size: 13px;
+		font-weight: 400;
+		margin-bottom: 6px;
+		color: #6d7588;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+}

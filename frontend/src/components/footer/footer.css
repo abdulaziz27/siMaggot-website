@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div {
+	display: block;
+}
+
+/* ======================== Footer ======================== */
+.footer-container {
+	background-color: #ffffff;
+	border-bottom-style: solid;
+	border-bottom-width: 0.5px;
+	box-shadow: 0px -1px 16px #9d9d9d40;
+}
+
+/* ======================== About Container ======================== */
+.footer-about-container {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 46px;
+	width: 80%;
+	margin-left: 10%;
+	padding-bottom: 52px;
+}
+
+hr {
+	width: 80%;
+	margin-left: 10%;
+	height: 3px;
+	color: #f0f3f7;
+	background-color: #f0f3f7;
+	border: 1px solid;
+	margin-bottom: 32px;
+}
+
+.footer-container h1 {
+	font-family: "Inter-SemiBold", Helvetica;
+	color: #212121;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 20px;
+	cursor: default;
+}
+
+.footer-container p {
+	font-family: "Inter-SemiBold", Helvetica;
+	color: #6d7588;
+	font-size: 16px;
+	font-weight: 400;
+	margin-bottom: 16px;
+}
+
+/* ======================== About ======================== */
+.link-icon {
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+	font-size: 24px;
+}
+
+/* ======================== Copyright ======================== */
+.copyright {
+	width: 80%;
+	margin-left: 10%;
+	margin-bottom: 73px;
+	cursor: default;
+}
+
+/* ======================== Link ======================== */
+.footer-about-container a {
+	cursor: pointer;
+	transition: 0.4s ease;
+}
+
+.footer-about-container a:hover {
+	text-shadow: 1px 1px #9d9d9da2;
+}
+
+.follow a:hover {
+	transform: scale(1.15);
+}
+
+/* ======================== Responsive ======================== */
+@media only screen and (min-width: 1280px) {
+	.footer-about-container {
+		padding-bottom: 30px;
+	}
+}
