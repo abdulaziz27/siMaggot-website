@@ -19,6 +19,7 @@ Clone this repository to your computer:
    npm install
    cd ../frontend
    npm install
+   ```
    
 ## Contribution
 please follow these steps if u wanna contribute this project:
@@ -28,25 +29,34 @@ please follow these steps if u wanna contribute this project:
 
    ```bash
    git checkout -b your-feature
+   ```
 
 3. Make the changes you desire.
 4. Commit your changes:
    ```bash
    git commit -m "Add your feature"
+   ```
 
 5. Push to your branch:
    ```bash
    git push origin your-feature
+   ```
+
 6. Create a pull request to this repository.
 
 ## Running the Application
 
 1. Open a terminal and make sure you're in the backend directory.
 2. Start the backend server:
-npm start
+   ```bash
+   npm start
+   ```
+
 3. Open another terminal and make sure you're in the frontend directory.
 4. Run the frontend application:
-npm start
+   ```bash
+   npm start
+   ```
 
 The application will run at http://localhost:3000/. You can now access it through your web browser.
 
