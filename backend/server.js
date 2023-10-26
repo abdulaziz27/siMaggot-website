@@ -1,7 +1,10 @@
 import products from "./data/products.js";
 import express from "express";
+import dotenv from "dotenv";
+import connectDatabase from "./config/MongoDB.js";
 
-
+dotenv.config();
+connectDatabase();
 const app = express();
 
 //load product from server
@@ -18,6 +21,6 @@ app.get("/", (req, res) => {
     res.send("API is running");
 });
 
-app.listen(3000, () => {
-    console.log(`Server Started at ${3000}`)
-});
+const PORT = process.env.PORT;
+
+app.listen(PORT, console.log(`server run in PORT ${PORT}`));
