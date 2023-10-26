@@ -12,11 +12,20 @@ Before you get started, make sure you have the following software installed:
 ## Installation
 Clone this repository to your computer:
 
+1. Clone this repository to your computer:
    ```bash
    git clone https://github.com/abdulaziz27/Simaggot-Website.git
    cd Simaggot-Website
+   ```
+
+2. Install dependencies for the backend:
+   ```bash
    cd backend
    npm install
+   ```
+
+3. Install dependencies for the frontend:
+   ```bash
    cd ../frontend
    npm install
    ```
