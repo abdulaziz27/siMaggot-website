@@ -134,6 +134,7 @@ div {
 .button-masuk,
 .button-daftar {
 	cursor: pointer;
+	text-decoration: none;
 	border: 1px solid var(--clr-green);
 	border-radius: 100px;
 	height: 33px;
