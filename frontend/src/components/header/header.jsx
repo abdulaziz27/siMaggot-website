@@ -22,11 +22,11 @@ const Header = () => {
 					<Icon icon="bx:cart" name="cart" />
 				</a>
 
-				<a className="button-masuk" type="button">
+				<a href="./login" className="button-masuk" type="button">
 					<h2>Masuk</h2>
 				</a>
 
-				<a className="button-daftar" type="button">
+				<a href="./register" className="button-daftar" type="button">
 					<h2>Daftar</h2>
 				</a>
 			</div>

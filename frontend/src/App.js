@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Fragment } from "react";
-import HomePage from "../src/pages/home_page/home_page";
+import HomePage from "./pages/home_page/home_page";
+import Login from "./pages/login_register/login";
+import Register from "./pages/login_register/register";
 
 function App() {
 	return (
@@ -10,6 +12,8 @@ function App() {
 				<Router>
 					<Routes>
 						<Route exact path="/" element={<HomePage />} />
+						<Route exact path="/login" element={<Login />} />
+						<Route exact path="/register" element={<Register />} />
 					</Routes>
 				</Router>
 			</Fragment>
