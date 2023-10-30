@@ -2,10 +2,22 @@ import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import User from "../models/UserModels.js";
 
+
+import cors from 'cors';
+import express from 'express';
+
+const app = express();
+const corsOptions = {
+    origin: "http://localhost:3000",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  };
+  
+  app.use(cors(corsOptions));
+  
 const protect = asyncHandler(
     async(req,res,next) => {
         let token 
-        if(req.headers.authorization && req.headers.authorization.startsWith("")){
+        if (req.headers.authorization && req.headers.authorization.startsWith("Bearer ")){
             try{
                 token = req.headers.authorization.split(" ")[1]
                 const decoded = jwt.verify(token,process.env.JWT_SECRETE);
