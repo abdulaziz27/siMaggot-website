@@ -10,7 +10,6 @@ const app = express();
 app.use(express.json());
 
 // API
-
 app.use("/api/import", DataImport);
 app.use("/api/users", userRoutes);
 
