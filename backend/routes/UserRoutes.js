@@ -6,6 +6,8 @@ import protect from "../middleware/auth.js";
 
 const userRoutes = express.Router();
 
+//login
+
 userRoutes.post("/login", asyncHandler(
     async(req,res) => {
         const {email,password} = req.body;
@@ -26,6 +28,41 @@ userRoutes.post("/login", asyncHandler(
         }
     }
 ));
+
+// register
+
+userRoutes.post(
+    "/", asyncHandler (async(req,res) => {
+        const {name, email, password} = req.body;
+        const userExists = await User.findOne({email});
+
+        if (userExists){
+            res.status(400);
+            throw new Error ("User Already Exist");
+        }
+
+        const user = await User.create({
+            name, email, password
+        })
+
+        if (user){
+            res.status(201).json({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                isSeller: user.isSeller,
+                token: generateToken(user._id),
+            })
+        }
+        else {
+            req.status(400);
+            throw new Error ("Invalid User Data");
+        }
+    })
+)
+
+
+//profile
 
 userRoutes.get(
     "/profile",protect, asyncHandler (async(req,res) => {
