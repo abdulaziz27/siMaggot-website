@@ -142,7 +142,7 @@ function Product() {
 
                 <div className="ulasanPembeli">
                   <h2 className="title">Ulasan Pembeli</h2>
-                  <div className="ulasanPembeliContainer">
+                  <div className="summaryRating">
                     <div className="ratingProduk">
                       <p className="ratingBintang">
                         <span className="star">&#9733;</span>{"  "}
@@ -160,9 +160,40 @@ function Product() {
                       <button>1 Bintang (0)</button>
                     </div>
                   </div>
+                  <div className="listUlasan">
+                    <UlasanPembeli />
+                    <hr />
+                    <UlasanPembeli />
+                    <hr />
+                    <UlasanPembeli />
+                    <hr />
+                    <UlasanPembeli />
+                  </div>
                 </div>
 
                 <div className="produkLain">
+                  <p className="produkToko">Produk Pilihan Toko</p>
+                  <Barang 
+                    gambarBarangR={productImage1}
+                    namaBarangR="Nama Barang 1"
+                    hargaBarangR="xx.xxx"
+                    ratingBarangR="4.8"
+                    barangTerjualR="xx+"
+                  />
+                  <Barang 
+                    gambarBarangR={productImage1}
+                    namaBarangR="Nama Barang 1"
+                    hargaBarangR="xx.xxx"
+                    ratingBarangR="4.8"
+                    barangTerjualR="xx+"
+                  />
+                  <Barang 
+                    gambarBarangR={productImage1}
+                    namaBarangR="Nama Barang 1"
+                    hargaBarangR="xx.xxx"
+                    ratingBarangR="4.8"
+                    barangTerjualR="xx+"
+                  />
                   <Barang 
                     gambarBarangR={productImage1}
                     namaBarangR="Nama Barang 1"
@@ -171,7 +202,11 @@ function Product() {
                     barangTerjualR="xx+"
                   />
                 </div>
-                
+                <div className="rekomendasiProduk">
+                    <ListRekomendasi titleList="Lainnya di toko ini" />
+                    <hr />
+                    <ListRekomendasi titleList="Pilihan lainnya untukmu" />
+              </div>
             </div>
         </div>
         <Footer />
@@ -194,6 +229,92 @@ function ButtonKuantitas() {
         </div>
       </div>
       
+    </>
+  )
+}
+
+function UlasanPembeli() {
+  return(
+    <>
+      <div className="ulasanContainer">
+        <img src={productImage3} alt="userLogo" />
+        <div className="isiUlasanPembeli">
+          <h4 className="pengulasBarang">Username1</h4>
+          <p className="jumlahBintang">
+            <span className="star">&#9733;</span>
+            <span className="star">&#9733;</span>
+            <span className="star">&#9733;</span>
+            <span className="star">&#9733;</span>
+            <span className="star">&#9733;</span>
+          </p>
+          <p className="tglJenisBarang">2023-10-21 | Variasi: Maggot only 130 gram</p>
+          <p className="deskripsiUlasan">
+            Barang sampai dengan selamat
+          </p>
+        </div>
+      </div>
+    </>
+  )
+}
+
+function ListRekomendasi({titleList}) {
+  return (
+    <>
+      <div className="rekomendasiContainer">
+        <h2>{titleList}</h2>
+        <a>Lihat Semua</a>
+        <div className="barangRekomendasiContainer">
+          <Barang 
+            gambarBarangR={productImage1}
+            namaBarangR="Nama Barang 1"
+            hargaBarangR="xx.xxx"
+            ratingBarangR="4.8"
+            barangTerjualR="xx+"
+          />
+
+          <Barang 
+            gambarBarangR={productImage2}
+            namaBarangR="Nama Barang 2"
+            hargaBarangR="xx.xxx"
+            ratingBarangR="4.8"
+            barangTerjualR="xx+"
+          />
+
+          <Barang 
+            gambarBarangR={productImage3}
+            namaBarangR="Nama Barang 3"
+            hargaBarangR="xx.xxx"
+            ratingBarangR="4.8"
+            barangTerjualR="xx+"
+          />
+
+          <Barang 
+            gambarBarangR={productImage4}
+            namaBarangR="Nama Barang 4"
+            hargaBarangR="xx.xxx"
+            ratingBarangR="4.8"
+            barangTerjualR="xx+"
+          />
+
+          <Barang 
+            gambarBarangR={productImage5}
+            namaBarangR="Nama Barang 5"
+            hargaBarangR="xx.xxx"
+            ratingBarangR="4.8"
+            barangTerjualR="xx+"
+          />
+
+          <Barang 
+            gambarBarangR={productImage1}
+            namaBarangR="Nama Barang 6"
+            hargaBarangR="xx.xxx"
+            ratingBarangR="4.8"
+            barangTerjualR="xx+"
+          />
+
+
+        </div>
+      </div>
     </>
   )
 }
