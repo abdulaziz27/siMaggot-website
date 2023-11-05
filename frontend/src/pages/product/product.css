@@ -1,0 +1,463 @@
+/* ======================== Variable ======================== */
+:root {
+	--ff-text: "Inter-Regular", Helvetica;
+	--clr-toggle-button: #728a1a;
+	--clr-button: #bbb;
+	--clr-arrow: #000;
+	--clr-text-produk: #212121;
+    --clr-border:rgb(212, 212, 212);
+    --clr-header: #F0F3F7;
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div {
+	display: block;
+}
+
+/* ======================== Cart Page ======================== */
+
+
+/* CONTAINER */
+.productContainer {
+    font-family: var(--ff-body);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	overflow-x: hidden;
+    margin: 45px 7%;
+    display: grid;
+    grid-template-areas: "hero infoBarang infoBarang"
+    "toko toko toko"
+    "deskripsi deskripsi produkLain"
+    "ulasan ulasan produkLain";
+    grid-template-columns: 2.8fr 2.5fr 1.5fr;
+}
+
+
+/* HERO */
+
+.heroProduk{
+    grid-area: hero;
+}
+
+.heroProduk .heroImg{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 7px;
+}
+
+.heroProduk .ketImg{
+    display: flex;
+    justify-content: space-between;
+}
+
+.heroProduk .ketImg img{
+    width: 18%;
+    border-radius: 10px;
+}
+
+.heroProduk .ketImg .selectedKetImg{
+    border: 4px solid var(--clr-toggle-button);
+}
+
+
+/* INFO BARANG */
+
+.infoBarang{
+    grid-area: infoBarang;
+    padding-left: 5%;
+}
+
+.infoBarang h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.infoBarang p{
+    font-size: 1rem;
+}
+
+.infoBarang .star{
+    color: #FFC400;
+}
+
+.infoBarang .nilaiJualBarang{
+    max-width: 310px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.infoBarang .hargaBarang{
+    background-color: var(--clr-header);
+    font-size: 2.3rem;
+    border-radius: 5px;
+    padding: 2%;
+    padding-left: 2%;
+    color: var(--clr-toggle-button);
+    margin-bottom: 40px;
+}
+
+.infoBarang .atributJual{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+.infoBarang .atributJual p{
+    opacity: 60%;
+    margin-bottom: 30px;
+}
+
+.atributJual .listPakan,
+.atributJual .listUkuran{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max-content,120px));
+}
+
+.atributJual a{
+    border: 1.4px solid var(--clr-toggle-button);
+    border-radius: 4px;
+    padding: 5px 20px;
+    margin-bottom: 30px;
+    margin-right: 7px;
+    text-align: center;
+}
+
+.atributJual .kuantitas{
+    display: flex;
+    gap: 4%;
+}
+
+.infoBarang .keranjang{
+    width: 23%;
+    height: 55px;
+    background-color: var(--clr-toggle-button);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 5%;
+}
+
+.infoBarang .beliLangsung{
+    width: 23%;
+    height: 55px;
+    background-color: white;
+    border: 1.4px solid var(--clr-toggle-button);
+    border-radius: 4px;
+    color: var(--clr-toggle-button);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 23px;
+}
+
+.infoBarang .tandai span{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.infoBarang .tandai p{
+    display: inline-block;
+    position: relative;
+    font-weight: 500;
+    margin-right: 10%;
+    top: -5px;
+    left: 7px;
+    cursor: pointer;
+}
+
+
+
+/* COUNTER */
+
+.atributJual .counter{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    border: 1px solid var(--clr-toggle-button);
+    margin: auto;
+    justify-content: center;
+}
+
+.atributJual .counter button{
+    border: none;
+    text-align: center;
+    color: var(--clr-toggle-button);
+    background-color: white;
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+.atributJual .counter input{
+    border: none;
+    text-align: center;
+    width: 55px;
+    border-left: 1px solid var(--clr-toggle-button);
+    border-right: 1px solid var(--clr-toggle-button);
+}
+
+
+
+/* TOKO */
+
+.productContainer .toko{
+    grid-area: toko;
+    display: grid;
+    grid-template-columns: 2.8fr 3.5fr 0.5fr;
+    border-top: 2px solid var(--clr-border);
+    border-bottom: 2px solid var(--clr-border);
+    padding: 17px 0;
+    margin: 50px 0;
+}
+
+.profilToko{
+    display: grid;
+    grid-template-columns: 1.3fr 2fr 2fr;
+    grid-template-rows: 23px 35px 4fr;
+    border-right: 2px solid var(--clr-border);
+    padding: 0 20px;
+    padding-right: 0;
+}
+
+.profilToko img{
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    width: 90px;
+    border-radius: 50%;
+}
+
+.profilToko h3{
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    font-weight: 500;
+}
+
+.profilToko .statusToko{
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+    opacity: 50%;
+}
+
+.profilToko span{
+    font-size: 1.4rem;
+}
+
+.profilToko .hubungiToko{
+    display: inline;
+    position: relative;
+    top: -5px;
+    left: 4px;
+    text-align: center;
+    align-self: center;
+}
+
+.profilToko .chatSekarang,
+.profilToko .kunjungiToko{
+    border-radius: 4px;
+    padding: 0 10%;
+    justify-self: start;
+    cursor: pointer;
+}
+
+.profilToko .chatSekarang{
+    border: 1.4px solid var(--clr-toggle-button);
+}
+
+.profilToko .kunjungiToko{
+    border: 1.4px solid black;
+}
+
+.infoToko{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 18px 35px;
+}
+
+.infoToko p{
+    align-self: center;
+}
+
+.infoToko .nilaiToko{
+    color: var(--clr-toggle-button);
+    justify-self: end;
+    margin-right: 50px;
+}
+
+
+/* DESKRIPSI */
+
+.deskripsiProduk{
+    grid-area: deskripsi;
+}
+
+
+.deskripsiProduk h2, 
+.ulasanPembeli h2{
+    background-color: var(--clr-header);
+    margin: 20px 0 20px;
+    padding: 15px 20px;
+    border-radius: 7px;
+    color: var(--clr-toggle-button);
+    font-weight: 600;
+}
+
+.deskripsiProduk p{
+    padding: 15px 20px;
+    font-size: 1rem;
+}
+
+.deskripsiProduk hr{
+    margin: 30px 0;
+}
+
+
+/* ULASAN */
+
+.ulasanPembeli{
+    grid-area: ulasan;
+}
+
+.ulasanPembeli .ulasanPembeliContainer{
+    border: 1px solid var(--clr-toggle-button);
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    align-items: center;
+    padding: 2%;
+}
+
+.ratingProduk .ratingBintang{
+    font-size: 3rem;
+}
+
+.ratingProduk .ratingBintang .star{
+    color: #FFC400;
+	font-size: 40px;
+}
+
+.ratingProduk .outOf5{
+    font-size: 1.6rem;
+    opacity: 60%;
+}
+
+.ratingProduk .kepuasan{
+    font-weight: 600;
+}
+
+.ratingProduk .jumlahRating{
+    opacity: 60%;
+}
+
+.filterRating{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max-content,140px));
+    gap: 3%;
+}
+
+.filterRating button{
+    padding: 4px 20px;
+    border-radius: 2px;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.filterRating .selectedRating{
+    border: 1px solid var(--clr-toggle-button);
+    color: var(--clr-toggle-button);
+}
+
+/* PRODUK LAIN */
+
+.produkLain{
+    grid-area: produkLain;
+    padding: 15px;
+    justify-content: center;
+}
+
+.produkLain .barangContainer{
+    border: solid var(--clr-border);
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 70%;
+    margin: auto;
+}
+
+.produkLain .barangContainer img{
+    width: 100%;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+.produkLain .barangContainer .deskripsiBarang{
+    padding: 10px;
+}
+
+.produkLain .deskripsiBarang h4{
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.produkLain .deskripsiBarang h3{
+    font-size: 0.95;
+    font-weight: 600;
+}
+
+.produkLain .deskripsiBarang p{
+    font-size:0.8rem;
+    font-weight: 400;
+    opacity: 50%;
+}
+
+.produkLain .deskripsiBarang .star {
+	color: #FFC400;
+	font-size: 15px;
+}
+
+.produkLain .deskripsiBarang button{  
+    width: 50%;
+    height: 22px;
+    background-color: var(--clr-toggle-button);
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 7px;
+    margin-bottom: 13px;
+}
+
+.produkLain .alignRight{
+    text-align: right;
+}
