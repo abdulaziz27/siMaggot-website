@@ -30,6 +30,10 @@ div {
 	display: block;
 }
 
+a {
+	text-decoration: none;
+}
+
 /* ======================== Header ======================== */
 .header-container {
 	background-color: #ffffff;
@@ -124,6 +128,7 @@ div {
 	font-size: 25px;
 	margin-top: 6.5px;
 	margin-right: 2px;
+	color: #000;
 }
 
 .button-cart:hover {
