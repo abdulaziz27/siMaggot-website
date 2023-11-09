@@ -2,7 +2,7 @@ import React from "react";
 import "../header/header.css";
 import { Icon } from "@iconify/react";
 
-const Header = () => {
+const HeaderLogin = () => {
 	return (
 		<div className="header-container">
 			<div className="header">
@@ -34,4 +34,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default HeaderLogin;

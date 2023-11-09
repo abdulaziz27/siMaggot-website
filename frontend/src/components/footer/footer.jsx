@@ -8,7 +8,7 @@ const Footer = () => {
 			<div className="footer-about-container">
 				<div className="about">
 					<h1>Maggot Yahoot</h1>
-					<a>
+					<a href="./shop_page">
 						<p>Toko</p>
 					</a>
 
