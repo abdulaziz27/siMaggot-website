@@ -1,0 +1,465 @@
+/* ======================== Variable ======================== */
+:root {
+	--ff-text: "Inter-Regular", Helvetica;
+	--ff-text-semi-bold: "Inter-SemiBold", Helvetica;
+	--ff-iter-font: "Inter";
+	--clr-toggle-button: #728a1a;
+	--clr-button: #bbb;
+	--clr-arrow: #000;
+	--clr-text-produk: #212121;
+	--clr-border: rgb(194, 194, 194);
+	--clr-abu-muda: #f0f3f7;
+	--clr-abu-sedang: #6d7588;
+	--clr-abu-agak-tua: #46494e;
+	--clr-hijau-opa-22: #728a1a38;
+	--clr-hitam: #000;
+	--clr-hitam-luntur: #212121;
+	--clr-putih: #fff;
+	--clr-hijau-lumut: #728a1a;
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div {
+	display: block;
+}
+
+/* ======================== Main Check Out Page ======================== */
+.check-out-page-container {
+	height: 100vh;
+	width: 100vw;
+	font-family: var(--ff-body);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
+
+/* ======================== Main Check Out Page ======================== */
+.check-out-container {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin-left: 10%;
+	user-select: none;
+	font-family: var(--ff-iter-font);
+}
+
+.check-out-container h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 35px;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+.check-out-container h2 {
+	color: var(--clr-hitam-luntur);
+	font-size: 20px;
+	font-weight: 600;
+	padding: 17px 25px;
+}
+
+.check-out-content-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.alamat-pengirim-produk-dipesan-container {
+	width: 70%;
+	user-select: none;
+}
+
+.horizontal-line-check-out {
+	background-color: var(--clr-abu-muda);
+	height: 2px;
+}
+
+/* =================================================================== */
+/* ======================== Alamat Pengiriman ======================== */
+/* =================================================================== */
+.alamat-pengiriman-container {
+	border-radius: 10px;
+	border: 1px solid var(--abu-muda);
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	margin-bottom: 20px;
+}
+
+.penerima-container {
+	margin: 17px 25px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.penerima-container h3 {
+	color: var(--clr-hitam-luntur);
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.penerima-container h4 {
+	color: var(--clr-hitam-luntur);
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.penerima-container p {
+	color: var(--clr-abu-sedang);
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.button-alamat-container {
+	padding: 17px 25px;
+}
+
+.button-alamat {
+	width: fit-content;
+	color: var(--clr-hijau-lumut);
+	font-size: 16px;
+	font-weight: 600;
+	line-height: normal;
+	padding: 8px 10px;
+	border-radius: 6px;
+	border: 1px solid var(--clr-hijau-lumut);
+	cursor: pointer;
+}
+
+/* ================================================================ */
+/* ======================== Produk Dipesan ======================== */
+/* ================================================================ */
+.produk-dipesan-container {
+	border-radius: 10px;
+	border: 1px solid var(--abu-muda);
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.horizontal-line-produk-dipesan {
+	background-color: var(--clr-abu-muda);
+	height: 2px;
+}
+
+/* ======================== Header Produk Dipesan ======================== */
+.produk-dipesan-space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+.produk-dipesan-title {
+	width: 60%;
+}
+
+.title-produk-dipesan {
+	display: flex;
+	justify-content: space-between;
+	width: 40%;
+	padding-right: 25px;
+	align-items: center;
+}
+
+.title-produk-dipesan p {
+	color: var(--clr-abu-agak-tua);
+	font-size: 16px;
+	font-weight: 400;
+}
+
+/* ======================== Produk Pesanan ======================== */
+.maggot-store-produk {
+	padding: 20px 25px;
+}
+
+.maggot-store-produk h3 {
+	color: var(--clr-hitam);
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.maggot-store-produk p {
+	color: var(--clr-abu-sedang);
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.horizontal-line-informasi-produk-dipesan {
+	height: 1px;
+	background: #d9dde3;
+}
+
+.informasi-produk-pesanan {
+	width: 60%;
+	display: flex;
+	align-items: center;
+}
+
+.gambar-produk-pesanan img {
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+}
+
+.informasi-produk-pesanan-space-between {
+	padding: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.product-information {
+	padding: 0 20px;
+	align-self: center;
+}
+
+.harga-satuan-total-produk-pesanan {
+	width: 40%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.harga-satuan-total-produk-pesanan p {
+	color: var(--clr-hitam-luntur);
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.harga-satuan-total-produk-pesanan h5 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 700;
+}
+
+.harga-satuan-produk {
+	display: flex;
+	padding-left: 18px;
+	width: 30%;
+}
+
+.kuantitas-produk {
+	text-align: center;
+	padding-left: 15px;
+	width: 40%;
+}
+
+.total-harga-produk {
+	display: flex;
+	justify-content: flex-end;
+	width: 30%;
+}
+
+/* ======================== Chat Penjual ======================== */
+.pesan-penjual-pengiriman-container {
+	padding: 20px 25px;
+	display: flex;
+	align-items: center;
+}
+
+.pesan-penjual-container {
+	display: flex;
+	width: 60%;
+	align-items: center;
+}
+
+.pesan-penjual-container h6 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 500;
+	padding-right: 10px;
+}
+
+.pesan-penjual-input {
+	width: 80%;
+	height: 40px;
+	border-radius: 4px;
+	overflow: hidden;
+	padding: 10px;
+	color: var(--clr-hitam-luntur);
+	font-size: 15px;
+	font-weight: 400;
+	border: 1px solid var(--clr-hijau-lumut);
+	transition: 0.3s ease-in-out;
+}
+
+.pesan-penjual-input:hover {
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.pesan-penjual-input:focus-within {
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.pengiriman-produk-pesanan-container {
+	display: flex;
+	width: 40%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pengiriman-produk-pesanan-container h3 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.pengiriman-produk-pesanan-container h5 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.ubah-pengiriman-produk-pesanan {
+	align-items: center;
+}
+
+.ubah-pengiriman-produk-pesanan h4 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 400;
+	padding-right: 20px;
+}
+
+.ubah-pengiriman-produk-pesanan p {
+	color: var(--clr-hijau-lumut);
+	font-size: 16px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.ubah-pengiriman-produk-pesanan {
+	display: flex;
+	align-items: center;
+}
+
+/* ======================== Total Pesanan Produk ======================== */
+.total-pesanan-pesanan-produk-width {
+	padding: 20px 25px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.total-pesanan-pesanan-produk-container {
+	width: 40%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.total-pesanan-pesanan-produk-container p {
+	color: var(--clr-hitam-luntur);
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.total-pesanan-pesanan-produk-container h5 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 700;
+}
+
+/* =================================================================== */
+/* ======================== Ringkasan Belanja ======================== */
+/* =================================================================== */
+.ringkasan-belanja-container {
+	width: 30%;
+	user-select: none;
+}
+
+.ringkasan-belanja-height {
+	border-radius: 10px;
+	border: 1px solid var(--abu-muda);
+	margin-left: 32px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.barang-belanja-container {
+	margin: 16px 25px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.total-harga-barang-container,
+.total-ongkos-kirim-container,
+.total-belanja-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.total-harga-barang-container p,
+.total-ongkos-kirim-container p {
+	color: var(--clr-abu-agak-tua);
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.total-belanja-container p {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.horizontal-line-barang-belanja {
+	background-color: var(--clr-abu-sedang);
+	height: 1px;
+}
+
+/* ======================== Metode Pembayaran ======================== */
+.metode-pembayaran-check-out {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 20px 25px;
+	align-items: center;
+}
+
+.metode-pembayaran-check-out h6 {
+	color: var(--clr-hitam-luntur);
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.menu-transfer-bank {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+}
+
+.menu-transfer-bank p {
+	color: var(--clr-hitam-luntur);
+	font-size: 16px;
+	font-weight: 400;
+	padding-right: 8px;
+}
+
+.icon-menu-transfer {
+	color: var(--clr-hijau-lumut);
+	font-size: 16px;
+}
+
+/* ======================== Ringkasan Belanja Button ======================== */
+.button-check-out-barang-belanja {
+	text-align: center;
+	padding: 10px 25px;
+}
+
+.button-check-out-barang-belanja h1 {
+	padding: 15px;
+	border-radius: 6px;
+	background-color: var(--clr-hijau-lumut);
+	color: var(--clr-putih);
+	font-size: 17px;
+	font-weight: 600;
+	cursor: pointer;
+}

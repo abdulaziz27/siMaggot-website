@@ -40,7 +40,7 @@ a {
 	border-bottom-style: solid;
 	border-bottom-width: 0.5px;
 	border-color: #6d7588;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .header {
@@ -50,6 +50,7 @@ a {
 	justify-content: space-between;
 	align-items: center;
 	padding: 7px;
+	user-select: none;
 }
 
 /* ======================== Logo ======================== */

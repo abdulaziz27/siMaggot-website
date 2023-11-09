@@ -25,6 +25,7 @@ div {
 	height: 30px;
 	position: relative;
 	gap: 100px;
+	user-select: none;
 }
 
 .navbar-container a {
@@ -39,4 +40,5 @@ div {
 
 .navbar-container a:hover {
 	text-shadow: 1px 1px #9d9d9da2;
+	color: #000;
 }

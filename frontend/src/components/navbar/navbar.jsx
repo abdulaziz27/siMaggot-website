@@ -4,8 +4,8 @@ import "../navbar/navbar.css";
 const Navbar = () => {
 	return (
 		<div className="navbar-container">
-			<a>Beranda</a>
-			<a>Toko</a>
+			<a href="./">Beranda</a>
+			<a href="./shop">Toko</a>
 			<a>Tentang</a>
 			<a>Blog</a>
 		</div>
