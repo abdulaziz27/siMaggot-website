@@ -382,7 +382,7 @@ hr {
 /* ======================== Info Barang ======================== */
 .info-barang-container {
 	padding-top: 15px;
-	margin-left: 17px;
+	padding-left: 17px;
 	width: 216px;
 	height: 168px;
 }
@@ -443,7 +443,6 @@ p {
 	margin-left: 10%;
 	position: relative;
 	height: 440px;
-	margin-bottom: 200px;
 }
 
 /* ======================== Title ======================== */

@@ -7,6 +7,7 @@ import "./home_page.css";
 import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
+import HeaderLogin from "../../components/header/header_login";
 
 // Slide Banner
 import image1 from "../../assets/images/1335919.jpeg";
@@ -99,7 +100,7 @@ const HomePage = () => {
 	return (
 		<div className="main-page-container">
 			<Navbar />
-			<Header />
+			<HeaderLogin />
 
 			<div className="slide-banner-container">
 				<div
@@ -244,7 +245,10 @@ const HomePage = () => {
 									<h3>Nama Barang</h3>
 									<h4>RP. xx.xxx</h4>
 									<p>
-										<span className="star">&#9733;</span>{" "}
+										<Icon
+											icon="material-symbols:star"
+											className="icon-star-filter"
+										/>
 										4.8 | xx+ terjual
 									</p>
 
@@ -284,7 +288,10 @@ const HomePage = () => {
 									<h3>Nama Barang</h3>
 									<h4>RP. xx.xxx</h4>
 									<p>
-										<span className="star">&#9733;</span>{" "}
+										<Icon
+											icon="material-symbols:star"
+											className="icon-star-filter"
+										/>
 										4.8 | xx+ terjual
 									</p>
 

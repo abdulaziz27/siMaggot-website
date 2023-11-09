@@ -22,6 +22,8 @@ div {
 	border-bottom-style: solid;
 	border-bottom-width: 0.5px;
 	box-shadow: 0px -1px 16px #9d9d9d40;
+	margin-top: 200px;
+	user-select: none;
 }
 
 /* ======================== About Container ======================== */
@@ -75,16 +77,19 @@ hr {
 	margin-left: 10%;
 	margin-bottom: 73px;
 	cursor: default;
+	margin-top: 32px;
 }
 
 /* ======================== Link ======================== */
 .footer-about-container a {
 	cursor: pointer;
+	text-decoration: none;
 	transition: 0.4s ease;
 }
 
 .footer-about-container a:hover {
 	text-shadow: 1px 1px #9d9d9da2;
+	text-decoration: underline;
 }
 
 .follow a:hover {
