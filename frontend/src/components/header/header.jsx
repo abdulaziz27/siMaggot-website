@@ -18,7 +18,7 @@ const Header = () => {
 					></input>
 				</div>
 
-				<a className="button-cart">
+				<a href="/cart" className="button-cart">
 					<Icon icon="bx:cart" name="cart" />
 				</a>
 
