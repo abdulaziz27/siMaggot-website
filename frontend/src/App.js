@@ -7,6 +7,7 @@ import Register from "./pages/login_register/register";
 
 import Cart from "./pages/cart/cart";
 import Product from "./pages/product/product";
+import ShopPage from "./pages/shop_page/shop_page";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route exact path="/cart" element={<Cart />} />
             <Route path="/products/:id" element={<Product/>} />
+            <Route path="/shop" element={<ShopPage/>} />
           </Routes>
         </Router>
       </Fragment>

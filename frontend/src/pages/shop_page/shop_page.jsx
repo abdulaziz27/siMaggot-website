@@ -6,8 +6,24 @@ import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import image from "../../assets/images/1335919.jpeg";
+import { useDispatch, useSelector } from "react-redux";
+import { listProduct } from "../../redux/actions/ProductActions";
+import Loading from "../../components/LoadingError/loading";
+import Message from "../../components/LoadingError/error";
+import { Link } from "react-router-dom";
 
 const ShopPage = () => {
+
+		// *
+		const dispatch = useDispatch();
+
+		const productList = useSelector((state) => state.productList)
+		const {loading,error,products} = productList;
+	
+		useEffect(()=>{
+			dispatch(listProduct());
+		}, [dispatch])
+
 	// Dropdown Sort Menu
 	const options = [
 		"Paling Sesuai",
@@ -297,23 +313,31 @@ const ShopPage = () => {
 							</ul>
 						</div>
 					</div>
-
-					<div className="card-barang-shop-container">
-						{times.map((_, index) => (
-							<div className="card-barang-shop">
+					{
+					loading ? (
+						<Loading/>
+						) : error ? (
+						<Message variant="alert-danger">{error}</Message>
+						)	:(
+							<>
+						<div className="card-barang-shop-container">
+						{products.map((product) => (
+							<div className="card-barang-shop" key={product._id}>
 								<div className="gambar-barang-shop">
-									<img src={image} />
+								<Link to={`/products/${product._id}`}>
+									<img src={product.image} alt={product.name}/>
+								</Link>
 								</div>
 
 								<div className="info-barang-shop-container">
-									<h3>Nama Barang</h3>
-									<h4>RP. xx.xxx</h4>
+									<h3>{product.name}</h3>
+									<h4>RP. {product.price}</h4>
 									<p>
 										<Icon
 											icon="material-symbols:star"
 											className="icon-star-filter"
 										/>
-										4.8 | xx+ terjual
+										{product.rating} | {product.sold}+ terjual
 									</p>
 
 									<div className="button-beli-shop">
@@ -323,6 +347,9 @@ const ShopPage = () => {
 							</div>
 						))}
 					</div>
+							</>
+						)
+					}
 				</div>
 			</div>
 
