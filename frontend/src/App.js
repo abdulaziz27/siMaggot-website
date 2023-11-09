@@ -18,7 +18,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route exact path="/cart" element={<Cart />} />
-						<Route exact path="/product" element={<Product />} />
+            <Route path="/products/:id" element={<Product/>} />
           </Routes>
         </Router>
       </Fragment>

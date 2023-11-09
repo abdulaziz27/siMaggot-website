@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const reviewSchema = mongoose.Schema({
+    
     name:{
         type:String,
         require:true,
@@ -59,6 +60,11 @@ const productSchema = mongoose.Schema({
         ref: 'Category',
         required:true
     },
+    sold: {
+        type: Number,
+        require:true,
+        default: 0,
+    }
 },
 {
     timestamps:true

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./product.css";
 import { Icon } from "@iconify/react";
 
@@ -12,42 +12,129 @@ import productImage2 from "../../assets/product/img1.png";
 import productImage3 from "../../assets/product/img2.png";
 import productImage4 from "../../assets/product/img3.png";
 import productImage5 from "../../assets/product/img4.png";
+import { useDispatch, useSelector } from "react-redux";
+import { listDetailsProduct } from "../../redux/actions/ProductActions";
+import { useParams } from "react-router-dom";
+import Loading from "../../components/LoadingError/loading";
+import Message from "../../components/LoadingError/error";
 
 
-function Product() {
-    
+const Product = () => {
+  const { id } = useParams();
+  const [cartItems, setCartItems] = useState(null);
+  const [product, setProduct] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const url = "http://localhost:3000/api/products";
+
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(listDetailsProduct(id))
+  }, [dispatch,id])
+
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            setProduct(data);
+        })
+        .catch((error) => {
+            console.error("Error fetching cart items:", error);
+        });
+
+    const fetchProductDetails = async () => {
+        try {
+            const response = await fetch(
+                `http://localhost:3000/api/products/${id}`
+            );
+            if (response.ok) {
+                const data = await response.json();
+                setCartItems(data);
+            } else {
+                throw new Error("Failed to fetch product details");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    fetchProductDetails();
+}, [id]);
+
+const handleSmallImgClick = (imageSrc) => {
+  setCartItems((prevState) => ({
+      ...prevState,
+      image: imageSrc,
+  }));
+};
+
+const handleQuantityChange = (event) => {
+setQuantity(parseInt(event.target.value));
+};
+
+const handleAddToCart = () => {
+const { _id, name, price } = cartItems;
+
+fetch("http://localhost:3000/api/cart", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        quantity,
+        product: {
+            _id,
+            name,
+            price,
+        },
+    }),
+})
+    .then((response) => response.json())
+    .then((data) => {
+        console.log("Product added to cart:", data);
+    })
+    .catch((error) => {
+        console.error("Error adding product to cart:", error);
+    });
+};
+
+  if (!cartItems) {
+    return null;
+  }
+
     return (
       <>
         <Navbar />
         <Header />
 
-        <div className="productInfo">
+          <div className="productInfo">
             <div className="productContainer">
-
-                <div className="heroProduk">
-                  <img className="heroImg" src={productImage1} alt="productImage" />
-                  <div className="ketImg">
-                    <img className="selectedKetImg" src={productImage1} alt="productImage" />
-                    <img src={productImage2} alt="productImage" />
-                    <img src={productImage3} alt="productImage" />
-                    <img src={productImage4} alt="productImage" />
-                    <img src={productImage5} alt="productImage" />
-                  </div>
-                </div>
-
+                    <div className="heroProduk">
+                      <img className="heroImg" src={cartItems.image} width="100%" alt="productImage" />
+                      <div className="ketImg">
+                      <img className="selectedKetImg" src={productImage1} alt="productImage"/>
+                        <img src={productImage2} alt="productImage" />
+                        <img src={productImage3} alt="productImage" />
+                        <img src={productImage4} alt="productImage" />
+                        <img src={productImage5} alt="productImage" />
+                      </div>
+                    </div>
+                     
                 <div className="infoBarang">
-                  <h2>Pakan Makanan Landak Mini Hedgehog Maggot Kering Kibble Magot Tendo</h2>
+                  <h2>{cartItems.name}</h2>
                   <div className="nilaiJualBarang">
                     <p>
                       <span className="star">&#9733;</span>{"   "}
-                      4.9
+                      {cartItems.rating}
                     </p>
                     <p>|</p>
-                    <p>135 Penilaian</p>
+                    <p>{cartItems.numReviews} Reviews</p>
                     <p>|</p>
-                    <p>428 Terjual</p>
+                    <p>{cartItems.sold} Terjual</p>
                   </div>
-                  <h1 className="hargaBarang">Rp. 31.900 - Rp. 79.00</h1>
+                  <h1 className="hargaBarang">Rp. {cartItems.price}</h1>
                   <div className="atributJual">
                     <p>Jenis Pakan</p>
                     <div className="listPakan">
@@ -63,7 +150,7 @@ function Product() {
                     <p>Kuantitas</p>
                     <div className="kuantitas">
                       <ButtonKuantitas />
-                      <p>tersisa 257 buah</p>
+                      <p>tersisa {cartItems.countInStock}</p>
                     </div>
                   </div>
                   <button className="keranjang"> + Keranjang</button>
@@ -110,7 +197,8 @@ function Product() {
                 <div className="deskripsiProduk">
                   <h2 className="title">Deskripsi Produk</h2>
                   <p>
-                    Maggot Kering / Kibble Magot Pakan Makanan Landak Mini Hedgehog Tendo <br /><br />
+                    {/*
+                        Maggot Kering / Kibble Magot Pakan Makanan Landak Mini Hedgehog Tendo <br /><br />
 
                     Suplemen Terbaik untuk mendukung tumbuh kembang landak mini lebih optimal. Mengandung maggot yang kaya akan protein. 
                     Sangat cocok untuk landak mini yang melahirkan/ hamil, kandungan proteinnya sangat tinggi untuk mendukung proses menyusui landak.
@@ -136,6 +224,8 @@ function Product() {
                     Carotenoid 8% <br /><br />
 
                     Berat Bersih: 130 gram (Maggot Only), 220 gram (Kibble Maggot), 300 gram (Maggot Only) <br />
+                    */}
+                  {cartItems.description}
                   </p>
                   <hr />
                 </div>
@@ -209,6 +299,7 @@ function Product() {
               </div>
             </div>
         </div>
+
         <Footer />
       </>
     
