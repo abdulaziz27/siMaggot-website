@@ -60,6 +60,11 @@ const productSchema = mongoose.Schema({
         ref: 'Category',
         required:true
     },
+    sold: {
+        type: Number,
+        require:true,
+        default: 0,
+    }
 },
 {
     timestamps:true
