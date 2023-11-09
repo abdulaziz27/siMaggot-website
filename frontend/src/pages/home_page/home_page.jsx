@@ -308,16 +308,16 @@ const HomePage = () => {
 
 								<div className="info-barang-container">
 									<h3>
-										<Link to={`products/${product._id}`}>{product.name}</Link>
+										{product.name}
 									</h3>
 									<h4>
-										<Link to={`products/${product._id}`}>{product.price}</Link>
+										Rp. {product.price}
 									</h4>
 									<p>
 										<span className="star">&#9733;</span>{" "}
-										<Link to={`products/${product._id}`}>{product.rating} | </Link>
+										{product.rating} |
 									
-										<Link to={`products/${product._id}`}>{product.countInStock} + terjual</Link>
+										{product.countInStock} + terjual
 									
 									</p>
 
