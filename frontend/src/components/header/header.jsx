@@ -1,12 +1,15 @@
 import React from "react";
 import "../header/header.css";
 import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	return (
 		<div className="header-container">
 			<div className="header">
+				<Link to={`/`}>
 				<h1 id="logo">SiMaggot</h1>
+				</Link>
 
 				<div className="search-bar-container">
 					<Icon icon="iconamoon:search" className="search-icon" />
@@ -18,17 +21,17 @@ const Header = () => {
 					></input>
 				</div>
 
-				<a href="/cart" className="button-cart">
-					<Icon icon="bx:cart" name="cart" />
-				</a>
+				<Link to={`/cart`}>
+					<Icon icon="bx:cart" name="cart" className="button-cart"/>
+				</Link>
 
-				<a href="./login" className="button-masuk" type="button">
+				<Link to="/login" className="button-masuk" type="button">
 					<h2>Masuk</h2>
-				</a>
+				</Link>
 
-				<a href="./register" className="button-daftar" type="button">
+				<Link to="/register" className="button-daftar" type="button">
 					<h2>Daftar</h2>
-				</a>
+				</Link>
 			</div>
 		</div>
 	);

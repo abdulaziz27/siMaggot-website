@@ -77,7 +77,7 @@ setQuantity(parseInt(event.target.value));
 };
 
 const handleAddToCart = () => {
-const { _id, name, price } = cartItems;
+const { id, name, price } = cartItems;
 
 fetch("http://localhost:3000/api/cart", {
     method: "POST",
@@ -87,7 +87,7 @@ fetch("http://localhost:3000/api/cart", {
     body: JSON.stringify({
         quantity,
         product: {
-            _id,
+            id,
             name,
             price,
         },
@@ -106,6 +106,8 @@ fetch("http://localhost:3000/api/cart", {
     return null;
   }
 
+  const smallImages = [ productImage1, productImage2, productImage3, productImage4, productImage5];
+
     return (
       <>
         <Navbar />
@@ -123,12 +125,16 @@ fetch("http://localhost:3000/api/cart", {
                     <div className="heroProduk">
                       <img className="heroImg" src={cartItems.image} width="100%" alt="productImage" />
                       <div className="ketImg">
-                      <img className="selectedKetImg" src={productImage1} alt="productImage"/>
-                        <img src={productImage2} alt="productImage" />
-                        <img src={productImage3} alt="productImage" />
-                        <img src={productImage4} alt="productImage" />
-                        <img src={productImage5} alt="productImage" />
-                      </div>
+                      {smallImages.map((image, index) => (
+                        <img
+                          key={index}
+                          src={image}
+                          className="selectedKetImg"
+                          alt={`ProductImage ${index + 1}`}
+                          onClick={() => handleSmallImgClick(image)}
+                        />
+                      ))}
+                     </div>
                     </div>
               </>
             )}
@@ -159,14 +165,32 @@ fetch("http://localhost:3000/api/cart", {
                       <a>220 gram</a>
                       <a>300 gram</a>
                     </div>
+                    <p>Status</p>
+                    <div className="listUkuran">
+                      {cartItems.countInStock > 0 ? (
+                       <span>In Stock</span>
+                      ):(
+                        <span>Out of Stock</span>
+                      )}
+                    </div>
+                    {cartItems.countInStock > 0 ? (
+                      <>
                     <p>Kuantitas</p>
                     <div className="kuantitas">
                       <ButtonKuantitas />
-                      <p>tersisa {cartItems.countInStock}</p>
+                      <p>
+                        tersisa {cartItems.countInStock}
+                      </p>
                     </div>
+                    </>
+                      ) : null}
                   </div>
+                  {cartItems.countInStock > 0 ? (
+                      <>
                   <button className="keranjang"> + Keranjang</button>
                   <button className="beliLangsung">Beli Langsung</button>
+                  </>
+                      ) : null}
                   <div className="tandai">
                     <a className="favorit">
                       <span><Icon icon="ph:heart" color="#728a1a" /></span>
