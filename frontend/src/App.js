@@ -21,6 +21,7 @@ function App() {
             <Route exact path="/cart" element={<Cart />} />
             <Route path="/products/:id" element={<Product/>} />
             <Route path="/shop" element={<ShopPage/>} />
+            <Route path="/cart" element={<Cart/>} />
           </Routes>
         </Router>
       </Fragment>
