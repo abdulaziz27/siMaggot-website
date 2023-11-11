@@ -1,13 +1,22 @@
 import React from "react";
 import "../navbar/navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	return (
 		<div className="navbar-container">
-			<a href="./">Beranda</a>
-			<a href="./shop">Toko</a>
-			<a>Tentang</a>
-			<a>Blog</a>
+			<Link to={`/`}>
+			Beranda
+			</Link>
+			<Link to={`/shop`}>
+			Toko
+			</Link>
+			<Link to={`/about`}>
+			Tentang
+			</Link>
+			<Link to={`/blog`}>
+			Blog
+			</Link>
 		</div>
 	);
 };

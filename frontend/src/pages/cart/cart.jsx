@@ -39,7 +39,7 @@ const dataBarang = [
 ]
 
 
-function Cart() {
+const Cart = () => {
     
     return (
       <>

@@ -295,7 +295,9 @@ const HomePage = () => {
 			<div className="produk-terbaru-container">
 				<div className="title-produk-terbaru">
 					<h1>Produk Terbaru</h1>
+					<Link to={`shop`}>
 					<a>Lihat Semua</a>
+					</Link>
 				</div>
 
 				<div className="card-barang-container">
@@ -318,17 +320,12 @@ const HomePage = () => {
 										Rp. {product.price}
 									</h4>
 									<p>
-										<span className="star">&#9733;</span>{" "}
-										{product.rating} |
-									
-										{product.countInStock} + terjual
-									
-
 										<Icon
 											icon="material-symbols:star"
 											className="icon-star-filter"
-										/>
-										4.8 | xx+ terjual
+										/>										
+										{product.rating} |
+										{product.sold} + terjual
 									</p>
 
 									<div className="button-beli">
