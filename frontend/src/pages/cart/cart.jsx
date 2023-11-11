@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./cart.css";
 import { Icon } from "@iconify/react";
 
@@ -9,7 +9,6 @@ import Footer from "../../components/footer/footer";
 import productImage from "../../assets/cart/img.png";
 import productImage1 from "../../assets/cart/img1.png";
 import productImage2 from "../../assets/cart/img2.png";
-
 
 const dataBarang = [
   {
@@ -40,6 +39,92 @@ const dataBarang = [
 
 
 const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    fetchCartItems();
+  }, []);
+
+  const fetchCartItems = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/cart');
+      const data = await response.json();
+      setCartItems(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const calculateSubtotal = (price, quantity) => {
+    return price * quantity;
+  };
+
+  const calculateCartSubtotal = () => {
+    let subtotal = 0;
+    cartItems.forEach((item) => {
+      const itemSubtotal = calculateSubtotal(item.product.price, item.quantity);
+      subtotal += itemSubtotal;
+    });
+    return subtotal;
+  };
+
+  const qtyChangeHandler = async (e, itemId) => {
+    const newQuantity = parseInt(e.target.value);
+
+    if (newQuantity < 1) {
+      e.target.value = 1;
+      return;
+    }
+
+    const existingCartItem = cartItems.find((item) => item._id === itemId);
+
+    if (existingCartItem) {
+      const maxQuantity = existingCartItem.product.countInStock;
+      if (newQuantity > maxQuantity) {
+
+        e.target.value = maxQuantity;
+        return;
+      }
+
+      existingCartItem.quantity = newQuantity;
+      setCartItems([...cartItems]);
+
+      try {
+        await fetch(`http://localhost:3000/api/cart/${itemId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ quantity: existingCartItem.quantity }),
+        });
+        fetchCartItems();
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      const response = await fetch('http://localhost:3000/api/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId: itemId, quantity: newQuantity }),
+      });
+      const data = await response.json();
+      setCartItems([...cartItems, data]);
+    }
+  };
+
+
+  const handleRemoveItem = async (itemId) => {
+    try {
+      await fetch(`http://localhost:3000/api/cart/${itemId}`, {
+        method: 'DELETE',
+      });
+      fetchCartItems();
+    } catch (error) {
+      console.error(error);
+    }
+  };
     
     return (
       <>
@@ -59,21 +144,27 @@ const Cart = () => {
                     <p>Kuantitas</p>
                     <p className="totalTiapBarang">Total Harga</p>
                 </div>
-
-                <div className="tokoBarangDibeli">
+                {cartItems.map((item) => (
+                  <div key={item._id} className="tokoBarangDibeli">
                   <input type="checkbox" className="checkToko" name="checkToko" id="checkToko" />
                   <h2 className="namaToko" >Toko Maggot Mantul</h2>
                   <a className="lokasiToko">Kab. Banyumas</a>
                   <div className="jenisBarangDibeli">
-                    <JenisBarang 
-                      gambarBarang={productImage}
-                      namaBarang="Telur Maggot BSF Lalat Indukan Super 1 gram"
-                      hargaSatuan="3.500"
-                      totalTiapBarang="7.000"
-                    />
+                  <JenisBarang
+                    key={item._id} // Ensure each item has a unique key
+                    gambarBarang={item.product.image}
+                    namaBarang={item.product.name}
+                    hargaSatuan={item.product.price}
+                    totalTiapBarang={calculateSubtotal(item.product.price, item.quantity)}
+                    qty={item.quantity}
+                    itemId={item._id}
+                    onQtyChange={qtyChangeHandler}
+                    onRemove={handleRemoveItem}
+                    stock={item.product.countInStock}
+                  />
                   </div>
-                </div>
-
+                </div> 
+                ))}
                 <div className="tokoBarangDibeli">
                   <input type="checkbox" className="checkToko" name="checkToko" id="checkToko" />
                   <h2 className="namaToko" >Literally Maggot Store</h2>
@@ -105,9 +196,7 @@ const Cart = () => {
                   lokasiToko="Kab. Lokasi Toko"
                   idBarang="0"
                 />
-
               </div>
-
               <div className="rekomendasiBarang">
                 <ListRekomendasi titleList="Terakhir Dilihat" />
                 <hr />
@@ -115,18 +204,21 @@ const Cart = () => {
               </div>
 
               <div className="ringkasanBelanja-container">
+             
                 <div className="ringkasanBelanja">
+                  
                   <h3>Ringkasan Belanja</h3>
-                  <div className="daftarHarga">
-                    <p className="hargaBarangText">Total Harga (1 barang)</p>
-                    <p className="hargaBarang">Rp. 7.000</p>
-                    <p className="hargaBarangText">Total Harga (2 barang)</p>
-                    <p className="hargaBarang">Rp. 57.530</p>
-                  </div>
+                  {cartItems.map((item) => (
+                  <div key={item._id} className="daftarHarga">
+                    <p className="hargaBarangText">Total Harga {item.product.name} </p>
+                    <p className="hargaBarang">Rp. {calculateSubtotal(item.product.price, item.quantity)}</p>
+                    </div>
+                   ))}
                   <hr />
                   <p className="totalHargaText">Total Harga </p>
-                  <p className="totalHarga">Rp. 64.530</p>
-                  <button>Beli (2)</button>
+                  <p className="totalHarga">Rp. {calculateCartSubtotal()}</p>
+                
+                  <button>Beli ({cartItems.length})</button>
                 </div>
               </div>
 
@@ -162,39 +254,50 @@ function TokoBarangDiBeli({namaToko, lokasiToko, idBarang}) {
 }
 
 
-function JenisBarang({gambarBarang, namaBarang, hargaSatuan, totalTiapBarang}) {
+function JenisBarang({gambarBarang, namaBarang, hargaSatuan, totalTiapBarang, qty, itemId, onQtyChange, onRemove, stock}) {
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+  };
+
   return (
     <>
-      <form action="" className="listBarang">
+    
+      <form onSubmit={handleSubmit} action="" className="listBarang">
         <input type="checkbox" name="checkBarang" id="checkBarang" />
         <img className="productImage" src={gambarBarang} alt="Gambar Produk" />
         <label htmlFor="checkBarang" className="alignLeft">{namaBarang}</label>
         <p>Rp. {hargaSatuan}</p>
-        <p><ButtonKuantitas /></p>
+        
+        <p><ButtonKuantitas stock={stock} qty={qty} onQtyChange={(e) => onQtyChange(e, itemId)} onRemove={() => onRemove(itemId)} /></p>
         <p className="totalTiapBarang">Rp. {totalTiapBarang}</p>
         <textarea className="isiCatatan" name="isiCatatan" id="isiCatatan" cols="30" rows="3"></textarea>
         <a className="catatanBeli">Tulis Catatan</a>
+        
       </form>
+      
     </>
   )
 }
 
 
-function ButtonKuantitas() {
+function ButtonKuantitas({qty, onQtyChange , onRemove, stock}) {
   
-  const [counter, setCounter] = useState(1);
-
   return (
     <>
       <div className="buttonKuantitas">
-        <a className="trashIcon" onClick={() => setCounter(1)}>
+        <a className="trashIcon"  onClick={() => onRemove()}>
             <Icon icon="bi:trash" color="red" />
         </a>
-        <div className="counter">
-          <button onClick={() => setCounter(counter - 1)}>一</button>
-          <input type="text" value={counter} />
-          <button onClick={() => setCounter(counter + 1)}>十</button>
+        <div className="">
+        <input
+                        type="number"
+                        value={qty}
+                        onChange={onQtyChange}
+                        min={1}
+                        max={stock}
+                      />
         </div>
+
       </div>
       
     </>

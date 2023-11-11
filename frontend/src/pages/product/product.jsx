@@ -29,7 +29,7 @@ const Product = () => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails)
   const {loading,error,products} = productDetails;
-  
+
   useEffect(() => {
     dispatch(listDetailsProduct(id))
   }, [dispatch,id])
@@ -72,35 +72,35 @@ const handleSmallImgClick = (imageSrc) => {
   }));
 };
 
-const handleQuantityChange = (event) => {
-setQuantity(parseInt(event.target.value));
-};
+  const qtyChangeHandler = (event) => {
+    setQuantity(parseInt(event.target.value));
+  };
 
-const handleAddToCart = () => {
-const { id, name, price } = cartItems;
+  const addToCartHandler = () => {
+    const { _id, name, price } = cartItems;
 
-fetch("http://localhost:3000/api/cart", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        quantity,
-        product: {
-            id,
-            name,
-            price,
-        },
-    }),
-})
-    .then((response) => response.json())
-    .then((data) => {
-        console.log("Product added to cart:", data);
-    })
-    .catch((error) => {
-        console.error("Error adding product to cart:", error);
-    });
-};
+        fetch("http://localhost:3000/api/cart", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                quantity,
+                product: {
+                    _id,
+                    name,
+                    price,
+                },
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Product added to cart:", data);
+            })
+            .catch((error) => {
+                console.error("Error adding product to cart:", error);
+            });
+  };
 
   if (!cartItems) {
     return null;
@@ -177,7 +177,13 @@ fetch("http://localhost:3000/api/cart", {
                       <>
                     <p>Kuantitas</p>
                     <div className="kuantitas">
-                      <ButtonKuantitas />
+                      <div className="buttonKuantitas">
+                      <input
+                        type="number"
+                        value={quantity}
+                        onChange={qtyChangeHandler}
+                      />
+                      </div>
                       <p>
                         tersisa {cartItems.countInStock}
                       </p>
@@ -187,7 +193,7 @@ fetch("http://localhost:3000/api/cart", {
                   </div>
                   {cartItems.countInStock > 0 ? (
                       <>
-                  <button className="keranjang"> + Keranjang</button>
+                  <button onClick={addToCartHandler} className="keranjang"> + Keranjang</button>
                   <button className="beliLangsung">Beli Langsung</button>
                   </>
                       ) : null}
