@@ -27,6 +27,8 @@ const Product = () => {
   const url = "http://localhost:3000/api/products";
 
   const dispatch = useDispatch();
+  const productDetails = useSelector((state) => state.productDetails)
+  const {loading,error,products} = productDetails;
   
   useEffect(() => {
     dispatch(listDetailsProduct(id))
@@ -111,6 +113,13 @@ fetch("http://localhost:3000/api/cart", {
 
           <div className="productInfo">
             <div className="productContainer">
+            {
+					loading ? (
+						<Loading/>
+						) : error ? (
+						<Message variant="alert-danger">{error}</Message>
+						)	:(
+              <>
                     <div className="heroProduk">
                       <img className="heroImg" src={cartItems.image} width="100%" alt="productImage" />
                       <div className="ketImg">
@@ -121,6 +130,9 @@ fetch("http://localhost:3000/api/cart", {
                         <img src={productImage5} alt="productImage" />
                       </div>
                     </div>
+              </>
+            )}
+
                      
                 <div className="infoBarang">
                   <h2>{cartItems.name}</h2>
