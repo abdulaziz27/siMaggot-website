@@ -296,6 +296,7 @@ div {
 
 .pesan-penjual-input:focus-within {
 	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	outline: none;
 }
 
 .pengiriman-produk-pesanan-container {
@@ -421,6 +422,7 @@ div {
 	justify-content: space-between;
 	margin: 20px 25px;
 	align-items: center;
+	position: relative;
 }
 
 .metode-pembayaran-check-out h6 {
@@ -446,6 +448,91 @@ div {
 .icon-menu-transfer {
 	color: var(--clr-hijau-lumut);
 	font-size: 16px;
+}
+
+/* ======================== Dropdown Metode Pembayaran ======================== */
+.metode-pembayaran-list {
+	display: none;
+	position: absolute;
+	top: 150%;
+	width: 100%;
+	border: 1px solid var(--abu-muda);
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	background-color: #fff;
+}
+
+.horizontal-line-metode-pembayaran-dropdown {
+	height: 1px;
+	background-color: #e1e6ed;
+}
+
+.transfer-bank-dropdown-header {
+	display: flex;
+	align-items: center;
+	padding: 10px 28px;
+	width: 100%;
+}
+
+.option-payment-method {
+	display: flex;
+	width: 100%;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.transfer-bank-dropdown-choice {
+	padding: 10px 28px;
+}
+
+.arrow-button-transfer-bank-dropdown {
+	color: var(--clr-hijau-lumut);
+	position: absolute;
+	font-size: 30px;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.transfer-bank-dropdown-header h1 {
+	width: 100%;
+	color: var(--clr-hitam-luntur);
+	position: relative;
+	font-size: 18px;
+	font-weight: 500;
+	text-align: center;
+}
+
+.metode-pembayaran-list h2 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.metode-pembayaran-list.show {
+	display: block;
+}
+
+.transfer-bank-container,
+.cash-on-delivery-container {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	border-radius: 10px;
+	transition: 0.3s ease-in-out;
+}
+
+.transfer-bank-container:hover,
+.cash-on-delivery-container:hover {
+	background-color: #f0f0f0;
+}
+
+.transfer-bank-icon,
+.cash-on-delivery-icon {
+	margin-left: 20px;
+}
+
+.cash-on-delivery-icon {
+	font-size: 20px;
 }
 
 /* ======================== Ringkasan Belanja Button ======================== */

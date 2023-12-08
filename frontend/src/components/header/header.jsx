@@ -6,7 +6,11 @@ const Header = () => {
 	return (
 		<div className="header-container">
 			<div className="header">
-				<h1 id="logo">SiMaggot</h1>
+				<a href="./">
+					<h1 href="./" id="logo">
+						SiMaggot
+					</h1>
+				</a>
 
 				<div className="search-bar-container">
 					<Icon icon="iconamoon:search" className="search-icon" />
@@ -18,8 +22,8 @@ const Header = () => {
 					></input>
 				</div>
 
-				<a className="button-cart">
-					<Icon icon="bx:cart" name="cart" />
+				<a href="./cart" className="button-cart">
+					<Icon icon="system-uicons:cart" name="cart" />
 				</a>
 
 				<a href="./login" className="button-masuk" type="button">

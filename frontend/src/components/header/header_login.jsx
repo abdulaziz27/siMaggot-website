@@ -1,12 +1,18 @@
 import React from "react";
 import "../header/header.css";
 import { Icon } from "@iconify/react";
+import image_toko from "../../assets/profile_page_image/shop_icon.jpeg";
+import image_profile from "../../assets/profile_page_image/profile_image.jpeg";
 
 const HeaderLogin = () => {
 	return (
 		<div className="header-container">
 			<div className="header">
-				<h1 id="logo">SiMaggot</h1>
+				<a href="./">
+					<h1 href="./" id="logo">
+						SiMaggot
+					</h1>
+				</a>
 
 				<div className="search-bar-container">
 					<Icon icon="iconamoon:search" className="search-icon" />
@@ -18,16 +24,31 @@ const HeaderLogin = () => {
 					></input>
 				</div>
 
-				<a className="button-cart">
-					<Icon icon="bx:cart" name="cart" />
+				<a href="./cart" className="button-cart-login">
+					<Icon icon="system-uicons:cart" name="cart" />
 				</a>
 
-				<a href="./login" className="button-masuk" type="button">
-					<h2>Masuk</h2>
+				<a className="button-notification">
+					<Icon
+						icon="clarity:notification-line"
+						name="notification"
+					/>
 				</a>
 
-				<a href="./register" className="button-daftar" type="button">
-					<h2>Daftar</h2>
+				<a className="button-chat">
+					<Icon icon="ep:chat-dot-round" name="chat" />
+				</a>
+
+				<div className="vertikal-line-header"></div>
+
+				<a href="./shop" className="button-shop">
+					<img src={image_toko}></img>
+					<h2>Toko</h2>
+				</a>
+
+				<a href="./profile" className="button-profile">
+					<img src={image_profile}></img>
+					<h2>Profil</h2>
 				</a>
 			</div>
 		</div>

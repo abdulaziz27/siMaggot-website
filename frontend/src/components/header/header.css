@@ -58,7 +58,7 @@ div {
 	line-height: normal;
 	position: relative;
 	margin-right: 136px;
-	cursor: default;
+	cursor: pointer;
 }
 
 /* ======================== Search bar ======================== */
@@ -106,15 +106,26 @@ div {
 }
 
 /* ======================== Button ======================== */
+.header a {
+	text-decoration: none;
+}
+
 .button-cart {
+	margin-left: 65px;
+}
+
+.button-cart,
+.button-cart-login,
+.button-notification,
+.button-chat {
 	border-radius: 100px;
 	text-align: center;
 	justify-content: center;
+	align-items: center;
 	height: 35px;
 	width: 35px;
 	border: none;
 	background-color: transparent;
-	margin-left: 36px;
 	margin-top: auto;
 	margin-bottom: auto;
 	transition: 0.5s ease;
@@ -122,14 +133,34 @@ div {
 }
 
 .button-cart [name="cart"] {
-	font-size: 25px;
-	margin-top: 6.5px;
-	margin-right: 2px;
+	font-size: 30px;
+	margin-top: 4px;
+	color: #212121;
 }
 
-.button-cart:hover {
+.button-cart-login [name="cart"] {
+	font-size: 30px;
+	margin-top: 4px;
+	color: #212121;
+}
+
+.button-notification [name="notification"] {
+	font-size: 23px;
+	margin-top: 6px;
+	color: #212121;
+}
+
+.button-chat [name="chat"] {
+	font-size: 23px;
+	margin-top: 6px;
+	color: #212121;
+}
+
+.button-cart:hover,
+.button-cart-login:hover,
+.button-notification:hover,
+.button-chat:hover {
 	background-color: #5855555e;
-	transform: scale(1.05);
 }
 
 .button-masuk,
@@ -182,6 +213,44 @@ div {
 	color: var(--clr-text);
 	font-size: 17px;
 	font-weight: var(--fw-semi-bold);
+}
+
+.vertikal-line-header {
+	border-left: 1px solid #6d7588;
+	border-radius: 10px;
+	height: 25px;
+}
+
+.button-shop,
+.button-profile {
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	border-radius: 15px;
+	cursor: pointer;
+	padding-right: 15px;
+	transition: 0.3s ease-in-out;
+}
+
+.button-shop img,
+.button-profile img {
+	width: 25px;
+	height: 25px;
+	margin-right: 6px;
+	border-radius: 50%;
+}
+
+.button-shop h2,
+.button-profile h2 {
+	color: #46494e;
+	font-family: Inter;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.button-shop:hover,
+.button-profile:hover {
+	background-color: #5855555e;
 }
 
 /* ======================== Responsive ======================== */

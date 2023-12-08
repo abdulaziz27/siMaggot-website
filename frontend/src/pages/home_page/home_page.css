@@ -383,8 +383,7 @@ hr {
 .info-barang-container {
 	padding-top: 15px;
 	padding-left: 17px;
-	width: 216px;
-	height: 168px;
+	height: 100%;
 }
 
 .info-barang-container h3,
