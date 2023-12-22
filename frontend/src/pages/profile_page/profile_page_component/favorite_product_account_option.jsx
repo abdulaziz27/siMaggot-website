@@ -47,6 +47,29 @@ const FavoriteProductAccountOption = () => {
 						</div>
 					</div>
 				))}
+
+				<div class="pagination-favorite-product">
+					<a href="#">
+						<Icon
+							icon="ic:round-chevron-left"
+							className="favorite-chevron-button"
+						/>
+					</a>
+					<a href="#">1</a>
+					<a href="#" class="active-favorite">
+						2
+					</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">5</a>
+					<a href="#">6</a>
+					<a href="#">
+						<Icon
+							icon="ic:round-chevron-right"
+							className="favorite-chevron-button"
+						/>
+					</a>
+				</div>
 			</div>
 		</div>
 	);

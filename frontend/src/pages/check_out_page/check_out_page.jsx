@@ -11,6 +11,7 @@ import gambar2 from "../../assets/check_out/premium_dried_maggot.jpeg";
 
 const CheckOutPage = () => {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+	const [isAddressOpen, setIsAddressOpen] = useState(false);
 	const [selectedPaymentMethod, setSelectedPaymentMethod] =
 		useState("Transfer Bank");
 	const dropdownRef = useRef(null);
@@ -19,9 +20,18 @@ const CheckOutPage = () => {
 		setIsDropdownOpen(!isDropdownOpen);
 	};
 
+	const addressDropdown = () => {
+		setIsAddressOpen(!isAddressOpen);
+	};
+
 	const selectPaymentMethod = (method) => {
 		setSelectedPaymentMethod(method);
 		setIsDropdownOpen(false);
+	};
+
+	const closeMenu = () => {
+		setIsDropdownOpen(false);
+		setIsAddressOpen(false);
 	};
 
 	const handleOutsideClick = (event) => {
@@ -69,9 +79,44 @@ const CheckOutPage = () => {
 							<div className="horizontal-line-check-out"></div>
 
 							<div className="button-alamat-container">
-								<div className="button-alamat">
+								<div
+									className="button-alamat"
+									onClick={addressDropdown}
+								>
 									Pilih Alamat Lain
 								</div>
+
+								{isAddressOpen && (
+									<div className="change-alamat-dropdown-container">
+										<div className="change-alamat-content">
+											<div className="close-alamat-button">
+												<Icon
+													icon="ph:arrow-circle-left-light"
+													onClick={closeMenu}
+												/>
+											</div>
+
+											<h1>Pilih Alamat Pengiriman</h1>
+
+											<div className="horizontal-line-choose-address"></div>
+
+											<div className="add-new-alamat-button">
+												Tambah Alamat Baru
+											</div>
+
+											<div className="horizontal-line-choose-address"></div>
+
+											<div className="button-choose-address-container">
+												<div className="button-choose-address button-cancel-address">
+													Batalkan
+												</div>
+												<div className="button-choose-address button-confirm-address">
+													Konfirmasi
+												</div>
+											</div>
+										</div>
+									</div>
+								)}
 							</div>
 						</div>
 
@@ -234,6 +279,7 @@ const CheckOutPage = () => {
 										<Icon
 											icon="ph:arrow-circle-left-light"
 											className="arrow-button-transfer-bank-dropdown"
+											onClick={closeMenu}
 										/>
 										<div className="option-payment-method">
 											<h1>Pilih Metode Pembayaran</h1>

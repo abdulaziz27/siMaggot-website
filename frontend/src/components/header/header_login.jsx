@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "../header/header.css";
 import { Icon } from "@iconify/react";
 import image_toko from "../../assets/profile_page_image/shop_icon.jpeg";
 import image_profile from "../../assets/profile_page_image/profile_image.jpeg";
 
 const HeaderLogin = () => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
+
+	const closeMenu = () => {
+		setIsMenuOpen(false);
+	};
+
 	return (
 		<div className="header-container">
 			<div className="header">
@@ -50,6 +60,29 @@ const HeaderLogin = () => {
 					<img src={image_profile}></img>
 					<h2>Profil</h2>
 				</a>
+
+				<div className="menu-navbar-button" onClick={toggleMenu}>
+					<Icon icon="ic:round-menu" />
+				</div>
+
+				{isMenuOpen && (
+					<div className="menu-navbar-container">
+						<div className="menu-navbar-content">
+							<div
+								className="close-navbar-button"
+								onClick={closeMenu}
+							>
+								<Icon icon="gg:close-o" />
+							</div>
+							<a href="./">Beranda</a>
+							<a href="./shop">Toko</a>
+							<a>Tentang</a>
+							<a>Blog</a>
+							<a href="./profile">Profil</a>
+							<a href="./shop">Toko</a>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

@@ -136,6 +136,89 @@ div {
 	cursor: pointer;
 }
 
+.change-alamat-dropdown-container {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #46494e80;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	user-select: none;
+}
+
+.change-alamat-content {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	height: fit-content;
+	margin-top: 100px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.horizontal-line-choose-address {
+	height: 2px;
+	background-color: #e1e6ed;
+	width: 100%;
+}
+
+.close-alamat-button {
+	display: flex;
+	color: var(--clr-hijau-lumut);
+	font-size: 45px;
+	width: fit-content;
+	cursor: pointer;
+	padding: 20px 30px;
+}
+
+.change-alamat-content h1 {
+	align-self: center;
+	color: #212121;
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+.add-new-alamat-button {
+	color: var(--clr-hijau-lumut);
+	border: 1px solid var(--clr-hijau-lumut);
+	border-radius: 10px;
+	margin: 20px 30px;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.button-choose-address-container {
+	display: flex;
+	justify-content: right;
+	margin: 10px 30px;
+	gap: 25px;
+}
+
+.button-choose-address {
+	padding: 10px 10px;
+	border-radius: 4px;
+}
+
+.button-confirm-address {
+	color: #fff;
+	background-color: #728a1a;
+	border: 1px solid #728a1a;
+}
+
+.button-cancel-address {
+	color: #46494e;
+	border: 1px solid #6d7588;
+	background-color: #fff;
+}
+
 /* ================================================================ */
 /* ======================== Produk Dipesan ======================== */
 /* ================================================================ */

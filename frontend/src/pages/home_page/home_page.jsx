@@ -82,7 +82,7 @@ const HomePage = () => {
 
 	// Artikel
 	const imageFiles_artikel = imageFolder_artikel.keys();
-	const cardsPerPage = 4;
+	const [cardsPerPage, setCardsPerPage] = useState(4);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const handleNext = () => {
@@ -96,6 +96,24 @@ const HomePage = () => {
 			setCurrentIndex(currentIndex - 1);
 		}
 	};
+
+	const updateCardsPerPage = () => {
+		if (window.innerWidth <= 430) {
+			setCardsPerPage(2);
+		} else {
+			setCardsPerPage(4);
+		}
+	};
+
+	useEffect(() => {
+		updateCardsPerPage();
+
+		window.addEventListener("resize", updateCardsPerPage);
+
+		return () => {
+			window.removeEventListener("resize", updateCardsPerPage);
+		};
+	}, []);
 
 	return (
 		<div className="main-page-container">
@@ -137,7 +155,7 @@ const HomePage = () => {
 							<span
 								key={index}
 								className={`dot ${
-									index + 1 === slideIndex ? "active" : ""
+									index + 1 === slideIndex ? "active-dot" : ""
 								}`}
 								onClick={() => currentSlide(index + 1)}
 							></span>
@@ -162,13 +180,11 @@ const HomePage = () => {
 								className="big-category-title"
 								id="button-kategori"
 							>
-								<h2>
-									Kategori 1{" "}
-									<Icon
-										icon="bx:right-arrow-alt"
-										className="right-arrow"
-									/>
-								</h2>
+								<h2>Kategori 1</h2>
+								<Icon
+									icon="bx:right-arrow-alt"
+									className="right-arrow"
+								/>
 							</div>
 						</a>
 					</div>
@@ -184,18 +200,16 @@ const HomePage = () => {
 									className="wide-category-title"
 									id="button-kategori"
 								>
-									<h2>
-										Kategori 2{" "}
-										<Icon
-											icon="bx:right-arrow-alt"
-											className="right-arrow"
-										/>
-									</h2>
+									<h2>Kategori 2</h2>
+									<Icon
+										icon="bx:right-arrow-alt"
+										className="right-arrow"
+									/>
 								</div>
 							</a>
 						</div>
 
-						<div className="kategori-3" id="kategori-3">
+						<div className="kategori-2" id="kategori-2">
 							<div className="wide-category-image">
 								<img src={image3}></img>
 							</div>
@@ -205,13 +219,11 @@ const HomePage = () => {
 									className="wide-category-title"
 									id="button-kategori"
 								>
-									<h2>
-										Kategori 3{" "}
-										<Icon
-											icon="bx:right-arrow-alt"
-											className="right-arrow"
-										/>
-									</h2>
+									<h2>Kategori 3</h2>
+									<Icon
+										icon="bx:right-arrow-alt"
+										className="right-arrow"
+									/>
 								</div>
 							</a>
 						</div>
@@ -358,14 +370,20 @@ const HomePage = () => {
 
 					{currentIndex > 0 && (
 						<a className="prev-button" onClick={handlePrev}>
-							<Icon icon="bx:chevron-left" className="chevron" />
+							<Icon
+								icon="bx:chevron-left"
+								className="chevron chev-left-b"
+							/>
 						</a>
 					)}
 
 					{currentIndex + cardsPerPage <
 						imageFiles_artikel.length && (
 						<a className="next-button" onClick={handleNext}>
-							<Icon icon="bx:chevron-right" className="chevron" />
+							<Icon
+								icon="bx:chevron-right"
+								className="chevron chev-right-b"
+							/>
 						</a>
 					)}
 				</div>

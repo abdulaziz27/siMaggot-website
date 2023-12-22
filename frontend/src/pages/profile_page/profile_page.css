@@ -548,6 +548,13 @@ div {
 	align-items: center;
 	border-radius: 6px;
 	color: #fff;
+	transition: 0.3s ease-in-out;
+	cursor: pointer;
+}
+
+.add-address-button:hover {
+	background-color: #5b6e15;
+	transform: scale(1.02);
 }
 
 .add-address-button p {
@@ -660,22 +667,33 @@ div {
 /* ================================================================================ */
 /* ======================== Change Password Page Container ======================== */
 /* ================================================================================ */
+.change-password-main-page {
+	display: flex;
+	justify-content: center;
+	user-select: none;
+}
+
 .change-password-account-option-page {
 	font-family: var(--ff-iter-font);
 	line-height: 1.5;
 	width: 35%;
 	display: flex;
-	justify-self: ;
 	flex-direction: column;
 	margin-top: 100px;
 }
 
 .back-button-password {
-	font-size: 40px;
+	font-size: 38px;
 	color: #6d7588;
 	display: flex;
 	width: fit-content;
 	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.back-button-password:hover {
+	color: var(--clr-hijau-lumut);
+	transform: scale(1.05);
 }
 
 .change-password-account-option-container {
@@ -683,7 +701,373 @@ div {
 	flex-direction: column;
 	text-align: center;
 	margin-top: 30px;
-	background-color: antiquewhite;
+}
+
+.header-change-password-container h1 {
+	color: #212121;
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.header-change-password-container p {
+	color: #6d7588;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.verification-method-container {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	margin-top: 40px;
+}
+
+.verification-method-password {
+	display: flex;
+	border-radius: 10px;
+	padding: 20px 20px;
+	background: #fff;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	cursor: pointer;
+	gap: 30px;
+	transition: 0.5s ease-in-out;
+}
+
+.verification-method-password:hover {
+	box-shadow: 0px 2px 20px 0px rgba(78, 83, 95, 0.5);
+	transform: scale(1.03);
+}
+
+.verification-data-container {
+	display: flex;
+	align-self: center;
+	flex-direction: column;
+	text-align: left;
+}
+
+.verification-data-container h2 {
+	color: #46494e;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.verification-data-container p {
+	color: #6d7588;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.password-email {
+	display: flex;
+	align-self: center;
+	color: var(--clr-hijau-lumut);
+	font-size: 45px;
+}
+
+.password-phone {
+	display: flex;
+	align-self: center;
+	color: var(--clr-hijau-lumut);
+	font-size: 45px;
+}
+
+/* ======================== Change Password Option ======================== */
+.verification-method-option-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	z-index: 1;
+}
+
+.verification-content-container {
+	user-select: none;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.verification-content-container h1 {
+	color: #212121;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.verification-content-container p {
+	color: #6d7588;
+	font-size: 17px;
+	font-weight: 500;
+	display: flex;
+	align-self: center;
+}
+
+.verification-content-container b {
+	color: var(--clr-hijau-lumut);
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	margin-left: 10px;
+}
+
+.verification-content-container b:hover {
+	cursor: pointer;
+	color: #8ea148;
+	transform: scale(1.02);
+}
+
+.email-verification-icon,
+.phone-verification-icon {
+	font-size: 75px;
+	align-self: center;
+	color: var(--clr-hijau-lumut);
+	margin-top: 40px;
+}
+
+.verification-code-input {
+	width: 50%;
+	display: flex;
+	align-self: center;
+	border: none;
+	border-bottom: 2px solid var(--clr-hijau-lumut);
+	padding: 10px 10px;
+	text-align: center;
+	letter-spacing: 3px;
+	font-size: 17px;
+	font-weight: 700;
+	color: #46494e;
+	margin-top: 30px;
+}
+
+.verification-code-input:hover {
+	box-shadow: inset 0px -5px 6px -5px rgba(51, 175, 117, 0.5);
+}
+
+.verification-code-input:focus-within {
+	outline: none;
+	box-shadow: inset 0px -5px 6px -5px rgba(51, 175, 117, 0.5);
+}
+
+.submit-verification-button {
+	background-color: var(--clr-hijau-lumut);
+	border-radius: 10px;
+	width: fit-content;
+	padding: 6px 25px;
+	color: #fff;
+	font-weight: 600;
+	justify-content: right;
+	align-self: center;
+	text-align: center;
+	margin-top: 30px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.submit-verification-button:hover {
+	background-color: #8ea148;
+	transform: scale(1.02);
+}
+
+/* ======================== Change Password Verification ======================== */
+.verification-new-password-page {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+}
+
+.verification-new-password-content {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	margin-top: 100px;
+	user-select: none;
+}
+
+.header-new-password-container {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	margin-top: 35px;
+	margin-bottom: 45px;
+	gap: 10px;
+}
+
+.header-new-password-container h1 {
+	color: #212121;
+	font-size: 30px;
+	font-weight: 700;
+}
+
+.header-new-password-container p {
+	color: #6d7588;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.input-new-password-container {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.input-new-password-container p {
+	color: #6d7588;
+	font-size: 14px;
+	font-weight: 400;
+	margin-bottom: 40px;
+}
+
+.input-new-password-area {
+	display: flex;
+	align-items: center;
+}
+
+.input-new-password {
+	display: flex;
+	border: none;
+	border-bottom: 2px solid #e1e6ed;
+	padding: 10px 0px;
+	font-size: 17px;
+	font-weight: 500;
+	color: #46494e;
+	outline: none;
+	padding-right: 50px;
+	letter-spacing: 1px;
+	width: 100%;
+	transition: 0.3s ease-in-out;
+}
+
+.input-new-password:hover,
+.input-new-password:focus-within {
+	box-shadow: inset 0px -5px 6px -5px rgba(109, 117, 136, 0.5);
+}
+
+.visible-icon {
+	position: absolute;
+	right: 5px;
+	color: #6d7588;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.new-password-information {
+	display: flex;
+	align-items: center;
+	padding: 18px 20px;
+	border-radius: 10px;
+	border: 1px solid #70eafa;
+	background: #ebfffe;
+	text-align: left;
+	gap: 15px;
+	margin-bottom: 30px;
+}
+
+.new-password-information p {
+	color: #212121;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.info-circle-icon {
+	font-size: 30px;
+	color: #2abae1;
+}
+
+.button-next-password {
+	border-radius: 10px;
+	background-color: var(--clr-hijau-lumut);
+	padding: 10px 0px;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.button-next-password:hover {
+	background-color: #8ea148;
+	transform: scale(1.02);
+}
+
+/* ======================== Sucess Change Password ======================== */
+.sucess-change-password-page {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+}
+
+.sucess-change-password-content {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	margin-top: 100px;
+	user-select: none;
+}
+
+.sucess-change-password-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 35px;
+	gap: 10px;
+}
+
+.sucess-change-password-container img {
+	width: 350px;
+	height: 350px;
+}
+
+.sucess-change-password-container h1 {
+	color: #212121;
+	font-size: 30px;
+	font-weight: 700;
+}
+
+.sucess-change-password-container p {
+	color: #6d7588;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.sucess-change-password-container a {
+	width: 100%;
+	text-decoration: none;
+}
+
+.button-back-to-login {
+	border-radius: 10px;
+	background-color: var(--clr-hijau-lumut);
+	padding: 10px 0px;
+	width: 100%;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	margin-top: 35px;
+}
+
+.button-back-to-login:hover {
+	background-color: #8ea148;
+	transform: scale(1.02);
 }
 
 /* ========================================================================= */
@@ -741,11 +1125,11 @@ div {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 25px;
-	justify-content: space-between;
+	gap: 29px;
+	justify-content: center;
 	user-select: none;
 	margin-bottom: 60px;
-	padding: 5px 40px 100px 40px;
+	padding: 5px 40px 70px 40px;
 }
 
 .card-barang-favorite-page {
@@ -831,6 +1215,46 @@ p {
 	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.486);
 }
 
+/* ======================== Pagination ======================== */
+.pagination-favorite-product {
+	display: flex;
+	margin-top: 40px;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	gap: 60px;
+}
+
+.pagination-favorite-product a {
+	text-decoration: none;
+	color: var(--clr-hijau-lumut);
+	font-size: 20px;
+	font-weight: 600;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	border-radius: 50%;
+	justify-content: center;
+	transition: 0.3s ease-in-out;
+}
+
+.pagination-favorite-product a:hover {
+	background-color: #5855558c;
+	color: #fff;
+}
+
+.active-favorite {
+	color: #fff !important;
+	border-radius: 50%;
+	padding: 10px;
+	background-color: var(--clr-hijau-lumut);
+}
+
+.favorite-chevron-button {
+	font-size: 35px;
+}
+
 /* ============================================================================ */
 /* ======================== Transaction Page Container ======================== */
 /* ============================================================================ */
@@ -883,7 +1307,12 @@ p {
 	color: #46494e;
 	font-size: 15px;
 	font-weight: 500;
+	transition: 0.3s ease-in-out;
 	cursor: pointer;
+}
+
+.transaction-sort-option:hover {
+	background-color: #5855555e;
 }
 
 /* ======================== Transaction Item Container ======================== */
@@ -928,11 +1357,16 @@ p {
 	border-radius: 4px;
 	gap: 8px;
 	cursor: pointer;
+	transition: 0.3s ease-in-out;
 }
 
 .chat-button-transaction {
 	background-color: var(--clr-hijau-lumut);
 	border: 1px solid var(--clr-hijau-lumut);
+}
+
+.chat-button-transaction:hover {
+	background-color: #5b6e15;
 }
 
 .chat-button-transaction p {
@@ -948,6 +1382,10 @@ p {
 
 .store-button-transaction {
 	border: 1px solid #6d7588;
+}
+
+.store-button-transaction:hover {
+	background-color: #5855555e;
 }
 
 .store-button-transaction p {
@@ -1083,6 +1521,7 @@ p {
 	cursor: pointer;
 	font-size: 16px;
 	font-weight: 400;
+	transition: 0.3s ease-in-out;
 }
 
 .pay-now-button {
@@ -1091,9 +1530,18 @@ p {
 	border: 1px solid var(--clr-hijau-lumut);
 }
 
+.pay-now-button:hover {
+	background-color: #5b6e15;
+	transform: scale(1.03);
+}
+
 .cancel-order-button {
 	border: 1px solid #6d7588;
-	counter-reset: #46494e;
+}
+
+.cancel-order-button:hover {
+	background-color: #5855555e;
+	transform: scale(1.03);
 }
 
 /* ============================================================================= */

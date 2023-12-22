@@ -42,3 +42,9 @@ div {
 	text-shadow: 1px 1px #9d9d9da2;
 	color: #000;
 }
+
+@media only screen and (max-width: 800px) {
+	.navbar-container {
+		display: none;
+	}
+}
