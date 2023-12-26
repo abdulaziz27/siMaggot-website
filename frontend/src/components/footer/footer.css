@@ -36,7 +36,7 @@ div {
 	padding-bottom: 52px;
 }
 
-hr {
+.horizontal-line-footer {
 	width: 80%;
 	margin-left: 10%;
 	height: 3px;
@@ -97,8 +97,71 @@ hr {
 }
 
 /* ======================== Responsive ======================== */
-@media only screen and (min-width: 1280px) {
+@media only screen and (max-width: 1280px) {
 	.footer-about-container {
 		padding-bottom: 30px;
+	}
+}
+
+@media only screen and (max-width: 430px) {
+	/* ======================== About Container ======================== */
+	.footer-about-container {
+		padding-top: 38px;
+		width: 90%;
+		margin-left: 5%;
+		padding-bottom: 52px;
+		justify-content: space-between;
+		gap: 15px;
+	}
+
+	.follow {
+		width: 20%;
+	}
+
+	.jual {
+		width: 25%;
+	}
+
+	.pusat-bantuan {
+		width: 30%;
+	}
+
+	.footer-container h1 {
+		font-size: 12px;
+		margin-bottom: 15px;
+		cursor: default;
+		text-align: center;
+	}
+
+	.footer-container p {
+		font-size: 10px;
+		font-weight: 400;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+	.link-icon {
+		display: flex;
+		flex-wrap: wrap;
+		text-align: center;
+		justify-content: center;
+		gap: 15px;
+		font-size: 15px;
+	}
+
+	.horizontal-line-footer {
+		width: 90%;
+		margin-left: 5%;
+		height: 2px;
+	}
+
+	.copyright {
+		width: 90%;
+		margin-left: 5%;
+		text-align: none;
+	}
+
+	.copyright p {
+		text-align: left;
 	}
 }

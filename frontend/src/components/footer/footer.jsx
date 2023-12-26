@@ -6,9 +6,9 @@ const Footer = () => {
 	return (
 		<div className="footer-container">
 			<div className="footer-about-container">
-				<div className="about">
+				<div className="about footer-option">
 					<h1>Maggot Yahoot</h1>
-					<a href="./shop_page">
+					<a href="./shop">
 						<p>Toko</p>
 					</a>
 
@@ -21,7 +21,7 @@ const Footer = () => {
 					</a>
 				</div>
 
-				<div className="jual">
+				<div className="jual footer-option">
 					<h1>Jual</h1>
 					<a>
 						<p>Pusat Panduan Penjual</p>
@@ -32,7 +32,7 @@ const Footer = () => {
 					</a>
 				</div>
 
-				<div className="pusat-bantuan">
+				<div className="pusat-bantuan footer-option">
 					<h1>Pusat bantuan</h1>
 					<a>
 						<p>Syarat dan Ketentuan</p>
@@ -43,7 +43,7 @@ const Footer = () => {
 					</a>
 				</div>
 
-				<div className="follow">
+				<div className="follow footer-option">
 					<h1>Ikuti Kami</h1>
 					<div className="link-icon">
 						<a>
@@ -65,7 +65,7 @@ const Footer = () => {
 				</div>
 			</div>
 
-			<hr></hr>
+			<div className="horizontal-line-footer"></div>
 
 			<div className="copyright">
 				<p>

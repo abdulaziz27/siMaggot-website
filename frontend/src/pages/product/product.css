@@ -5,8 +5,8 @@
 	--clr-button: #bbb;
 	--clr-arrow: #000;
 	--clr-text-produk: #212121;
-    --clr-border:rgb(212, 212, 212);
-    --clr-header: #F0F3F7;
+	--clr-border: rgb(212, 212, 212);
+	--clr-header: #f0f3f7;
 }
 
 *,
@@ -29,527 +29,514 @@ div {
 
 /* ======================== Cart Page ======================== */
 
-
 /* CONTAINER */
 .productContainer {
-    font-family: var(--ff-body);
 	font-size: 0.95rem;
 	line-height: 1.5;
-	overflow-x: hidden;
-    margin: 45px 7%;
-    display: grid;
-    grid-template-areas: "hero infoBarang infoBarang"
-    "toko toko toko"
-    "deskripsi deskripsi produkLain"
-    "ulasan ulasan produkLain"
-    "rekomendasi rekomendasi rekomendasi";
-    grid-template-columns: 2.8fr 2.4fr 1.6fr;
+	margin: 45px 10%;
+	display: grid;
+	grid-template-areas:
+		"hero infoBarang infoBarang"
+		"toko toko toko"
+		"deskripsi deskripsi produkLain"
+		"ulasan ulasan produkLain"
+		"rekomendasi rekomendasi rekomendasi";
+	grid-template-columns: 2.8fr 2.4fr 1.6fr;
+	font-family: Inter;
 }
-
 
 /* HERO */
 
-.heroProduk{
-    grid-area: hero;
+.heroProduk {
+	grid-area: hero;
 }
 
-.heroProduk .heroImg{
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 7px;
+.heroProduk .heroImg {
+	width: 100%;
+	border-radius: 10px;
+	margin-bottom: 7px;
 }
 
-.heroProduk .ketImg{
-    display: flex;
-    justify-content: space-between;
+.heroProduk .ketImg {
+	display: flex;
+	justify-content: space-between;
 }
 
-.heroProduk .ketImg img{
-    width: 18%;
-    border-radius: 10px;
+.heroProduk .ketImg img {
+	width: 18%;
+	border-radius: 10px;
 }
 
-.heroProduk .ketImg .selectedKetImg{
-    border: 4px solid var(--clr-toggle-button);
+.heroProduk .ketImg .selectedKetImg {
+	border: 4px solid var(--clr-toggle-button);
 }
-
 
 /* INFO BARANG */
 
-.infoBarang{
-    grid-area: infoBarang;
-    padding-left: 5%;
+.infoBarang {
+	grid-area: infoBarang;
+	padding-left: 5%;
 }
 
-.infoBarang h2{
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 12px;
+.infoBarang h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 12px;
 }
 
-.infoBarang p{
-    font-size: 1rem;
+.infoBarang p {
+	font-size: 1rem;
 }
 
-.infoBarang .star{
-    color: #FFC400;
+.infoBarang .star {
+	color: #ffc400;
 }
 
-.infoBarang .nilaiJualBarang{
-    max-width: 310px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+.infoBarang .nilaiJualBarang {
+	max-width: 310px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
 }
 
-.infoBarang .hargaBarang{
-    background-color: var(--clr-header);
-    font-size: 2.3rem;
-    border-radius: 5px;
-    padding: 2%;
-    padding-left: 2%;
-    color: var(--clr-toggle-button);
-    margin-bottom: 40px;
+.infoBarang .hargaBarang {
+	background-color: var(--clr-header);
+	font-size: 2.3rem;
+	border-radius: 5px;
+	padding: 2%;
+	padding-left: 2%;
+	color: var(--clr-toggle-button);
+	margin-bottom: 40px;
 }
 
-.infoBarang .atributJual{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    font-size: 1rem;
-    margin-bottom: 25px;
+.infoBarang .atributJual {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	font-size: 1rem;
+	margin-bottom: 25px;
 }
 
-.infoBarang .atributJual p{
-    opacity: 60%;
-    margin-bottom: 30px;
+.infoBarang .atributJual p {
+	opacity: 60%;
+	margin-bottom: 30px;
 }
 
 .atributJual .listPakan,
-.atributJual .listUkuran{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(max-content,120px));
+.atributJual .listUkuran {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(max-content, 120px));
+	border-radius: 3px;
 }
 
-.atributJual a{
-    border: 1.4px solid var(--clr-toggle-button);
-    border-radius: 4px;
-    padding: 5px 20px;
-    margin-bottom: 30px;
-    margin-right: 7px;
-    text-align: center;
-    cursor: pointer;
+.atributJual a {
+	border: 1.4px solid var(--clr-toggle-button);
+	border-radius: 4px;
+	padding: 5px 20px;
+	margin-bottom: 30px;
+	margin-right: 7px;
+	text-align: center;
+	cursor: pointer;
 }
 
-.atributJual .kuantitas{
-    display: flex;
-    gap: 4%;
+.atributJual .kuantitas {
+	display: flex;
+	gap: 4%;
 }
 
-.infoBarang .keranjang{
-    width: 23%;
-    height: 55px;
-    background-color: var(--clr-toggle-button);
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 5%;
+.infoBarang .keranjang {
+	width: 23%;
+	height: 55px;
+	background-color: var(--clr-toggle-button);
+	border: none;
+	border-radius: 4px;
+	color: white;
+	font-size: 1rem;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 5%;
 }
 
-.infoBarang .beliLangsung{
-    width: 23%;
-    height: 55px;
-    background-color: white;
-    border: 1.4px solid var(--clr-toggle-button);
-    border-radius: 4px;
-    color: var(--clr-toggle-button);
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    margin-bottom: 23px;
+.infoBarang .beliLangsung {
+	width: 23%;
+	height: 55px;
+	background-color: white;
+	border: 1.4px solid var(--clr-toggle-button);
+	border-radius: 6px;
+	color: var(--clr-toggle-button);
+	font-size: 1rem;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	margin-bottom: 23px;
 }
 
-.infoBarang .tandai span{
-    font-size: 1.4rem;
-    cursor: pointer;
+.infoBarang .tandai span {
+	font-size: 1.4rem;
+	cursor: pointer;
 }
 
-.infoBarang .tandai p{
-    display: inline-block;
-    position: relative;
-    font-weight: 500;
-    margin-right: 10%;
-    top: -5px;
-    left: 7px;
-    cursor: pointer;
+.infoBarang .tandai p {
+	display: inline-block;
+	position: relative;
+	font-weight: 500;
+	margin-right: 10%;
+	top: -5px;
+	left: 7px;
+	cursor: pointer;
 }
-
-
 
 /* COUNTER */
 
-.atributJual .counter{
-    display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr;
-    border: 1px solid var(--clr-toggle-button);
-    margin: auto;
-    justify-content: center;
+.atributJual .counter {
+	display: grid;
+	grid-template-columns: 1fr 1.5fr 1fr;
+	border: 1px solid var(--clr-toggle-button);
+	margin: auto;
+	justify-content: center;
 }
 
-.atributJual .counter button{
-    border: none;
-    text-align: center;
-    color: var(--clr-toggle-button);
-    background-color: white;
-    padding: 7px 10px;
-    cursor: pointer;
+.atributJual .counter button {
+	border: none;
+	text-align: center;
+	color: var(--clr-toggle-button);
+	background-color: white;
+	padding: 7px 10px;
+	cursor: pointer;
 }
 
-.atributJual .counter input{
-    border: none;
-    text-align: center;
-    width: 55px;
-    border-left: 1px solid var(--clr-toggle-button);
-    border-right: 1px solid var(--clr-toggle-button);
+.atributJual .counter input {
+	border: none;
+	text-align: center;
+	width: 55px;
+	border-left: 1px solid var(--clr-toggle-button);
+	border-right: 1px solid var(--clr-toggle-button);
 }
-
-
 
 /* TOKO */
 
-.productContainer .toko{
-    grid-area: toko;
-    display: grid;
-    grid-template-columns: 2.8fr 3fr 1fr;
-    border-top: 2px solid var(--clr-border);
-    border-bottom: 2px solid var(--clr-border);
-    padding: 17px 0;
-    margin: 50px 0;
+.productContainer .toko {
+	grid-area: toko;
+	display: grid;
+	grid-template-columns: 2.8fr 3fr 1fr;
+	border-top: 2px solid var(--clr-border);
+	border-bottom: 2px solid var(--clr-border);
+	padding: 17px 0;
+	margin: 50px 0;
 }
 
-.profilToko{
-    display: grid;
-    grid-template-columns: 1.3fr 2fr 2fr;
-    grid-template-rows: 23px 35px 4fr;
-    border-right: 2px solid var(--clr-border);
-    padding: 0 20px;
-    padding-right: 0;
+.profilToko {
+	display: grid;
+	grid-template-columns: 1.3fr 2fr 2fr;
+	grid-template-rows: 23px 35px 4fr;
+	border-right: 2px solid var(--clr-border);
+	padding: 0 20px;
+	padding-right: 0;
 }
 
-.profilToko img{
-    grid-column: 1 / 2;
-    grid-row: 1 / 4;
-    width: 90px;
-    border-radius: 50%;
+.profilToko img {
+	grid-column: 1 / 2;
+	grid-row: 1 / 4;
+	width: 90px;
+	border-radius: 50%;
 }
 
-.profilToko h3{
-    grid-column: 2 / 4;
-    grid-row: 1 / 2;
-    font-weight: 500;
+.profilToko h3 {
+	grid-column: 2 / 4;
+	grid-row: 1 / 2;
+	font-weight: 500;
 }
 
-.profilToko .statusToko{
-    grid-column: 2 / 4;
-    grid-row: 2 / 3;
-    opacity: 50%;
+.profilToko .statusToko {
+	grid-column: 2 / 4;
+	grid-row: 2 / 3;
+	opacity: 50%;
 }
 
-.profilToko span{
-    font-size: 1.4rem;
+.profilToko span {
+	font-size: 1.4rem;
 }
 
-.profilToko .hubungiToko{
-    display: inline;
-    position: relative;
-    top: -5px;
-    left: 4px;
-    text-align: center;
-    align-self: center;
+.profilToko .hubungiToko {
+	display: inline;
+	position: relative;
+	top: -5px;
+	left: 4px;
+	text-align: center;
+	align-self: center;
 }
 
 .profilToko .chatSekarang,
-.profilToko .kunjungiToko{
-    border-radius: 4px;
-    padding: 0 10%;
-    justify-self: start;
-    cursor: pointer;
+.profilToko .kunjungiToko {
+	border-radius: 4px;
+	padding: 0 10%;
+	justify-self: start;
+	cursor: pointer;
 }
 
-.profilToko .chatSekarang{
-    border: 1.4px solid var(--clr-toggle-button);
+.profilToko .chatSekarang {
+	border: 1.4px solid var(--clr-toggle-button);
 }
 
-.profilToko .kunjungiToko{
-    border: 1.4px solid black;
+.profilToko .kunjungiToko {
+	border: 1.4px solid black;
 }
 
-.infoToko{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 18px 35px;
-    column-gap: 40px;
+.infoToko {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	padding: 18px 35px;
+	column-gap: 40px;
 }
 
-.infoToko p{
-    align-self: center;
+.infoToko p {
+	align-self: center;
 }
 
-.infoToko .nilaiToko{
-    color: var(--clr-toggle-button);
-    justify-self: end;
+.infoToko .nilaiToko {
+	color: var(--clr-toggle-button);
+	justify-self: end;
 }
-
 
 /* DESKRIPSI */
 
-.deskripsiProduk{
-    grid-area: deskripsi;
+.deskripsiProduk {
+	grid-area: deskripsi;
 }
 
-.deskripsiProduk h2, 
-.ulasanPembeli h2{
-    background-color: var(--clr-header);
-    margin: 0 0 20px;
-    padding: 15px 20px;
-    border-radius: 7px;
-    color: var(--clr-toggle-button);
-    font-weight: 600;
+.deskripsiProduk h2,
+.ulasanPembeli h2 {
+	background-color: var(--clr-header);
+	margin: 0 0 20px;
+	padding: 15px 20px;
+	border-radius: 7px;
+	color: var(--clr-toggle-button);
+	font-weight: 600;
 }
 
-.deskripsiProduk p{
-    padding: 15px 20px;
-    font-size: 0.95rem;
+.deskripsiProduk p {
+	padding: 15px 20px;
+	font-size: 0.95rem;
 }
 
-.deskripsiProduk hr{
-    margin: 25px 0 40px;
+.deskripsiProduk hr {
+	margin: 25px 0 40px;
 }
-
 
 /* ULASAN */
 
-.ulasanPembeli{
-    grid-area: ulasan;
+.ulasanPembeli {
+	grid-area: ulasan;
 }
 
-.ulasanPembeli .summaryRating{
-    border: 1px solid var(--clr-toggle-button);
-    border-radius: 7px;
-    display: grid;
-    grid-template-columns: 1fr 2.5fr;
-    align-items: center;
-    padding: 2%;
+.ulasanPembeli .summaryRating {
+	border: 1px solid var(--clr-toggle-button);
+	border-radius: 7px;
+	display: grid;
+	grid-template-columns: 1fr 2.5fr;
+	align-items: center;
+	padding: 2%;
 }
 
-.ratingProduk .ratingBintang{
-    font-size: 2.3rem;
-    font-weight: 600;
+.ratingProduk .ratingBintang {
+	font-size: 2.3rem;
+	font-weight: 600;
 }
 
-.ratingProduk .ratingBintang .star{
-    color: #FFC400;
+.ratingProduk .ratingBintang .star {
+	color: #ffc400;
 	font-size: 30px;
 }
 
-.ratingProduk .outOf5{
-    font-size: 1.4rem;
-    font-weight: 400;
-    opacity: 60%;
+.ratingProduk .outOf5 {
+	font-size: 1.4rem;
+	font-weight: 400;
+	opacity: 60%;
 }
 
-.ratingProduk .kepuasan{
-    font-weight: 600;
+.ratingProduk .kepuasan {
+	font-weight: 600;
 }
 
-.ratingProduk .jumlahRating{
-    opacity: 60%;
+.ratingProduk .jumlahRating {
+	opacity: 60%;
 }
 
-.filterRating{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(max-content,140px));
-    gap: 3%;
+.filterRating {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(max-content, 140px));
+	gap: 3%;
 }
 
-.filterRating button{
-    padding: 4px 20px;
-    border-radius: 2px;
-    background-color: white;
-    border: 1px solid black;
-    font-size: 0.9rem;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    margin-bottom: 15px;
+.filterRating button {
+	padding: 4px 20px;
+	border-radius: 2px;
+	background-color: white;
+	border: 1px solid black;
+	font-size: 0.9rem;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	margin-bottom: 15px;
 }
 
-.filterRating .selectedRating{
-    border: 1px solid var(--clr-toggle-button);
-    color: var(--clr-toggle-button);
+.filterRating .selectedRating {
+	border: 1px solid var(--clr-toggle-button);
+	color: var(--clr-toggle-button);
 }
 
-.listUlasan{
-    padding: 2%;
+.listUlasan {
+	padding: 2%;
 }
 
-.listUlasan .ulasanContainer{
-    display: grid;
-    grid-template-columns: 1fr 11fr;
-    margin: 30px 0;
+.listUlasan .ulasanContainer {
+	display: grid;
+	grid-template-columns: 1fr 11fr;
+	margin: 30px 0;
 }
 
-
-.ulasanContainer img{
-    border-radius: 50%;
-    width: 60px;
+.ulasanContainer img {
+	border-radius: 50%;
+	width: 60px;
 }
 
-.ulasanContainer h4{
-    font-weight: 400;
+.ulasanContainer h4 {
+	font-weight: 400;
 }
 
-.ulasanContainer span{
-    font-size: 1.3rem;
-    color: #FFC400;
-    margin-right: 2px;
+.ulasanContainer span {
+	font-size: 1.3rem;
+	color: #ffc400;
+	margin-right: 2px;
 }
 
-.ulasanContainer .tglJenisBarang{
-    position: relative;
-    opacity: 60%;
-    top: -7px;
+.ulasanContainer .tglJenisBarang {
+	position: relative;
+	opacity: 60%;
+	top: -7px;
 }
-
 
 /* PRODUK LAIN */
 
-.produkLain{
-    grid-area: produkLain;
-    border-left: 2px solid var(--clr-border);
-    margin-left: 6%;
+.produkLain {
+	grid-area: produkLain;
+	border-left: 2px solid var(--clr-border);
+	margin-left: 6%;
 }
 
-.produkLain .produkToko{
-    max-width: 75%;
-    margin: 20px auto 0;
-    font-size: 1rem;
+.produkLain .produkToko {
+	max-width: 75%;
+	margin: 20px auto 0;
+	font-size: 1rem;
 }
 
-.produkLain .barangContainer{
-    border: solid var(--clr-border);
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    max-width: 75%;
-    margin: 20px auto;
+.produkLain .barangContainer {
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	border-radius: 10px;
+	max-width: 75%;
+	margin: 20px auto;
 }
-
 
 /* REKOMENDASI LAIN & PRODUK LAIN*/
 
-.rekomendasiProduk{
-    grid-area: rekomendasi;
-    margin: 30px 0 120px;
-    border-top: 2px solid var(--clr-border);
-    padding-top: 50px;
+.rekomendasiProduk {
+	grid-area: rekomendasi;
+	margin: 30px 0 120px;
+	border-top: 2px solid var(--clr-border);
+	padding-top: 50px;
 }
 
-.rekomendasiProduk hr{
-    margin-bottom: 30px;
+.rekomendasiProduk hr {
+	margin-bottom: 30px;
 }
 
-.productContainer .rekomendasiContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 30px;
+.productContainer .rekomendasiContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-bottom: 30px;
 }
 
-.productContainer .rekomendasiContainer h2{
-    font-weight: 700;
-    margin-bottom: 20px;
+.productContainer .rekomendasiContainer h2 {
+	font-weight: 700;
+	margin-bottom: 20px;
 }
 
-.productContainer .rekomendasiContainer a{
-    color: var(--clr-toggle-button);
-    font-size: 1rem;
-    font-weight: 700;
-    text-align: right;
+.productContainer .rekomendasiContainer a {
+	color: var(--clr-toggle-button);
+	font-size: 1rem;
+	font-weight: 700;
+	text-align: right;
 }
 
 .productContainer .barangRekomendasiContainer {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.7%;
-
+	grid-column: 1 / 3;
+	grid-row: 2 / 3;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 1.7%;
 }
 
-.productContainer .rekomendasiContainer .barangContainer{
-    border: solid var(--clr-border);
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
+.productContainer .rekomendasiContainer .barangContainer {
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	border-radius: 10px;
 }
 
-.productContainer .barangContainer img{
-    width: 100%;
-    border-bottom: 1px solid var(--clr-border);
+.productContainer .barangContainer img {
+	width: 100%;
+	border-bottom: 1px solid var(--clr-border);
 }
 
-.productContainer .barangContainer .deskripsiBarang{
-    padding: 10px;
+.productContainer .barangContainer .deskripsiBarang {
+	padding: 10px;
 }
 
-.productContainer .deskripsiBarang h4{
-    font-size: 0.9rem;
-    font-weight: 400;
+.productContainer .deskripsiBarang h4 {
+	font-size: 0.9rem;
+	font-weight: 400;
 }
 
-.productContainer .deskripsiBarang h3{
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 10px;
+.productContainer .deskripsiBarang h3 {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 10px;
 }
 
-.productContainer .deskripsiBarang p{
-    font-size:0.9rem;
-    font-weight: 400;
-    opacity: 50%;
+.productContainer .deskripsiBarang p {
+	font-size: 0.9rem;
+	font-weight: 400;
+	opacity: 50%;
 }
 
 .productContainer .deskripsiBarang .star {
-	color: #FFC400;
+	color: #ffc400;
 	font-size: 15px;
 }
 
-.productContainer .deskripsiBarang button{  
-    width: 60%;
-    height: 27px;
-    background-color: var(--clr-toggle-button);
-    border: none;
-    border-radius: 7px;
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 7px;
-    margin-bottom: 13px;
+.productContainer .deskripsiBarang button {
+	width: 60%;
+	height: 27px;
+	background-color: var(--clr-toggle-button);
+	border: none;
+	border-radius: 7px;
+	color: white;
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	margin-top: 7px;
+	margin-bottom: 13px;
 }
 
-.productContainer .alignRight{
-    text-align: right;
+.productContainer .alignRight {
+	text-align: right;
 }
-

@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "../header/header.css";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import image_toko from "../../assets/profile_page_image/shop_icon.jpeg";
+import image_profile from "../../assets/profile_page_image/profile_image.jpeg";
 
 const HeaderLogin = () => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
+
+	const closeMenu = () => {
+		setIsMenuOpen(false);
+	};
+
 	return (
 		<div className="header-container">
 			<div className="header">
-				<Link to={`/`}>
-				<h1 id="logo">SiMaggot</h1>
-				</Link>
+				<a href="./">
+					<h1 href="./" id="logo">
+						SiMaggot
+					</h1>
+				</a>
+
 				<div className="search-bar-container">
 					<Icon icon="iconamoon:search" className="search-icon" />
 					<input
@@ -20,17 +34,55 @@ const HeaderLogin = () => {
 					></input>
 				</div>
 
-				<Link to="/cart" className="button-cart">
-					<Icon icon="bx:cart" name="cart" />
-				</Link>
+				<a href="./cart" className="button-cart-login">
+					<Icon icon="system-uicons:cart" name="cart" />
+				</a>
 
-				<Link to="/login" className="button-masuk">
-					<h2>Masuk</h2>
-				</Link>
+				<a className="button-notification">
+					<Icon
+						icon="clarity:notification-line"
+						name="notification"
+					/>
+				</a>
 
-				<Link to="/register" className="button-daftar">
-					<h2>Daftar</h2>
-				</Link>
+				<a className="button-chat">
+					<Icon icon="ep:chat-dot-round" name="chat" />
+				</a>
+
+				<div className="vertikal-line-header"></div>
+
+				<a href="./shop" className="button-shop">
+					<img src={image_toko}></img>
+					<h2>Toko</h2>
+				</a>
+
+				<a href="./profile" className="button-profile">
+					<img src={image_profile}></img>
+					<h2>Profil</h2>
+				</a>
+
+				<div className="menu-navbar-button" onClick={toggleMenu}>
+					<Icon icon="ic:round-menu" />
+				</div>
+
+				{isMenuOpen && (
+					<div className="menu-navbar-container">
+						<div className="menu-navbar-content">
+							<div
+								className="close-navbar-button"
+								onClick={closeMenu}
+							>
+								<Icon icon="gg:close-o" />
+							</div>
+							<a href="./">Beranda</a>
+							<a href="./shop">Toko</a>
+							<a>Tentang</a>
+							<a>Blog</a>
+							<a href="./profile">Profil</a>
+							<a href="./shop">Toko</a>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

@@ -346,6 +346,29 @@ const ShopPage = () => {
 								</div>
 							</div>
 						))}
+
+						<div class="pagination-shop">
+							<a href="#">
+								<Icon
+									icon="ic:round-chevron-left"
+									className="pagination-chevron-button"
+								/>
+							</a>
+							<a href="#">1</a>
+							<a href="#" class="active">
+								2
+							</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<a href="#">5</a>
+							<a href="#">6</a>
+							<a href="#">
+								<Icon
+									icon="ic:round-chevron-right"
+									className="pagination-chevron-button"
+								/>
+							</a>
+						</div>
 					</div>
 							</>
 						)

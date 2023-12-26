@@ -5,7 +5,7 @@
 	--clr-button: #bbb;
 	--clr-arrow: #000;
 	--clr-text-produk: #212121;
-    --clr-border:rgb(212, 212, 212);
+	--clr-border: rgb(212, 212, 212);
 }
 
 *,
@@ -27,344 +27,351 @@ div {
 }
 
 hr {
-    width: 100%;
-    margin: auto;
+	width: 100%;
+	margin: auto;
 }
 
 /* ======================== Cart Page ======================== */
 
-
 /* CONTAINER */
 
 .keranjang-container {
-    font-family: var(--ff-body);
 	font-size: 0.95rem;
 	line-height: 1.5;
-	overflow-x: hidden;
-    margin: 0 10.5%;
-    display: grid;
-    grid-template-areas: "header header"
-    "barangDibeli checkout"
-    "rekomendasi checkout";
-    grid-template-columns: 2.5fr 1fr;
-    column-gap: 25px;
+	margin: 0 10.5%;
+	display: grid;
+	grid-template-areas:
+		"header header"
+		"barangDibeli checkout"
+		"rekomendasi checkout";
+	grid-template-columns: 2.5fr 1fr;
+	column-gap: 25px;
+	font-family: Inter;
 }
 
-.keranjang-container input[type=checkbox] {
-    transform: scale(1.5);
-    justify-self: center;
-    align-self: center;
+.keranjang-container h1 {
+	font-size: 32px;
+	font-weight: 600;
+	color: #212121;
 }
 
-.titleKeranjang{
-    grid-area: header;
-    margin: 5px 0 20px;
+.keranjang-container input[type="checkbox"] {
+	transform: scale(1.5);
+	justify-self: center;
+	align-self: center;
 }
 
-.barangDibeli{
-    grid-area: barangDibeli;
+.titleKeranjang {
+	grid-area: header;
+	margin: 5px 0 20px;
 }
 
-.productImage{
-    width: 80px;
+.barangDibeli {
+	grid-area: barangDibeli;
 }
 
-.alignLeft{
-    text-align: left;
+.productImage {
+	width: 80px;
 }
 
+.alignLeft {
+	text-align: left;
+}
 
 /* LIST BARANG DIBELI */
 
-.headerBarangDibeli{
-    border: solid var(--clr-border);
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
-    display: grid;
-    grid-template-columns: 0.5fr 2.7fr 1.2fr 1.2fr 1.2fr;
-    padding: 13px 3%;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    text-align: center;
+.headerBarangDibeli {
+	border-radius: 10px;
+	border: 1px solid var(--abu-muda, #f0f3f7);
+	background: #fff;
+	box-shadow: 0px 2px 4px 0px rgba(109, 117, 136, 0.5);
+	display: grid;
+	grid-template-columns: 0.5fr 2.7fr 1.2fr 1.2fr 1.2fr;
+	padding: 13px 3%;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	text-align: center;
+	align-items: center;
 }
 
-.tokoBarangDibeli{
-    border: solid var(--clr-border);
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: grid;
-    grid-template-columns: 0.5fr 6.2fr;
-    padding: 17px 3% 0;
-    align-items: center;
+.tokoBarangDibeli {
+	border-radius: 10px;
+	border: 1px solid var(--abu-muda, #f0f3f7);
+	background: #fff;
+	box-shadow: 0px 2px 4px 0px rgba(109, 117, 136, 0.5);
+	border-radius: 8px;
+	margin-bottom: 20px;
+	display: grid;
+	grid-template-columns: 0.5fr 6.2fr;
+	padding: 17px 3% 0;
+	align-items: center;
 }
 
-.tokoBarangDibeli .checkToko{
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+.tokoBarangDibeli .checkToko {
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
 }
 
-.tokoBarangDibeli .namaToko{
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    font-size: 1rem;
+.tokoBarangDibeli .namaToko {
+	grid-column: 2 / 3;
+	grid-row: 1 / 2;
+	font-size: 1rem;
 }
 
-.tokoBarangDibeli .lokasiToko{
-    align-self: center;
-    grid-column: 2 / span 5;
-    grid-row: 2 / 3;
-    font-size: 0.9rem;
-    opacity: 0.5;
-    margin-bottom: 15px;
+.tokoBarangDibeli .lokasiToko {
+	align-self: center;
+	grid-column: 2 / span 5;
+	grid-row: 2 / 3;
+	font-size: 0.9rem;
+	opacity: 0.5;
+	margin-bottom: 15px;
 }
 
-.tokoBarangDibeli .jenisBarangDibeli{
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
+.tokoBarangDibeli .jenisBarangDibeli {
+	grid-column: 1 / 3;
+	grid-row: 3 / 4;
 }
 
-.jenisBarangDibeli .listBarang{  
-    font-size: 0.9rem;
-    text-align: center;
-    display: grid;
-    grid-template-columns: 0.5fr 0.9fr 1.8fr 1.2fr 1.2fr 1.2fr;
-    align-items: center;
-    padding-bottom: 20px;
+.jenisBarangDibeli .listBarang {
+	font-size: 0.9rem;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 0.5fr 0.9fr 1.8fr 1.2fr 1.2fr 1.2fr;
+	align-items: center;
+	padding-bottom: 20px;
 }
 
-.jenisBarangDibeli .listBarang .totalTiapBarang{
-    color: var(--clr-toggle-button);
-    font-weight: 600;
+.jenisBarangDibeli .listBarang .totalTiapBarang {
+	color: var(--clr-toggle-button);
+	font-weight: 600;
 }
 
-.jenisBarangDibeli .listBarang .catatanBeli{
-    grid-column: 2 / span 5;
-    grid-row: 4 / 4;
-    color: var(--clr-toggle-button);
-    font-weight: 500;
-    text-align: left;
-    margin-top: 10px;
-    cursor: pointer;
+.jenisBarangDibeli .listBarang .catatanBeli {
+	grid-column: 2 / span 5;
+	grid-row: 4 / 4;
+	color: var(--clr-toggle-button);
+	font-weight: 500;
+	text-align: left;
+	margin-top: 10px;
+	cursor: pointer;
 }
 
 /* summon textarea catatan */
 
-.jenisBarangDibeli .listBarang .isiCatatan{
-    display: none;
-    grid-column: 2 / span 2;
-    grid-row: 2 / 4;
-    margin-top: 20px;
+.jenisBarangDibeli .listBarang .isiCatatan {
+	display: none;
+	grid-column: 2 / span 2;
+	grid-row: 2 / 4;
+	margin-top: 20px;
 }
 
-.jenisBarangDibeli hr{
-    margin-bottom: 20px;
+.jenisBarangDibeli hr {
+	margin-bottom: 20px;
 }
-
 
 /* REKOMENDASI BARANG */
 
-.rekomendasiBarang{
-    grid-area: rekomendasi;
-    margin: 40px 0 120px;
+.rekomendasiBarang {
+	grid-area: rekomendasi;
+	margin: 40px 0 120px;
 }
 
-.rekomendasiBarang hr{
-    margin-bottom: 30px;
+.rekomendasiBarang hr {
+	margin-bottom: 30px;
 }
 
-.rekomendasiContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 30px;
+.rekomendasiBarang .rekomendasiContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-bottom: 30px;
 }
 
-.rekomendasiContainer h2{
-    font-size: 1.3rem;
-    margin-bottom: 20px;
+.rekomendasiBarang .rekomendasiContainer h2 {
+	font-size: 1.3rem;
+	margin-bottom: 20px;
 }
 
-.rekomendasiContainer a{
-    color: var(--clr-toggle-button);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-align: right;
+.rekomendasiBarang .rekomendasiContainer a {
+	color: var(--clr-toggle-button);
+	font-size: 0.9rem;
+	font-weight: 700;
+	text-align: right;
 }
 
-.barangRekomendasiContainer {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 3%;
-
+.rekomendasiBarang .barangRekomendasiContainer {
+	grid-column: 1 / 3;
+	grid-row: 2 / 3;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	gap: 3%;
 }
 
-.rekomendasiContainer .barangContainer{
-    border: solid var(--clr-border);
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
+.rekomendasiBarang .rekomendasiContainer .barangContainer {
+	border-radius: 10px;
+	border: 1px solid var(--abu-muda, #f0f3f7);
+	background: #fff;
+	box-shadow: 0px 2px 4px 0px rgba(109, 117, 136, 0.5);
+	border-radius: 10px;
+	overflow: hidden;
 }
 
-.rekomendasiBarang .barangContainer img{
-    width: 100%;
-    border-bottom: 1px solid var(--clr-border);
+.rekomendasiBarang .barangContainer img {
+	width: 100%;
+	border-bottom: 1px solid var(--clr-border);
 }
 
-.rekomendasiBarang .barangContainer .deskripsiBarang{
-    padding: 10px;
+.rekomendasiBarang .barangContainer .deskripsiBarang {
+	padding: 10px;
 }
 
-.rekomendasiBarang .deskripsiBarang h4{
-    font-size: 0.9rem;
-    font-weight: 400;
+.rekomendasiBarang .deskripsiBarang h4 {
+	font-size: 0.9rem;
+	font-weight: 400;
 }
 
-.rekomendasiBarang .deskripsiBarang h3{
-    font-size: 0.95;
-    font-weight: 600;
+.rekomendasiBarang .deskripsiBarang h3 {
+	font-size: 1.2rem;
+	font-weight: 600;
 }
 
-.rekomendasiBarang .deskripsiBarang p{
-    font-size:0.8rem;
-    font-weight: 400;
-    opacity: 50%;
+.rekomendasiBarang .deskripsiBarang p {
+	font-size: 0.8rem;
+	font-weight: 400;
+	opacity: 50%;
 }
 
 .rekomendasiBarang .deskripsiBarang .star {
-	color: #FFC400;
+	color: #ffc400;
 	font-size: 15px;
 }
 
-.rekomendasiBarang .deskripsiBarang button{  
-    width: 50%;
-    height: 27px;
-    background-color: var(--clr-toggle-button);
-    border: none;
-    border-radius: 7px;
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 7px;
-    margin-bottom: 13px;
+.rekomendasiBarang .deskripsiBarang button {
+	width: 50%;
+	height: 27px;
+	background-color: var(--clr-toggle-button);
+	border: none;
+	border-radius: 7px;
+	color: white;
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	margin-top: 7px;
+	margin-bottom: 13px;
 }
 
-.rekomendasiBarang .alignRight{
-    text-align: right;
+.rekomendasiBarang .alignRight {
+	text-align: right;
 }
-
 
 /* RINGKASAN BELANJA */
 
-.ringkasanBelanja-container{
-    grid-area: checkout;
+.ringkasanBelanja-container {
+	grid-area: checkout;
 }
 
-.ringkasanBelanja{
-    border: solid var(--clr-border);
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 25px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.ringkasanBelanja {
+	border-radius: 10px;
+	border: 1px solid var(--abu-muda, #f0f3f7);
+	background: #fff;
+	box-shadow: 0px 2px 4px 0px rgba(109, 117, 136, 0.5);
+	border-radius: 8px;
+	padding: 25px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
-.ringkasanBelanja h3{
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    margin-bottom: 25px;
+.ringkasanBelanja h3 {
+	grid-column: 1 / 3;
+	grid-row: 1 / 2;
+	margin-bottom: 25px;
 }
 
-.ringkasanBelanja p{
-    font-size: 0.9rem;
-    margin-bottom: 15px;
+.ringkasanBelanja p {
+	font-size: 0.9rem;
+	margin-bottom: 15px;
 }
 
-.ringkasanBelanja .daftarHarga{
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-    display: grid;
-    grid-template-columns: 1.7fr 1fr;
+.ringkasanBelanja .daftarHarga {
+	grid-column: 1 / 3;
+	grid-row: 2 / 3;
+	display: grid;
+	grid-template-columns: 1.7fr 1fr;
 }
 
-.ringkasanBelanja .hargaBarang{
-    text-align: right;
+.ringkasanBelanja .hargaBarang {
+	text-align: right;
 }
 
-.totalHargaText{
-   font-weight: 700; 
+.totalHargaText {
+	font-weight: 700;
 }
 
-.ringkasanBelanja .totalHarga{
-    text-align: right;
-    font-weight: 700;
-    margin-bottom: 25px;
+.ringkasanBelanja .totalHarga {
+	text-align: right;
+	font-weight: 700;
+	margin-bottom: 25px;
 }
 
-.ringkasanBelanja hr{
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
-    width: 100%;
-    margin: 0 auto 15px;
-    background-color: #000;
+.ringkasanBelanja hr {
+	grid-column: 1 / 3;
+	grid-row: 3 / 4;
+	width: 100%;
+	margin: 0 auto 15px;
+	background-color: #000;
 }
 
-.ringkasanBelanja button{
-    grid-column: 1 / 3;
-    grid-row: 5 / 6;
-    width: 100%;
-    height: 40px;
-    background-color: var(--clr-toggle-button);
-    border: none;
-    border-radius: 7px;
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
+.ringkasanBelanja button {
+	grid-column: 1 / 3;
+	grid-row: 5 / 6;
+	width: 100%;
+	height: 40px;
+	background-color: var(--clr-toggle-button);
+	border: none;
+	border-radius: 7px;
+	color: white;
+	font-size: 1rem;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
 }
-
 
 /* COUNTER */
 
-.jenisBarangDibeli .buttonKuantitas{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.jenisBarangDibeli .buttonKuantitas {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
-.jenisBarangDibeli .buttonKuantitas .trashIcon{
-    cursor: pointer;
+.jenisBarangDibeli .buttonKuantitas .trashIcon {
+	cursor: pointer;
 }
 
-.jenisBarangDibeli .counter{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border: 1px solid var(--clr-toggle-button);
-    margin: auto;
-    justify-content: center;
+.jenisBarangDibeli .counter {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	border: 1px solid var(--clr-toggle-button);
+	margin: auto;
+	justify-content: center;
 }
 
-.jenisBarangDibeli .counter button{
-    border: none;
-    text-align: center;
-    color: var(--clr-toggle-button);
-    background-color: white;
-    padding: 1px 5px;
-    cursor: pointer;
+.jenisBarangDibeli .counter button {
+	border: none;
+	text-align: center;
+	color: var(--clr-toggle-button);
+	background-color: white;
+	padding: 1px 5px;
+	cursor: pointer;
 }
 
-.jenisBarangDibeli .counter input{
-    border: none;
-    text-align: center;
-    width: 34px;
-    border-left: 1px solid var(--clr-toggle-button);
-    border-right: 1px solid var(--clr-toggle-button);
+.jenisBarangDibeli .counter input {
+	border: none;
+	text-align: center;
+	width: 34px;
+	border-left: 1px solid var(--clr-toggle-button);
+	border-right: 1px solid var(--clr-toggle-button);
 }
-
-

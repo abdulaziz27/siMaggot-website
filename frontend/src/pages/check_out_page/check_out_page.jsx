@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../check_out_page/check_out_page.css";
 import { Icon } from "@iconify/react";
 
@@ -10,6 +10,47 @@ import gambar1 from "../../assets/check_out/maggot_bsf.jpeg";
 import gambar2 from "../../assets/check_out/premium_dried_maggot.jpeg";
 
 const CheckOutPage = () => {
+	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+	const [isAddressOpen, setIsAddressOpen] = useState(false);
+	const [selectedPaymentMethod, setSelectedPaymentMethod] =
+		useState("Transfer Bank");
+	const dropdownRef = useRef(null);
+
+	const toggleDropdown = () => {
+		setIsDropdownOpen(!isDropdownOpen);
+	};
+
+	const addressDropdown = () => {
+		setIsAddressOpen(!isAddressOpen);
+	};
+
+	const selectPaymentMethod = (method) => {
+		setSelectedPaymentMethod(method);
+		setIsDropdownOpen(false);
+	};
+
+	const closeMenu = () => {
+		setIsDropdownOpen(false);
+		setIsAddressOpen(false);
+	};
+
+	const handleOutsideClick = (event) => {
+		if (
+			dropdownRef.current &&
+			!dropdownRef.current.contains(event.target)
+		) {
+			setIsDropdownOpen(false);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener("click", handleOutsideClick);
+
+		return () => {
+			document.removeEventListener("click", handleOutsideClick);
+		};
+	}, []);
+
 	return (
 		<div className="check-out-page-container">
 			<Navbar />
@@ -38,9 +79,44 @@ const CheckOutPage = () => {
 							<div className="horizontal-line-check-out"></div>
 
 							<div className="button-alamat-container">
-								<div className="button-alamat">
+								<div
+									className="button-alamat"
+									onClick={addressDropdown}
+								>
 									Pilih Alamat Lain
 								</div>
+
+								{isAddressOpen && (
+									<div className="change-alamat-dropdown-container">
+										<div className="change-alamat-content">
+											<div className="close-alamat-button">
+												<Icon
+													icon="ph:arrow-circle-left-light"
+													onClick={closeMenu}
+												/>
+											</div>
+
+											<h1>Pilih Alamat Pengiriman</h1>
+
+											<div className="horizontal-line-choose-address"></div>
+
+											<div className="add-new-alamat-button">
+												Tambah Alamat Baru
+											</div>
+
+											<div className="horizontal-line-choose-address"></div>
+
+											<div className="button-choose-address-container">
+												<div className="button-choose-address button-cancel-address">
+													Batalkan
+												</div>
+												<div className="button-choose-address button-confirm-address">
+													Konfirmasi
+												</div>
+											</div>
+										</div>
+									</div>
+								)}
 							</div>
 						</div>
 
@@ -179,14 +255,69 @@ const CheckOutPage = () => {
 
 							<div className="horizontal-line-check-out"></div>
 
-							<div className="metode-pembayaran-check-out">
+							<div
+								className="metode-pembayaran-check-out"
+								ref={dropdownRef}
+							>
 								<h6>Metode Pembayaran</h6>
-								<div className="menu-transfer-bank">
-									<p>Transfer Bank </p>
+								<div
+									className="menu-transfer-bank"
+									onClick={toggleDropdown}
+								>
+									<p>{selectedPaymentMethod}</p>
 									<Icon
 										icon="streamline:interface-setting-menu-horizontal-circle-navigation-dots-three-circle-button-horizontal-menu"
 										className="icon-menu-transfer"
 									/>
+								</div>
+								<div
+									className={`metode-pembayaran-list ${
+										isDropdownOpen ? "show" : ""
+									}`}
+								>
+									<div className="transfer-bank-dropdown-header">
+										<Icon
+											icon="ph:arrow-circle-left-light"
+											className="arrow-button-transfer-bank-dropdown"
+											onClick={closeMenu}
+										/>
+										<div className="option-payment-method">
+											<h1>Pilih Metode Pembayaran</h1>
+										</div>
+									</div>
+
+									<div className="horizontal-line-metode-pembayaran-dropdown"></div>
+
+									<div className="transfer-bank-dropdown-choice">
+										<div
+											className="transfer-bank-container"
+											onClick={() =>
+												selectPaymentMethod(
+													"Transfer Bank"
+												)
+											}
+										>
+											<Icon
+												icon="fa:bank"
+												className="transfer-bank-icon"
+											/>
+											<h2>Transfer Bank</h2>
+										</div>
+										<div
+											className="cash-on-delivery-container"
+											onClick={() =>
+												selectPaymentMethod(
+													"Cash on Delivery (COD)"
+												)
+											}
+										>
+											<Icon
+												icon="mdi:cash-on-delivery"
+												className="cash-on-delivery-icon"
+											/>
+											<h2>Cash on Delivery (COD)</h2>
+										</div>
+									</div>
 								</div>
 							</div>
 

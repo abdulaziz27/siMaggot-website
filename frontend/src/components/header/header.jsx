@@ -7,9 +7,11 @@ const Header = () => {
 	return (
 		<div className="header-container">
 			<div className="header">
-				<Link to={`/`}>
-				<h1 id="logo">SiMaggot</h1>
-				</Link>
+				<a href="./">
+					<h1 href="./" id="logo">
+						SiMaggot
+					</h1>
+				</a>
 
 				<div className="search-bar-container">
 					<Icon icon="iconamoon:search" className="search-icon" />
@@ -21,9 +23,9 @@ const Header = () => {
 					></input>
 				</div>
 
-				<Link to={`/cart`}>
-					<Icon icon="bx:cart" name="cart" className="button-cart"/>
-				</Link>
+				<a href="./cart" className="button-cart">
+					<Icon icon="system-uicons:cart" name="cart" />
+				</a>
 
 				<Link to="/login" className="button-masuk" type="button">
 					<h2>Masuk</h2>
