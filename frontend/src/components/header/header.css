@@ -30,6 +30,10 @@ div {
 	display: block;
 }
 
+a {
+	text-decoration: none;
+}
+
 /* ======================== Header ======================== */
 .header-container {
 	background-color: #ffffff;

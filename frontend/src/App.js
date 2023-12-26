@@ -1,9 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Fragment } from "react";
 import HomePage from "./pages/home_page/home_page";
 import Login from "./pages/login_register/login";
 import Register from "./pages/login_register/register";
+
+import Cart from "./pages/cart/cart";
+import Product from "./pages/product/product";
 import ShopPage from "./pages/shop_page/shop_page";
 import CheckOutPage from "./pages/check_out_page/check_out_page";
 import ProfilePage from "./pages/profile_page/profile_page";
