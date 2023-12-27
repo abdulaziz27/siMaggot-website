@@ -881,16 +881,6 @@ p {
 		height: 130px;
 	}
 
-	.mySlides img {
-		width: 100%;
-		bottom: 0;
-		position: relative;
-		object-fit: contain;
-		text-align: center;
-		margin: auto;
-		object-position: center;
-	}
-
 	.visible {
 		display: none;
 	}
@@ -1080,14 +1070,17 @@ p {
 		height: auto;
 		overflow: visible;
 	}
+
 	.card-barang-container {
 		width: 100%;
 		height: auto;
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		justify-content: space-between;
-		overflow: x;
-		gap: 15px 0px;
+		overflow-x: visible;
+		overflow-y: auto;
+		padding: 5px;
+		gap: 5px;
 	}
 
 	.card-barang {

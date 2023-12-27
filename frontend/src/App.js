@@ -10,6 +10,8 @@ import ProfilePage from "./pages/profile_page/profile_page";
 import Cart from "./pages/cart/cart";
 import Product from "./pages/product/product";
 import ChangePasswordAccountOption from "./pages/profile_page/profile_page_component/change_password_account_option";
+import Confirm from "./pages/payment_confirm/confirm";
+import SellerPage from "./pages/seller_page/seller_page";
 
 function App() {
 	return (
@@ -38,6 +40,8 @@ function App() {
 							path="/change_password"
 							element={<ChangePasswordAccountOption />}
 						/>
+						<Route exact path="/payment" element={<Confirm />} />
+						<Route exact path="/seller" element={<SellerPage />} />
 					</Routes>
 				</Router>
 			</Fragment>

@@ -134,8 +134,14 @@ div {
 	border-radius: 6px;
 	border: 1px solid var(--clr-hijau-lumut);
 	cursor: pointer;
+	transition: 0.3s ease-in-out;
 }
 
+.button-alamat:hover {
+	background-color: #e1e2e6;
+}
+
+/* ======================== Pilih Alamat Lain Container ======================== */
 .change-alamat-dropdown-container {
 	display: flex;
 	position: fixed;
@@ -145,9 +151,9 @@ div {
 	height: 100%;
 	background-color: #46494e80;
 	z-index: 1;
-	display: flex;
 	justify-content: center;
 	user-select: none;
+	overflow: auto;
 }
 
 .change-alamat-content {
@@ -155,7 +161,7 @@ div {
 	flex-direction: column;
 	width: 35%;
 	height: fit-content;
-	margin-top: 100px;
+	margin: 100px 0px;
 	background-color: white;
 	border-radius: 10px;
 }
@@ -172,7 +178,29 @@ div {
 	font-size: 45px;
 	width: fit-content;
 	cursor: pointer;
-	padding: 20px 30px;
+	padding: 20px 40px 0 30px;
+	transition: 0.3s ease-in-out;
+}
+
+.close-alamat-button:hover {
+	transform: scale(1.04);
+}
+
+.add-new-alamat-button {
+	color: var(--clr-hijau-lumut);
+	border: 1px solid var(--clr-hijau-lumut);
+	border-radius: 10px;
+	margin: 30px 40px;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.add-new-alamat-button:hover {
+	background-color: #e1e2e6;
 }
 
 .change-alamat-content h1 {
@@ -183,18 +211,104 @@ div {
 	margin-bottom: 30px;
 }
 
-.add-new-alamat-button {
-	color: var(--clr-hijau-lumut);
-	border: 1px solid var(--clr-hijau-lumut);
-	border-radius: 10px;
-	margin: 20px 30px;
-	text-align: center;
-	padding: 10px 0;
-	font-size: 16px;
-	font-weight: 600;
-	cursor: pointer;
+/* ======================== Option Alamat ======================== */
+.address-option-checkout-container {
+	display: flex;
+	flex-direction: column;
+	padding: 0px 40px 40px 40px;
+	gap: 20px;
 }
 
+.address-option-checkout {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	border: 1px solid var(--clr-hijau-lumut);
+	border-radius: 6px;
+	padding: 20px 20px;
+	justify-content: space-between;
+}
+
+.address-option-checkout label {
+	margin: 0 30px 0 30px;
+	cursor: pointer;
+	gap: 10px;
+}
+
+.address-option-checkout input[type="radio"] {
+	position: absolute;
+	appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: 1px solid var(--clr-hijau-lumut);
+	outline: none;
+	cursor: pointer;
+	margin-top: 4px;
+}
+
+.address-option-checkout input[type="radio"]:checked {
+	background-color: #fff;
+}
+
+.address-option-checkout input[type="radio"]:checked::before {
+	content: "";
+	align-items: center;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--clr-hijau-lumut);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.address-option-checkout input[type="radio"]:hover::before {
+	content: "";
+	align-items: center;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--clr-hijau-lumut);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.address-option-checkout-information {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.address-option-checkout h2 {
+	color: #000;
+	font-size: 17px;
+	font-weight: 500;
+	padding: 0;
+}
+
+.address-option-checkout p {
+	color: #6d7588;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.address-update-checkout-button h3 {
+	color: #728a1a;
+	font-size: 17px;
+	font-weight: 400;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.address-update-checkout-button h3:hover {
+	transform: scale(1.02);
+}
+
+/* ======================== Button Option ======================== */
 .button-choose-address-container {
 	display: flex;
 	justify-content: right;
@@ -203,8 +317,13 @@ div {
 }
 
 .button-choose-address {
-	padding: 10px 10px;
+	padding: 8px 16px;
 	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 500;
+	margin: 15px 0;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
 }
 
 .button-confirm-address {
@@ -213,10 +332,18 @@ div {
 	border: 1px solid #728a1a;
 }
 
+.button-confirm-address:hover {
+	background-color: #495811;
+}
+
 .button-cancel-address {
 	color: #46494e;
 	border: 1px solid #6d7588;
 	background-color: #fff;
+}
+
+.button-cancel-address:hover {
+	background-color: #e1e2e6;
 }
 
 /* ================================================================ */
@@ -632,4 +759,9 @@ div {
 	font-size: 17px;
 	font-weight: 600;
 	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.button-check-out-barang-belanja h1:hover {
+	background-color: #495811;
 }

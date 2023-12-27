@@ -104,10 +104,98 @@ const CheckOutPage = () => {
 												Tambah Alamat Baru
 											</div>
 
+											<div className="address-option-checkout-container">
+												<div className="address-option-checkout">
+													<input
+														type="radio"
+														name="addressOption"
+														id="addressOption1"
+													/>
+
+													<label
+														className="address-option-checkout-information"
+														htmlFor="addressOption1"
+													>
+														<h2>Nama Penerima</h2>
+														<h2>081234567891</h2>
+														<p>
+															Jl. DI Panjaitan
+															No.128, Karangreja,
+															Purwokerto Kidul,
+															Kec. Purwokerto
+															Sel., Kabupaten
+															Banyumas, Jawa
+															Tengah, 53147
+														</p>
+													</label>
+
+													<div className="address-update-checkout-button">
+														<h3>Ubah</h3>
+													</div>
+												</div>
+
+												<div className="address-option-checkout">
+													<input
+														type="radio"
+														name="addressOption"
+														id="addressOption2"
+													/>
+													<label
+														className="address-option-checkout-information"
+														htmlFor="addressOption2"
+													>
+														<h2>Nama Penerima</h2>
+														<h2>081234567891</h2>
+														<p>
+															Jl. DI Panjaitan
+															No.128, Karangreja,
+															Purwokerto Kidul,
+															Kec. Purwokerto
+															Sel., Kabupaten
+															Banyumas, Jawa
+															Tengah, 53147
+														</p>
+													</label>
+													<div className="address-update-checkout-button">
+														<h3>Ubah</h3>
+													</div>
+												</div>
+
+												<div className="address-option-checkout">
+													<input
+														type="radio"
+														name="addressOption"
+														id="addressOption3"
+													/>
+													<label
+														className="address-option-checkout-information"
+														htmlFor="addressOption3"
+													>
+														<h2>Nama Penerima</h2>
+														<h2>081234567891</h2>
+														<p>
+															Jl. DI Panjaitan
+															No.128, Karangreja,
+															Purwokerto Kidul,
+															Kec. Purwokerto
+															Sel., Kabupaten
+															Banyumas, Jawa
+															Tengah, 53147
+														</p>
+													</label>
+													<div className="address-update-checkout-button">
+														<h3>Ubah</h3>
+													</div>
+												</div>
+											</div>
+
 											<div className="horizontal-line-choose-address"></div>
 
 											<div className="button-choose-address-container">
-												<div className="button-choose-address button-cancel-address">
+												<div
+													className="button-choose-address button-cancel-address"
+													onClick={closeMenu}
+												>
 													Batalkan
 												</div>
 												<div className="button-choose-address button-confirm-address">

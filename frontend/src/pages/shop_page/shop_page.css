@@ -31,10 +31,6 @@
 	display: table;
 }
 
-div {
-	display: block;
-}
-
 /* ======================== Main Home Page ======================== */
 .main-shop-page-container {
 	height: 100vh;
@@ -61,6 +57,10 @@ div {
 .sort-menu-shop-container {
 	width: 83%;
 	padding-left: 24px;
+}
+
+.filter-navbar-container {
+	display: none;
 }
 
 .filter-height {
@@ -434,7 +434,7 @@ div {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 15px;
-	justify-content: space-between;
+	justify-content: center;
 	user-select: none;
 	margin-bottom: 60px;
 }
@@ -458,8 +458,11 @@ div {
 }
 
 .gambar-barang-shop img {
-	max-height: 100%;
+	object-fit: cover;
 	object-position: center;
+	margin: auto;
+	width: 100%;
+	height: 100%;
 	transition: 0.4s ease;
 }
 
@@ -559,4 +562,211 @@ p {
 
 .pagination-chevron-button {
 	font-size: 35px;
+}
+
+@media only screen and (max-width: 430px) {
+	.main-filter-container {
+		display: flex;
+		width: 90%;
+		margin-left: 5%;
+	}
+
+	.filter-container {
+		display: none;
+	}
+
+	.sort-menu-shop-container {
+		width: 100%;
+		padding: 0;
+	}
+
+	.filter-navbar-container {
+		display: flex;
+	}
+
+	.dropdown-sort-menu-container {
+		display: none;
+	}
+
+	/* ======================== Lokasi Lengkap Container ======================== */
+	.location-filter-dropdown-container {
+		display: flex;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #46494e80;
+		z-index: 1;
+		justify-content: center;
+		user-select: none;
+		overflow: auto;
+	}
+
+	.location-navbar-horizontal-line {
+		background-color: var(--clr-abu-muda);
+		height: 2px;
+		margin-top: 16px;
+		margin-bottom: 16px;
+	}
+
+	.location-filter-content {
+		display: flex;
+		flex-direction: column;
+		width: 35%;
+		height: fit-content;
+		margin: 100px 0px;
+		background-color: white;
+		border-radius: 10px;
+	}
+
+	.horizontal-line-choose-address {
+		height: 2px;
+		background-color: #e1e6ed;
+		width: 100%;
+	}
+
+	.close-alamat-button {
+		display: flex;
+		color: var(--clr-hijau-lumut);
+		font-size: 45px;
+		width: fit-content;
+		cursor: pointer;
+		padding: 20px 40px 0 30px;
+		transition: 0.3s ease-in-out;
+	}
+
+	.close-alamat-button:hover {
+		transform: scale(1.04);
+	}
+
+	.add-new-alamat-button {
+		color: var(--clr-hijau-lumut);
+		border: 1px solid var(--clr-hijau-lumut);
+		border-radius: 10px;
+		margin: 30px 40px;
+		text-align: center;
+		padding: 10px 0;
+		font-size: 16px;
+		font-weight: 600;
+		cursor: pointer;
+		transition: 0.3s ease-in-out;
+	}
+
+	.add-new-alamat-button:hover {
+		background-color: #e1e2e6;
+	}
+
+	.change-alamat-content h1 {
+		align-self: center;
+		color: #212121;
+		font-size: 24px;
+		font-weight: 600;
+		margin-bottom: 30px;
+	}
+
+	/* ======================== Navbar Filter Container ======================== */
+	.filter-button-navbar {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 5px;
+		color: var(--clr-hitam-luntur);
+		border: 1px solid var(--clr-abu-sedang);
+		padding: 2px 9px;
+		margin: 0px 0 10px 5px;
+		border-radius: 10px;
+		cursor: pointer;
+		transition: 0.3s ease-in-out;
+	}
+
+	.filter-button-navbar:hover {
+		background-color: #e1e2e6;
+		transform: scale(1.02);
+	}
+
+	.icon-filter-navbar {
+		font-size: 12px;
+	}
+
+	.filter-button-navbar h2 {
+		font-size: 12px;
+		font-weight: 600;
+	}
+
+	/* ======================== Card Barang Container ======================== */
+	.card-barang-shop-container {
+		width: 100%;
+		gap: 15px;
+	}
+
+	.card-barang-shop {
+		width: 30%;
+		height: 180px;
+	}
+
+	.gambar-barang-shop {
+		height: 50%;
+		display: flex;
+		border-radius: 10px;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		margin: 5px;
+	}
+
+	/* ======================== Info Barang ======================== */
+	.info-barang-shop-container {
+		padding-top: 0;
+		padding-left: 10px;
+		width: 100%;
+	}
+
+	.info-barang-shop-container h3,
+	.info-barang-shop-container p {
+		font-size: 10px;
+		margin-bottom: 0;
+	}
+
+	.info-barang-shop-container h4 {
+		font-size: 10px;
+		margin-bottom: 0;
+	}
+
+	.info-barang-shop-container span {
+		font-size: 10px;
+	}
+
+	/* ======================== Button Beli Card Shop ======================== */
+	.button-beli-shop {
+		margin-top: 12px;
+		margin-left: auto;
+		margin-right: 6px;
+		font-size: 10px;
+		font-weight: 600;
+		padding: 1px;
+		width: 50px;
+	}
+
+	/* ======================== Pagination ======================== */
+	.pagination-shop {
+		margin-top: 30px;
+		gap: 6px;
+	}
+
+	.pagination-shop a {
+		font-size: 15px;
+		width: 30px;
+		height: 30px;
+	}
+
+	.pagination-shop a:hover {
+		background-color: #5855558c;
+		color: #fff;
+	}
+
+	.pagination-chevron-button {
+		font-size: 25px;
+		margin-top: 2px;
+	}
 }

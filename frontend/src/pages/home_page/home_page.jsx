@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+//import { useSwipeable } from "react-swipeable";
 import "./home_page.css";
 
 // Components
@@ -79,6 +80,24 @@ const HomePage = () => {
 	const handleMouseLeave = () => {
 		setIsHovered(false);
 	};
+
+	// Swipe
+	{
+		/*
+	const cardSwipeHandlers = useSwipeable({
+		onSwipedLeft: () => handleSwipe(-1),
+		onSwipedRight: () => handleSwipe(1),
+		preventDefaultTouchmoveEvent: true,
+		trackMouse: true,
+	});
+
+	const handleSwipe = (direction) => {
+		const newIndex = currentIndex + direction;
+		const maxIndex = Math.ceil(imageFiles.length / 2) - 1; // Assuming each card takes 2 images
+		setCurrentIndex(Math.max(0, Math.min(newIndex, maxIndex)));
+	};
+	*/
+	}
 
 	// Artikel
 	const imageFiles_artikel = imageFolder_artikel.keys();
