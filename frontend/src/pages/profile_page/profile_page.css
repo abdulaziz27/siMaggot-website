@@ -237,7 +237,6 @@ div {
 	flex-direction: column;
 	margin-right: 41px;
 	align-items: center;
-	overflow: hidden;
 }
 
 .profile-change-picture-container img {

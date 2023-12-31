@@ -3,7 +3,7 @@ import "../seller_page/seller_page.css";
 import { Icon } from "@iconify/react";
 
 import Navbar from "../../components/navbar/navbar";
-import Header from "../../components/header/header";
+import HeaderSeller from "../../components/header/header_seller";
 import HomeSellerOption from "./seller_page_component/seller_home";
 import AddProductOption from "./seller_page_component/seller_tambah_produk";
 import ProductListOption from "./seller_page_component/seller_daftar_produk";
@@ -17,6 +17,25 @@ import AdminSettingOption from "./seller_page_component/seller_pengatuan_admin";
 
 const SellerPage = () => {
 	const [selectedOption, setSelectedOption] = useState("Home-Seller");
+	const [isOpen, setIsOpen] = useState({
+		produk: true,
+		pesanan: true,
+		chat: true,
+		pengaturan: true,
+	});
+
+	const toggleOption = (option) => {
+		setIsOpen((prevOpen) => ({ ...prevOpen, [option]: !prevOpen[option] }));
+	};
+
+	useEffect(() => {
+		setIsOpen({
+			produk: true,
+			pesanan: true,
+			chat: true,
+			pengaturan: true,
+		});
+	}, []);
 
 	const renderSelectedOption = () => {
 		switch (selectedOption) {
@@ -48,7 +67,7 @@ const SellerPage = () => {
 	return (
 		<div className="main-seller-page-container">
 			<Navbar />
-			<Header />
+			<HeaderSeller />
 			<div className="main-seller-menu-container">
 				<div className="seller-menu-container">
 					<div className="seller-menu-height">
@@ -89,16 +108,29 @@ const SellerPage = () => {
 
 							<div className="seller-menu-option-content">
 								<div className="seller-menu-option-link">
-									<div className="seller-menu-option-header">
+									<div
+										className="seller-menu-option-header"
+										onClick={() => toggleOption("produk")}
+									>
 										<Icon icon="bi:box2-fill" />
 										<h2>Produk</h2>
 									</div>
-									<div className="chevron-seller-option-header">
+									<div
+										className={`chevron-seller-option-header ${
+											isOpen.produk ? "open-seller" : ""
+										}`}
+									>
 										<Icon icon="tabler:chevron-up" />
 									</div>
 								</div>
 
-								<div className="seller-produk-option-content">
+								<div
+									className={`seller-produk-option-content ${
+										isOpen.produk
+											? "show-seller-dropdown"
+											: ""
+									}`}
+								>
 									<h3
 										className={`select-seller-option-menu ${
 											selectedOption ===
@@ -134,16 +166,29 @@ const SellerPage = () => {
 
 							<div className="seller-menu-option-content">
 								<div className="seller-menu-option-link">
-									<div className="seller-menu-option-header">
+									<div
+										className="seller-menu-option-header"
+										onClick={() => toggleOption("pesanan")}
+									>
 										<Icon icon="bi:clipboard2-data-fill" />
 										<h2>Pesanan</h2>
 									</div>
-									<div className="chevron-seller-option-header">
+									<div
+										className={`chevron-seller-option-header ${
+											isOpen.pesanan ? "open-seller" : ""
+										}`}
+									>
 										<Icon icon="tabler:chevron-up" />
 									</div>
 								</div>
 
-								<div className="seller-pesanan-option-content">
+								<div
+									className={`seller-pengaturan-option-content ${
+										isOpen.pesanan
+											? "show-seller-dropdown"
+											: ""
+									}`}
+								>
 									<h3
 										className={`select-seller-option-menu ${
 											selectedOption ===
@@ -176,7 +221,10 @@ const SellerPage = () => {
 
 							<div className="seller-menu-option-content">
 								<div className="seller-menu-option-link">
-									<div className="seller-menu-option-header">
+									<div
+										className="seller-menu-option-header"
+										onClick={() => toggleOption("chat")}
+									>
 										<Icon
 											icon="material-symbols:chat-rounded"
 											width="16"
@@ -184,12 +232,22 @@ const SellerPage = () => {
 										/>
 										<h2>Chat</h2>
 									</div>
-									<div className="chevron-seller-option-header">
+									<div
+										className={`chevron-seller-option-header ${
+											isOpen.chat ? "open-seller" : ""
+										}`}
+									>
 										<Icon icon="tabler:chevron-up" />
 									</div>
 								</div>
 
-								<div className="seller-chat-option-content">
+								<div
+									className={`seller-pengaturan-option-content ${
+										isOpen.chat
+											? "show-seller-dropdown"
+											: ""
+									}`}
+								>
 									<h3
 										className={`select-seller-option-menu ${
 											selectedOption === "Diskusi-Seller"
@@ -248,16 +306,33 @@ const SellerPage = () => {
 
 							<div className="seller-menu-option-content">
 								<div className="seller-menu-option-link">
-									<div className="seller-menu-option-header">
+									<div
+										className="seller-menu-option-header"
+										onClick={() =>
+											toggleOption("pengaturan")
+										}
+									>
 										<Icon icon="bi:gear-fill" />
 										<h2>Pengaturan</h2>
 									</div>
-									<div className="chevron-seller-option-header">
+									<div
+										className={`chevron-seller-option-header ${
+											isOpen.pengaturan
+												? "open-seller"
+												: ""
+										}`}
+									>
 										<Icon icon="tabler:chevron-up" />
 									</div>
 								</div>
 
-								<div className="seller-pengaturan-option-content">
+								<div
+									className={`seller-pengaturan-option-content ${
+										isOpen.pengaturan
+											? "show-seller-dropdown"
+											: ""
+									}`}
+								>
 									<h3
 										className={`select-seller-option-menu ${
 											selectedOption ===
