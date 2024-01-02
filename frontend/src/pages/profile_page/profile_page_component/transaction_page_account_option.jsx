@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import "../profile_page.css";
 
@@ -6,6 +6,16 @@ import image1 from "../../../assets/check_out/maggot_bsf.jpeg";
 import image2 from "../../../assets/check_out/premium_dried_maggot.jpeg";
 
 const TransactionProductAccountOption = () => {
+	const [isCancelOrderOpen, setIsCancelOrderOpen] = useState(false);
+
+	const cancelOrderDropdown = () => {
+		setIsCancelOrderOpen(!isCancelOrderOpen);
+	};
+
+	const closeMenu = () => {
+		setIsCancelOrderOpen(false);
+	};
+
 	return (
 		<div className="transaction-page-account-option">
 			<div className="transaction-page-header">
@@ -98,13 +108,175 @@ const TransactionProductAccountOption = () => {
 						</p>
 						<div className="button-payment-transaction">
 							<div className="pay-now-button">Bayar Sekarang</div>
-							<div className="cancel-order-button">
+							<div
+								className="cancel-order-button"
+								onClick={cancelOrderDropdown}
+							>
 								Batalkan Pesanan
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			{isCancelOrderOpen && (
+				<div className="profile-order-transaction-dropdown-container">
+					<div className="profile-order-transaction-dropdown-content">
+						<div className="order-transaction-dropdown-header">
+							<h1>Pilih Alasan Pembatalan</h1>
+							<div
+								className="order-transaction-dropdown-close-button"
+								onClick={closeMenu}
+							>
+								<Icon icon="carbon:close-outline" />
+							</div>
+						</div>
+
+						<div className="horizontal-line-order-transaction-dropdown"></div>
+
+						<div className="cancel-order-transaction-alert-container">
+							<Icon
+								icon="mdi:bell-circle-outline"
+								className="icon-alert-order-transaction"
+							/>
+							<p>
+								Mohon pilih alasan pembatalan. Tindakan ini akan
+								membatalkan semua produk dalam pesanan. Tindakan
+								tidak dapat dibatalkan.
+							</p>
+						</div>
+
+						<div className="cancel-order-option-reason-container">
+							<div className="cancel-order-option-reason-content">
+								<input
+									type="radio"
+									name="cancelOrderOption"
+									id="cancelOrder1"
+								/>
+
+								<label
+									className="cancel-order-option-reason"
+									htmlFor="cancelOrder1"
+								>
+									<p>Ingin mengubah alamat pengiriman</p>
+								</label>
+							</div>
+
+							<div className="cancel-order-option-reason-content">
+								<input
+									type="radio"
+									name="cancelOrderOption"
+									id="cancelOrder2"
+								/>
+
+								<label
+									className="cancel-order-option-reason"
+									htmlFor="cancelOrder2"
+								>
+									<p>
+										Ingin memasukkan/mengubah kode voucher
+									</p>
+								</label>
+							</div>
+
+							<div className="cancel-order-option-reason-content">
+								<input
+									type="radio"
+									name="cancelOrderOption"
+									id="cancelOrder3"
+								/>
+
+								<label
+									className="cancel-order-option-reason"
+									htmlFor="cancelOrder3"
+								>
+									<p>
+										Ingin mengubah pesanan (ukuran, warna,
+										jumlah, dll)
+									</p>
+								</label>
+							</div>
+
+							<div className="cancel-order-option-reason-content">
+								<input
+									type="radio"
+									name="cancelOrderOption"
+									id="cancelOrder4"
+								/>
+
+								<label
+									className="cancel-order-option-reason"
+									htmlFor="cancelOrder4"
+								>
+									<p>Tidak mudah melanjutkan pembayaran</p>
+								</label>
+							</div>
+
+							<div className="cancel-order-option-reason-content">
+								<input
+									type="radio"
+									name="cancelOrderOption"
+									id="cancelOrder5"
+								/>
+
+								<label
+									className="cancel-order-option-reason"
+									htmlFor="cancelOrder5"
+								>
+									<p>
+										Menemukan harga yang lebih murah di toko
+										lain
+									</p>
+								</label>
+							</div>
+
+							<div className="cancel-order-option-reason-content">
+								<input
+									type="radio"
+									name="cancelOrderOption"
+									id="cancelOrder6"
+								/>
+
+								<label
+									className="cancel-order-option-reason"
+									htmlFor="cancelOrder6"
+								>
+									<p>Tidak Ingin membeli lagi</p>
+								</label>
+							</div>
+
+							<div className="cancel-order-option-reason-content">
+								<input
+									type="radio"
+									name="cancelOrderOption"
+									id="cancelOrder7"
+								/>
+
+								<label
+									className="cancel-order-option-reason"
+									htmlFor="cancelOrder7"
+								>
+									<p>Lainnya</p>
+								</label>
+							</div>
+						</div>
+
+						<div className="horizontal-line-order-transaction-dropdown"></div>
+
+						<div className="button-cancel-order-dropdown-option-contanier">
+							<div
+								className="button-cancel-order-dropdown-option later-cancel-order-button"
+								onClick={closeMenu}
+							>
+								NANTI SAJA
+							</div>
+							<div className="button-cancel-order-dropdown-option dropdown-cancel-order-button">
+								BATALKAN PESANAN
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 };

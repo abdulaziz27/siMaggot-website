@@ -15,6 +15,7 @@ import Product from "./pages/product/product";
 import ChangePasswordAccountOption from "./pages/profile_page/profile_page_component/change_password_account_option";
 import Confirm from "./pages/payment_confirm/confirm";
 import SellerPage from "./pages/seller_page/seller_page";
+import Store from "./pages/store_page/store";
 
 function App() {
 	return (
@@ -45,6 +46,7 @@ function App() {
 						/>
 						<Route exact path="/payment" element={<Confirm />} />
 						<Route exact path="/seller" element={<SellerPage />} />
+						<Route path="/store" element={<Store />} />
 					</Routes>
 				</Router>
 			</Fragment>
