@@ -15,12 +15,10 @@ import productImage5 from "../../assets/product/img4.png";
 
 
 function Product() {
-    
     return (
       <>
         <Navbar />
         <Header />
-
         <div className="productInfo">
             <div className="productContainer">
 
@@ -311,7 +309,6 @@ function ListRekomendasi({titleList}) {
             ratingBarangR="4.8"
             barangTerjualR="xx+"
           />
-
 
         </div>
       </div>

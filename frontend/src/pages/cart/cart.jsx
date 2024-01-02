@@ -10,7 +10,6 @@ import productImage from "../../assets/cart/img.png";
 import productImage1 from "../../assets/cart/img1.png";
 import productImage2 from "../../assets/cart/img2.png";
 
-
 const dataBarang = [
   {
     id:1,
@@ -59,7 +58,6 @@ function Cart() {
                     <p>Kuantitas</p>
                     <p className="totalTiapBarang">Total Harga</p>
                 </div>
-
                 <div className="tokoBarangDibeli">
                   <input type="checkbox" className="checkToko" name="checkToko" id="checkToko" />
                   <h2 className="namaToko" >Toko Maggot Mantul</h2>
@@ -166,6 +164,7 @@ function JenisBarang({gambarBarang, namaBarang, hargaSatuan, totalTiapBarang}) {
   return (
     <>
       <form action="" className="listBarang">
+
         <input type="checkbox" name="checkBarang" id="checkBarang" />
         <img className="productImage" src={gambarBarang} alt="Gambar Produk" />
         <label htmlFor="checkBarang" className="alignLeft">{namaBarang}</label>
