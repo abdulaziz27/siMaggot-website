@@ -25,13 +25,7 @@ const ShopPage = () => {
 		}, [dispatch])
 
 	// Dropdown Sort Menu
-	const options = [
-		"Paling Sesuai",
-		"Ulasan",
-		"Terbaru",
-		"Harga Tertinggi",
-		"Harga Terendah",
-	];
+	const options = ["Harga Tertinggi", "Harga Terendah"];
 
 	const storedOption = localStorage.getItem("selectedOption");
 	const [selectedOption, setSelectedOption] = useState(
@@ -76,7 +70,7 @@ const ShopPage = () => {
 	};
 
 	// looping
-	const times = Array(30).fill(null);
+	const times = Array(28).fill(null);
 
 	// Checkbox Lokasi
 	const [checkboxesLokasi, setCheckboxesLokasi] = useState({
@@ -90,6 +84,16 @@ const ShopPage = () => {
 	const handleCheckboxChangeLokasi = (event) => {
 		const { name, checked } = event.target;
 		setCheckboxesLokasi({ ...checkboxesLokasi, [name]: checked });
+	};
+
+	const [isAllLocationOpen, setIsAllLocationOpen] = useState(false);
+
+	const locationContainer = () => {
+		setIsAllLocationOpen(!isAllLocationOpen);
+	};
+
+	const closeLocation = () => {
+		setIsAllLocationOpen(false);
 	};
 
 	// Checkbox Kategori
@@ -119,12 +123,6 @@ const ShopPage = () => {
 		const { name, checked } = event.target;
 		setCheckboxesRating({ ...checkboxesRating, [name]: checked });
 	};
-
-	// Pagination
-	const [currentPage, setCurrentPage] = useState(1);
-	const [postPerPage, setPostPerPage] = useState(8);
-	const lastPostIndex = currentPage * postPerPage;
-	const firstPostIndex = lastPostIndex - postPerPage;
 
 	return (
 		<div className="main-shop-page-container">
@@ -169,7 +167,10 @@ const ShopPage = () => {
 									</label>
 								)
 							)}
-							<p>Lihat selengkapnya</p>
+
+							<p onClick={locationContainer}>
+								Lihat selengkapnya
+							</p>
 						</div>
 
 						<div className="horizontal-line-filter"></div>
@@ -284,6 +285,20 @@ const ShopPage = () => {
 				</div>
 
 				<div className="sort-menu-shop-container">
+					<div className="filter-navbar-container">
+						<div className="filter-button-navbar">
+							<Icon
+								icon="iconoir:filter"
+								className="icon-filter-navbar"
+							/>
+							<h2>Filter</h2>
+						</div>
+
+						<div className="filter-navbar-shop-container">
+							<div className="filter-navbar-shop-content"></div>
+						</div>
+					</div>
+
 					<div className="dropdown-sort-menu-container">
 						<p>Urutkan</p>
 
@@ -374,6 +389,23 @@ const ShopPage = () => {
 						)
 					}
 				</div>
+
+				{isAllLocationOpen && (
+					<div className="location-filter-dropdown-container">
+						<div className="location-filter-content">
+							<div className="close-location-filter-button">
+								<Icon
+									icon="ph:arrow-circle-left-light"
+									onClick={closeLocation}
+								/>
+							</div>
+
+							<div className="location-filter-horizontal-line"></div>
+
+							<div className="choose-location-filter-content"></div>
+						</div>
+					</div>
+				)}
 			</div>
 
 			<Footer />

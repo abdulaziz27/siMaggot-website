@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "../header/header.css";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
+
+	const closeMenu = () => {
+		setIsMenuOpen(false);
+	};
+
 	return (
 		<div className="header-container">
 			<div className="header">
@@ -33,7 +43,45 @@ const Header = () => {
 
 				<Link to="/register" className="button-daftar" type="button">
 					<h2>Daftar</h2>
-				</Link>
+				</a>
+
+				<div className="menu-navbar-button" onClick={toggleMenu}>
+					<Icon icon="ic:round-menu" />
+				</div>
+
+				{isMenuOpen && (
+					<div className="menu-navbar-container">
+						<div
+							className="close-navbar-button"
+							onClick={closeMenu}
+						>
+							<Icon icon="gg:close-o" />
+						</div>
+						<div className="menu-navbar-content">
+							<div className="navbar-login-register-container">
+								<a
+									href="./login"
+									className="button-masuk-navbar"
+									type="button"
+								>
+									<h2>Masuk</h2>
+								</a>
+
+								<a
+									href="./register"
+									className="button-daftar-navbar"
+									type="button"
+								>
+									<h2>Daftar</h2>
+								</a>
+							</div>
+							<a href="./">Beranda</a>
+							<a href="./shop">Toko</a>
+							<a>Tentang</a>
+							<a>Blog</a>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

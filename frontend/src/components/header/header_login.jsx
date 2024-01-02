@@ -67,13 +67,13 @@ const HeaderLogin = () => {
 
 				{isMenuOpen && (
 					<div className="menu-navbar-container">
+						<div
+							className="close-navbar-button"
+							onClick={closeMenu}
+						>
+							<Icon icon="gg:close-o" />
+						</div>
 						<div className="menu-navbar-content">
-							<div
-								className="close-navbar-button"
-								onClick={closeMenu}
-							>
-								<Icon icon="gg:close-o" />
-							</div>
 							<a href="./">Beranda</a>
 							<a href="./shop">Toko</a>
 							<a>Tentang</a>

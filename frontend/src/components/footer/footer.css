@@ -105,6 +105,10 @@ div {
 
 @media only screen and (max-width: 430px) {
 	/* ======================== About Container ======================== */
+	.footer-container {
+		margin-top: 80px;
+	}
+
 	.footer-about-container {
 		padding-top: 38px;
 		width: 90%;
