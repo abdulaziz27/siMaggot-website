@@ -12,6 +12,8 @@
 	--clr-green: #728a1a;
 }
 
+@import url("https://fonts.googleapis.com/css?family=Island+Moments");
+
 *,
 *::before,
 *::after {
@@ -254,6 +256,76 @@ a {
 .menu-navbar-button,
 .menu-navbar-container {
 	display: none;
+}
+
+.logo-seller-container {
+	display: flex;
+	flex-direction: row;
+	cursor: pointer;
+	align-items: center;
+	gap: 5px;
+	margin-right: 60px;
+}
+
+#logo-seller-1 {
+	color: var(--clr-green);
+	font-family: var(--ff--text);
+	font-size: 27px;
+	font-weight: 800;
+	line-height: normal;
+	position: relative;
+}
+
+#logo-seller-2 {
+	color: #212121;
+	font-family: Island Moments;
+	font-size: 40px;
+	font-weight: 400;
+}
+
+.vertikal-line-header-seller {
+	width: 2px;
+	height: 30px;
+	background: rgba(109, 117, 136, 0.5);
+}
+
+.search-bar-seller-container {
+	border: 1px solid #212121;
+	border-radius: 100px;
+	height: 37px;
+	width: 68%;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	margin-right: auto;
+	margin: 3.9px 8px;
+	font-size: 20px;
+	transition: 0.4s ease;
+}
+
+.search-bar-seller-container input[type="text"] {
+	border: none;
+	color: #000;
+	outline: none;
+	width: 95%;
+	border-radius: 100px;
+	padding: 8px;
+	font-size: 15px;
+	font-weight: 500;
+	margin-left: 0px;
+	background: transparent;
+}
+
+.search-bar-seller-container:focus-within {
+	border-color: var(--clr-green);
+	box-shadow: 0 0 2px 1px #728a1a;
+	color: var(--clr-green);
+}
+
+.search-bar-seller-container:hover {
+	border-color: var(--clr-green);
+	box-shadow: 0 0 2px 1px #728a1a;
+	color: var(--clr-green);
 }
 
 /* ======================== Responsive ======================== */

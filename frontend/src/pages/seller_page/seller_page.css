@@ -166,6 +166,11 @@
 	display: flex;
 	font-size: 20px;
 	color: #46494e;
+	transition: 0.3s ease-in-out;
+}
+
+.chevron-seller-option-header.open-seller {
+	transform: rotate(180deg);
 }
 
 .seller-menu-option-content h3 {
@@ -191,6 +196,15 @@
 	margin-left: 40px;
 	margin-top: 10px;
 	gap: 10px;
+	display: none;
+}
+
+.seller-produk-option-content.show-seller-dropdown,
+.seller-pesanan-option-content.show-seller-dropdown,
+.seller-chat-option-content.show-seller-dropdown,
+.seller-pengaturan-option-content.show-seller-dropdown {
+	display: flex;
+	z-index: 1;
 }
 
 .select-seller-option-menu.selected {
