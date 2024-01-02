@@ -14,6 +14,8 @@ import HeaderLogin from "../../components/header/header_login";
 import image1 from "../../assets/images/1335919.jpeg";
 import image2 from "../../assets/images/1335926.jpeg";
 import image3 from "../../assets/images/1336068.jpeg";
+import Loading from "../../components/LoadingError/loading";
+import Message from "../../components/LoadingError/error";
 
 // for banner
 const imageFolder = require.context(
@@ -30,6 +32,8 @@ const imageFolder_artikel = require.context(
 );
 
 const HomePage = () => {
+
+
 	const [slideIndex, setSlideIndex] = useState(1);
 	const [imagePaths, setImagePaths] = useState([]);
 	const [isHovered, setIsHovered] = useState(false);
@@ -145,17 +149,26 @@ const HomePage = () => {
 					onMouseEnter={handleMouseEnter}
 					onMouseLeave={handleMouseLeave}
 				>
-					{imagePaths.map((image, index) => (
-						<div
-							key={index}
-							className={`mySlides fade ${
-								index + 1 === slideIndex ? "active" : ""
-							}`}
-						>
-							<img src={image} alt={`Slide ${index + 1}`} />
-						</div>
-					))}
-
+					{
+					loading ? (
+						<Loading/>
+						) : error ? (
+						<Message variant="alert-danger">{error}</Message>
+						)	:(
+							<>
+								{imagePaths.map((image, index) => (
+									<div
+										key={index}
+										className={`mySlides fade ${
+											index + 1 === slideIndex ? "active" : ""
+										}`}
+									>
+										<img src={image} alt={`Slide ${index + 1}`} />
+									</div>
+								))}
+							</>
+						)
+					}
 					<a
 						className={`prev ${isHovered ? "visible" : ""}`}
 						onClick={() => plusSlides(-1)}
@@ -262,6 +275,7 @@ const HomePage = () => {
 
 				<div className="card-barang-container">
 					{imageFiles.map((imageFile, index) => {
+						
 						const imageUrl = imageFolder(imageFile);
 						return (
 							<div className="card-barang" key={index}>
@@ -271,7 +285,6 @@ const HomePage = () => {
 										alt={`Product ${index + 1}`}
 									/>
 								</div>
-
 								<div className="info-barang-container">
 									<h3>Nama Barang</h3>
 									<h4>RP. xx.xxx</h4>
@@ -282,7 +295,7 @@ const HomePage = () => {
 										/>
 										4.8 | xx+ terjual
 									</p>
-
+								
 									<div className="button-beli">
 										<a>Beli</a>
 									</div>
@@ -300,30 +313,37 @@ const HomePage = () => {
 			<div className="produk-terbaru-container">
 				<div className="title-produk-terbaru">
 					<h1>Produk Terbaru</h1>
+					<Link to={`shop`}>
 					<a>Lihat Semua</a>
+					</Link>
 				</div>
 
 				<div className="card-barang-container">
-					{imageFiles.map((imageFile, index) => {
-						const imageUrl = imageFolder(imageFile);
-						return (
-							<div className="card-barang" key={index}>
-								<div className="gambar-barang">
+					{products.map(( product) => (
+							<div className="card-barang" key={product._id}>
+								<Link to={`products/${product._id}`}>
+								<div className="gambar-barang">		
 									<img
-										src={imageUrl}
-										alt={`Product ${index + 1}`}
-									/>
+										src={product.image}
+										alt={product.name}
+									/>	
 								</div>
+								</Link>
 
 								<div className="info-barang-container">
-									<h3>Nama Barang</h3>
-									<h4>RP. xx.xxx</h4>
+									<h3>
+										{product.name}
+									</h3>
+									<h4>
+										Rp. {product.price}
+									</h4>
 									<p>
 										<Icon
 											icon="material-symbols:star"
 											className="icon-star-filter"
-										/>
-										4.8 | xx+ terjual
+										/>										
+										{product.rating} |
+										{product.sold} + terjual
 									</p>
 
 									<div className="button-beli">
@@ -331,8 +351,8 @@ const HomePage = () => {
 									</div>
 								</div>
 							</div>
-						);
-					})}
+						
+					))}
 				</div>
 			</div>
 

@@ -1,18 +1,43 @@
-import { useState } from "react";
 import "./login.css";
 import { Icon } from "@iconify/react";
 import LoginImage from "../../assets/login_register/login_hero.png";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../redux/actions/UserActions";
+import Message from "../../components/LoadingError/error";
+import Loading from "../../components/LoadingError/loading";
 
-function Register() {
+
+const Register = () => {
+	window.scrollTo(0, 0);
+
 	const [visible, setVisible] = useState(false);
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+  
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+  
+	const userRegister = useSelector((state) => state.userRegister);
+	const { error, loading, userInfo } = userRegister;
+  
+	const submitHandler = (e) => {
+	  e.preventDefault();
+	  dispatch(register(name, email, password));
+	};
 
 	function iconPass() {
-		if (visible == true) {
-			setVisible(false);
-		} else {
-			setVisible(true);
+		setVisible((prevVisible) => !prevVisible);
+	  }
+	
+	  useEffect(() => {
+		if (userInfo) {
+		  navigate("/login");
 		}
-	}
+	  }, [userInfo, navigate]);
+	
 
 	return (
 		<div className="loginregister">
@@ -37,14 +62,18 @@ function Register() {
 				</div>
 
 				<div className="loginform">
+				{error && <Message variant={"alert-danger"}>{error}</Message>}
+        		{loading && <Loading />}
 					<h2>Daftar</h2>
-					<form action="">
+					<form action="" onSubmit={submitHandler}>
 						<label htmlFor="email">No. HP / Email</label>
 						<input
 							className="email-register"
 							type="text"
 							id="email"
 							placeholder="Masukkan No. HP / Email disini"
+							value={email}
+              				onChange={(e) => setEmail(e.target.value)}
 						/>
 
 						<label htmlFor="username">Username</label>
@@ -53,6 +82,8 @@ function Register() {
 							type="text"
 							id="username"
 							placeholder="Masukkan Username disini"
+							value={name}
+              				onChange={(e) => setName(e.target.value)}
 						/>
 
 						<label htmlFor="password">Password</label>
@@ -61,6 +92,8 @@ function Register() {
 							type={visible ? "text" : "password"}
 							id="password"
 							placeholder="Masukkan Password disini"
+							value={password}
+             				onChange={(e) => setPassword(e.target.value)}
 						/>
 
 						<span onClick={iconPass} className="visible">
@@ -71,7 +104,9 @@ function Register() {
 
 						<div className="centered">
 							<div className="register-button-container">
-								<a className="registerButton">Daftar</a>
+							<button type="submit" className="registerButton">
+                			  Daftar
+               				</button>
 							</div>
 
 							<p className="otherAccount">atau masuk dengan</p>

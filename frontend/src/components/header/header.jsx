@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../header/header.css";
 import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,11 +37,11 @@ const Header = () => {
 					<Icon icon="system-uicons:cart" name="cart" />
 				</a>
 
-				<a href="./login" className="button-masuk" type="button">
+				<Link to="/login" className="button-masuk" type="button">
 					<h2>Masuk</h2>
-				</a>
+				</Link>
 
-				<a href="./register" className="button-daftar" type="button">
+				<Link to="/register" className="button-daftar" type="button">
 					<h2>Daftar</h2>
 				</a>
 
