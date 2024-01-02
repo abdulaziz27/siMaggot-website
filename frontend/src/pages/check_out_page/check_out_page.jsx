@@ -8,10 +8,12 @@ import Footer from "../../components/footer/footer";
 
 import gambar1 from "../../assets/check_out/maggot_bsf.jpeg";
 import gambar2 from "../../assets/check_out/premium_dried_maggot.jpeg";
+import gambar3 from "../../assets/check_out/map_dunia.jpeg";
 
 const CheckOutPage = () => {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const [isAddressOpen, setIsAddressOpen] = useState(false);
+	const [isNewAddressOpen, setIsNewAddressOpen] = useState(false);
 	const [selectedPaymentMethod, setSelectedPaymentMethod] =
 		useState("Transfer Bank");
 	const dropdownRef = useRef(null);
@@ -24,14 +26,23 @@ const CheckOutPage = () => {
 		setIsAddressOpen(!isAddressOpen);
 	};
 
+	const newAddressDropdown = () => {
+		setIsAddressOpen(false);
+		setIsNewAddressOpen(!isNewAddressOpen);
+	};
+
 	const selectPaymentMethod = (method) => {
 		setSelectedPaymentMethod(method);
 		setIsDropdownOpen(false);
 	};
 
 	const closeMenu = () => {
-		setIsDropdownOpen(false);
-		setIsAddressOpen(false);
+		if (isNewAddressOpen) {
+			setIsNewAddressOpen(false);
+			setIsAddressOpen(true);
+		} else {
+			setIsAddressOpen(false);
+		}
 	};
 
 	const handleOutsideClick = (event) => {
@@ -100,7 +111,10 @@ const CheckOutPage = () => {
 
 											<div className="horizontal-line-choose-address"></div>
 
-											<div className="add-new-alamat-button">
+											<div
+												className="add-new-alamat-button"
+												onClick={newAddressDropdown}
+											>
 												Tambah Alamat Baru
 											</div>
 
@@ -200,6 +214,84 @@ const CheckOutPage = () => {
 												</div>
 												<div className="button-choose-address button-confirm-address">
 													Konfirmasi
+												</div>
+											</div>
+										</div>
+									</div>
+								)}
+
+								{isNewAddressOpen && (
+									<div className="change-alamat-dropdown-container">
+										<div className="change-alamat-content">
+											<div className="close-alamat-button">
+												<Icon
+													icon="ph:arrow-circle-left-light"
+													onClick={closeMenu}
+												/>
+											</div>
+
+											<h1>Alamat Baru</h1>
+
+											<div className="horizontal-line-choose-address"></div>
+
+											<div className="new-address-option-checkout-container">
+												<div className="text-area-nama-telpon-container">
+													<input
+														className="full-name-new-address-checkout"
+														type="text"
+														placeholder="Nama Lengkap"
+													></input>
+													<input
+														className="telpon-new-address-checkout"
+														type="number"
+														placeholder="No Telepon"
+													></input>
+												</div>
+
+												<div className="text-area-new-address-container">
+													<textarea
+														className="provinsi-new-address-checkout"
+														type="text"
+														placeholder="Provinsi, Kota, Kecamatan, Kode Pos"
+													></textarea>
+												</div>
+
+												<div className="text-area-new-address-container">
+													<textarea
+														className="jalan-new-address-checkout"
+														type="text"
+														placeholder="Nama Jalan, Gedung, Alamat, No. Rumah"
+													></textarea>
+												</div>
+
+												<div className="text-area-new-address-container">
+													<textarea
+														className="detail-new-address-checkout"
+														type="text"
+														placeholder="Detail Lainnya (Cth: Blok / Unit No., Patokan)"
+													></textarea>
+												</div>
+
+												<div className="add-new-address-map-container">
+													<img src={gambar3}></img>
+													<div className="add-new-address-map-button">
+														<Icon icon="pepicons-pop:plus" />
+														<h4>Tambah Lokasi</h4>
+													</div>
+												</div>
+											</div>
+
+											<div className="horizontal-line-choose-address"></div>
+
+											<div className="button-choose-address-container">
+												<div
+													className="button-choose-address button-cancel-address"
+													onClick={closeMenu}
+												>
+													Batalkan
+												</div>
+												<div className="button-choose-address button-ok-new-address">
+													OK
 												</div>
 											</div>
 										</div>
