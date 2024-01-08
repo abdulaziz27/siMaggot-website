@@ -1,0 +1,2128 @@
+/* ======================== Variable ======================== */
+:root {
+	--ff-text: "Inter-Regular", Helvetica;
+	--ff-text-semi-bold: "Inter-SemiBold", Helvetica;
+	--ff-iter-font: "Inter";
+	--clr-toggle-button: #728a1a;
+	--clr-button: #bbb;
+	--clr-arrow: #000;
+	--clr-text-produk: #212121;
+	--clr-border: rgb(194, 194, 194);
+	--clr-abu-muda: #f0f3f7;
+	--clr-abu-sedang: #6d7588;
+	--clr-abu-agak-tua: #46494e;
+	--clr-hijau-opa-22: #728a1a38;
+	--clr-hitam: #000;
+	--clr-hitam-luntur: #212121;
+	--clr-putih: #fff;
+	--clr-hijau-lumut: #728a1a;
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div {
+	display: block;
+}
+
+/* ============================================================================= */
+/* ======================== Profile Main Page Container ======================== */
+/* ============================================================================= */
+.profile-page-container {
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+	margin-left: 10%;
+	user-select: none;
+	justify-content: space-between;
+	font-family: var(--ff-iter-font);
+}
+
+.profile-page-option {
+	width: 20%;
+}
+
+.profile-page-option-height {
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.profile-page-account-option {
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.profile-page-width {
+	width: 80%;
+	height: auto;
+	padding-left: 32px;
+}
+
+.horizontal-line-profile-option {
+	background-color: var(--clr-abu-muda);
+	height: 2px;
+}
+
+.account-option-list p.selected {
+	color: var(--clr-hijau-lumut);
+}
+
+.account-option-list a {
+	color: var(--clr-abu-sedang);
+	text-decoration: none;
+}
+
+/* ======================== Profile ======================== */
+.profile-option-container {
+	display: flex;
+	padding: 20px 20px;
+	flex-direction: row;
+	align-items: center;
+}
+
+.profile-option-container img {
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+}
+
+.username-edit-profile {
+	padding-left: 15px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.username-edit-profile h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 18px;
+	font-weight: 600;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.edit-profile {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 5px;
+	cursor: pointer;
+	transition: 0.32s ease-in-out;
+}
+
+.edit-profile:hover {
+	transform: scale(1.025);
+}
+
+.edit-profile h2 {
+	color: var(--clr-abu-sedang);
+	font-size: 15px;
+	font-weight: 400;
+	padding-left: 5px;
+}
+
+.edit-icon {
+	color: var(--clr-abu-sedang);
+	font-size: 15px;
+}
+
+/* ===================================================================== */
+/* ======================== Profile Page Option ======================== */
+/* ===================================================================== */
+.account-option-container,
+.order-option-container,
+.notification-option-container {
+	padding: 20px 20px;
+}
+
+.account-option-header,
+.order-option-header,
+.notification-option-header {
+	display: flex;
+	align-items: center;
+}
+
+.profile-page-option h3 {
+	color: var(--clr-hitam-luntur);
+	font-size: 18px;
+	font-weight: 500;
+	padding-left: 5px;
+}
+
+.account-option-icon {
+	color: var(--clr-hitam-luntur);
+	font-size: 18px;
+}
+
+.box-option-icon,
+.notification-option-icon {
+	color: var(--clr-hitam-luntur);
+	font-size: 18px;
+}
+
+.profile-page-option ul {
+	display: flex;
+	flex-direction: column;
+	margin-top: 16px;
+	padding-left: 24px;
+	gap: 7px;
+}
+
+.profile-page-option p {
+	color: var(--clr-abu-sedang);
+	font-size: 16px;
+	font-weight: 400;
+	cursor: pointer;
+	transition: 0.35s ease-in-out;
+}
+
+.profile-page-option p:hover {
+	transform: scale(1.025);
+	color: var(--clr-hijau-lumut);
+}
+
+/* ======================================================================== */
+/* ======================== Profile Page Container ======================== */
+/* ======================================================================== */
+.profile-page-header {
+	padding: 25px 40px;
+}
+
+.profile-page-header h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 29px;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.profile-page-header p {
+	color: var(--clr-abu-agak-tua);
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.horizontal-line-option-page {
+	background-color: var(--clr-abu-muda);
+	height: 2px;
+	margin: 0px 40px;
+}
+
+.vertical-line-option-page {
+	border-left: 2px solid var(--clr-abu-muda);
+	border-radius: 25px;
+}
+
+.profile-information-change-container {
+	padding: 50px 40px;
+	display: flex;
+	flex-direction: row;
+}
+
+/* ======================== Profile Page Information ======================== */
+.profile-change-picture-container {
+	display: flex;
+	flex-direction: column;
+	margin-right: 41px;
+	align-items: center;
+}
+
+.profile-change-picture-container img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+
+.button-change-profile-picture {
+	border-radius: 6px;
+	border: 2px solid #e1e6ed;
+	padding: 6px 18px;
+	color: #000;
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.button-change-profile-picture:hover {
+	border-color: var(--clr-hijau-lumut);
+	background-color: var(--clr-hijau-lumut);
+	color: #fff;
+}
+
+/* ======================== Profile Information Container ======================== */
+.profile-information-container {
+	width: 100%;
+	margin-left: 32px;
+}
+
+.flex-row-profile-page {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 35px;
+}
+
+.profile-information-container p {
+	width: 25%;
+	align-self: center;
+	color: var(--clr-abu-agak-tua);
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.profile-information-container h2 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 400;
+	align-self: center;
+}
+
+.profile-information-container h3 {
+	color: var(--clr-hijau-lumut);
+	font-size: 15px;
+	font-weight: 400;
+	margin-left: 25px;
+	align-self: center;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.profile-information-container h3:hover {
+	transform: scale(1.03);
+}
+
+/* ======================== Username ======================== */
+.profile-username-input {
+	width: 65%;
+	border: 1px solid #e1e6ed;
+	border-radius: 6px;
+	padding: 10px 10px;
+	font-size: 17px;
+	font-weight: 400;
+	transition: 0.32s ease-in-out;
+}
+
+.profile-username-input:hover {
+	border-color: var(--clr-hijau-lumut);
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.name-change input:focus {
+	border: 1px solid var(--clr-hijau-lumut);
+	outline: none;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+/* ======================== Gender ======================== */
+.radio-button-gender {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.radio-button-gender label {
+	margin-right: 7rem;
+	padding-left: 8px;
+	cursor: pointer;
+}
+
+.radio-button-gender input[type="radio"] {
+	position: relative;
+	appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: 1px solid var(--clr-hijau-lumut);
+	outline: none;
+	cursor: pointer;
+}
+
+.radio-button-gender input[type="radio"]:checked {
+	background-color: #fff;
+}
+
+.radio-button-gender input[type="radio"]:checked::before {
+	content: "";
+	align-items: center;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--clr-hijau-lumut);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.radio-button-gender input[type="radio"]:hover::before {
+	content: "";
+	align-items: center;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--clr-hijau-lumut);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* ======================== Birth Date ======================== */
+.birth-date-information {
+	display: flex;
+	flex-direction: row;
+	gap: 40px;
+}
+
+.birth-date-information h4 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.flex-row-birth-date-profile-page {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	border-radius: 6px;
+	border: 1px solid #e1e6ed;
+	padding: 8px 10px;
+	gap: 34px;
+	align-items: center;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	width: 150px;
+}
+
+.flex-row-birth-date-profile-page h4 {
+	color: var(--clr-hitam-luntur);
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.flex-row-birth-date-profile-page {
+	display: flex;
+	flex-direction: row;
+	border-radius: 6px;
+	padding: 8px 10px;
+	gap: 34px;
+	align-items: center;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.flex-row-birth-date-profile-page:hover {
+	border-color: var(--clr-hijau-lumut);
+	color: var(--clr-hijau-lumut);
+}
+
+.chevron-birth-button {
+	font-size: 26px;
+	width: fit-content;
+	height: fit-content;
+	transition: 0.3s ease-in-out;
+}
+
+.chevron-birth-button.open {
+	transform: rotate(180deg);
+}
+
+.birth-date-option-dropdown {
+	position: relative;
+	cursor: pointer;
+}
+
+.day-dropdown {
+	min-height: 3rem;
+}
+
+.day-dropdown,
+.month-dropdown,
+.year-dropdown {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 120%;
+	left: 0;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	display: none;
+	max-height: 15rem;
+	width: 150px;
+	overflow-y: auto;
+	color: var(--clr-hitam-luntur);
+}
+
+.day-dropdown,
+.year-dropdown {
+	text-align: center;
+}
+
+.day-dropdown::-webkit-scrollbar,
+.month-dropdown::-webkit-scrollbar,
+.year-dropdown::-webkit-scrollbar {
+	width: 0;
+}
+
+.day-dropdown li,
+.month-dropdown li,
+.year-dropdown li {
+	padding: 10px;
+	cursor: pointer;
+}
+
+.day-dropdown li:hover,
+.month-dropdown li:hover,
+.year-dropdown li:hover {
+	background-color: #f0f0f0;
+}
+
+.birth-date-option-dropdown .day-dropdown,
+.birth-date-option-dropdown .month-dropdown,
+.birth-date-option-dropdown .year-dropdown {
+	display: block;
+}
+
+/* ======================== Save Button ======================== */
+.button-save-information {
+	width: fit-content;
+	border-radius: 6px;
+	background: var(--clr-hijau-lumut);
+	padding: 9px 40px;
+	color: #fff;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.button-save-information:hover {
+	background: #8ea147;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+/* ======================================================================== */
+/* ======================== Address Page Container ======================== */
+/* ======================================================================== */
+.address-page-account-option {
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.address-page-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 40px;
+	align-items: center;
+}
+
+.address-page-header h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 29px;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.add-address-button {
+	display: flex;
+	flex-direction: row;
+	background-color: var(--clr-hijau-lumut);
+	padding: 8px 20px;
+	align-items: center;
+	border-radius: 6px;
+	color: #fff;
+	transition: 0.3s ease-in-out;
+	cursor: pointer;
+}
+
+.add-address-button:hover {
+	background-color: #5b6e15;
+	transform: scale(1.02);
+}
+
+.add-address-button p {
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	padding-left: 8px;
+}
+
+.add-address-icon {
+	font-size: 15px;
+}
+
+/* ======================== Address Option Container ======================== */
+.address-option-account-container {
+	display: flex;
+	flex-direction: column;
+	padding: 35px 40px;
+	gap: 20px;
+}
+
+.address-option-account {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	border: 1px solid var(--clr-hijau-lumut);
+	border-radius: 6px;
+	padding: 20px 20px;
+	justify-content: space-between;
+}
+
+.address-option-account label {
+	margin-right: 7rem;
+	padding-left: 8px;
+	cursor: pointer;
+}
+
+.address-option-account input[type="radio"] {
+	position: absolute;
+	appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: 1px solid var(--clr-hijau-lumut);
+	outline: none;
+	cursor: pointer;
+	margin-top: 2px;
+}
+
+.address-option-account input[type="radio"]:checked {
+	background-color: #fff;
+}
+
+.address-option-account input[type="radio"]:checked::before {
+	content: "";
+	align-items: center;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--clr-hijau-lumut);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.address-option-account input[type="radio"]:hover::before {
+	content: "";
+	align-items: center;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--clr-hijau-lumut);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.address-option-account-information {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-left: 20px;
+}
+
+.address-option-account h2 {
+	color: #000;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.address-option-account p {
+	color: #6d7588;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.address-update-button {
+	padding-right: 10px;
+}
+
+.address-update-button h3 {
+	color: #728a1a;
+	font-size: 17px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+/* ======================== Alamat Baru Container ======================== */
+.profile-new-address-dropdown-container {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #46494e80;
+	z-index: 1;
+	justify-content: center;
+	user-select: none;
+	overflow: auto;
+}
+
+.profile-new-address-content {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	height: fit-content;
+	margin: 100px 0px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.horizontal-line-choose-profile-new-address {
+	height: 2px;
+	background-color: #e1e6ed;
+	width: 100%;
+}
+
+.profile-close-new-address-button {
+	display: flex;
+	color: var(--clr-hijau-lumut);
+	font-size: 45px;
+	width: fit-content;
+	cursor: pointer;
+	padding: 20px 40px 0 30px;
+	transition: 0.3s ease-in-out;
+}
+
+.profile-close-new-address-button:hover {
+	transform: scale(1.04);
+}
+
+.profile-new-address-content h1 {
+	align-self: center;
+	color: #212121;
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+.new-address-option-profile-container {
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+	gap: 25px;
+}
+
+.profile-text-area-nama-telpon-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	gap: 20px;
+}
+
+.new-address-option-profile-container input {
+	padding: 10px 16px;
+	border-radius: 6px;
+	border: 1px solid #6d7588;
+	background: #fff;
+	color: #46494e;
+	font-family: Inter;
+	font-size: 14px;
+	font-weight: 400;
+	transition: 0.3s ease-in-out;
+	overflow: hidden;
+}
+
+.new-address-option-profile-container input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+.new-address-option-profile-container input:hover {
+	border-color: #728a1a;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.new-address-option-profile-container input:focus {
+	outline: none;
+	border-color: #728a1a;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.profile-full-name-new-address-checkout,
+.profile-telpon-new-address-checkout {
+	width: 50%;
+}
+
+.profile-text-area-new-address-container {
+	display: flex;
+	width: 100%;
+	height: 100px;
+	border: 1px solid #6d7588;
+	background: #fff;
+	border-radius: 6px;
+	overflow: hidden;
+	transition: 0.3s ease-in-out;
+	padding: 10px 16px;
+}
+
+.new-address-option-profile-container textarea {
+	width: 100%;
+	color: #46494e;
+	font-family: Inter;
+	font-size: 14px;
+	font-weight: 400;
+	overflow: auto;
+	resize: none;
+	outline: none;
+	border: none;
+}
+
+.new-address-option-profile-container textarea::-webkit-scrollbar {
+	display: none;
+}
+
+.profile-text-area-new-address-container:hover {
+	border-color: #728a1a;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.profile-text-area-new-address-container:focus-within {
+	outline: none;
+	border-color: #728a1a;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.profile-add-new-address-map-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 280px;
+	overflow: hidden;
+	border-radius: 6px;
+	margin-bottom: 20px;
+}
+
+.profile-add-new-address-map-container img {
+	object-fit: cover;
+	object-position: center;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	filter: grayscale(100%);
+	transition: 0.3s ease-in-out;
+}
+
+.profile-add-new-address-map-container img:hover {
+	transform: scale(110%);
+}
+
+.profile-add-new-address-map-button {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	border-radius: 6px;
+	border: 1px solid #6d7588;
+	background: #fff;
+	color: #46494e;
+	padding: 8px 16px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	gap: 5px;
+}
+
+.profile-add-new-address-map-button:hover {
+	transform: scale(1.02);
+}
+
+.profile-add-new-address-map-button h4 {
+	color: #46494e;
+	font-family: Inter;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.profile-button-choose-address-container {
+	display: flex;
+	justify-content: right;
+	margin: 10px 30px;
+	gap: 25px;
+}
+
+.profile-button-choose-address {
+	padding: 8px 16px;
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 500;
+	margin: 15px 0;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.profile-button-cancel-address {
+	color: #46494e;
+	border: 1px solid #6d7588;
+	background-color: #fff;
+}
+
+.profile-button-cancel-address:hover {
+	background-color: #e1e2e6;
+}
+
+.profile-button-ok-new-address {
+	text-align: center;
+	width: 120px;
+	color: #fff;
+	background-color: #728a1a;
+	border: 1px solid #728a1a;
+}
+
+.profile-button-ok-new-address:hover {
+	background-color: #495811;
+}
+
+/* ================================================================================ */
+/* ======================== Change Password Page Container ======================== */
+/* ================================================================================ */
+.change-password-main-page {
+	display: flex;
+	justify-content: center;
+	user-select: none;
+}
+
+.change-password-account-option-page {
+	font-family: var(--ff-iter-font);
+	line-height: 1.5;
+	width: 35%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 100px;
+}
+
+.back-button-password {
+	font-size: 38px;
+	color: #6d7588;
+	display: flex;
+	width: fit-content;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.back-button-password:hover {
+	color: var(--clr-hijau-lumut);
+	transform: scale(1.05);
+}
+
+.change-password-account-option-container {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.header-change-password-container h1 {
+	color: #212121;
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.header-change-password-container p {
+	color: #6d7588;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.verification-method-container {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	margin-top: 40px;
+}
+
+.verification-method-password {
+	display: flex;
+	border-radius: 10px;
+	padding: 20px 20px;
+	background: #fff;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	cursor: pointer;
+	gap: 30px;
+	transition: 0.5s ease-in-out;
+}
+
+.verification-method-password:hover {
+	box-shadow: 0px 2px 20px 0px rgba(78, 83, 95, 0.5);
+	transform: scale(1.03);
+}
+
+.verification-data-container {
+	display: flex;
+	align-self: center;
+	flex-direction: column;
+	text-align: left;
+}
+
+.verification-data-container h2 {
+	color: #46494e;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.verification-data-container p {
+	color: #6d7588;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.password-email {
+	display: flex;
+	align-self: center;
+	color: var(--clr-hijau-lumut);
+	font-size: 45px;
+}
+
+.password-phone {
+	display: flex;
+	align-self: center;
+	color: var(--clr-hijau-lumut);
+	font-size: 45px;
+}
+
+/* ======================== Change Password Option ======================== */
+.verification-method-option-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	z-index: 1;
+}
+
+.verification-content-container {
+	user-select: none;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.verification-content-container h1 {
+	color: #212121;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.verification-content-container p {
+	color: #6d7588;
+	font-size: 17px;
+	font-weight: 500;
+	display: flex;
+	align-self: center;
+}
+
+.verification-content-container b {
+	color: var(--clr-hijau-lumut);
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	margin-left: 10px;
+}
+
+.verification-content-container b:hover {
+	cursor: pointer;
+	color: #8ea148;
+	transform: scale(1.02);
+}
+
+.email-verification-icon,
+.phone-verification-icon {
+	font-size: 75px;
+	align-self: center;
+	color: var(--clr-hijau-lumut);
+	margin-top: 40px;
+}
+
+.verification-code-input {
+	width: 50%;
+	display: flex;
+	align-self: center;
+	border: none;
+	border-bottom: 2px solid var(--clr-hijau-lumut);
+	padding: 10px 10px;
+	text-align: center;
+	letter-spacing: 3px;
+	font-size: 17px;
+	font-weight: 700;
+	color: #46494e;
+	margin-top: 30px;
+}
+
+.verification-code-input:hover {
+	box-shadow: inset 0px -5px 6px -5px rgba(51, 175, 117, 0.5);
+}
+
+.verification-code-input:focus-within {
+	outline: none;
+	box-shadow: inset 0px -5px 6px -5px rgba(51, 175, 117, 0.5);
+}
+
+.submit-verification-button {
+	background-color: var(--clr-hijau-lumut);
+	border-radius: 10px;
+	width: fit-content;
+	padding: 6px 25px;
+	color: #fff;
+	font-weight: 600;
+	justify-content: right;
+	align-self: center;
+	text-align: center;
+	margin-top: 30px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.submit-verification-button:hover {
+	background-color: #8ea148;
+	transform: scale(1.02);
+}
+
+/* ======================== Change Password Verification ======================== */
+.verification-new-password-page {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+}
+
+.verification-new-password-content {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	margin-top: 100px;
+	user-select: none;
+}
+
+.header-new-password-container {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	margin-top: 35px;
+	margin-bottom: 45px;
+	gap: 10px;
+}
+
+.header-new-password-container h1 {
+	color: #212121;
+	font-size: 30px;
+	font-weight: 700;
+}
+
+.header-new-password-container p {
+	color: #6d7588;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.input-new-password-container {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.input-new-password-container p {
+	color: #6d7588;
+	font-size: 14px;
+	font-weight: 400;
+	margin-bottom: 40px;
+}
+
+.input-new-password-area {
+	display: flex;
+	align-items: center;
+}
+
+.input-new-password {
+	display: flex;
+	border: none;
+	border-bottom: 2px solid #e1e6ed;
+	padding: 10px 0px;
+	font-size: 17px;
+	font-weight: 500;
+	color: #46494e;
+	outline: none;
+	padding-right: 50px;
+	letter-spacing: 1px;
+	width: 100%;
+	transition: 0.3s ease-in-out;
+}
+
+.input-new-password:hover,
+.input-new-password:focus-within {
+	box-shadow: inset 0px -5px 6px -5px rgba(109, 117, 136, 0.5);
+}
+
+.visible-icon {
+	position: absolute;
+	right: 5px;
+	color: #6d7588;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.new-password-information {
+	display: flex;
+	align-items: center;
+	padding: 18px 20px;
+	border-radius: 10px;
+	border: 1px solid #70eafa;
+	background: #ebfffe;
+	text-align: left;
+	gap: 15px;
+	margin-bottom: 30px;
+}
+
+.new-password-information p {
+	color: #212121;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.info-circle-icon {
+	font-size: 30px;
+	color: #2abae1;
+}
+
+.button-next-password {
+	border-radius: 10px;
+	background-color: var(--clr-hijau-lumut);
+	padding: 10px 0px;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.button-next-password:hover {
+	background-color: #8ea148;
+	transform: scale(1.02);
+}
+
+/* ======================== Sucess Change Password ======================== */
+.sucess-change-password-page {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+}
+
+.sucess-change-password-content {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	margin-top: 100px;
+	user-select: none;
+}
+
+.sucess-change-password-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 35px;
+	gap: 10px;
+}
+
+.sucess-change-password-container img {
+	width: 350px;
+	height: 350px;
+}
+
+.sucess-change-password-container h1 {
+	color: #212121;
+	font-size: 30px;
+	font-weight: 700;
+}
+
+.sucess-change-password-container p {
+	color: #6d7588;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.sucess-change-password-container a {
+	width: 100%;
+	text-decoration: none;
+}
+
+.button-back-to-login {
+	border-radius: 10px;
+	background-color: var(--clr-hijau-lumut);
+	padding: 10px 0px;
+	width: 100%;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	margin-top: 35px;
+}
+
+.button-back-to-login:hover {
+	background-color: #8ea148;
+	transform: scale(1.02);
+}
+
+/* ========================================================================= */
+/* ======================== Favorite Page Container ======================== */
+/* ========================================================================= */
+.favorite-page-account-option {
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.favorite-page-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 40px;
+	align-items: center;
+}
+
+.favorite-page-header h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 29px;
+	font-weight: 600;
+}
+
+/* ======================== Sort Option Favorite Page Container ======================== */
+.favorite-page-sort-option-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 20px 40px;
+	gap: 20px;
+}
+
+.favorite-page-sort-option-container h2 {
+	color: var(--item-luntur, #212121);
+	font-size: 17px;
+	font-weight: 600;
+	padding-right: 30px;
+}
+
+.favorite-sort-option {
+	border-radius: 6px;
+	border: 1px solid #6d7588;
+	padding: 4px 8px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.favorite-sort-option:hover {
+	background-color: #58555550;
+}
+
+/* ======================== Cart Barang Container ======================== */
+.card-barang-favorite-page-container {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 29px;
+	justify-content: center;
+	user-select: none;
+	margin-bottom: 60px;
+	padding: 5px 40px 70px 40px;
+}
+
+.card-barang-favorite-page {
+	width: 23%;
+	height: 360px;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+/* ======================== Card Barang ======================== */
+.gambar-barang-favorite-page {
+	height: 50%;
+	display: flex;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin: 8px;
+}
+
+.gambar-barang-favorite-page img {
+	max-height: 100%;
+	object-position: center;
+	transition: 0.4s ease;
+}
+
+.gambar-barang-favorite-page img:hover {
+	transform: scale(1.1);
+}
+
+/* ======================== Info Barang ======================== */
+.info-barang-favorite-page-container {
+	padding-top: 12px;
+	padding-left: 17px;
+	width: 100%;
+	height: 46%;
+}
+
+.info-barang-favorite-page-container h3,
+p {
+	font-size: 16px;
+	font-weight: 400;
+	color: #000000;
+	margin-bottom: 2px;
+}
+
+.info-barang-favorite-page-container h4 {
+	font-size: 20px;
+	font-weight: 600;
+	color: #000000;
+	margin-bottom: 5px;
+}
+
+.icon-star-filter-favorite-page {
+	color: #eeff00;
+	font-size: 18px;
+	margin-right: 2px;
+}
+
+.info-barang-favorite-page-container p {
+	color: #6d7588;
+}
+
+/* ======================== Button Beli Card Shop ======================== */
+.button-beli-favorite-page {
+	border-radius: 5px;
+	background-color: var(--clr-green);
+	margin-top: 35px;
+	margin-left: auto;
+	margin-right: 20px;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 5px;
+	width: 100px;
+	text-align: center;
+	transition: 0.5s ease;
+	cursor: pointer;
+}
+
+.button-beli-favorite-page:hover {
+	background-color: #155f04b2;
+	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.486);
+}
+
+/* ======================== Pagination ======================== */
+.pagination-favorite-product {
+	display: flex;
+	margin-top: 40px;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	gap: 60px;
+}
+
+.pagination-favorite-product a {
+	text-decoration: none;
+	color: var(--clr-hijau-lumut);
+	font-size: 20px;
+	font-weight: 600;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	border-radius: 50%;
+	justify-content: center;
+	transition: 0.3s ease-in-out;
+}
+
+.pagination-favorite-product a:hover {
+	background-color: #5855558c;
+	color: #fff;
+}
+
+.active-favorite {
+	color: #fff !important;
+	border-radius: 50%;
+	padding: 10px;
+	background-color: var(--clr-hijau-lumut);
+}
+
+.favorite-chevron-button {
+	font-size: 35px;
+}
+
+/* ============================================================================ */
+/* ======================== Transaction Page Container ======================== */
+/* ============================================================================ */
+.transaction-page-account-option {
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	gap: 20px;
+}
+
+.transaction-page-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 40px;
+	align-items: center;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.transaction-page-header h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 29px;
+	font-weight: 600;
+}
+
+/* ======================== Transaction Sort Container ======================== */
+.transaction-sort-option-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border: 1px solid var(--clr-hijau-lumut);
+	border-radius: 10px;
+	padding: 20px 40px;
+	gap: 20px;
+}
+
+.transaction-sort-option-container h2 {
+	color: var(--clr-hitam-luntur);
+	font-size: 18px;
+	font-weight: 600;
+	padding-right: 30px;
+}
+
+.transaction-sort-option {
+	display: flex;
+	align-items: center;
+	padding: 4px 8px;
+	border: 1px solid #6d7588;
+	border-radius: 10px;
+	color: #46494e;
+	font-size: 15px;
+	font-weight: 500;
+	transition: 0.3s ease-in-out;
+	cursor: pointer;
+}
+
+.transaction-sort-option:hover {
+	background-color: #5855555e;
+}
+
+/* ======================== Transaction Item Container ======================== */
+.transaction-item-account-container {
+	border: 1px solid #e1e6ed;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.horizontal-line-transaction {
+	height: 1px;
+	background-color: #d9dde3;
+}
+
+.transaction-item-account-header {
+	display: flex;
+	flex-direction: row;
+	padding: 20px 40px;
+	align-items: center;
+	gap: 20px;
+	justify-content: space-between;
+}
+
+.row-direction-transaction {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 20px;
+}
+
+.transaction-item-account-header p {
+	color: var(--clr-hijau-lumut);
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.chat-button-transaction,
+.store-button-transaction {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 4px 10px;
+	border-radius: 4px;
+	gap: 8px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.chat-button-transaction {
+	background-color: var(--clr-hijau-lumut);
+	border: 1px solid var(--clr-hijau-lumut);
+}
+
+.chat-button-transaction:hover {
+	background-color: #5b6e15;
+}
+
+.chat-button-transaction p {
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.chat-transaction-icon {
+	font-size: 18px;
+	color: #fff;
+}
+
+.store-button-transaction {
+	border: 1px solid #6d7588;
+}
+
+.store-button-transaction:hover {
+	background-color: #5855555e;
+}
+
+.store-button-transaction p {
+	color: #46494e;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.store-transaction-icon {
+	font-size: 18px;
+	color: #46494e;
+}
+
+/* ======================== Transaction Item Information ======================== */
+.item-transaction-information-contanier {
+	display: flex;
+	flex-direction: column;
+	padding: 0px 40px;
+}
+
+.horizontal-line-item-transaction {
+	height: 1px;
+	background-color: #d9dde3;
+	border-radius: 50%;
+}
+
+.item-transaction {
+	display: flex;
+	padding: 30px 0px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.item-transaction img {
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+
+.item-transaction h4 {
+	color: var(--clr-hitam-luntur);
+	font-size: 19px;
+	font-weight: 500;
+}
+
+.row-direction-item-transaction {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.item-transaction-information {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	width: 70%;
+}
+
+.item-transaction-information h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 19px;
+	font-weight: 500;
+}
+
+.item-transaction-information p {
+	color: #6d7588;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.item-transaction-information h2 {
+	color: var(--clr-hitam-luntur);
+	font-size: 16px;
+	font-weight: 400;
+}
+
+/* ======================== Cancel Order Dropdown Container ======================== */
+.profile-order-transaction-dropdown-container {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #46494e80;
+	z-index: 1;
+	justify-content: center;
+	user-select: none;
+	overflow: auto;
+}
+
+.profile-order-transaction-dropdown-content {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	height: fit-content;
+	margin: 100px 0px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.order-transaction-dropdown-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 40px 40px;
+}
+
+.order-transaction-dropdown-header h1 {
+	color: #212121;
+	font-family: Inter;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.order-transaction-dropdown-close-button {
+	display: flex;
+	align-items: center;
+	font-size: 32px;
+	width: fit-content;
+	color: #6d7588;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.order-transaction-dropdown-close-button:hover {
+	transform: scale(1.03);
+	color: #212121;
+}
+
+.horizontal-line-order-transaction-dropdown {
+	height: 2px;
+	background-color: #e1e6ed;
+	width: 100%;
+}
+
+.cancel-order-transaction-alert-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 30px 40px;
+	padding: 16px;
+	border-radius: 6px;
+	border: 1px solid #ffe6ae;
+	background: #fffdf8;
+	gap: 10px;
+}
+
+.icon-alert-order-transaction {
+	color: #ffae04;
+	font-size: 50px;
+}
+
+.cancel-order-option-reason-container {
+	display: flex;
+	flex-direction: column;
+	padding: 0px 45px 40px 45px;
+	gap: 30px;
+}
+
+.cancel-order-option-reason-content {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.cancel-order-option-reason-content label {
+	margin-right: 7rem;
+	padding-left: 8px;
+	cursor: pointer;
+	width: fit-content;
+}
+
+.cancel-order-option-reason-content input[type="radio"] {
+	position: absolute;
+	appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: 1px solid var(--clr-hijau-lumut);
+	outline: none;
+	cursor: pointer;
+	margin-top: 2px;
+}
+
+.cancel-order-option-reason-content input[type="radio"]:checked {
+	background-color: #fff;
+}
+
+.cancel-order-option-reason-content input[type="radio"]:checked::before {
+	content: "";
+	align-items: center;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--clr-hijau-lumut);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cancel-order-option-reason-content input[type="radio"]:hover::before {
+	content: "";
+	align-items: center;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--clr-hijau-lumut);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cancel-order-option-reason {
+	margin-left: 20px;
+}
+
+.cancel-order-option-reason p {
+	color: #46494e;
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.button-cancel-order-dropdown-option-contanier {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+	justify-content: right;
+	padding: 40px;
+	gap: 30px;
+}
+
+.button-cancel-order-dropdown-option {
+	font-family: Inter;
+	font-size: 15px;
+	font-weight: 400;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 8px 16px;
+	transition: 0.3s ease-in-out;
+}
+
+.later-cancel-order-button {
+	border: 1px solid #e1e6ed;
+	background: #fff;
+	color: #6d7588;
+}
+
+.dropdown-cancel-order-button {
+	border: 1px solid #728a1a;
+	background: #728a1a;
+	color: #fff;
+}
+
+.later-cancel-order-button:hover {
+	background-color: #e1e2e6;
+	color: #212121;
+}
+
+.dropdown-cancel-order-button:hover {
+	background-color: #495811;
+}
+
+/* ========================================================================= */
+/* ======================== Transaction Page Footer ======================== */
+/* ========================================================================= */
+.transaction-item-account-footer {
+	display: flex;
+	flex-direction: column;
+	padding: 25px 40px;
+	gap: 25px;
+	background: #fefff9;
+}
+
+.total-pay-item-transaction {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: right;
+}
+
+.total-pay-item-transaction h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 18px;
+	font-weight: 400;
+	padding-right: 40px;
+}
+
+.total-pay-item-transaction h2 {
+	color: var(--clr-hijau-lumut);
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.payment-time-button-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.payment-time-button-container p {
+	color: var(--clr-abu-agak-tua);
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.button-payment-transaction {
+	display: flex;
+	flex-direction: row;
+	gap: 35px;
+}
+
+.pay-now-button,
+.cancel-order-button {
+	padding: 10px 20px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 400;
+	transition: 0.3s ease-in-out;
+}
+
+.pay-now-button {
+	background-color: var(--clr-hijau-lumut);
+	color: #fff;
+	border: 1px solid var(--clr-hijau-lumut);
+}
+
+.pay-now-button:hover {
+	background-color: #5b6e15;
+	transform: scale(1.03);
+}
+
+.cancel-order-button {
+	border: 1px solid #6d7588;
+}
+
+.cancel-order-button:hover {
+	background-color: #5855555e;
+	transform: scale(1.03);
+}
+
+/* ============================================================================= */
+/* ======================== Order Status Page Container ======================== */
+/* ============================================================================= */
+.order-status-page-account-option {
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	overflow: hidden;
+}
+
+.horizontal-line-order-status-item {
+	height: 1px;
+	background-color: #e1e6ed;
+}
+
+.order-status-page-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 40px;
+	align-items: center;
+}
+
+.order-status-page-header h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 29px;
+	font-weight: 600;
+}
+
+.order-status-page-header p {
+	color: #6d7588;
+	font-size: 16px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.horizontal-line-order-status-option-page {
+	height: 1px;
+	background-color: #e1e6ed;
+}
+
+.order-status-information-page-container {
+	display: flex;
+	flex-direction: column;
+	padding: 24px 40px;
+	gap: 30px;
+	background: #fefff9;
+}
+
+.order-status-account-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+}
+
+.order-status-account-container img {
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+
+.order-status-notification-container {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.order-status-account-container h2 {
+	color: var(--clr-hitam-luntur);
+	font-size: 19px;
+	font-weight: 500;
+}
+
+.order-status-account-container p {
+	color: var(--clr-abu-agak-tua);
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.order-status-notification-container strong {
+	font-weight: 600;
+}
+
+/* ============================================================================ */
+/* ======================== Information Page Container ======================== */
+/* ============================================================================ */
+.information-page-account-option {
+	min-height: 30rem;
+	max-height: auto;
+	border-radius: 10px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.information-page-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 40px;
+	align-items: center;
+}
+
+.information-page-header h1 {
+	color: var(--clr-hitam-luntur);
+	font-size: 29px;
+	font-weight: 600;
+}
+
+.information-page-header p {
+	color: #6d7588;
+	font-size: 16px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.horizontal-line-information-option-page {
+	height: 1px;
+	background-color: #e1e6ed;
+}
+
+.notification-information-page-container {
+	display: flex;
+	flex-direction: column;
+	padding: 24px 40px;
+	gap: 30px;
+}
+
+.notification-information-icon {
+	font-size: 95px;
+	background-color: #aa0015;
+	color: #fff;
+	border-radius: 5px;
+	padding: 15px;
+	margin-right: 25px;
+}
+
+.notification-account-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+}
+
+.information-notification-container {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.notification-account-container h2 {
+	color: var(--clr-hitam-luntur);
+	font-size: 19px;
+	font-weight: 500;
+}
+
+.notification-account-container p {
+	color: var(--clr-abu-agak-tua);
+	font-size: 16px;
+	font-weight: 400;
+}

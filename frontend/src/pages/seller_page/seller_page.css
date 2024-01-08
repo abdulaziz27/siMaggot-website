@@ -1,0 +1,425 @@
+/* ======================== Variable ======================== */
+:root {
+	--ff-text: "Inter-Regular", Helvetica;
+	--ff-text-semi-bold: "Inter-SemiBold", Helvetica;
+	--clr-toggle-button: #728a1a;
+	--clr-button: #bbb;
+	--clr-arrow: #000;
+	--clr-text-produk: #212121;
+	--clr-border: rgb(194, 194, 194);
+	--clr-abu-muda: #f0f3f7;
+	--clr-abu-sedang: #6d7588;
+	--clr-abu-agak-tua: #46494e;
+	--clr-hijau-opa-22: #728a1a38;
+	--clr-hitam: #000;
+	--clr-hitam-luntur: #212121;
+	--clr-putih: #fff;
+	--clr-hijau-lumut: #728a1a;
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* ======================== Main Home Page ======================== */
+.main-seller-page-container {
+	height: 100vh;
+	width: 100vw;
+	font-family: var(--ff-body);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
+
+.horizontal-line-seller-menu {
+	background-color: #aaa5a53d;
+	height: 2px;
+}
+
+/* ======================== Main Seller Page Container ======================== */
+.main-seller-menu-container {
+	display: flex;
+	width: 80%;
+	margin-left: 10%;
+}
+
+/* ======================== Seller Menu Option Container ======================== */
+.seller-menu-container {
+	width: 20%;
+	user-select: none;
+}
+
+.seller-menu-choose-option-container {
+	width: 80%;
+	margin-left: 24px;
+}
+
+.seller-menu-height {
+	border: 1px solid var(--clr-abu-muda);
+	border-radius: 12px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	padding-bottom: 50px;
+}
+
+.hide-seller-menu-content {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 12px 25px;
+	gap: 5px;
+	font-family: var(--ff-body);
+	cursor: pointer;
+	width: fit-content;
+}
+
+.chevron-hide-menu {
+	font-size: 20px;
+	color: #6d7588;
+}
+
+.hide-seller-menu-content p {
+	font-size: 16px;
+	color: #6d7588;
+}
+
+.seller-menu-option-container {
+	margin: 20px 0;
+}
+
+.home-seller-option-menu {
+	display: flex;
+	flex: row;
+}
+
+.seller-menu-option-content {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 30px;
+}
+
+.seller-menu-option-link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.seller-menu-option-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: fit-content;
+	color: #46494e;
+	cursor: pointer;
+}
+
+.seller-menu-option-header-choose {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: fit-content;
+	color: #46494e;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.seller-menu-option-header-choose:hover {
+	color: var(--clr-hijau-lumut);
+	transform: scale(1.02);
+}
+
+.seller-menu-option-header-h2.selected,
+.seller-menu-option-header-choose.selected {
+	color: var(--clr-hijau-lumut);
+}
+
+.seller-menu-option-header h2 {
+	padding-left: 10px;
+	font-size: 17px;
+	font-weight: 500;
+	color: #46494e;
+}
+
+.seller-menu-option-header-choose h2 {
+	padding-left: 10px;
+	font-size: 17px;
+	font-weight: 500;
+	color: #46494e;
+	transition: 0.3s ease-in-out;
+}
+
+.seller-menu-option-header-choose h2:hover {
+	color: var(--clr-hijau-lumut);
+}
+
+.chevron-seller-option-header {
+	display: flex;
+	font-size: 20px;
+	color: #46494e;
+	transition: 0.3s ease-in-out;
+}
+
+.chevron-seller-option-header.open-seller {
+	transform: rotate(180deg);
+}
+
+.seller-menu-option-content h3 {
+	font-size: 16px;
+	font-weight: 500;
+	color: #46494e;
+	cursor: pointer;
+	width: fit-content;
+	transition: 0.3s ease-in-out;
+}
+
+.seller-menu-option-content h3:hover {
+	color: var(--clr-hijau-lumut);
+	transform: scale(1.02);
+}
+
+.seller-produk-option-content,
+.seller-pesanan-option-content,
+.seller-chat-option-content,
+.seller-pengaturan-option-content {
+	display: flex;
+	flex-direction: column;
+	margin-left: 40px;
+	margin-top: 10px;
+	gap: 10px;
+	display: none;
+}
+
+.seller-produk-option-content.show-seller-dropdown,
+.seller-pesanan-option-content.show-seller-dropdown,
+.seller-chat-option-content.show-seller-dropdown,
+.seller-pengaturan-option-content.show-seller-dropdown {
+	display: flex;
+	z-index: 1;
+}
+
+.select-seller-option-menu.selected {
+	color: var(--clr-hijau-lumut);
+	transform: scale(1.02);
+}
+
+/* ===================================================================================== */
+/* ======================== Seller Menu Choose Option Container ======================== */
+/* ===================================================================================== */
+.seller-menu-choose-option-container {
+	width: 100%;
+	margin-bottom: 60px;
+	user-select: none;
+}
+
+.home-seller-option-menu-container {
+	display: flex;
+	flex-direction: row;
+	gap: 25px;
+}
+
+.home-seller-option-menu-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 75%;
+	overflow: hidden;
+	border-radius: 15px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	background: linear-gradient(
+		180deg,
+		#728a1a 0.04%,
+		rgba(114, 138, 26, 0.84) 0.04%,
+		rgba(114, 138, 26, 0.55) 12.79%,
+		rgba(114, 138, 26, 0.43) 27.25%,
+		rgba(114, 138, 26, 0.24) 59.56%,
+		rgba(114, 138, 26, 0.2) 100.63%,
+		rgba(114, 138, 26, 0) 100.64%
+	);
+}
+
+.home-seller-option-menu-header {
+	font-family: Inter;
+	margin: 30px 40px;
+}
+
+.home-seller-option-menu-header h1 {
+	color: #fff;
+	font-size: 35px;
+	font-weight: 600;
+}
+
+.home-seller-option-menu-header p {
+	color: #f0f3f7;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.home-seller-order-product-container {
+	display: flex;
+	align-self: center;
+	background: #fff;
+	width: 91%;
+	border-radius: 10px;
+	margin: 20px 0;
+	height: 250px;
+}
+
+.home-seller-order-product-content {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30px 15px;
+}
+
+.seller-order-card-1 {
+	width: 120px;
+	height: 100%;
+	border-radius: 5px;
+	background: linear-gradient(
+		267deg,
+		rgba(179, 194, 122, 0.6) -128.66%,
+		rgba(179, 194, 122, 0) 113.61%
+	);
+}
+
+.seller-order-card-2 {
+	width: 120px;
+	height: 100%;
+	border-radius: 5px;
+	background: linear-gradient(
+		265deg,
+		rgba(179, 194, 122, 0.78) -8.12%,
+		rgba(179, 194, 122, 0) 135.76%
+	);
+}
+
+.seller-order-card-3 {
+	width: 160px;
+	height: 100%;
+	border-radius: 5px;
+	background-color: #b3c27a;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+
+.seller-order-card-3 h1 {
+	color: #46494e;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.seller-order-card-3 h2 {
+	color: #000;
+	font-size: 17px;
+	font-style: normal;
+	font-weight: 500;
+	padding: 5px 15px;
+	border-radius: 5px;
+	background: #ff004f;
+}
+
+.seller-order-card-3 p {
+	color: #46494e;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.seller-order-card-4 {
+	width: 120px;
+	height: 100%;
+	transform: scale(-1);
+	border-radius: 5px;
+	background: linear-gradient(
+		265deg,
+		rgba(179, 194, 122, 0.78) -8.12%,
+		rgba(179, 194, 122, 0) 135.76%
+	);
+}
+
+.seller-order-card-5 {
+	width: 120px;
+	height: 100%;
+	border-radius: 5px;
+	transform: scale(-1);
+	background: linear-gradient(
+		267deg,
+		rgba(179, 194, 122, 0.6) -128.66%,
+		rgba(179, 194, 122, 0) 113.61%
+	);
+}
+
+.chevron-seller-order {
+	font-size: 35px;
+	color: #46494e;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.chevron-seller-order:hover {
+	transform: scale(1.1);
+}
+
+.home-seller-product-information-container {
+	display: flex;
+	align-self: center;
+	width: 91%;
+	margin: 20px 0 150px 0;
+	flex-wrap: wrap;
+	gap: 40px 60px;
+	justify-content: center;
+}
+
+.seller-product-information {
+	border-radius: 10px;
+	background: rgba(109, 117, 136, 0.5);
+	width: 200px;
+	padding: 20px 20px 30px 20px;
+}
+
+.seller-product-information p {
+	color: #000;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+/* ======================== Seller Menu Side Information Container ======================== */
+.home-seller-option-side-information-width {
+	width: 25%;
+}
+
+.home-seller-option-side-information {
+	width: 100%;
+	border-radius: 15px;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	background: #fff;
+	padding: 30px;
+}
+
+.home-seller-option-side-information h2 {
+	color: #000;
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.seller-option-side-content {
+	display: flex;
+	width: 200px;
+	height: 200px;
+	margin: 100px 0;
+	background-color: #d9d9d9;
+}

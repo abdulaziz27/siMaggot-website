@@ -1,0 +1,171 @@
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div {
+	display: block;
+}
+
+/* ======================== Footer ======================== */
+.footer-container {
+	background-color: #ffffff;
+	border-bottom-style: solid;
+	border-bottom-width: 0.5px;
+	box-shadow: 0px -1px 16px #9d9d9d40;
+	margin-top: 200px;
+	user-select: none;
+}
+
+/* ======================== About Container ======================== */
+.footer-about-container {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 46px;
+	width: 80%;
+	margin-left: 10%;
+	padding-bottom: 52px;
+}
+
+.horizontal-line-footer {
+	width: 80%;
+	margin-left: 10%;
+	height: 3px;
+	color: #f0f3f7;
+	background-color: #f0f3f7;
+	border: 1px solid;
+	margin-bottom: 32px;
+}
+
+.footer-container h1 {
+	font-family: "Inter-SemiBold", Helvetica;
+	color: #212121;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 20px;
+	cursor: default;
+}
+
+.footer-container p {
+	font-family: "Inter-SemiBold", Helvetica;
+	color: #6d7588;
+	font-size: 16px;
+	font-weight: 400;
+	margin-bottom: 16px;
+}
+
+/* ======================== About ======================== */
+.link-icon {
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+	font-size: 24px;
+}
+
+/* ======================== Copyright ======================== */
+.copyright {
+	width: 80%;
+	margin-left: 10%;
+	margin-bottom: 73px;
+	cursor: default;
+	margin-top: 32px;
+}
+
+/* ======================== Link ======================== */
+.footer-about-container a {
+	cursor: pointer;
+	text-decoration: none;
+	transition: 0.4s ease;
+}
+
+.footer-about-container a:hover {
+	text-shadow: 1px 1px #9d9d9da2;
+	text-decoration: underline;
+}
+
+.follow a:hover {
+	transform: scale(1.15);
+}
+
+/* ======================== Responsive ======================== */
+@media only screen and (max-width: 1280px) {
+	.footer-about-container {
+		padding-bottom: 30px;
+	}
+}
+
+@media only screen and (max-width: 430px) {
+	/* ======================== About Container ======================== */
+	.footer-container {
+		margin-top: 80px;
+	}
+
+	.footer-about-container {
+		padding-top: 38px;
+		width: 90%;
+		margin-left: 5%;
+		padding-bottom: 52px;
+		justify-content: space-between;
+		gap: 15px;
+	}
+
+	.follow {
+		width: 20%;
+	}
+
+	.jual {
+		width: 25%;
+	}
+
+	.pusat-bantuan {
+		width: 30%;
+	}
+
+	.footer-container h1 {
+		font-size: 12px;
+		margin-bottom: 15px;
+		cursor: default;
+		text-align: center;
+	}
+
+	.footer-container p {
+		font-size: 10px;
+		font-weight: 400;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+	.link-icon {
+		display: flex;
+		flex-wrap: wrap;
+		text-align: center;
+		justify-content: center;
+		gap: 15px;
+		font-size: 15px;
+	}
+
+	.horizontal-line-footer {
+		width: 90%;
+		margin-left: 5%;
+		height: 2px;
+	}
+
+	.copyright {
+		width: 90%;
+		margin-left: 5%;
+		text-align: none;
+	}
+
+	.copyright p {
+		text-align: left;
+	}
+}
