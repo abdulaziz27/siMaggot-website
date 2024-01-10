@@ -1,0 +1,263 @@
+/* ======================== Variable ======================== */
+:root {
+	--ff-text: "Inter-Regular", Helvetica;
+	--clr-toggle-button: #728a1a;
+	--clr-button: #bbb;
+	--clr-arrow: #000;
+	--clr-text-produk: #212121;
+    --clr-border:rgb(212, 212, 212);
+    --clr-header: #F0F3F7;
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div {
+	display: block;
+}
+
+
+/* ======================== Chat Page ======================== */
+
+/* CONTAINER */
+
+.chat {
+    font-family: var(--ff-body);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	overflow-x: hidden;
+    margin: 45px 7%;
+}
+
+.chat .judulSesi {
+    margin-bottom: 20px;
+}
+
+.chat-container {
+    height: 700px;
+    max-width: 98%;
+    margin: 5px auto;
+    border-radius: 7px;
+    box-shadow: 1.5px 2px 1px 3px var(--clr-border);
+    display: grid;
+    grid-template-areas: "kontak chat";
+    grid-template-columns: 1fr 1.9fr;
+}
+
+
+/* KONTAK */
+
+.kontak {
+    grid-area: kontak;
+}
+
+.kontak .cariKontak{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin: 0 30px;
+}
+
+.kontak .cariKontak .searchbar {
+    border: 1px solid var(--clr-border);
+    border-radius: 30px;
+}
+
+.kontak .cariKontak .searchbar input{
+    border-radius: 30px;
+    width: 260px;
+    height: 40px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+}
+
+.kontak .cariKontak .filter{
+    border: 1px solid var(--clr-border);
+    border-radius: 50%;
+    height: 40px;
+    cursor: pointer;
+    padding: 0 2px 2px;
+}
+
+.kontak .cariKontak .filter span{
+    font-size: 2.1rem;
+}
+
+.kontak .listKontak {
+    overflow: auto;
+}
+
+.kontakContainer {
+    display: grid;
+    cursor: pointer;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 6fr 2fr;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 30px 10px;
+}
+
+.kontakContainer:hover {
+    background-color: #e6f7ff;
+}
+
+.kontakContainer img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.kontakContainer .isiKontak {
+    margin-left: 10px;
+}
+
+.kontakContainer .namaKontak{
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.kontakContainer .previewChat{
+    font-size: 0.9rem;
+    opacity: 60%;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kontakContainer .lastOnline p{
+    font-size: 0.9rem;
+    opacity: 50%;
+    text-align: right;
+}
+
+
+
+/* ISI CHAT */
+
+.konten {
+    grid-area: chat;
+    background-color: #FBFCFF;
+    border-left: 1.5px solid var(--clr-border);
+}
+
+.konten .tidakChat{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.konten .tidakChat .sambutChat{
+    text-align: center;
+}
+
+.konten .adaChat {
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.konten .adaChat .headerChat{
+    display: flex;
+    background-color: white;
+    border-bottom: 2px solid var(--clr-border);
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.konten .adaChat .headerChat img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.konten .namaKontak{
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.konten .adaChat .tulisChat {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-top: 2px solid var(--clr-border);
+}
+
+.konten .adaChat .tulisChat textarea {
+    font-family: var(--ff-body);
+    width: 88%;
+    height: 50px;
+    border: none;
+    resize: none;
+    outline: none;
+    margin-left: 30px;
+}
+
+.konten .adaChat .tulisChat .kirimPesan {
+    font-size: 1.5rem;
+    background-color: white;
+    border: none;
+}
+
+
+
+
+/* ISI CHAT ADA */
+
+.contacts {
+    margin-bottom: 20px;
+}
+
+.isiChat {
+    height: 560px;
+    display: grid;
+    overflow: auto;
+}
+
+.user-message {
+    max-width: 600px;
+    padding: 10px 20px;
+    border-radius: 20px 0 20px 20px;
+    justify-self: end;
+    background-color: #e6f7ff;
+    margin: 15px 0;
+    margin-right: 40px;
+}
+
+.contact-message {
+    max-width: 600px;
+    padding: 10px 20px;
+    border-radius: 0 20px 20px 20px;
+    background-color: #f0f0f0;
+    margin: 15px 0;
+    margin-left: 30px;
+}
+
+.user-date {
+    text-align: right;
+    font-size: 12px;
+    opacity: 60%;
+}
+
+.contact-date {
+    font-size: 12px;
+    opacity: 60%;
+}
