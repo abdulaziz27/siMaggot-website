@@ -186,6 +186,15 @@ const ProfilePage = () => {
 								</ul>
 							</div>
 						</div>
+
+						<div className="horizontal-line-profile-option"></div>
+
+						<div className="profile-logout-button-container">
+							<div className="profile-logout-button-content">
+								<Icon icon="ant-design:logout-outlined" />
+								Logout
+							</div>
+						</div>
 					</div>
 				</div>
 

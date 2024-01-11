@@ -194,6 +194,35 @@ div {
 	color: var(--clr-hijau-lumut);
 }
 
+.profile-logout-button-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.profile-logout-button-content {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+	border: 1px solid #46494e33;
+	background: #ff543e87;
+	width: 40%;
+	padding: 3px;
+	gap: 5px;
+	color: #46494e;
+	font-size: 16px;
+	font-weight: 500;
+	margin: 20px auto;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.profile-logout-button-content:hover {
+	transform: scale(1.004);
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
 /* ======================================================================== */
 /* ======================== Profile Page Container ======================== */
 /* ======================================================================== */
