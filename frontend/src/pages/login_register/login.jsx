@@ -2,21 +2,47 @@ import { useState } from "react";
 import "./login.css";
 import { Icon } from "@iconify/react";
 import LoginImage from "../../assets/login_register/login_hero.png";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../api";
 
 function Login() {
 	const [visible, setVisible] = useState(false);
+	const navigate = useNavigate();
 
 	function iconPass() {
-		if (visible == true) {
-			setVisible(false);
-		} else {
-			setVisible(true);
-		}
+		setVisible(!visible);
 	}
+
+	const handleLogin = async (event) => {
+		event.preventDefault();
+
+		const email = document.getElementById("email").value;
+		const password = document.getElementById("password").value;
+
+		try {
+			const result = await loginUser(email, password);
+
+			if (result.status === "Success") {
+				console.log(result);
+
+				localStorage.setItem("accessToken", result.credential);
+
+				swal("Success!", "Login berhasil!", "success").then(() => {
+					navigate("/");
+				});
+			} else {
+				swal("Error!", "Login gagal. Silakan coba lagi.", "error");
+			}
+		} catch (error) {
+			swal("Error!", "Terjadi kesalahan selama proses login.", "error");
+			console.error("Error selama proses login:", error);
+		}
+	};
 
 	return (
 		<div className="loginregister">
-			<h1>Maggot Yahoot</h1>
+			<h1>SiMaggot</h1>
 			<div className="loginregister-container">
 				<div className="greetingCard">
 					<div className="backButton">
@@ -38,13 +64,13 @@ function Login() {
 
 				<div className="loginform">
 					<h2>Masuk</h2>
-					<form action="">
-						<label htmlFor="email">No. HP / Username / Email</label>
+					<form onSubmit={handleLogin}>
+						<label htmlFor="email">Email</label>
 						<input
 							className="email"
 							type="text"
 							id="email"
-							placeholder="Masukkan No. HP / Username / Email disini"
+							placeholder="Masukkan Email disini"
 						/>
 						<label htmlFor="password">Password</label>
 						<input
@@ -61,14 +87,16 @@ function Login() {
 						</span>
 
 						<div className="lupa-container">
-							<a className="lupaPassword" href="?">
+							<a className="lupaPassword" href="./reset-password">
 								Lupa Password
 							</a>
 						</div>
 
 						<div className="centered">
 							<div className="register-button-container">
-								<a className="registerButton">Masuk</a>
+								<button type="submit" className="registerButton">
+									Masuk
+								</button>
 							</div>
 
 							<p className="otherAccount">atau masuk dengan</p>

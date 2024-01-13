@@ -234,7 +234,7 @@ div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 30px;
+	gap: 10px;
 	cursor: pointer;
 	border: 1px solid var(--clr-abu-sedang);
 	overflow: hidden;

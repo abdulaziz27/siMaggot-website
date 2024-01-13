@@ -13,6 +13,7 @@ import ChangePasswordAccountOption from "./pages/profile_page/profile_page_compo
 import Confirm from "./pages/payment_confirm/confirm";
 import SellerPage from "./pages/seller_page/seller_page";
 import Store from "./pages/store_page/store";
+import ResetPassword from "./pages/login_register/reset_password";
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 						<Route exact path="/" element={<HomePage />} />
 						<Route exact path="/login" element={<Login />} />
 						<Route exact path="/register" element={<Register />} />
+						<Route exact path="/reset-password" element={<ResetPassword />} />
 						<Route exact path="/shop" element={<ShopPage />} />
 						<Route
 							exact
