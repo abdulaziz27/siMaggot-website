@@ -2,21 +2,46 @@ import { useState } from "react";
 import "./login.css";
 import { Icon } from "@iconify/react";
 import LoginImage from "../../assets/login_register/login_hero.png";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../api";
 
 function Register() {
 	const [visible, setVisible] = useState(false);
+	const navigate = useNavigate();
 
 	function iconPass() {
-		if (visible == true) {
-			setVisible(false);
-		} else {
-			setVisible(true);
-		}
+		setVisible(!visible);
 	}
+
+	const handleRegister = async (event) => {
+		event.preventDefault();
+
+		const email = document.getElementById("email").value;
+		const username = document.getElementById("username").value;
+		const password = document.getElementById("password").value;
+
+		try {
+			const result = await registerUser(username, email, password);
+
+			if (result.status === "Success") {
+				console.log(result);
+
+				swal("Success!", "Registrasi berhasil!", "success").then(() => {
+					navigate("/login");
+				});
+			} else {
+				swal("Error!", "Registrasi gagal. Silakan coba lagi.", "error");
+			}
+		} catch (error) {
+			swal("Error!", "Terjadi kesalahan selama proses registrasi.", "error");
+			console.error("Error selama proses registrasi:", error);
+		}
+	};
 
 	return (
 		<div className="loginregister">
-			<h1>Maggot Yahoot</h1>
+			<h1>SiMaggot</h1>
 			<div className="loginregister-container">
 				<div className="greetingCard">
 					<div className="backButton">
@@ -38,21 +63,21 @@ function Register() {
 
 				<div className="loginform">
 					<h2>Daftar</h2>
-					<form action="">
-						<label htmlFor="email">No. HP / Email</label>
-						<input
-							className="email-register"
-							type="text"
-							id="email"
-							placeholder="Masukkan No. HP / Email disini"
-						/>
-
+					<form onSubmit={handleRegister}>
 						<label htmlFor="username">Username</label>
 						<input
 							className="username-register"
 							type="text"
 							id="username"
 							placeholder="Masukkan Username disini"
+						/>
+
+						<label htmlFor="email">Email</label>
+						<input
+							className="email-register"
+							type="text"
+							id="email"
+							placeholder="Masukkan Email disini"
 						/>
 
 						<label htmlFor="password">Password</label>
@@ -71,7 +96,9 @@ function Register() {
 
 						<div className="centered">
 							<div className="register-button-container">
-								<a className="registerButton">Daftar</a>
+								<button type="submit" className="registerButton">
+									Daftar
+								</button>
 							</div>
 
 							<p className="otherAccount">atau masuk dengan</p>

@@ -13,9 +13,30 @@ import FavoriteProductAccountOption from "./profile_page_component/favorite_prod
 import InformationProductAccountOption from "./profile_page_component/information_page_account_option";
 import TransactionProductAccountOption from "./profile_page_component/transaction_page_account_option";
 import OrderStatusAccountOption from "./profile_page_component/order_status_account_option";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../../api";
 
 const ProfilePage = () => {
 	const [selectedOption, setSelectedOption] = useState("Profil");
+	const navigate = useNavigate();
+
+	const handleLogout = async () => {
+		try {
+			const result = await logoutUser();
+
+			if (result.status === "Success") {
+				localStorage.removeItem("accessToken");
+
+				navigate("/login");
+			} else {
+				swal("Error!", "Logout gagal. Silakan coba lagi.", "error");
+			}
+		} catch (error) {
+			swal("Error!", "Terjadi kesalahan selama proses logout.", "error");
+			console.error("Error selama proses logout:", error);
+		}
+	};
 
 	const renderSelectedPage = () => {
 		switch (selectedOption) {
@@ -131,7 +152,7 @@ const ProfilePage = () => {
 									<p
 										className={
 											selectedOption ===
-											"Daftar Transaksi"
+												"Daftar Transaksi"
 												? "selected"
 												: ""
 										}
@@ -190,7 +211,8 @@ const ProfilePage = () => {
 						<div className="horizontal-line-profile-option"></div>
 
 						<div className="profile-logout-button-container">
-							<div className="profile-logout-button-content">
+							<div className="profile-logout-button-content"
+								onClick={handleLogout}>
 								<Icon icon="ant-design:logout-outlined" />
 								Logout
 							</div>

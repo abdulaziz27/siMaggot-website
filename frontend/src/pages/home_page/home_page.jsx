@@ -137,7 +137,7 @@ const HomePage = () => {
 	return (
 		<div className="main-page-container">
 			<Navbar />
-			<HeaderLogin />
+			<Header />
 
 			<div className="slide-banner-container">
 				<div
@@ -148,9 +148,8 @@ const HomePage = () => {
 					{imagePaths.map((image, index) => (
 						<div
 							key={index}
-							className={`mySlides fade ${
-								index + 1 === slideIndex ? "active" : ""
-							}`}
+							className={`mySlides fade ${index + 1 === slideIndex ? "active" : ""
+								}`}
 						>
 							<img src={image} alt={`Slide ${index + 1}`} />
 						</div>
@@ -173,9 +172,8 @@ const HomePage = () => {
 						{imagePaths.map((image, index) => (
 							<span
 								key={index}
-								className={`dot ${
-									index + 1 === slideIndex ? "active-dot" : ""
-								}`}
+								className={`dot ${index + 1 === slideIndex ? "active-dot" : ""
+									}`}
 								onClick={() => currentSlide(index + 1)}
 							></span>
 						))}
@@ -398,13 +396,13 @@ const HomePage = () => {
 
 					{currentIndex + cardsPerPage <
 						imageFiles_artikel.length && (
-						<a className="next-button" onClick={handleNext}>
-							<Icon
-								icon="bx:chevron-right"
-								className="chevron chev-right-b"
-							/>
-						</a>
-					)}
+							<a className="next-button" onClick={handleNext}>
+								<Icon
+									icon="bx:chevron-right"
+									className="chevron chev-right-b"
+								/>
+							</a>
+						)}
 				</div>
 			</div>
 
