@@ -18,15 +18,15 @@ Clone this repository to your computer:
    cd Simaggot-Website
    ```
 
-2. Install dependencies for the backend:
+2. Install dependencies for the frontend:
    ```bash
-   cd backend
+   cd frontend
    npm install
    ```
 
-3. Install dependencies for the frontend:
+3. Install dependencies for the backend:
    ```bash
-   cd ../frontend
+   cd backend
    npm install
    ```
 
