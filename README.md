@@ -29,6 +29,22 @@ Clone this repository to your computer:
    cd ../frontend
    npm install
    ```
+
+## Running the Application
+
+1. Open a terminal and make sure you're in the backend directory.
+2. Start the backend server:
+   ```bash
+   npm start
+   ```
+   
+3. Open another terminal and make sure you're in the frontend directory.
+4. Run the frontend application:
+   ```bash
+   npm start
+   ```
+
+The application will run at http://localhost:3000/. You can now access it through your web browser.
    
 ## Contribution
 please follow these steps if u wanna contribute this project:
@@ -52,22 +68,6 @@ please follow these steps if u wanna contribute this project:
    ```
 
 6. Create a pull request to this repository.
-
-## Running the Application
-
-1. Open a terminal and make sure you're in the backend directory.
-2. Start the backend server:
-   ```bash
-   npm start
-   ```
-
-3. Open another terminal and make sure you're in the frontend directory.
-4. Run the frontend application:
-   ```bash
-   npm start
-   ```
-
-The application will run at http://localhost:3000/. You can now access it through your web browser.
 
 ## License
 This project is licensed under the MIT License. 
