@@ -37,9 +37,21 @@ export const logoutUser = async () => {
   const logoutEndpoint = "/auth/logout";
 
   try {
-    const response = await axios.post(apiUrl + logoutEndpoint);
+    const accessToken = localStorage.getItem("accessToken");
+    if(!accessToken){
+      throw new Error ("access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.post(apiUrl + logoutEndpoint, null, {
+      headers: headers,
+    });
 
     if (response.status === 200) {
+      localStorage.removeItem("accessToken")
       return { status: "Success", message: "Logout berhasil" };
     } else {
       throw new Error("Logout gagal");
