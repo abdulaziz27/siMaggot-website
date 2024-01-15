@@ -9,6 +9,8 @@ import Footer from "../../components/footer/footer";
 import gambar1 from "../../assets/check_out/maggot_bsf.jpeg";
 import gambar2 from "../../assets/check_out/premium_dried_maggot.jpeg";
 import gambar3 from "../../assets/check_out/map_dunia.jpeg";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const CheckOutPage = () => {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -17,6 +19,8 @@ const CheckOutPage = () => {
 	const [selectedPaymentMethod, setSelectedPaymentMethod] =
 		useState("Transfer Bank");
 	const dropdownRef = useRef(null);
+
+	const navigate = useNavigate();
 
 	const toggleDropdown = () => {
 		setIsDropdownOpen(!isDropdownOpen);
@@ -61,6 +65,16 @@ const CheckOutPage = () => {
 			document.removeEventListener("click", handleOutsideClick);
 		};
 	}, []);
+
+	const handleBeliClick = () => {
+		swal({
+			title: "Checkout Berhasil",
+			text: "Lanjutkan pembayaran!",
+			icon: "success",
+		}).then(() => {
+			navigate("/payment");
+		});
+	};
 
 	return (
 		<div className="check-out-page-container">
@@ -451,9 +465,8 @@ const CheckOutPage = () => {
 									/>
 								</div>
 								<div
-									className={`metode-pembayaran-list ${
-										isDropdownOpen ? "show" : ""
-									}`}
+									className={`metode-pembayaran-list ${isDropdownOpen ? "show" : ""
+										}`}
 								>
 									<div className="transfer-bank-dropdown-header">
 										<Icon
@@ -501,7 +514,7 @@ const CheckOutPage = () => {
 								</div>
 							</div>
 
-							<div className="button-check-out-barang-belanja">
+							<div className="button-check-out-barang-belanja" onClick={handleBeliClick}>
 								<h1>Buat Pesanan</h1>
 							</div>
 						</div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./cart.css";
 import { Icon } from "@iconify/react";
 
@@ -12,6 +12,7 @@ import productImage2 from "../../assets/cart/img2.jpg";
 
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { getCart } from "../../api";
 
 
 const dataBarang = [
@@ -43,6 +44,25 @@ const dataBarang = [
 
 function Cart() {
   const navigate = useNavigate();
+  const [cartData, setCartData] = useState(null);
+
+  useEffect(() => {
+    const fetchCartData = async () => {
+      try {
+        const data = await getCart();
+        console.log(data); // Log the data to inspect the structure
+        setCartData(data.data.carts);
+      } catch (error) {
+        console.error("Error fetching cart data:", error);
+      }
+    };
+
+    fetchCartData();
+  }, []);
+
+  if (!cartData) {
+    return <div>Loading...</div>;
+  }
 
   const handleBeliClick = () => {
     swal({
@@ -50,9 +70,19 @@ function Cart() {
       text: "Terima kasih telah berbelanja!",
       icon: "success",
     }).then(() => {
-      navigate("/payment");
+      navigate("/check_out");
     });
   };
+
+  // Group products by sellerId
+  const productsBySeller = {};
+  cartData.products.forEach(product => {
+    const sellerId = product.seller.sellerId;
+    if (!productsBySeller[sellerId]) {
+      productsBySeller[sellerId] = [];
+    }
+    productsBySeller[sellerId].push(product);
+  });
 
   return (
     <>
@@ -67,51 +97,38 @@ function Cart() {
           <div className="barangDibeli">
             <div className="headerBarangDibeli">
               <input type="checkbox" name="checkSemuaBarang" id="checkSemuaBarang" />
-              <label htmlFor="checkSemuaBarang" className="alignLeft"> Pilih Semua</label>
+              <label htmlFor="checkSemuaBarang" className="alignLeft"> {" "} Pilih Semua</label>
               <p>Harga Satuan</p>
               <p>Kuantitas</p>
               <p className="totalTiapBarang">Total Harga</p>
             </div>
 
-            <div className="tokoBarangDibeli">
-              <input type="checkbox" className="checkToko" name="checkToko" id="checkToko" />
-              <h2 className="namaToko" >Toko Maggot Mantul</h2>
-              <a className="lokasiToko">Kab. Banyumas</a>
-              <div className="jenisBarangDibeli">
-                <JenisBarang
-                  gambarBarang={productImage}
-                  namaBarang="Maggot Cacing Besar"
-                  hargaSatuan="3.500"
-                  totalTiapBarang="7.000"
+            {Object.keys(productsBySeller).map((sellerId) => (
+              <div key={sellerId} className="tokoBarangDibeli">
+                <input
+                  type="checkbox"
+                  className="checkToko"
+                  name={`checkToko-${sellerId}`}
+                  id={`checkToko-${sellerId}`}
                 />
+                <h2 className="namaToko">{productsBySeller[sellerId][0].seller.name}</h2>
+                <a className="lokasiToko">{productsBySeller[sellerId][0].seller.address}</a>
+
+                {/* Iterate over products of the current seller */}
+                <div className="jenisBarangDibeli">
+                  {productsBySeller[sellerId].map((product) => (
+                    <JenisBarang
+                      key={product.productId}
+                      gambarBarang={product.cover}
+                      namaBarang={product.productName}
+                      hargaSatuan={product.price.toLocaleString()}
+                      totalTiapBarang={(product.price * product.quantity).toLocaleString()}
+                      quantity={product.quantity}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <div className="tokoBarangDibeli">
-              <input type="checkbox" className="checkToko" name="checkToko" id="checkToko" />
-              <h2 className="namaToko" >Literally Maggot Store</h2>
-              <a className="lokasiToko">Jakarta Selatan</a>
-              <div className="jenisBarangDibeli">
-
-                <JenisBarang
-                  gambarBarang={productImage2}
-                  namaBarang="Maggot Cacing Kecil - 1kg"
-                  hargaSatuan="39.980"
-                  totalTiapBarang="39.980"
-                />
-
-                <hr />
-
-                <JenisBarang
-                  gambarBarang={productImage1}
-                  namaBarang="Maggot Kering 100gr"
-                  hargaSatuan="17.550"
-                  totalTiapBarang="17.550"
-                />
-
-              </div>
-
-            </div>
+            ))}
 
           </div>
 
@@ -121,22 +138,7 @@ function Cart() {
             <ListRekomendasi titleList="Rekomendasi Untukmu" />
           </div>
 
-          <div className="ringkasanBelanja-container">
-            <div className="ringkasanBelanja">
-              <h3>Ringkasan Belanja</h3>
-              <div className="daftarHarga">
-                <p className="hargaBarangText">Total Harga (1 barang)</p>
-                <p className="hargaBarang">Rp. 7.000</p>
-                <p className="hargaBarangText">Total Harga (2 barang)</p>
-                <p className="hargaBarang">Rp. 57.530</p>
-              </div>
-              <hr />
-              <p className="totalHargaText">Total Harga </p>
-              <p className="totalHarga">Rp. 64.530</p>
-              <button onClick={handleBeliClick}>Beli (2)</button>
-            </div>
-          </div>
-
+          <RingkasanBelanja cartData={cartData} handleBeliClick={handleBeliClick} />
         </div>
       </div>
       <Footer />
@@ -145,29 +147,41 @@ function Cart() {
   )
 }
 
+function RingkasanBelanja({ cartData, handleBeliClick }) {
 
-function TokoBarangDiBeli({ namaToko, lokasiToko, idBarang }) {
-  const [barang, setBarang] = useState(dataBarang);
+  const productsBySeller = {};
+  cartData.products.forEach(product => {
+    const sellerId = product.seller.sellerId;
+    if (!productsBySeller[sellerId]) {
+      productsBySeller[sellerId] = [];
+    }
+    productsBySeller[sellerId].push(product);
+  });
+
   return (
-    <>
-      <div className="tokoBarangDibeli">
-        <input type="checkbox" className="checkToko" name="checkToko" id="checkToko" />
-        <h2 className="namaToko" >{namaToko}</h2>
-        <a className="lokasiToko">{lokasiToko}</a>
-        <div className="jenisBarangDibeli">
-          <JenisBarang
-            gambarBarang={productImage}
-            namaBarang={barang[0].namaBarang}
-            hargaSatuan={barang[0].hargaSatuan}
-            totalTiapBarang={barang[0].totalTiapBarang}
-          />
-
-        </div>
+    <div className="ringkasanBelanja-container">
+      <div className="ringkasanBelanja">
+        <h3>Ringkasan Belanja</h3>
+        {Object.keys(productsBySeller).map((sellerId, index) => (
+          <div key={sellerId}>
+            <div className="daftarHarga">
+              <p className="hargaBarangText">Total Harga ({productsBySeller[sellerId].length} barang)  -   Rp. {calculateTotalHarga(productsBySeller[sellerId]).toLocaleString()}</p >
+            </div>
+          </div>
+        ))}
+        <hr />
+        <p className="totalHargaText">Total Harga - Rp. {cartData.total.toLocaleString()}</p>
+        <button onClick={handleBeliClick}>Beli ({cartData.products.length})</button>
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
+function calculateTotalHarga(products) {
+  return products.reduce((total, product) => {
+    return total + product.price * product.quantity;
+  }, 0);
+}
 
 function JenisBarang({ gambarBarang, namaBarang, hargaSatuan, totalTiapBarang }) {
   return (
@@ -203,7 +217,6 @@ function ButtonKuantitas() {
           <button onClick={() => setCounter(counter + 1)}>十</button>
         </div>
       </div>
-
     </>
   )
 }
