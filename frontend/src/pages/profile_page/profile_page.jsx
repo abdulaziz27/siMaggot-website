@@ -4,7 +4,7 @@ import "./profile_page.css";
 
 import Footer from "../../components/footer/footer";
 import Navbar from "../../components/navbar/navbar";
-import HeaderLogin from "../../components/header/header_login";
+import Header from "../../components/header/header";
 
 import image from "../../assets/profile_page_image/profile_image.jpeg";
 import ProfilePageAccountOption from "./profile_page_component/profile_page_account_option";
@@ -89,7 +89,7 @@ const ProfilePage = () => {
 	return (
 		<div className="profile-main-page-container">
 			<Navbar />
-			<HeaderLogin />
+			<Header />
 
 			<div className="profile-page-container">
 				<div className="profile-page-option">

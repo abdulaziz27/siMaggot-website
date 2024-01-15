@@ -281,7 +281,7 @@
 	background-color: none;
 }
 
-.custom-checkbox input:checked ~ .checkmark {
+.custom-checkbox input:checked~.checkmark {
 	background-color: var(--clr-hijau-lumut);
 	border-color: var(--clr-hijau-lumut);
 }
@@ -292,7 +292,7 @@
 	display: none;
 }
 
-.custom-checkbox input:checked ~ .checkmark:after {
+.custom-checkbox input:checked~.checkmark:after {
 	display: block;
 }
 
@@ -517,6 +517,15 @@ p {
 	text-align: center;
 	transition: 0.5s ease;
 	cursor: pointer;
+}
+
+.button-beli-shop a {
+	text-decoration: none;
+	color: var(--clr-abu-muda);
+}
+
+button-beli-shop a:hover {
+	color: var(--clr-putih);
 }
 
 .button-beli-shop:hover {

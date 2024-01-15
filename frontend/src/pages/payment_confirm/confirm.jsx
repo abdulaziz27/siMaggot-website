@@ -7,8 +7,19 @@ import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 
 import methodIcon from "../../assets/payment_method/bni.png";
+import { useNavigate } from "react-router-dom";
 
 const Confirm = () => {
+	const navigate = useNavigate();
+
+	const handleStatusPembayaranClick = () => {
+		navigate("/profile");
+	};
+
+	const handleBelanjaLagiClick = () => {
+		navigate("/shop");
+	};
+
 	return (
 		<>
 			<Navbar />
@@ -59,10 +70,10 @@ const Confirm = () => {
 						</div>
 					</div>
 					<div className="buttonPembayaran">
-						<button className="cekPembayaran">
+						<button className="cekPembayaran" onClick={handleStatusPembayaranClick}>
 							Cek Status Pembayaran
 						</button>
-						<button className="belanjaLagi">Belanja Lagi</button>
+						<button className="belanjaLagi" onClick={handleBelanjaLagiClick}>Belanja Lagi</button>
 					</div>
 				</div>
 			</div>

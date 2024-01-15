@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 //import { useSwipeable } from "react-swipeable";
 import "./home_page.css";
+import { getAllProducts } from "../../api";
 
 // Components
 import Navbar from "../../components/navbar/navbar";
@@ -134,6 +135,67 @@ const HomePage = () => {
 		};
 	}, []);
 
+	const [featuredProducts, setFeaturedProducts] = useState([]);
+	const [products, setProducts] = useState([]);
+
+	const fetchFeaturedProducts = async () => {
+		try {
+			const productsData = await getAllProducts();
+			const featured = productsData.data.slice(0, 6);
+			setFeaturedProducts(featured);
+		} catch (error) {
+			console.error("Error fetching featured products:", error);
+		}
+	};
+
+	useEffect(() => {
+		fetchFeaturedProducts();
+	}, []);
+
+	const fetchAllProducts = async () => {
+		try {
+			const productsData = await getAllProducts();
+			const latest = productsData.data.slice(0, 6);
+			setProducts(latest);
+		} catch (error) {
+			console.error("Error fetching products:", error);
+		}
+	};
+
+	useEffect(() => {
+		fetchAllProducts();
+	}, []);
+
+	const renderProducts = () => {
+		return products.map((product) => (
+			<div className="card-barang" key={product.id}>
+				<div className="gambar-barang">
+					{product.cover ? (
+						<img src={product.cover} alt={product.productName} />
+					) : (
+						<p>Cover image not available</p>
+					)}
+				</div>
+
+				<div className="info-barang-container">
+					<h3>{product.productName}</h3>
+					<h4>Rp. {product.price.toLocaleString()}</h4>
+					<p>
+						<Icon
+							icon="material-symbols:star"
+							className="icon-star-filter"
+						/>
+						{product.rating} | {product.stock} terjual
+					</p>
+
+					<div className="button-beli">
+						<a href={`/product/${product.id}`}>Beli</a>
+					</div>
+				</div>
+			</div>
+		));
+	};
+
 	return (
 		<div className="main-page-container">
 			<Navbar />
@@ -197,7 +259,7 @@ const HomePage = () => {
 								className="big-category-title"
 								id="button-kategori"
 							>
-								<h2>Kategori 1</h2>
+								<h2>Produk Maggot</h2>
 								<Icon
 									icon="bx:right-arrow-alt"
 									className="right-arrow"
@@ -217,7 +279,7 @@ const HomePage = () => {
 									className="wide-category-title"
 									id="button-kategori"
 								>
-									<h2>Kategori 2</h2>
+									<h2>Alat-Alat dan Perawatan</h2>
 									<Icon
 										icon="bx:right-arrow-alt"
 										className="right-arrow"
@@ -236,7 +298,7 @@ const HomePage = () => {
 									className="wide-category-title"
 									id="button-kategori"
 								>
-									<h2>Kategori 3</h2>
+									<h2>Jasa & Paket Bundling</h2>
 									<Icon
 										icon="bx:right-arrow-alt"
 										className="right-arrow"
@@ -255,39 +317,33 @@ const HomePage = () => {
 			<div className="produk-terlaris-container">
 				<div className="title-produk-terlaris">
 					<h1>Produk Terlaris</h1>
-					<a>Lihat Semua</a>
+					<a href="./shop">Lihat Semua</a>
 				</div>
 
 				<div className="card-barang-container">
-					{imageFiles.map((imageFile, index) => {
-						const imageUrl = imageFolder(imageFile);
-						return (
-							<div className="card-barang" key={index}>
-								<div className="gambar-barang">
-									<img
-										src={imageUrl}
-										alt={`Product ${index + 1}`}
+					{featuredProducts.map((product, index) => (
+						<div className="card-barang" key={index}>
+							<div className="gambar-barang">
+								<img src={product.cover} alt={`Product ${index + 1}`} />
+							</div>
+
+							<div className="info-barang-container">
+								<h3>{product.productName}</h3>
+								<h4>Rp. {product.price.toLocaleString()}</h4>
+								<p>
+									<Icon
+										icon="material-symbols:star"
+										className="icon-star-filter"
 									/>
-								</div>
+									{product.rating} | {product.stock} terjual
+								</p>
 
-								<div className="info-barang-container">
-									<h3>Nama Barang</h3>
-									<h4>RP. xx.xxx</h4>
-									<p>
-										<Icon
-											icon="material-symbols:star"
-											className="icon-star-filter"
-										/>
-										4.8 | xx+ terjual
-									</p>
-
-									<div className="button-beli">
-										<a>Beli</a>
-									</div>
+								<div className="button-beli">
+									<a href={`/product/${product.id}`}>Beli</a>
 								</div>
 							</div>
-						);
-					})}
+						</div>
+					))}
 				</div>
 			</div>
 
@@ -298,39 +354,11 @@ const HomePage = () => {
 			<div className="produk-terbaru-container">
 				<div className="title-produk-terbaru">
 					<h1>Produk Terbaru</h1>
-					<a>Lihat Semua</a>
+					<a href="./shop">Lihat Semua</a>
 				</div>
 
 				<div className="card-barang-container">
-					{imageFiles.map((imageFile, index) => {
-						const imageUrl = imageFolder(imageFile);
-						return (
-							<div className="card-barang" key={index}>
-								<div className="gambar-barang">
-									<img
-										src={imageUrl}
-										alt={`Product ${index + 1}`}
-									/>
-								</div>
-
-								<div className="info-barang-container">
-									<h3>Nama Barang</h3>
-									<h4>RP. xx.xxx</h4>
-									<p>
-										<Icon
-											icon="material-symbols:star"
-											className="icon-star-filter"
-										/>
-										4.8 | xx+ terjual
-									</p>
-
-									<div className="button-beli">
-										<a>Beli</a>
-									</div>
-								</div>
-							</div>
-						);
-					})}
+					{renderProducts()}
 				</div>
 			</div>
 

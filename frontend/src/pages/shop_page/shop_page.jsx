@@ -7,9 +7,24 @@ import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import image from "../../assets/images/1335919.jpeg";
 
+import { getAllProducts } from "../../api";
+
 const ShopPage = () => {
-	// Dropdown Sort Menu
+	const [products, setProducts] = useState([]);
 	const options = ["Harga Tertinggi", "Harga Terendah"];
+
+	const fetchAllProducts = async () => {
+		try {
+			const productsData = await getAllProducts();
+			setProducts(productsData.data);
+		} catch (error) {
+			console.error("Error fetching products:", error);
+		}
+	};
+
+	useEffect(() => {
+		fetchAllProducts();
+	}, []);
 
 	const storedOption = localStorage.getItem("selectedOption");
 	const [selectedOption, setSelectedOption] = useState(
@@ -106,6 +121,36 @@ const ShopPage = () => {
 	const handleCheckboxChangeRating = (event) => {
 		const { name, checked } = event.target;
 		setCheckboxesRating({ ...checkboxesRating, [name]: checked });
+	};
+
+	const renderProducts = () => {
+		return products.map((product) => (
+			<div className="card-barang-shop" key={product.id}>
+				<div className="gambar-barang-shop">
+					{product.cover ? (
+						<img src={product.cover} alt={product.productName} />
+					) : (
+						<p>Cover image not available</p>
+					)}
+				</div>
+
+				<div className="info-barang-shop-container">
+					<h3>{product.productName}</h3>
+					<h4>Rp. {product.price.toLocaleString()}</h4>
+					<p>
+						<Icon
+							icon="material-symbols:star"
+							className="icon-star-filter"
+						/>
+						{product.rating} | {product.stock} terjual
+					</p>
+
+					<div className="button-beli-shop">
+						<a href={`/product/${product.id}`}>Beli</a>
+					</div>
+				</div>
+			</div>
+		));
 	};
 
 	return (
@@ -298,15 +343,13 @@ const ShopPage = () => {
 								{selectedOption}
 								<Icon
 									icon="bx:chevron-down"
-									className={`arrow-icon ${
-										isDropdownOpen ? "open" : ""
-									}`}
+									className={`arrow-icon ${isDropdownOpen ? "open" : ""
+										}`}
 								/>
 							</div>
 							<ul
-								className={`dropdown-list ${
-									isDropdownOpen ? "show" : ""
-								}`}
+								className={`dropdown-list ${isDropdownOpen ? "show" : ""
+									}`}
 							>
 								{renderOptions()}
 							</ul>
@@ -314,31 +357,9 @@ const ShopPage = () => {
 					</div>
 
 					<div className="card-barang-shop-container">
-						{times.map((_, index) => (
-							<div className="card-barang-shop">
-								<div className="gambar-barang-shop">
-									<img src={image} />
-								</div>
+						{renderProducts()}
 
-								<div className="info-barang-shop-container">
-									<h3>Nama Barang</h3>
-									<h4>RP. xx.xxx</h4>
-									<p>
-										<Icon
-											icon="material-symbols:star"
-											className="icon-star-filter"
-										/>
-										4.8 | xx+ terjual
-									</p>
-
-									<div className="button-beli-shop">
-										<a>Beli</a>
-									</div>
-								</div>
-							</div>
-						))}
-
-						<div class="pagination-shop">
+						{/* <div className="pagination-shop">
 							<a href="#">
 								<Icon
 									icon="ic:round-chevron-left"
@@ -346,7 +367,7 @@ const ShopPage = () => {
 								/>
 							</a>
 							<a href="#">1</a>
-							<a href="#" class="active">
+							<a href="#" className="active">
 								2
 							</a>
 							<a href="#">3</a>
@@ -359,7 +380,7 @@ const ShopPage = () => {
 									className="pagination-chevron-button"
 								/>
 							</a>
-						</div>
+						</div> */}
 					</div>
 				</div>
 

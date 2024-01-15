@@ -11,6 +11,11 @@ export const loginUser = async (email, password) => {
 
   try {
     const response = await axios.post(apiUrl + loginEndpoint, data);
+    const { accessToken, refreshToken } = response.data;
+
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("refreshToken", refreshToken);
+
     return response.data;
   } catch (error) {
     throw error;
@@ -112,6 +117,28 @@ export const updateUserProfile = async (updatedData) => {
       headers: headers,
     });
 
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAllProducts = async () => {
+  const productEndpoint = "/product";
+
+  try {
+    const response = await axios.get(apiUrl + productEndpoint);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getProductById = async (productId) => {
+  const productEndpoint = `/product/${productId}`;
+
+  try {
+    const response = await axios.get(apiUrl + productEndpoint);
     return response.data;
   } catch (error) {
     throw error;

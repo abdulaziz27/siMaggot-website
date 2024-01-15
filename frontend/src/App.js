@@ -14,6 +14,7 @@ import Confirm from "./pages/payment_confirm/confirm";
 import SellerPage from "./pages/seller_page/seller_page";
 import Store from "./pages/store_page/store";
 import ResetPassword from "./pages/login_register/reset_password";
+import Chat from "./pages/chat/chat"
 
 function App() {
 	return (
@@ -37,7 +38,7 @@ function App() {
 							element={<ProfilePage />}
 						/>
 						<Route exact path="/cart" element={<Cart />} />
-						<Route exact path="/product" element={<Product />} />
+						<Route path="/product/:productId" element={<Product />} />
 						<Route
 							exact
 							path="/change_password"
@@ -45,7 +46,8 @@ function App() {
 						/>
 						<Route exact path="/payment" element={<Confirm />} />
 						<Route exact path="/seller" element={<SellerPage />} />
-						<Route path="/store" element={<Store />} />
+						<Route exact path="/store" element={<Store />} />
+						<Route exact path="/chat" element={<Chat />} />
 					</Routes>
 				</Router>
 			</Fragment>
