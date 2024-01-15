@@ -5,8 +5,8 @@
 	--clr-button: #bbb;
 	--clr-arrow: #000;
 	--clr-text-produk: #212121;
-    --clr-border:rgb(212, 212, 212);
-    --clr-header: #F0F3F7;
+	--clr-border: rgb(212, 212, 212);
+	--clr-header: #f0f3f7;
 }
 
 *,
@@ -27,374 +27,398 @@ div {
 	display: block;
 }
 
-
 /* ======================== Store Page ======================== */
 
 /* CONTAINER */
 
 .store-container {
-    font-family: var(--ff-body);
+	font-family: var(--ff-body);
 	font-size: 0.95rem;
 	line-height: 1.5;
 	overflow-x: hidden;
-    margin: 45px 7%;
+	margin: 45px 7%;
 }
-
 
 /* INFO TOKO */
 
-.store-container .infoToko{
-    border-radius: 10px;
-    box-shadow: 1.5px 2px 1px 3px var(--clr-border);
-    padding: 17px 0;
-    margin: 5px 5px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1.7fr;
-    align-items: center;
+.store-container .infoToko {
+	border-radius: 10px;
+	box-shadow: 1.5px 2px 1px 3px var(--clr-border);
+	padding: 17px 0;
+	margin: 5px 5px 40px;
+	display: grid;
+	grid-template-columns: 1fr 1.7fr;
+	align-items: center;
 }
 
-.store-container .profilToko img{
-    margin-left: 30px;
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
+.store-container .profilToko img {
+	margin-left: 30px;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
 }
 
-.store-container .profilToko{
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    gap: 20px;
+.store-container .profilToko {
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	gap: 20px;
 }
 
-.store-container .profilToko h3{
-    font-weight: 500;
+.store-container .profilToko h3 {
+	font-weight: 500;
 }
 
-.store-container .profilToko .statusToko{
-    opacity: 50%;
-    margin-bottom: 10px;
+.store-container .profilToko .statusToko {
+	opacity: 50%;
+	margin-bottom: 10px;
 }
 
-.store-container .profilToko span{
-    font-size: 1.4rem;
+.store-container .profilToko span {
+	font-size: 1.4rem;
 }
 
-.store-container .profilToko .hubungiToko{
-    color: var(--clr-toggle-button);
-    display: inline-block;
-    position: relative;
-    top: -5px;
-    left: 4px;
-    text-align: center;
-    align-self: center;
+.store-container .profilToko .hubungiToko {
+	color: var(--clr-toggle-button);
+	display: inline-block;
+	position: relative;
+	top: -5px;
+	left: 4px;
+	text-align: center;
+	align-self: center;
 }
 
-.store-container .profilToko .chatSekarang{
-    border: 1.4px solid var(--clr-toggle-button);
-    padding: 12px 5% 7px;
-    border-radius: 7px;
-    cursor: pointer;
-    margin-right: 7px;
+.store-container .profilToko .chatSekarang {
+	border: 1.4px solid var(--clr-toggle-button);
+	padding: 12px 5% 7px;
+	border-radius: 7px;
+	cursor: pointer;
+	margin-right: 7px;
 }
 
-.store-container .profilToko .shareToko{
-    border: 1.4px solid var(--clr-border);
-    padding: 12px 2% 7px;
-    border-radius: 7px;
-    cursor: pointer;
+.store-container .profilToko .shareToko {
+	border: 1.4px solid var(--clr-border);
+	padding: 12px 2% 7px;
+	border-radius: 7px;
+	cursor: pointer;
 }
 
-.store-container .statistikToko{
-    display: flex;
-    border-left: 2px solid var(--clr-border);
-    padding-left: 40px;
+.store-container .statistikToko {
+	display: flex;
+	border-left: 2px solid var(--clr-border);
+	padding-left: 40px;
 }
 
-.store-container .statistikToko p{
-    margin: 20px 80px 20px 0;
+.store-container .statistikToko p {
+	margin: 20px 80px 20px 0;
 }
 
-.store-container .statistikToko .nilaiToko{
-    color: var(--clr-toggle-button);
-    text-align: right;
+.store-container .statistikToko .nilaiToko {
+	color: var(--clr-toggle-button);
+	text-align: right;
 }
-
 
 /* LIST BARANG */
 
-.store-container .gantiHalaman{
-    margin-bottom: 20px;
+.store-container .gantiHalaman {
+	margin-bottom: 20px;
 }
 
-.store-container .gantiHalaman button{
-    width: 100px;
-    height: 27px;
-    background-color: white;
-    border: none;
-    font-size: 1.15rem;
-    font-weight: 520;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
+.store-container .gantiHalaman button {
+	width: 100px;
+	height: 27px;
+	background-color: white;
+	border: none;
+	font-size: 1.15rem;
+	font-weight: 520;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
 }
 
-.store-container .gantiHalaman .active{
-    color: var(--clr-toggle-button);
-    font-weight: 520;
+.store-container .gantiHalaman .active {
+	color: var(--clr-toggle-button);
+	font-weight: 520;
 }
 
-.store-container .barangJual .filterBarang{
-    border: 2px solid var(--clr-border);
-    border-radius: 7px;
-    padding: 15px 10px;
-    margin-bottom: 30px;
+.store-container .barangJual .filterBarang {
+	border: 2px solid var(--clr-border);
+	border-radius: 7px;
+	padding: 15px 10px;
+	margin-bottom: 30px;
 }
 
-.store-container .barangJual .filterBarang p{
-    display: inline-block;
-    margin-right: 35px;
-    margin-left: 5px;
-    font-weight: 500;
+.store-container .barangJual .filterBarang p {
+	display: inline-block;
+	margin-right: 35px;
+	margin-left: 5px;
+	font-weight: 500;
 }
 
-.store-container .barangJual .filterBarang button{
-    width: 80px;
-    height: 27px;
-    background-color: white;
-    border-radius: 7px;
-    border: 1px solid black;
-    color: black;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 12px;
+.store-container .barangJual .filterBarang button {
+	width: 80px;
+	height: 27px;
+	background-color: white;
+	border-radius: 7px;
+	border: 1px solid black;
+	color: black;
+	font-size: 0.85rem;
+	font-weight: 500;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 12px;
 }
 
-.store-container .barangJual .filterBarang .selectedFilter{
-    background-color: var(--clr-toggle-button);
-    color: white;
+.store-container .barangJual .filterBarang .selectedFilter {
+	background-color: var(--clr-toggle-button);
+	color: white;
 }
 
-.store-container .barangJual .filterBarang select{
-    width: 170px;
-    height: 27px;
-    border-radius: 7px;
-    cursor: pointer;
+.store-container .barangJual .filterBarang select {
+	width: 170px;
+	height: 27px;
+	border-radius: 7px;
+	cursor: pointer;
 }
 
-.store-container .batasHalaman{
-    margin-bottom: 30px;
+.store-container .batasHalaman {
+	margin-bottom: 30px;
 }
-
 
 /* BARANG */
 
-.store-container .listBarang .listBarangContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 20px;
+.store-container .listBarang .listBarangContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-bottom: 20px;
 }
 
-.store-container .listBarang .listBarangContainer h2{
-    font-weight: 700;
-    margin-bottom: 20px;
+.store-container .listBarang .listBarangContainer h2 {
+	font-weight: 700;
+	margin-bottom: 20px;
 }
 
-.store-container .listBarang .listBarangContainer a{
-    color: var(--clr-toggle-button);
-    font-size: 1rem;
-    font-weight: 700;
-    text-align: right;
+.store-container .listBarang .listBarangContainer a {
+	color: var(--clr-toggle-button);
+	font-size: 1rem;
+	font-weight: 700;
+	text-align: right;
 }
 
 .store-container .listBarang .isiBarangContainer {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.7%;
-
+	grid-column: 1 / 3;
+	grid-row: 2 / 3;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 1.7%;
 }
 
-.store-container .listBarang .listBarangContainer .barangContainer{
-    border: solid var(--clr-border);
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 15px;
+.store-container .listBarang .listBarangContainer .barangContainer {
+	border: solid var(--clr-border);
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	overflow: hidden;
+	margin-bottom: 15px;
 }
 
-.store-container .listBarang .barangContainer img{
-    width: 100%;
-    border-bottom: 1px solid var(--clr-border);
+.store-container .listBarang .barangContainer img {
+	width: 100%;
+	border-bottom: 1px solid var(--clr-border);
 }
 
-.store-container .listBarang .barangContainer .deskripsiBarang{
-    padding: 10px;
+.store-container .listBarang .barangContainer .deskripsiBarang {
+	padding: 10px;
 }
 
-.store-container .listBarang .deskripsiBarang h4{
-    font-size: 0.9rem;
-    font-weight: 400;
+.store-container .listBarang .deskripsiBarang h4 {
+	font-size: 0.9rem;
+	font-weight: 400;
 }
 
-.store-container .listBarang .deskripsiBarang h3{
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 10px;
+.store-container .listBarang .deskripsiBarang h3 {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 10px;
 }
 
-.store-container .listBarang .deskripsiBarang p{
-    font-size:0.9rem;
-    font-weight: 400;
-    opacity: 50%;
+.store-container .listBarang .deskripsiBarang p {
+	font-size: 0.9rem;
+	font-weight: 400;
+	opacity: 50%;
 }
 
 .store-container .listBarang .deskripsiBarang .star {
-	color: #FFC400;
+	color: #ffc400;
 	font-size: 15px;
 }
 
-.store-container .listBarang .deskripsiBarang button{  
-    width: 60%;
-    height: 27px;
-    background-color: var(--clr-toggle-button);
-    border: none;
-    border-radius: 7px;
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 7px;
-    margin-bottom: 20px;
+.store-container .listBarang .deskripsiBarang button {
+	width: 60%;
+	height: 27px;
+	background-color: var(--clr-toggle-button);
+	border: none;
+	border-radius: 7px;
+	color: white;
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	margin-top: 7px;
+	margin-bottom: 20px;
 }
 
-.store-container .listBarang .alignRight{
-    text-align: right;
+.store-container .listBarang .alignRight {
+	text-align: right;
 }
-
 
 /* PAGINATION */
 
-.store-container .paginationStore{
-    text-align: center;
-    margin-bottom: 30px;
+.store-container .paginationStore {
+	text-align: center;
+	margin-bottom: 30px;
 }
 
-.store-container .paginationStore li{
-    width: 30px;
-    display: inline-block;
-    margin: 0 5px;
+.store-container .paginationStore li {
+	width: 30px;
+	display: inline-block;
+	margin: 0 5px;
 }
 
-.store-container .paginationStore .currentPagination{
-    background-color: var(--clr-toggle-button);
-    border-radius: 50%;
+.store-container .paginationStore .currentPagination {
+	background-color: var(--clr-toggle-button);
+	border-radius: 50%;
 }
 
-.store-container .paginationStore a{
-    color: var(--clr-toggle-button);
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 8px;  
+.store-container .paginationStore a {
+	color: var(--clr-toggle-button);
+	font-size: 1.2rem;
+	font-weight: 600;
+	padding: 8px;
 }
 
-.store-container .paginationStore .currentPagination a{
-    color: white;
+.store-container .paginationStore .currentPagination a {
+	color: white;
 }
-
 
 /* ULASAN */
 
-.ulasanBarang .ulasanPembeli .summaryRating{
-    box-shadow: 1.5px 2px 1px 3px var(--clr-border);
-    border-radius: 7px;
-    display: grid;
-    grid-template-columns: 1fr 3.5fr;
-    align-items: center;
-    padding: 2%;
-    margin: 0 5px;
+.ulasanBarang .ulasanPembeli .summaryRating {
+	box-shadow: 1.5px 2px 1px 3px var(--clr-border);
+	border-radius: 7px;
+	display: grid;
+	grid-template-columns: 1fr 3.5fr;
+	align-items: center;
+	padding: 2%;
+	margin: 0 5px;
 }
 
-.ulasanBarang .ratingProduk .ratingBintang{
-    font-size: 2.3rem;
-    font-weight: 600;
-    margin-bottom: 10px;
+.ulasanBarang .ratingProduk .ratingBintang {
+	font-size: 2.3rem;
+	font-weight: 600;
+	margin-bottom: 10px;
 }
 
-.ulasanBarang .ratingProduk .ratingBintang .star{
-    color: #FFC400;
+.ulasanBarang .ratingProduk .ratingBintang .star {
+	color: #ffc400;
 	font-size: 30px;
 }
 
-.ulasanBarang .ratingProduk .outOf5{
-    font-size: 1.4rem;
-    font-weight: 400;
-    opacity: 60%;
+.ulasanBarang .ratingProduk .outOf5 {
+	font-size: 1.4rem;
+	font-weight: 400;
+	opacity: 60%;
 }
 
-.ulasanBarang .ratingProduk .kepuasan{
-    font-weight: 600;
+.ulasanBarang .ratingProduk .kepuasan {
+	font-weight: 600;
 }
 
-.ulasanBarang .filterRating{
-    display: flex;
+.ulasanBarang .filterRating {
+	display: flex;
 }
 
-.ulasanBarang .filterRating button{
-    padding: 5px 23px;
-    border-radius: 2px;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    margin-bottom: 15px;
-    margin-right: 10px;
+.ulasanBarang .filterRating button {
+	padding: 5px 23px;
+	border-radius: 2px;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	font-size: 0.9rem;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	margin-bottom: 15px;
+	margin-right: 10px;
 }
 
-.ulasanBarang .filterRating .selectedRating{
-    border: 1px solid var(--clr-toggle-button);
-    color: var(--clr-toggle-button);
+.ulasanBarang .filterRating .selectedRating {
+	border: 1px solid var(--clr-toggle-button);
+	color: var(--clr-toggle-button);
 }
 
-.ulasanBarang .listUlasan{
-    padding: 2%;
+.ulasanBarang .listUlasan {
+	padding: 2%;
 }
 
-.ulasanBarang .listUlasan .ulasanContainer{
-    display: grid;
-    grid-template-columns: 1fr 11fr;
-    margin: 30px 0;
+.ulasanBarang .listUlasan .ulasanContainer {
+	display: grid;
+	grid-template-columns: 1fr 11fr;
+	margin: 30px 0;
 }
 
-.ulasanBarang .ulasanContainer img{
-    border-radius: 50%;
-    width: 60px;
+.ulasanBarang .ulasanContainer img {
+	border-radius: 50%;
+	width: 60px;
 }
 
-.ulasanBarang .ulasanContainer h4{
-    font-weight: 400;
+.ulasanBarang .ulasanContainer h4 {
+	font-weight: 400;
 }
 
-.ulasanBarang .ulasanContainer span{
-    font-size: 1.3rem;
-    color: #FFC400;
-    margin-right: 2px;
+.ulasanBarang .ulasanContainer span {
+	font-size: 1.3rem;
+	color: #ffc400;
+	margin-right: 2px;
 }
 
-.ulasanBarang .ulasanContainer .tglJenisBarang{
-    position: relative;
-    opacity: 60%;
-    top: -7px;
+.ulasanBarang .ulasanContainer .tglJenisBarang {
+	position: relative;
+	opacity: 60%;
+	top: -7px;
 }
 
+@media only screen and (max-width: 430px) {
+	.store-container .infoToko {
+		grid-template-columns: 1fr;
+	}
+
+	.store-container .statistikToko {
+		display: grid;
+		grid-template-columns: 0.5fr 1fr;
+	}
+
+	.store-container .statistikToko p {
+		margin: 20px 20px 0 0;
+	}
+
+	.store-container .barangJual .filterBarang button {
+		margin-bottom: 10px;
+	}
+
+	.store-container .listBarang .isiBarangContainer {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.7%;
+	}
+
+	.ulasanBarang .ulasanPembeli .summaryRating {
+		grid-template-columns: 1fr;
+	}
+
+	.ulasanBarang .filterRating {
+		display: none;
+	}
+}

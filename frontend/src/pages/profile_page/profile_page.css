@@ -344,15 +344,6 @@ div {
 	transition: 0.32s ease-in-out;
 }
 
-.profile-textarea {
-	width: 65%;
-	/* Lebar 100% dari parent */
-	height: 80px;
-	/* Sesuaikan tinggi textarea sesuai kebutuhan Anda */
-	padding: 8px;
-	resize: vertical;
-}
-
 .profile-username-input:hover {
 	border-color: var(--clr-hijau-lumut);
 	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
@@ -537,11 +528,6 @@ div {
 }
 
 /* ======================== Save Button ======================== */
-.button-container {
-	display: flex;
-	justify-content: left;
-}
-
 .button-save-information {
 	width: fit-content;
 	border-radius: 6px;
@@ -557,26 +543,6 @@ div {
 
 .button-save-information:hover {
 	background: #8ea147;
-	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
-}
-
-.button-cancel-information {
-	width: fit-content;
-	border-radius: 6px;
-	background: #de5b50;
-	padding: 9px 40px;
-	color: #fff;
-	text-align: center;
-	font-size: 15px;
-	margin-right: 20px;
-	font-weight: 600;
-	cursor: pointer;
-	transition: 0.3s ease-in-out;
-}
-
-
-.button-cancel-information:hover {
-	background: #f9766a;
 	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
 }
 
@@ -1610,6 +1576,16 @@ p {
 	background-color: #5855555e;
 }
 
+.transaction-sort-option.selected {
+	border-radius: 10px;
+	border: 1px solid #728a1a;
+	background: #e6f0c0;
+}
+
+.transaction-sort-option.selected:hover {
+	background: #c4da6d;
+}
+
 /* ======================== Transaction Item Container ======================== */
 .transaction-item-account-container {
 	border: 1px solid #e1e6ed;
@@ -1950,6 +1926,156 @@ p {
 	background-color: #495811;
 }
 
+/* ======================== Transaction Item Score Dropdown ======================== */
+.transaction-profile-product-review-container {
+	display: flex;
+	flex-direction: column;
+	padding: 20px 40px;
+	gap: 20px;
+}
+
+.transaction-profile-product-review-information-container {
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+	align-items: center;
+}
+
+.transaction-profile-product-review-information-container h3 {
+	color: #212121;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.transaction-profile-product-review-information-container p {
+	color: #6d7588;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.product-review-image-content {
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+.product-review-image-content img {
+	object-fit: cover;
+	object-position: center;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+}
+
+.product-review-information-content {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	width: 75%;
+}
+
+.product-review-score-star-container {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+	align-items: center;
+}
+
+.product-review-score-star-container h4 {
+	color: #212121;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.product-review-star-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: #ffc400;
+	font-size: 28px;
+}
+
+.product-review-text-area-content {
+	display: flex;
+	width: 100%;
+	height: 120px;
+	border: 1px solid #6d7588;
+	background: #fff;
+	border-radius: 6px;
+	overflow: hidden;
+	transition: 0.3s ease-in-out;
+	padding: 10px 16px;
+}
+
+.product-review-text-area-content textarea {
+	width: 100%;
+	color: #212121;
+	font-family: Inter;
+	font-size: 14px;
+	font-weight: 400;
+	overflow: auto;
+	resize: none;
+	outline: none;
+	border: none;
+}
+
+.product-review-text-area-content textarea::-webkit-scrollbar {
+	display: none;
+	padding: 10px 16px;
+}
+
+.product-review-text-area-content:hover {
+	border-color: #728a1a;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.product-review-text-area-content:focus-within {
+	outline: none;
+	border-color: #728a1a;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+}
+
+.product-review-add-photo-video-container {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+	align-items: center;
+}
+
+.product-review-add-photo-video-content {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	align-items: center;
+	color: #728a1a;
+	font-size: 17px;
+	font-weight: 400;
+	border-radius: 4px;
+	border: 1px solid #728a1a;
+	background: #e6f0c0;
+	padding: 8px 12px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.product-review-add-photo-video-content:hover {
+	background: #dcf08b;
+	transform: scale(1.01);
+}
+
+.okay-cancel-order-button {
+	border: 1px solid #728a1a;
+	background: #728a1a;
+	color: #fff;
+	width: 120px;
+	text-align: center;
+}
+
+.okay-cancel-order-button:hover {
+	background-color: #495811;
+}
+
 /* ========================================================================= */
 /* ======================== Transaction Page Footer ======================== */
 /* ========================================================================= */
@@ -2001,7 +2127,8 @@ p {
 }
 
 .pay-now-button,
-.cancel-order-button {
+.cancel-order-button,
+.score-payment-button {
 	padding: 10px 20px;
 	border-radius: 6px;
 	cursor: pointer;
@@ -2027,6 +2154,20 @@ p {
 
 .cancel-order-button:hover {
 	background-color: #5855555e;
+	transform: scale(1.03);
+}
+
+.score-payment-button {
+	background-color: var(--clr-hijau-lumut);
+	color: #fff;
+	border: 1px solid var(--clr-hijau-lumut);
+	width: 120px;
+	text-align: center;
+	letter-spacing: 1px;
+}
+
+.score-payment-button:hover {
+	background-color: #5b6e15;
 	transform: scale(1.03);
 }
 

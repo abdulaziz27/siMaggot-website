@@ -552,6 +552,10 @@ div {
 	font-weight: 400;
 }
 
+.title-harga-total-produk-pesanan-430 {
+	display: none;
+}
+
 /* ======================== Produk Pesanan ======================== */
 .maggot-store-produk {
 	padding: 20px 25px;
@@ -932,4 +936,278 @@ div {
 
 .button-check-out-barang-belanja h1:hover {
 	background-color: #495811;
+}
+
+@media only screen and (max-width: 430px) {
+	.check-out-container {
+		width: 90%;
+		margin-left: 5%;
+	}
+
+	.check-out-container h1 {
+		font-size: 23px;
+		padding-left: 10px;
+	}
+
+	.check-out-content-container {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.alamat-pengirim-produk-dipesan-container {
+		width: 100%;
+	}
+
+	.alamat-pengiriman-container h2 {
+		font-size: 18px;
+	}
+
+	.penerima-container h3 {
+		font-size: 16px;
+	}
+
+	.penerima-container h4 {
+		font-size: 15px;
+	}
+	.penerima-container p {
+		font-size: 14px;
+	}
+
+	.button-alamat {
+		font-size: 13px;
+		padding: 6px 10px;
+	}
+
+	.produk-dipesan-container h2 {
+		font-size: 18px;
+	}
+
+	.title-produk-dipesan {
+		display: none;
+	}
+
+	.title-harga-total-produk-pesanan-430 {
+		display: flex;
+	}
+
+	.informasi-produk-dipesan-container {
+		align-items: center;
+		justify-content: left;
+		width: 100%;
+	}
+
+	.informasi-produk-pesanan-space-between {
+		display: flex;
+		flex-direction: column;
+		justify-content: left;
+		align-items: center;
+		width: 100%;
+		gap: 10px;
+	}
+
+	.informasi-produk-pesanan {
+		align-items: center;
+		justify-content: left;
+		width: 100%;
+	}
+
+	.informasi-produk-pesanan img {
+		height: 80px;
+		width: 80px;
+	}
+
+	.product-information {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.informasi-produk-pesanan h4 {
+		font-size: 14px;
+	}
+
+	.informasi-produk-pesanan p {
+		font-size: 13px;
+	}
+
+	.harga-satuan-total-produk-pesanan {
+		width: 100%;
+	}
+
+	.harga-satuan-total-produk-pesanan h4 {
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	.harga-satuan-total-produk-pesanan p {
+		font-size: 13px;
+		padding: 0;
+	}
+
+	.harga-satuan-total-produk-pesanan h5 {
+		font-size: 13px;
+		font-weight: 500;
+		padding: 0;
+	}
+
+	.harga-satuan-produk,
+	.kuantitas-produk,
+	.total-harga-produk {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0;
+		width: fit-content;
+		gap: 2px;
+	}
+
+	.pesan-penjual-pengiriman-container {
+		flex-direction: column;
+		justify-content: left;
+		width: 100%;
+		gap: 15px;
+	}
+
+	.pesan-penjual-pengiriman-container h6 {
+		width: fit-content;
+		font-size: 15px;
+	}
+
+	.pesan-penjual-container {
+		width: 100%;
+	}
+
+	.pesan-penjual-input {
+		padding: 8px 10px;
+		font-size: 13px;
+		width: 80%;
+		height: auto;
+	}
+
+	.pengiriman-produk-pesanan-container {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		justify-content: left;
+	}
+
+	.ubah-pengiriman-produk-pesanan {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.pengiriman-produk-pesanan-container h3 {
+		font-size: 15px;
+		margin-right: 10px;
+	}
+
+	.pengiriman-produk-pesanan-container h4 {
+		font-size: 15px;
+		padding: 0;
+	}
+
+	.pengiriman-produk-pesanan-container p {
+		font-size: 15px;
+		margin: 0;
+	}
+
+	.pengiriman-produk-pesanan-container h5 {
+		font-size: 15px;
+		margin: auto;
+		margin-right: 0;
+	}
+
+	.total-pesanan-pesanan-produk-container {
+		width: 100%;
+		align-items: center;
+	}
+
+	.total-pesanan-pesanan-produk-container p {
+		font-size: 15px;
+		margin: 0;
+	}
+
+	.total-pesanan-pesanan-produk-container h5 {
+		font-size: 16px;
+		margin: 0;
+	}
+
+	.ringkasan-belanja-container {
+		width: 100%;
+	}
+
+	.ringkasan-belanja-height {
+		width: 100%;
+		margin: 0;
+	}
+
+	.ringkasan-belanja-height h2 {
+		font-size: 18px;
+	}
+
+	.barang-belanja-container p {
+		font-size: 15px;
+	}
+
+	.metode-pembayaran-check-out h6 {
+		font-size: 14px;
+	}
+
+	.metode-pembayaran-check-out p {
+		font-size: 13px;
+		margin: 0;
+	}
+
+	.button-check-out-barang-belanja h1 {
+		font-size: 14px;
+		padding: 8px;
+	}
+
+	.option-payment-method h1 {
+		font-size: 15px;
+	}
+
+	.arrow-button-transfer-bank-dropdown {
+		font-size: 25px;
+	}
+
+	.metode-pembayaran-list {
+		margin-top: 10px;
+		width: 110%;
+		margin-left: -15px;
+	}
+
+	.transfer-bank-dropdown-choice h2 {
+		font-size: 14px;
+	}
+
+	.change-alamat-content {
+		width: 100%;
+		height: fit-content;
+		margin: 0px 0px;
+		border-radius: 0px;
+	}
+
+	.change-alamat-content h1 {
+		font-size: 18px;
+	}
+
+	.change-alamat-content h2 {
+		font-size: 16px;
+	}
+
+	.change-alamat-content p {
+		font-size: 14px;
+	}
+
+	.add-new-alamat-button {
+		font-size: 15px;
+		padding: 5px;
+	}
+
+	.button-choose-address {
+		font-size: 15px;
+		padding: 5px 15px;
+	}
 }

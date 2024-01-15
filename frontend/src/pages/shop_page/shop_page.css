@@ -39,6 +39,7 @@
 	font-size: 0.95rem;
 	line-height: 1.5;
 	overflow-x: hidden;
+	user-select: none;
 }
 
 /* ======================== Main Filter Page Container ======================== */
@@ -54,6 +55,10 @@
 	user-select: none;
 }
 
+.filter-button-navbar {
+	display: none;
+}
+
 .sort-menu-shop-container {
 	width: 83%;
 	padding-left: 24px;
@@ -67,6 +72,8 @@
 	border: 1px solid var(--clr-abu-muda);
 	border-radius: 10px;
 	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
+	background-color: #fff;
+	height: fit-content;
 }
 
 .filter-height h1 {
@@ -78,6 +85,10 @@
 	margin-bottom: 20px;
 	margin-left: 9%;
 	width: 81%;
+}
+
+.close-navbar-shop-filter-button {
+	display: none;
 }
 
 .icon-filter {
@@ -281,7 +292,7 @@
 	background-color: none;
 }
 
-.custom-checkbox input:checked~.checkmark {
+.custom-checkbox input:checked ~ .checkmark {
 	background-color: var(--clr-hijau-lumut);
 	border-color: var(--clr-hijau-lumut);
 }
@@ -292,7 +303,7 @@
 	display: none;
 }
 
-.custom-checkbox input:checked~.checkmark:after {
+.custom-checkbox input:checked ~ .checkmark:after {
 	display: block;
 }
 
@@ -519,15 +530,6 @@ p {
 	cursor: pointer;
 }
 
-.button-beli-shop a {
-	text-decoration: none;
-	color: var(--clr-abu-muda);
-}
-
-button-beli-shop a:hover {
-	color: var(--clr-putih);
-}
-
 .button-beli-shop:hover {
 	background-color: #155f04b2;
 	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.486);
@@ -578,10 +580,22 @@ button-beli-shop a:hover {
 		display: flex;
 		width: 90%;
 		margin-left: 5%;
+		flex-direction: column;
 	}
 
 	.filter-container {
-		display: none;
+		display: flex;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #46494e80;
+		z-index: 1;
+		justify-content: center;
+		user-select: none;
+		overflow: auto;
+		padding: 50px 0px;
 	}
 
 	.sort-menu-shop-container {
@@ -595,6 +609,18 @@ button-beli-shop a:hover {
 
 	.dropdown-sort-menu-container {
 		display: none;
+	}
+
+	.close-navbar-shop-filter-button {
+		display: flex;
+		align-items: center;
+		padding: 20px 20px 0px 15px;
+		width: fit-content;
+		cursor: pointer;
+		font-family: Inter;
+		font-size: 14px;
+		font-weight: 400;
+		gap: 5px;
 	}
 
 	/* ======================== Lokasi Lengkap Container ======================== */
@@ -687,6 +713,7 @@ button-beli-shop a:hover {
 		border-radius: 10px;
 		cursor: pointer;
 		transition: 0.3s ease-in-out;
+		width: fit-content;
 	}
 
 	.filter-button-navbar:hover {
