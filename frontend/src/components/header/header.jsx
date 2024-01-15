@@ -50,7 +50,7 @@ const Header = () => {
 
 	const handleChatClick = () => {
 		if (isLoggedIn) {
-			// link ke hal chat (navigate)
+			navigate("/chat")
 		} else {
 			showLoginAlert("chat");
 		}
@@ -86,8 +86,8 @@ const Header = () => {
 	return (
 		<div className="header-container">
 			<div className="header">
-				<a href="./">
-					<h1 href="./" id="logo">
+				<a href="/">
+					<h1 href="/" id="logo">
 						SiMaggot
 					</h1>
 				</a>
@@ -121,12 +121,12 @@ const Header = () => {
 
 				{isLoggedIn ? (
 					<>
-						<a href="./seller" className="button-shop">
+						<a href="/seller" className="button-shop">
 							<img src={image_toko}></img>
 							<h2>Toko</h2>
 						</a>
 
-						<a href="./profile" className="button-profile">
+						<a href="/profile" className="button-profile">
 							<img src={coverImage || image_profile}></img>
 							<h2>Profil</h2>
 						</a>

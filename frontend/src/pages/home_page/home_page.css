@@ -158,6 +158,7 @@ hr {
 	from {
 		opacity: 0;
 	}
+
 	to {
 		opacity: 1;
 	}
@@ -337,6 +338,7 @@ hr {
 	margin-top: 7px;
 	transition: 0.4s ease;
 	cursor: pointer;
+	text-decoration: none;
 }
 
 .title-produk-terlaris a:hover,
@@ -425,10 +427,15 @@ p {
 	font-size: 14px;
 	font-weight: 600;
 	padding: 5px;
-	width: 70px;
+	width: 100px;
 	text-align: center;
 	transition: 0.5s ease;
 	cursor: pointer;
+}
+
+.button-beli a {
+	text-decoration: none;
+	color: (var(--clr-button));
 }
 
 .button-beli:hover {
@@ -628,6 +635,7 @@ p {
 
 /* ======================== Responsive ======================== */
 @media only screen and (max-width: 2048px) and (min-width: 1921px) {
+
 	/* ======================== Produk Terlaris dan Produk Terbaru ======================== */
 	.button-beli {
 		margin-top: auto;
@@ -642,6 +650,7 @@ p {
 }
 
 @media only screen and (max-width: 1728px) and (min-width: 1281px) {
+
 	/* ======================== Kategori Produk ======================== */
 	.big-category img {
 		object-fit: contain;
@@ -660,6 +669,7 @@ p {
 }
 
 @media only screen and (max-width: 1440px) and (min-width: 1281px) {
+
 	/* ======================== Main Home Page ======================== */
 	.horizontal-line {
 		overflow: hidden;
@@ -729,6 +739,7 @@ p {
 }
 
 @media only screen and (max-width: 1280px) {
+
 	/* ======================== Main Home Page ======================== */
 	.horizontal-line {
 		overflow: hidden;
@@ -859,6 +870,7 @@ p {
 }
 
 @media only screen and (max-width: 800px) {
+
 	/* ======================== Slide Banner ======================== */
 	.slide-event-banner {
 		position: relative;
@@ -873,6 +885,7 @@ p {
 }
 
 @media only screen and (max-width: 430px) {
+
 	/* ======================== Slide Banner ======================== */
 	.slide-event-banner {
 		width: 90%;
@@ -1118,6 +1131,7 @@ p {
 	.info-barang-container p {
 		margin-bottom: 13px;
 	}
+
 	.button-beli {
 		margin-left: auto;
 		margin-right: 12px;
