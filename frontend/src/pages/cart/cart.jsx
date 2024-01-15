@@ -6,9 +6,9 @@ import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 
-import productImage from "../../assets/cart/img.png";
-import productImage1 from "../../assets/cart/img1.png";
-import productImage2 from "../../assets/cart/img2.png";
+import productImage from "../../assets/cart/img.jpg";
+import productImage1 from "../../assets/cart/img 1.jpg";
+import productImage2 from "../../assets/cart/img2.jpg";
 
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";

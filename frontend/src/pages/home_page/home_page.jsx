@@ -12,9 +12,9 @@ import Footer from "../../components/footer/footer";
 // import HeaderLogin from "../../components/header/header_login";
 
 // Slide Banner
-import image1 from "../../assets/images/1335919.jpeg";
-import image2 from "../../assets/images/1335926.jpeg";
-import image3 from "../../assets/images/1336068.jpeg";
+import image1 from "../../assets/kategori_produk_banner/big_banner.png";
+import image2 from "../../assets/kategori_produk_banner/width_banner_1.png";
+import image3 from "../../assets/kategori_produk_banner/width_banner_2.png";
 
 // for banner
 const imageFolder = require.context(

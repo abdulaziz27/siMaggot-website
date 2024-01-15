@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
-import image from "../../assets/images/1335919.jpeg";
+import image from "../../assets/images/1335919.png";
 
 import { getAllProducts } from "../../api";
 
