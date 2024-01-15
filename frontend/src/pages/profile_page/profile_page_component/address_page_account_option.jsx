@@ -123,7 +123,7 @@ const AddressPageAccountOption = () => {
 						className="address-option-account-information"
 						htmlFor="addressOption1"
 					>
-						<h2>Nama Penerima</h2>
+						<h2>Paijo</h2>
 						<h2>081234567891</h2>
 						<p>
 							Jl. DI Panjaitan No.128, Karangreja, Purwokerto
@@ -147,7 +147,7 @@ const AddressPageAccountOption = () => {
 						className="address-option-account-information"
 						htmlFor="addressOption2"
 					>
-						<h2>Nama Penerima</h2>
+						<h2>Cogyl</h2>
 						<h2>081234567891</h2>
 						<p>
 							Jl. DI Panjaitan No.128, Karangreja, Purwokerto
@@ -170,7 +170,7 @@ const AddressPageAccountOption = () => {
 						className="address-option-account-information"
 						htmlFor="addressOption3"
 					>
-						<h2>Nama Penerima</h2>
+						<h2>Zize</h2>
 						<h2>081234567891</h2>
 						<p>
 							Jl. DI Panjaitan No.128, Karangreja, Purwokerto

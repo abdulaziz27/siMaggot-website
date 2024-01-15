@@ -71,3 +71,49 @@ export const resetPassword = async (email) => {
 		throw error;
 	}
 };
+
+export const getUserProfile = async () => {
+  const userEndpoint = "/user";
+  
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.get(apiUrl + userEndpoint, {
+      headers: headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const updateUserProfile = async (updatedData) => {
+  const userEndpoint = "/user";
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.put(apiUrl + userEndpoint, updatedData, {
+      headers: headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
