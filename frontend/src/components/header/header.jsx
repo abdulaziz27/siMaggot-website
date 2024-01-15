@@ -5,12 +5,27 @@ import image_toko from "../../assets/profile_page_image/shop_icon.jpeg";
 import image_profile from "../../assets/profile_page_image/profile_image.jpeg";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { getUserProfile } from "../../api";
 
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [coverImage, setCoverImage] = useState("");
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		const fetchUserProfile = async () => {
+			try {
+				const userProfileData = await getUserProfile();
+				setCoverImage(userProfileData.data.cover);
+			} catch (error) {
+				console.error("Error fetching user profile:", error);
+			}
+		};
+
+		fetchUserProfile();
+	}, []);
 
 	useEffect(() => {
 		const accessToken = localStorage.getItem("accessToken");
@@ -106,13 +121,13 @@ const Header = () => {
 
 				{isLoggedIn ? (
 					<>
-						<a href="./shop" className="button-shop">
+						<a href="./seller" className="button-shop">
 							<img src={image_toko}></img>
 							<h2>Toko</h2>
 						</a>
 
 						<a href="./profile" className="button-profile">
-							<img src={image_profile}></img>
+							<img src={coverImage || image_profile}></img>
 							<h2>Profil</h2>
 						</a>
 					</>
@@ -159,7 +174,7 @@ const Header = () => {
 								</a>
 							</div>
 							<a href="./">Beranda</a>
-							<a href="./shop">Toko</a>
+							<a href="./seller">Toko</a>
 							<a>Tentang</a>
 							<a>Blog</a>
 						</div>

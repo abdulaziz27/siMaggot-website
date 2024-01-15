@@ -1,133 +1,95 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Icon } from "@iconify/react";
 import "../profile_page.css";
-
 import image from "../../../assets/profile_page_image/profile_image.jpeg";
+import { getUserProfile, updateUserProfile } from "../../../api";
 
 const ProfilePageAccountOption = () => {
-	const months = [
-		"Januari",
-		"Februari",
-		"Maret",
-		"April",
-		"Mei",
-		"Juni",
-		"Juli",
-		"Agustus",
-		"September",
-		"Oktober",
-		"November",
-		"Desember",
-	];
+	const [editMode, setEditMode] = useState(false);
+	const [editedUserData, setEditedUserData] = useState({
+		username: "",
+		fullname: "",
+		email: "",
+		contact: "",
+		address: "",
+		cover: "",
+	});
+	const [selectedFile, setSelectedFile] = useState(null);
 
-	const currentYear = new Date().getFullYear();
-	const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
-
-	const [showMonthDropdown, setShowMonthDropdown] = useState(false);
-	const [showDayDropdown, setShowDayDropdown] = useState(false);
-	const [showYearDropdown, setShowYearDropdown] = useState(false);
-
-	const [selectedMonth, setSelectedMonth] = useState("Bulan");
-	const [selectedDay, setSelectedDay] = useState("Tanggal");
-	const [selectedYear, setSelectedYear] = useState("Tahun");
-
-	const monthDropdownRef = useRef(null);
-	const dayDropdownRef = useRef(null);
-	const yearDropdownRef = useRef(null);
-
-	const toggleMonthDropdown = () => {
-		setShowMonthDropdown(!showMonthDropdown);
-	};
-
-	const toggleDayDropdown = () => {
-		setShowDayDropdown(!showDayDropdown);
-	};
-
-	const toggleYearDropdown = () => {
-		setShowYearDropdown(!showYearDropdown);
-	};
-
-	const handleMonthSelect = (selectedMonth) => {
-		setSelectedMonth(selectedMonth);
-		setShowMonthDropdown(false);
-		updateDays(selectedMonth);
-	};
-
-	const handleDaySelect = (selectedDay) => {
-		setSelectedDay(selectedDay);
-		setShowDayDropdown(false);
-	};
-
-	const handleYearSelect = (selectedYear) => {
-		setSelectedYear(selectedYear);
-		setShowYearDropdown(false);
-	};
-
-	const updateDays = (selectedMonth) => {
-		const daysInMonth = getDaysInMonth(selectedMonth);
-		const daysArray = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-		setDaysArray(daysArray);
-	};
-
-	const getDaysInMonth = (selectedMonth) => {
-		switch (selectedMonth) {
-			case "Januari":
-			case "Maret":
-			case "Mei":
-			case "Juli":
-			case "Agustus":
-			case "Oktober":
-			case "Desember":
-				return 31;
-			case "April":
-			case "Juni":
-			case "September":
-			case "November":
-				return 30;
-			case "Februari":
-				return 28;
-			default:
-				return 0;
-		}
-	};
-
-	const [daysArray, setDaysArray] = useState([]);
-	useEffect(() => {
-		updateDays(selectedMonth);
-	}, [selectedMonth]);
-
-	const handleClickOutside = (event) => {
-		if (
-			monthDropdownRef.current &&
-			!monthDropdownRef.current.contains(event.target)
-		) {
-			setShowMonthDropdown(false);
-		}
-		if (
-			dayDropdownRef.current &&
-			!dayDropdownRef.current.contains(event.target)
-		) {
-			setShowDayDropdown(false);
-		}
-		if (
-			yearDropdownRef.current &&
-			!yearDropdownRef.current.contains(event.target)
-		) {
-			setShowYearDropdown(false);
-		}
-	};
 
 	useEffect(() => {
-		document.addEventListener("click", handleClickOutside);
-		return () => {
-			document.removeEventListener("click", handleClickOutside);
+		const fetchUserProfile = async () => {
+			try {
+				const userProfileData = await getUserProfile();
+				setEditedUserData({
+					username: userProfileData.data.username,
+					fullname: userProfileData.data.fullname,
+					email: userProfileData.data.email,
+					contact: userProfileData.data.contact,
+					address: userProfileData.data.address,
+					cover: userProfileData.data.cover,
+				});
+			} catch (error) {
+				console.error("Error fetching user profile:", error);
+			}
 		};
+
+		fetchUserProfile();
 	}, []);
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setEditedUserData((prevData) => ({
+			...prevData,
+			[name]: value,
+		}));
+	};
+
+	const handleFileChange = (event) => {
+		const file = event.target.files[0];
+		setSelectedFile(file);
+	};
+
+	const handleCancelEdit = () => {
+		setEditMode(false);
+	};
+
+	const handleSaveChanges = async () => {
+		try {
+			const formData = new FormData();
+
+			formData.append("username", editedUserData.username);
+			formData.append("fullname", editedUserData.fullname);
+			formData.append("contact", editedUserData.contact);
+			formData.append("address", editedUserData.address);
+
+			if (selectedFile) {
+				formData.append("cover", selectedFile);
+			}
+
+			const result = await updateUserProfile(formData);
+
+			if (result.status === "Success") {
+				setEditMode(false);
+			} else {
+				console.error("Error updating user profile:", result.message);
+				console.error(result.error);
+			}
+		} catch (error) {
+			console.error("Error updating user profile:", error);
+			console.error(error.response);
+		}
+	};
+
 
 	return (
 		<div className="profile-page-account-option">
 			<div className="profile-page-header">
-				<h1>Profil Saya</h1>
+				{editMode ? (
+					<h1>Edit Profile</h1>
+				) : (
+					<h1>Profile Saya</h1>
+				)}
 				<p>
 					Kelola informasi profil Anda untuk mengontrol, melindungi
 					dan mengamankan akun
@@ -138,10 +100,20 @@ const ProfilePageAccountOption = () => {
 
 			<div className="profile-information-change-container">
 				<div className="profile-change-picture-container">
-					<img src={image}></img>
-					<div className="button-change-profile-picture">
-						Pilih Gambar
-					</div>
+					<img src={editedUserData?.cover || image} alt="ProfileImage"></img>
+					{editMode && (
+						<div className="button-change-profile-picture">
+							<label htmlFor="fileInput">Pilih Gambar</label>
+							<input
+								type="file"
+								id="fileInput"
+								accept="image/*"
+								name="cover"
+								onChange={handleFileChange}
+								style={{ display: "none" }}
+							/>
+						</div>
+					)}
 				</div>
 
 				<div className="vertical-line-option-page"></div>
@@ -149,142 +121,86 @@ const ProfilePageAccountOption = () => {
 				<div className="profile-information-container">
 					<div className="username-information flex-row-profile-page">
 						<p>Username</p>
-						<h2>iniUsername</h2>
+						<h2>{editedUserData?.username}</h2>
 					</div>
 					<div className="name-change flex-row-profile-page">
 						<p>Nama</p>
-						<input
-							className="profile-username-input"
-							type="text"
-							name="profile-username"
-							placeholder="iniNama"
-						></input>
+						{editMode ? (
+							<input
+								className="profile-username-input"
+								type="text"
+								name="fullname"
+								value={editedUserData.fullname}
+								onChange={handleInputChange}
+							/>
+						) : (
+							<h2>{editedUserData?.fullname}</h2>
+						)}
 					</div>
 					<div className="email-change-information flex-row-profile-page">
 						<p>E-mail</p>
-						<h2>email@gmail.com</h2>
-						<h3>Ubah</h3>
+						{editMode ? (
+							<input
+								className="profile-username-input"
+								type="email"
+								name="email"
+								value={editedUserData.email}
+								onChange={handleInputChange}
+							/>
+						) : (
+							<h2>{editedUserData?.email}</h2>
+						)}
 					</div>
 					<div className="number-change-information flex-row-profile-page">
 						<p>Nomor Telepon</p>
-						<h2>081234567891</h2>
-						<h3>Ubah</h3>
-					</div>
-					<div className="gender-information flex-row-profile-page">
-						<p>Jenis Kelamin</p>
-						<div className="radio-button-gender">
+						{editMode ? (
 							<input
-								type="radio"
-								id="male"
-								value="male"
-								name="gender"
+								className="profile-username-input"
+								type="number"
+								name="contact"
+								value={editedUserData.contact}
+								onChange={handleInputChange}
 							/>
-							<label htmlFor="male">Laki-laki</label>
-
-							<input
-								type="radio"
-								id="female"
-								value="female"
-								name="gender"
-							/>
-							<label htmlFor="female">Perempuan</label>
-						</div>
+						) : (
+							<h2>{editedUserData?.contact}</h2>
+						)}
 					</div>
-					<div className="birth-date-information-container flex-row-profile-page">
-						<p>Tanggal lahir</p>
-						<div className="birth-date-information">
-							<div
-								className="birth-date-option-dropdown flex-row-birth-date-profile-page"
-								onClick={toggleDayDropdown}
-								ref={dayDropdownRef}
-							>
-								<h4>{selectedDay}</h4>
-								<Icon
-									icon="system-uicons:chevron-down"
-									className={`chevron-birth-button ${
-										showDayDropdown ? "open" : ""
-									}`}
-								/>
-
-								{showDayDropdown && (
-									<ul className="day-dropdown">
-										{daysArray.map((day, index) => (
-											<li
-												key={index}
-												onClick={() =>
-													handleDaySelect(day)
-												}
-											>
-												{day}
-											</li>
-										))}
-									</ul>
-								)}
+					<div className="number-change-information flex-row-profile-page">
+						<p>Alamat</p>
+						{editMode ? (
+							<textarea
+								className="profile-username-input profile-textarea"
+								name="address"
+								placeholder="Jalan, Perumahan, Blok, Provinsi, Kota, Kecamatan, Kode Pos"
+								value={editedUserData?.address}
+								onChange={handleInputChange}
+							/>
+						) : (
+							<h2 placeholder="Jalan, Perumahan, Blok, Provinsi, Kota, Kecamatan, Kode Pos">{editedUserData?.address}</h2>
+						)}
+					</div>
+					{/* Penghapusan gender-information flex-row-profile-page */}
+					{/* Penghapusan birth-date-information-container flex-row-profile-page */}
+					{editMode ? (
+						<div className="button-container">
+							<div className="button-cancel-information" onClick={handleCancelEdit}>
+								Batal
 							</div>
-
-							<div
-								className="birth-date-option-dropdown flex-row-birth-date-profile-page"
-								onClick={toggleMonthDropdown}
-								ref={monthDropdownRef}
-							>
-								<h4>{selectedMonth}</h4>
-								<Icon
-									icon="system-uicons:chevron-down"
-									className={`chevron-birth-button ${
-										showMonthDropdown ? "open" : ""
-									}`}
-								/>
-
-								{showMonthDropdown && (
-									<ul className="month-dropdown">
-										{months.map((month, index) => (
-											<li
-												key={index}
-												onClick={() =>
-													handleMonthSelect(month)
-												}
-											>
-												{month}
-											</li>
-										))}
-									</ul>
-								)}
-							</div>
-
-							<div
-								className="birth-date-option-dropdown flex-row-birth-date-profile-page"
-								onClick={toggleYearDropdown}
-								ref={yearDropdownRef}
-							>
-								<h4>{selectedYear}</h4>
-								<Icon
-									icon="system-uicons:chevron-down"
-									className={`chevron-birth-button ${
-										showYearDropdown ? "open" : ""
-									}`}
-								/>
-
-								{showYearDropdown && (
-									<ul className="year-dropdown">
-										{years.map((year, index) => (
-											<li
-												key={index}
-												onClick={() =>
-													handleYearSelect(year)
-												}
-											>
-												{year}
-											</li>
-										))}
-									</ul>
-								)}
+							<div className="button-save-information" onClick={handleSaveChanges}>
+								Simpan
 							</div>
 						</div>
-					</div>
-					<div className="button-save-information">Simpan</div>
+					) : (
+						<div
+							className="button-save-information"
+							onClick={() => setEditMode(true)}
+						>
+							Edit
+						</div>
+					)}
 				</div>
 			</div>
-		</div>
+		</div >
 	);
 };
 

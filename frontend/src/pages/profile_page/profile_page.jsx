@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import "./profile_page.css";
 
@@ -13,13 +13,39 @@ import FavoriteProductAccountOption from "./profile_page_component/favorite_prod
 import InformationProductAccountOption from "./profile_page_component/information_page_account_option";
 import TransactionProductAccountOption from "./profile_page_component/transaction_page_account_option";
 import OrderStatusAccountOption from "./profile_page_component/order_status_account_option";
+
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../../api";
+import { logoutUser, getUserProfile } from "../../api";
+import isAuthenticated from "../../auth";
+
 
 const ProfilePage = () => {
 	const [selectedOption, setSelectedOption] = useState("Profil");
+	const [username, setUsername] = useState("");
+	const [coverImage, setCoverImage] = useState("");
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		const fetchUserProfile = async () => {
+			try {
+				const userProfileData = await getUserProfile();
+				setUsername(userProfileData.data.username);
+				setCoverImage(userProfileData.data.cover);
+			} catch (error) {
+				console.error("Error fetching user profile:", error);
+			}
+		};
+
+		fetchUserProfile();
+	}, []);
+
+	useEffect(() => {
+		if (!isAuthenticated()) {
+			navigate("/login");
+		}
+	}, [navigate]);
+
 
 	const handleLogout = async () => {
 		try {
@@ -28,7 +54,9 @@ const ProfilePage = () => {
 			if (result.status === "Success") {
 				localStorage.removeItem("accessToken");
 
-				navigate("/login");
+				swal("Success!", "Logout berhasil!", "success").then(() => {
+					navigate("/login");
+				});
 			} else {
 				swal("Error!", "Logout gagal. Silakan coba lagi.", "error");
 			}
@@ -67,10 +95,10 @@ const ProfilePage = () => {
 				<div className="profile-page-option">
 					<div className="profile-page-option-height">
 						<div className="profile-option-container">
-							<img src={image}></img>
+							<img src={coverImage || image} alt="ProfileImage" />
 							<div className="username-edit-profile">
-								<h1>username</h1>
-								<div className="edit-profile">
+								<h1>{username}</h1>
+								<div className="edit-profile" onClick={() => setSelectedOption("Profil")}>
 									<Icon
 										icon="fa-regular:edit"
 										className="edit-icon"

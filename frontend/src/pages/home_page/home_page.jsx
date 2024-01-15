@@ -8,7 +8,7 @@ import "./home_page.css";
 import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
-import HeaderLogin from "../../components/header/header_login";
+// import HeaderLogin from "../../components/header/header_login";
 
 // Slide Banner
 import image1 from "../../assets/images/1335919.jpeg";
