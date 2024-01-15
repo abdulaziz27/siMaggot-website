@@ -540,3 +540,70 @@ div {
 .productContainer .alignRight {
 	text-align: right;
 }
+
+@media only screen and (max-width: 430px) {
+	html {
+		font-size: 70%;
+	}
+
+	.heroProduk {
+		margin-bottom: 20px;
+	}
+
+	.productContainer {
+		margin: 45px 8%;
+		grid-template-areas:
+			"hero"
+			"infoBarang"
+			"toko"
+			"deskripsi"
+			"ulasan"
+			"rekomendasi";
+		grid-template-columns: 1fr;
+	}
+
+	.productContainer .toko {
+		display: inline-block;
+	}
+
+	.productContainer .profilToko img {
+		width: 60px;
+	}
+
+	.productContainer .profilToko .statusToko {
+		font-size: 100%;
+	}
+
+	.productContainer .profilToko span {
+		font-size: 1.4rem;
+	}
+
+	.productContainer .profilToko .hubungiToko {
+		font-size: 100%;
+	}
+
+	.productContainer .statistikToko {
+		display: none;
+	}
+
+	.produkLain {
+		display: none;
+	}
+
+	.productContainer .barangRekomendasiContainer {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.7%;
+	}
+
+	.listUlasan p {
+		font-size: 100%;
+	}
+
+	.ulasanContainer img {
+		width: 40px;
+	}
+
+	.ulasanPembeli .summaryRating {
+		grid-template-columns: 1fr;
+	}
+}

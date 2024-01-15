@@ -298,3 +298,19 @@ div {
 .visible {
 	color: var(--clr-abu-sedang);
 }
+
+@media only screen and (max-width: 470px) {
+	.loginregister-container {
+		grid-template-columns: 1fr;
+		padding-left: 25px;
+		max-width: 90%;
+	}
+
+	.greetingImage {
+		display: none;
+	}
+
+	.greetingCard {
+		border-right: none;
+	}
+}

@@ -68,9 +68,6 @@ const ShopPage = () => {
 		));
 	};
 
-	// looping
-	const times = Array(28).fill(null);
-
 	// Checkbox Lokasi
 	const [checkboxesLokasi, setCheckboxesLokasi] = useState({
 		"Kab. Banyumas": false,
@@ -153,176 +150,221 @@ const ShopPage = () => {
 		));
 	};
 
+	// Filter Dropdown
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	const [isFilter430Open, SetisFilter430Open] = useState(true);
+
+	const handleResize = () => {
+		setWindowWidth(window.innerWidth);
+	};
+
+	useEffect(() => {
+		window.addEventListener("resize", handleResize);
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
+	const shouldShowFilterContainer = windowWidth !== 500 || windowWidth <= 500;
+
+	const Filter430Dropdown = () => {
+		SetisFilter430Open(!isFilter430Open);
+	};
+
+	const closeFilter430 = () => {
+		SetisFilter430Open(false);
+	};
+
 	return (
 		<div className="main-shop-page-container">
 			<Navbar />
 			<Header />
 			<div className="main-filter-container">
-				<div className="filter-container">
-					<div className="filter-height">
-						<h1>
-							<Icon
-								icon="iconoir:filter"
-								className="icon-filter"
-							/>
-							Filter
-						</h1>
+				<div
+					className="filter-button-navbar"
+					onClick={Filter430Dropdown}
+				>
+					<Icon
+						icon="iconoir:filter"
+						className="icon-filter-navbar"
+					/>
+					<h2>Filter</h2>
+				</div>
 
-						<div className="lokasi-filter-container">
-							<h2>Lokasi</h2>
-							{Object.entries(checkboxesLokasi).map(
-								([location, isCheckedLokasi]) => (
-									<label
-										key={location}
-										className="custom-checkbox"
-									>
-										<input
-											type="checkbox"
-											name={location}
-											checked={isCheckedLokasi}
-											onChange={
-												handleCheckboxChangeLokasi
-											}
-										/>
-										<span className="checkmark">
-											{isCheckedLokasi && (
-												<Icon
-													icon="mingcute:check-fill"
-													className="mark-icon"
-												/>
-											)}
-										</span>
-										{location}
-									</label>
-								)
-							)}
+				{isFilter430Open && shouldShowFilterContainer && (
+					<div className="filter-container">
+						<div className="filter-height">
+							<div
+								className="close-navbar-shop-filter-button"
+								onClick={closeFilter430}
+							>
+								<Icon icon="mi:chevron-left" />
+								Close Filter
+							</div>
+							<h1>
+								<Icon
+									icon="iconoir:filter"
+									className="icon-filter"
+								/>
+								Filter
+							</h1>
 
-							<p onClick={locationContainer}>
-								Lihat selengkapnya
-							</p>
-						</div>
+							<div className="lokasi-filter-container">
+								<h2>Lokasi</h2>
+								{Object.entries(checkboxesLokasi).map(
+									([location, isCheckedLokasi]) => (
+										<label
+											key={location}
+											className="custom-checkbox"
+										>
+											<input
+												type="checkbox"
+												name={location}
+												checked={isCheckedLokasi}
+												onChange={
+													handleCheckboxChangeLokasi
+												}
+											/>
+											<span className="checkmark">
+												{isCheckedLokasi && (
+													<Icon
+														icon="mingcute:check-fill"
+														className="mark-icon"
+													/>
+												)}
+											</span>
+											{location}
+										</label>
+									)
+								)}
 
-						<div className="horizontal-line-filter"></div>
-
-						<div className="harga-filter-container">
-							<h2>Harga</h2>
-							<div className="min-harga input-area-harga">
-								<div className="rp-area">Rp</div>
-								<input
-									className="harga-input"
-									type="text"
-									name="minharga"
-									placeholder="Harga Minimum"
-								></input>
+								<p onClick={locationContainer}>
+									Lihat selengkapnya
+								</p>
 							</div>
 
-							<div className="max-harga input-area-harga">
-								<div className="rp-area">Rp</div>
-								<input
-									className="harga-input"
-									type="text"
-									name="maxharga"
-									placeholder="Harga Maksimum"
-								></input>
+							<div className="horizontal-line-filter"></div>
+
+							<div className="harga-filter-container">
+								<h2>Harga</h2>
+								<div className="min-harga input-area-harga">
+									<div className="rp-area">Rp</div>
+									<input
+										className="harga-input"
+										type="text"
+										name="minharga"
+										placeholder="Harga Minimum"
+									></input>
+								</div>
+
+								<div className="max-harga input-area-harga">
+									<div className="rp-area">Rp</div>
+									<input
+										className="harga-input"
+										type="text"
+										name="maxharga"
+										placeholder="Harga Maksimum"
+									></input>
+								</div>
+
+								<div className="button-terapkan-harga-filter">
+									Terapkan
+								</div>
 							</div>
 
-							<div className="button-terapkan-harga-filter">
-								Terapkan
+							<div className="horizontal-line-filter"></div>
+
+							<div className="kategori-filter-container">
+								<h2>Kategori</h2>
+								{Object.entries(checkboxesKategori).map(
+									([kategori, isCheckedKategori]) => (
+										<label
+											key={kategori}
+											className="custom-checkbox"
+										>
+											<input
+												type="checkbox"
+												name={kategori}
+												checked={isCheckedKategori}
+												onChange={
+													handleCheckboxChangeKategori
+												}
+											/>
+											<span className="checkmark">
+												{isCheckedKategori && (
+													<Icon
+														icon="mingcute:check-fill"
+														className="mark-icon"
+													/>
+												)}
+											</span>
+											{kategori}
+										</label>
+									)
+								)}
 							</div>
-						</div>
 
-						<div className="horizontal-line-filter"></div>
+							<div className="horizontal-line-filter"></div>
 
-						<div className="kategori-filter-container">
-							<h2>Kategori</h2>
-							{Object.entries(checkboxesKategori).map(
-								([kategori, isCheckedKategori]) => (
-									<label
-										key={kategori}
-										className="custom-checkbox"
-									>
-										<input
-											type="checkbox"
-											name={kategori}
-											checked={isCheckedKategori}
-											onChange={
-												handleCheckboxChangeKategori
-											}
-										/>
-										<span className="checkmark">
-											{isCheckedKategori && (
-												<Icon
-													icon="mingcute:check-fill"
-													className="mark-icon"
-												/>
-											)}
-										</span>
-										{kategori}
-									</label>
-								)
-							)}
-						</div>
+							<div className="rating-filter-container">
+								<h2>Rating</h2>
+								{Object.entries(checkboxesRating).map(
+									([rating, isCheckedRating]) => (
+										<label
+											key={rating}
+											className="custom-checkbox"
+										>
+											<input
+												type="checkbox"
+												name={rating}
+												checked={isCheckedRating}
+												onChange={
+													handleCheckboxChangeRating
+												}
+											/>
+											<span className="checkmark">
+												{isCheckedRating && (
+													<Icon
+														icon="mingcute:check-fill"
+														className="mark-icon"
+													/>
+												)}
+											</span>
+											<Icon
+												icon="material-symbols:star"
+												className="icon-star-filter"
+											/>
+											{rating}
+										</label>
+									)
+								)}
+							</div>
 
-						<div className="horizontal-line-filter"></div>
+							<div className="horizontal-line-filter"></div>
 
-						<div className="rating-filter-container">
-							<h2>Rating</h2>
-							{Object.entries(checkboxesRating).map(
-								([rating, isCheckedRating]) => (
-									<label
-										key={rating}
-										className="custom-checkbox"
-									>
-										<input
-											type="checkbox"
-											name={rating}
-											checked={isCheckedRating}
-											onChange={
-												handleCheckboxChangeRating
-											}
-										/>
-										<span className="checkmark">
-											{isCheckedRating && (
-												<Icon
-													icon="mingcute:check-fill"
-													className="mark-icon"
-												/>
-											)}
-										</span>
-										<Icon
-											icon="material-symbols:star"
-											className="icon-star-filter"
-										/>
-										{rating}
-									</label>
-								)
-							)}
-						</div>
-
-						<div className="horizontal-line-filter"></div>
-
-						<div className="last-add-filter-container">
-							<h2>Terakhir ditambahkan</h2>
-							<div className="last-add-button-container">
-								<div className="last-add-button">7 Hari</div>
-								<div className="last-add-button">14 Hari</div>
-								<div className="last-add-button">1 Bulan</div>
-								<div className="last-add-button">3 Bulan</div>
+							<div className="last-add-filter-container">
+								<h2>Terakhir ditambahkan</h2>
+								<div className="last-add-button-container">
+									<div className="last-add-button">
+										7 Hari
+									</div>
+									<div className="last-add-button">
+										14 Hari
+									</div>
+									<div className="last-add-button">
+										1 Bulan
+									</div>
+									<div className="last-add-button">
+										3 Bulan
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				)}
 
 				<div className="sort-menu-shop-container">
 					<div className="filter-navbar-container">
-						<div className="filter-button-navbar">
-							<Icon
-								icon="iconoir:filter"
-								className="icon-filter-navbar"
-							/>
-							<h2>Filter</h2>
-						</div>
-
 						<div className="filter-navbar-shop-container">
 							<div className="filter-navbar-shop-content"></div>
 						</div>
@@ -343,13 +385,15 @@ const ShopPage = () => {
 								{selectedOption}
 								<Icon
 									icon="bx:chevron-down"
-									className={`arrow-icon ${isDropdownOpen ? "open" : ""
-										}`}
+									className={`arrow-icon ${
+										isDropdownOpen ? "open" : ""
+									}`}
 								/>
 							</div>
 							<ul
-								className={`dropdown-list ${isDropdownOpen ? "show" : ""
-									}`}
+								className={`dropdown-list ${
+									isDropdownOpen ? "show" : ""
+								}`}
 							>
 								{renderOptions()}
 							</ul>

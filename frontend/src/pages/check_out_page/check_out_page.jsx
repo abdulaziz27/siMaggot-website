@@ -347,12 +347,21 @@ const CheckOutPage = () => {
 
 										<div className="harga-satuan-total-produk-pesanan">
 											<div className="harga-satuan-produk">
+												<h4 className="title-harga-total-produk-pesanan-430">
+													Harga Satuan
+												</h4>
 												<p>Rp39.980</p>
 											</div>
 											<div className="kuantitas-produk">
+												<h4 className="title-harga-total-produk-pesanan-430">
+													Kuantitas
+												</h4>
 												<p>1</p>
 											</div>
 											<div className="total-harga-produk">
+												<h4 className="title-harga-total-produk-pesanan-430">
+													Total Harga
+												</h4>
 												<h5>Rp39.980</h5>
 											</div>
 										</div>
@@ -377,12 +386,21 @@ const CheckOutPage = () => {
 
 										<div className="harga-satuan-total-produk-pesanan">
 											<div className="harga-satuan-produk">
+												<h4 className="title-harga-total-produk-pesanan-430">
+													Harga Satuan
+												</h4>
 												<p>Rp17.550</p>
 											</div>
 											<div className="kuantitas-produk">
+												<h4 className="title-harga-total-produk-pesanan-430">
+													Kuantitas
+												</h4>
 												<p>1</p>
 											</div>
 											<div className="total-harga-produk">
+												<h4 className="title-harga-total-produk-pesanan-430">
+													Total Harga
+												</h4>
 												<h5>Rp17.550</h5>
 											</div>
 										</div>

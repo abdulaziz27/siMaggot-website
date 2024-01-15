@@ -19,7 +19,6 @@ import { useNavigate } from "react-router-dom";
 import { logoutUser, getUserProfile } from "../../api";
 import isAuthenticated from "../../auth";
 
-
 const ProfilePage = () => {
 	const [selectedOption, setSelectedOption] = useState("Profil");
 	const [username, setUsername] = useState("");
@@ -45,7 +44,6 @@ const ProfilePage = () => {
 			navigate("/login");
 		}
 	}, [navigate]);
-
 
 	const handleLogout = async () => {
 		try {
@@ -73,7 +71,7 @@ const ProfilePage = () => {
 			case "Alamat":
 				return <AddressPageAccountOption />;
 			case "Ubah Password":
-				return <a href="./change_password"></a>;
+				return <a href="/change_password"></a>;
 			case "Produk Favorit":
 				return <FavoriteProductAccountOption />;
 			case "Daftar Transaksi":
@@ -98,7 +96,10 @@ const ProfilePage = () => {
 							<img src={coverImage || image} alt="ProfileImage" />
 							<div className="username-edit-profile">
 								<h1>{username}</h1>
-								<div className="edit-profile" onClick={() => setSelectedOption("Profil")}>
+								<div
+									className="edit-profile"
+									onClick={() => setSelectedOption("Profil")}
+								>
 									<Icon
 										icon="fa-regular:edit"
 										className="edit-icon"
@@ -180,7 +181,7 @@ const ProfilePage = () => {
 									<p
 										className={
 											selectedOption ===
-												"Daftar Transaksi"
+											"Daftar Transaksi"
 												? "selected"
 												: ""
 										}
@@ -239,8 +240,10 @@ const ProfilePage = () => {
 						<div className="horizontal-line-profile-option"></div>
 
 						<div className="profile-logout-button-container">
-							<div className="profile-logout-button-content"
-								onClick={handleLogout}>
+							<div
+								className="profile-logout-button-content"
+								onClick={handleLogout}
+							>
 								<Icon icon="ant-design:logout-outlined" />
 								Logout
 							</div>

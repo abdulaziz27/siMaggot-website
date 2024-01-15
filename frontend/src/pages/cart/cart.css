@@ -375,3 +375,41 @@ hr {
 	border-left: 1px solid var(--clr-toggle-button);
 	border-right: 1px solid var(--clr-toggle-button);
 }
+
+@media only screen and (max-width: 430px) {
+	html {
+		font-size: 80%;
+	}
+
+	.keranjang-container {
+		grid-template-areas:
+			"header"
+			"barangDibeli"
+			"checkout"
+			"rekomendasi";
+		grid-template-columns: 1fr;
+		column-gap: 25px;
+		margin: 0 6.5%;
+	}
+
+	.rekomendasiBarang .barangRekomendasiContainer {
+		grid-template-columns: 1fr 1fr;
+		gap: 5%;
+	}
+
+	.productImage {
+		width: 40px;
+	}
+
+	.listBarang p {
+		font-size: 90%;
+	}
+
+	.buttonKuantitas a {
+		display: none;
+	}
+
+	.headerBarangDibeli p {
+		font-size: 100%;
+	}
+}
