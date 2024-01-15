@@ -144,3 +144,26 @@ export const getProductById = async (productId) => {
     throw error;
   }
 };
+
+export const getCart = async () => {
+  const cartEndpoint = "/cart";
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.get(apiUrl + cartEndpoint, {
+      headers: headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

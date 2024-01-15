@@ -30,6 +30,7 @@ function Product() {
   if (!product) {
     return <div>Loading...</div>;
   }
+
   return (
     <>
       <Navbar />

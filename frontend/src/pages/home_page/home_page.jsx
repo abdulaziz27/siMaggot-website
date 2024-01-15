@@ -4,6 +4,8 @@ import { Icon } from "@iconify/react";
 //import { useSwipeable } from "react-swipeable";
 import "./home_page.css";
 import { getAllProducts } from "../../api";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 // Components
 import Navbar from "../../components/navbar/navbar";
@@ -34,6 +36,7 @@ const HomePage = () => {
 	const [slideIndex, setSlideIndex] = useState(1);
 	const [imagePaths, setImagePaths] = useState([]);
 	const [isHovered, setIsHovered] = useState(false);
+	const navigate = useNavigate();
 
 	// slice for card produk
 	const imageFiles = imageFolder.keys().slice(0, 6);
@@ -81,24 +84,6 @@ const HomePage = () => {
 	const handleMouseLeave = () => {
 		setIsHovered(false);
 	};
-
-	// Swipe
-	{
-		/*
-	const cardSwipeHandlers = useSwipeable({
-		onSwipedLeft: () => handleSwipe(-1),
-		onSwipedRight: () => handleSwipe(1),
-		preventDefaultTouchmoveEvent: true,
-		trackMouse: true,
-	});
-
-	const handleSwipe = (direction) => {
-		const newIndex = currentIndex + direction;
-		const maxIndex = Math.ceil(imageFiles.length / 2) - 1; // Assuming each card takes 2 images
-		setCurrentIndex(Math.max(0, Math.min(newIndex, maxIndex)));
-	};
-	*/
-	}
 
 	// Artikel
 	const imageFiles_artikel = imageFolder_artikel.keys();
@@ -189,11 +174,25 @@ const HomePage = () => {
 					</p>
 
 					<div className="button-beli">
-						<a href={`/product/${product.id}`}>Beli</a>
+						<Link to={`/product/${product.id}`}>Beli</Link>
 					</div>
 				</div>
 			</div>
 		));
+	};
+
+
+	const handleAddToCart = () => {
+		swal("Berhasil ditambahkan ke keranjang!", {
+			icon: "success",
+			buttons: {
+				confirm: "Lihat Keranjang",
+			},
+		}).then((willNavigate) => {
+			if (willNavigate) {
+				navigate("/cart");
+			}
+		});
 	};
 
 	return (
@@ -317,29 +316,30 @@ const HomePage = () => {
 			<div className="produk-terlaris-container">
 				<div className="title-produk-terlaris">
 					<h1>Produk Terlaris</h1>
-					<a href="./shop">Lihat Semua</a>
+					<Link to="./shop">Lihat Semua</Link>
 				</div>
 
 				<div className="card-barang-container">
 					{featuredProducts.map((product, index) => (
 						<div className="card-barang" key={index}>
-							<div className="gambar-barang">
+							<Link to={`/product/${product.id}`} className="gambar-barang">
 								<img src={product.cover} alt={`Product ${index + 1}`} />
-							</div>
+							</Link>
 
 							<div className="info-barang-container">
-								<h3>{product.productName}</h3>
-								<h4>Rp. {product.price.toLocaleString()}</h4>
-								<p>
-									<Icon
-										icon="material-symbols:star"
-										className="icon-star-filter"
-									/>
-									{product.rating} | {product.stock} terjual
-								</p>
-
-								<div className="button-beli">
-									<a href={`/product/${product.id}`}>Beli</a>
+								<Link to={`/product/${product.id}`} className="link-barang" style={{ textDecoration: 'none' }}>
+									<h3>{product.productName}</h3>
+									<h4>Rp. {product.price.toLocaleString()}</h4>
+									<p>
+										<Icon
+											icon="material-symbols:star"
+											className="icon-star-filter"
+										/>
+										{product.rating} | {product.stock} terjual
+									</p>
+								</Link>
+								<div className="button-beli" onClick={handleAddToCart}>
+									beli
 								</div>
 							</div>
 						</div>
@@ -354,7 +354,7 @@ const HomePage = () => {
 			<div className="produk-terbaru-container">
 				<div className="title-produk-terbaru">
 					<h1>Produk Terbaru</h1>
-					<a href="./shop">Lihat Semua</a>
+					<Link to="./shop">Lihat Semua</Link>
 				</div>
 
 				<div className="card-barang-container">
