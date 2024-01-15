@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import "../profile_page.css";
 
-import image from "../../../assets/images/1335919.jpeg";
+import image from "../../../assets/images/1335919.png";
 
 const FavoriteProductAccountOption = () => {
 	// looping
