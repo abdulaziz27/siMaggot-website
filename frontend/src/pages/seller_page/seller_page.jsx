@@ -49,6 +49,10 @@ const SellerPage = () => {
 		});
 	}, []);
 
+	const handleTambahProdukClick = () => {
+		setSelectedOption("Tambah-Produk-Seller");
+	};
+
 	const renderSelectedOption = () => {
 		switch (selectedOption) {
 			case "Home-Seller":
@@ -56,7 +60,11 @@ const SellerPage = () => {
 			case "Tambah-Produk-Seller":
 				return <AddProductOption />;
 			case "Daftar-Produk-Seller":
-				return <ProductListOption />;
+				return (
+					<ProductListOption
+						onTambahProdukClick={handleTambahProdukClick}
+					/>
+				);
 			case "Daftar-Pesanan-Seller":
 				return <OrderListOption />;
 			case "Ulasan-Seller":

@@ -17,20 +17,7 @@ import Footer from "../../components/footer/footer";
 import image1 from "../../assets/kategori_produk_banner/big_banner.png";
 import image2 from "../../assets/kategori_produk_banner/width_banner_1.png";
 import image3 from "../../assets/kategori_produk_banner/width_banner_2.png";
-
-// for banner
-const imageFolder = require.context(
-	"../../assets/images",
-	false,
-	/\.(png|jpe?g|svg)$/
-);
-
-// for artikel
-const imageFolder_artikel = require.context(
-	"../../assets/images",
-	false,
-	/\.(png|jpe?g|svg)$/
-);
+import ArticleComponent from "../../components/article/article_card";
 
 const HomePage = () => {
 	const [slideIndex, setSlideIndex] = useState(1);
@@ -106,41 +93,6 @@ const HomePage = () => {
 		setIsHovered(false);
 	};
 
-	// Artikel
-	const imageFiles_artikel = imageFolder_artikel.keys();
-	const [cardsPerPage, setCardsPerPage] = useState(4);
-	const [currentIndex, setCurrentIndex] = useState(0);
-
-	const handleNext = () => {
-		if (currentIndex + 1 <= imageFiles_artikel.length - cardsPerPage) {
-			setCurrentIndex(currentIndex + 1);
-		}
-	};
-
-	const handlePrev = () => {
-		if (currentIndex > 0) {
-			setCurrentIndex(currentIndex - 1);
-		}
-	};
-
-	const updateCardsPerPage = () => {
-		if (window.innerWidth <= 430) {
-			setCardsPerPage(2);
-		} else {
-			setCardsPerPage(4);
-		}
-	};
-
-	useEffect(() => {
-		updateCardsPerPage();
-
-		window.addEventListener("resize", updateCardsPerPage);
-
-		return () => {
-			window.removeEventListener("resize", updateCardsPerPage);
-		};
-	}, []);
-
 	const [featuredProducts, setFeaturedProducts] = useState([]);
 	const [products, setProducts] = useState([]);
 
@@ -205,8 +157,6 @@ const HomePage = () => {
 		));
 	};
 
-
-
 	return (
 		<div className="main-page-container">
 			<Navbar />
@@ -221,8 +171,9 @@ const HomePage = () => {
 					{imagePaths.map((image, index) => (
 						<div
 							key={index}
-							className={`mySlides fade ${index + 1 === slideIndex ? "active" : ""
-								}`}
+							className={`mySlides fade ${
+								index + 1 === slideIndex ? "active" : ""
+							}`}
 						>
 							<img src={image} alt={`Slide ${index + 1}`} />
 						</div>
@@ -245,8 +196,9 @@ const HomePage = () => {
 						{imagePaths.map((image, index) => (
 							<span
 								key={index}
-								className={`dot ${index + 1 === slideIndex ? "active-dot" : ""
-									}`}
+								className={`dot ${
+									index + 1 === slideIndex ? "active-dot" : ""
+								}`}
 								onClick={() => currentSlide(index + 1)}
 							></span>
 						))}
@@ -334,20 +286,33 @@ const HomePage = () => {
 				<div className="card-barang-container">
 					{featuredProducts.map((product, index) => (
 						<div className="card-barang" key={index}>
-							<Link to={`/product/${product.id}`} className="gambar-barang">
-								<img src={product.cover} alt={`Product ${index + 1}`} />
+							<Link
+								to={`/product/${product.id}`}
+								className="gambar-barang"
+							>
+								<img
+									src={product.cover}
+									alt={`Product ${index + 1}`}
+								/>
 							</Link>
 
 							<div className="info-barang-container">
-								<Link to={`/product/${product.id}`} className="link-barang" style={{ textDecoration: 'none' }}>
+								<Link
+									to={`/product/${product.id}`}
+									className="link-barang"
+									style={{ textDecoration: "none" }}
+								>
 									<h3>{product.productName}</h3>
-									<h4>Rp. {product.price.toLocaleString()}</h4>
+									<h4>
+										Rp. {product.price.toLocaleString()}
+									</h4>
 									<p>
 										<Icon
 											icon="material-symbols:star"
 											className="icon-star-filter"
 										/>
-										{product.rating} | {product.stock} terjual
+										{product.rating} | {product.stock}{" "}
+										terjual
 									</p>
 								</Link>
 								<div
@@ -371,82 +336,14 @@ const HomePage = () => {
 					<Link to="./shop">Lihat Semua</Link>
 				</div>
 
-				<div className="card-barang-container">
-					{renderProducts()}
-				</div>
+				<div className="card-barang-container">{renderProducts()}</div>
 			</div>
 
 			<div className="horizontal-line">
 				<hr></hr>
 			</div>
 
-			<div className="artikel-edukasi-container">
-				<div className="title-artikel-edukasi">
-					<h1>Artikel Edukasi</h1>
-					<a>Lihat Semua</a>
-				</div>
-
-				<div className="card-artikel-container">
-					{imageFiles_artikel
-						.slice(currentIndex, currentIndex + cardsPerPage)
-						.map((imageFile_artikel, index) => {
-							const imageUrl = imageFolder(imageFile_artikel);
-
-							return (
-								<div className="card-artikel" key={index}>
-									<div className="gambar-artikel">
-										<img
-											src={imageUrl}
-											alt={`Product ${index + 1}`}
-										/>
-									</div>
-
-									<div className="info-artikel-container">
-										<a>
-											<h3>
-												Maggot, Belatung Kaya Nutrisi
-												dan Bermanfaat untuk Lingkungan
-											</h3>
-										</a>
-
-										<h4>
-											Maggot merupakan larva lalat tentara
-											hitam atau black soldier fly [BSF].
-											Ukurannya 0,3 cm sampai 1,5 cm....
-										</h4>
-
-										<p>
-											<Icon
-												icon="bx:time-five"
-												className="icon-time"
-											/>
-											14 Oktober 2023
-										</p>
-									</div>
-								</div>
-							);
-						})}
-
-					{currentIndex > 0 && (
-						<a className="prev-button" onClick={handlePrev}>
-							<Icon
-								icon="bx:chevron-left"
-								className="chevron chev-left-b"
-							/>
-						</a>
-					)}
-
-					{currentIndex + cardsPerPage <
-						imageFiles_artikel.length && (
-							<a className="next-button" onClick={handleNext}>
-								<Icon
-									icon="bx:chevron-right"
-									className="chevron chev-right-b"
-								/>
-							</a>
-						)}
-				</div>
-			</div>
+			<ArticleComponent />
 
 			<Footer />
 		</div>

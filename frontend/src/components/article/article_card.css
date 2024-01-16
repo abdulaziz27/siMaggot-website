@@ -1,0 +1,287 @@
+/* ======================== Artikel ======================== */
+/* ======================== Artikel Container ======================== */
+.article-artikel-edukasi-container {
+	font-family: var(--ff-text);
+	width: 80%;
+	margin-left: 10%;
+	position: relative;
+	height: 440px;
+}
+
+/* ======================== Title ======================== */
+.article-title-artikel-edukasi {
+	display: flex;
+	position: relative;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.article-title-artikel-edukasi a {
+	text-decoration: none;
+}
+
+.article-title-artikel-edukasi h1 {
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--clr-text-produk);
+	margin-right: 20px;
+	cursor: default;
+}
+
+.article-title-artikel-edukasi a {
+	font-size: 17px;
+	font-weight: 700;
+	color: var(--clr-green);
+	margin-top: 7px;
+	transition: 0.4s ease;
+	cursor: pointer;
+}
+
+.article-title-artikel-edukasi a:hover {
+	text-shadow: 1px 1px #728a1a7e;
+}
+
+/* ======================== Card Artikel ======================== */
+.article-card-artikel-container {
+	width: 100%;
+	height: 368px;
+	display: flex;
+	transition: 0.5s ease-in-out;
+}
+
+.article-card-artikel {
+	width: 30%;
+	border-radius: 10px;
+	margin-left: 10px;
+	margin-right: 3px;
+	box-shadow: 0 0 10px 1px #9d9d9d40;
+	overflow: hidden;
+	transform: translateX(0%);
+	transition: 0.5s ease-in-out;
+}
+
+.article-card-artikel:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 15px 2px #9d9d9d60;
+}
+
+.article-card-artikel-container {
+	display: flex;
+	position: relative;
+}
+
+.article-prev-button,
+.article-next-button {
+	background-color: #bbbbbb93;
+	cursor: pointer;
+	position: absolute;
+	top: 40%;
+	color: var(--clr-arrow);
+	font-weight: bold;
+	user-select: none;
+	font-size: 50px;
+	border-radius: 100px;
+	height: 50px;
+	width: 50px;
+	margin: 5px;
+	transition: 0.6s ease;
+	display: flex;
+	align-items: center;
+}
+
+.article-chevron {
+	margin-bottom: 0;
+	transition: 0.6s ease;
+	color: #21212198;
+}
+
+.article-next-button {
+	right: 0;
+}
+
+.article-chevron:hover {
+	color: #fff;
+}
+
+.article-prev-button:hover,
+.article-next-button:hover {
+	background-color: var(--clr-toggle-button);
+	transform: scale(1.1);
+}
+
+/* ======================== Gambar Artikel ======================== */
+.article-gambar-artikel {
+	height: 50%;
+	display: flex;
+	border-radius: 5px;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin: 8px;
+	position: relative;
+}
+
+.article-gambar-artikel img {
+	object-fit: cover;
+	object-position: center;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	transition: 0.4s ease;
+}
+
+.article-gambar-artikel img:hover {
+	transform: scale(1.1);
+}
+
+/* ======================== Info Artikel ======================== */
+.article-info-artikel-container {
+	position: absolute;
+	margin-top: 2px;
+	padding: 0px 12px;
+	width: 100%;
+	height: 160px;
+	text-align: justify;
+}
+
+.article-info-artikel-container a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.article-info-artikel-container a:hover {
+	text-decoration: underline;
+	color: var(--clr-green);
+}
+
+.article-info-artikel-container h3 {
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--clr-green);
+	margin-bottom: 6px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.article-info-artikel-container h4 {
+	font-size: 14px;
+	font-weight: 400;
+	margin-bottom: 10px;
+	color: #6d7588;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.article-info-artikel-container p {
+	font-size: 13px;
+	font-weight: 400;
+	margin-bottom: 6px;
+	color: #6d7588;
+	position: absolute;
+	bottom: 0;
+	left: 12px;
+	cursor: default;
+}
+
+.article-icon-time {
+	position: relative;
+	top: 2px;
+}
+
+@media only screen and (max-width: 430px) {
+	/* ======================== Artikel ======================== */
+	/* ======================== Artikel Container ======================== */
+	.article-artikel-edukasi-container {
+		width: 90%;
+		margin-left: 5%;
+		height: auto;
+	}
+
+	/* ======================== Title ======================== */
+	.article-title-artikel-edukasi {
+		display: flex;
+		position: relative;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+
+	.article-title-artikel-edukasi h1 {
+		font-size: 18px;
+	}
+
+	.article-title-artikel-edukasi a {
+		font-size: 12px;
+		font-weight: 700;
+	}
+
+	/* ======================== Card Artikel ======================== */
+	.article-card-artikel-container {
+		width: 100%;
+		height: 250px;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	.article-card-artikel {
+		width: 50%;
+		margin-left: 0px;
+		overflow: hidden;
+	}
+
+	/* ======================== Gambar Artikel ======================== */
+	.article-gambar-artikel {
+		height: 40%;
+	}
+
+	/* ======================== Info Artikel ======================== */
+	.article-info-artikel-container {
+		position: absolute;
+		padding: 0px 10px;
+		width: 100%;
+		height: 50%;
+	}
+
+	.article-info-artikel-container a {
+		cursor: pointer;
+	}
+
+	.article-info-artikel-container h3 {
+		font-size: 13px;
+		-webkit-line-clamp: 2;
+	}
+
+	.article-info-artikel-container h4 {
+		font-size: 11px;
+	}
+
+	.article-info-artikel-container p {
+		font-size: 10px;
+		padding-top: 8px;
+		position: relative;
+		left: 0;
+	}
+
+	.article-prev-button,
+	.article-next-button {
+		top: 45%;
+		height: 40px;
+		width: 40px;
+		display: flex;
+		align-items: center;
+	}
+
+	.article-chevron {
+		margin-bottom: 0;
+	}
+
+	.article-horizontal-line {
+		width: 90%;
+		margin-left: 5%;
+	}
+}

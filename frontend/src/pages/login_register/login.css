@@ -132,6 +132,33 @@ div {
 	padding-right: 20px;
 }
 
+.loginform [class="cover-register"] {
+	padding: 10px;
+	width: 100%;
+	border-radius: 10px;
+	border: 1px solid var(--clr-border);
+	margin-bottom: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.image-preview-register {
+	display: flex;
+	height: 100px;
+	width: 100px;
+	overflow: hidden;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.image-preview-register img {
+	object-fit: cover;
+	object-position: center;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+}
+
 .register-button-container {
 	display: flex;
 	justify-content: center;
@@ -185,6 +212,18 @@ div {
 
 .loginform [class="password-register"] {
 	margin-bottom: 32px;
+}
+
+.loginform [class="name-register"] {
+	margin-bottom: 28px;
+}
+
+.loginform [class="address-register"] {
+	margin-bottom: 28px;
+}
+
+.loginform [class="description-register"] {
+	margin-bottom: 28px;
 }
 
 .otherAccount {

@@ -14,7 +14,10 @@ import Confirm from "./pages/payment_confirm/confirm";
 import SellerPage from "./pages/seller_page/seller_page";
 import Store from "./pages/store_page/store";
 import ResetPassword from "./pages/login_register/reset_password";
-import Chat from "./pages/chat/chat"
+import Chat from "./pages/chat/chat";
+import ArticlePage from "./pages/article/article_page";
+import BlogPage from "./pages/blog_page/blog_page";
+import RegisterSeller from "./pages/login_register/register_seller";
 
 function App() {
 	return (
@@ -25,7 +28,16 @@ function App() {
 						<Route exact path="/" element={<HomePage />} />
 						<Route exact path="/login" element={<Login />} />
 						<Route exact path="/register" element={<Register />} />
-						<Route exact path="/reset-password" element={<ResetPassword />} />
+						<Route
+							exact
+							path="/registerseller"
+							element={<RegisterSeller />}
+						/>
+						<Route
+							exact
+							path="/reset-password"
+							element={<ResetPassword />}
+						/>
 						<Route exact path="/shop" element={<ShopPage />} />
 						<Route
 							exact
@@ -38,7 +50,10 @@ function App() {
 							element={<ProfilePage />}
 						/>
 						<Route exact path="/cart" element={<Cart />} />
-						<Route path="/product/:productId" element={<Product />} />
+						<Route
+							path="/product/:productId"
+							element={<Product />}
+						/>
 						<Route
 							exact
 							path="/change_password"
@@ -48,6 +63,12 @@ function App() {
 						<Route exact path="/seller" element={<SellerPage />} />
 						<Route exact path="/store" element={<Store />} />
 						<Route exact path="/chat" element={<Chat />} />
+						<Route
+							exact
+							path="/artikel/:id"
+							element={<ArticlePage />}
+						/>
+						<Route exact path="/blog" element={<BlogPage />} />
 					</Routes>
 				</Router>
 			</Fragment>

@@ -1,0 +1,35 @@
+.article-header-main-page-container {
+	background-color: #ffffff;
+	border-bottom-style: solid;
+	border-bottom-width: 0.5px;
+	border-color: #6d7588;
+	margin-bottom: 50px;
+}
+
+.article-navigation-header-container {
+	width: 80%;
+	margin-left: 10%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 100px;
+	padding: 15px 0px;
+}
+
+.article-navigation-header-container a {
+	text-decoration: none;
+}
+
+.logo-simaggot a {
+	color: #728a1a;
+	font-size: 33px;
+	font-weight: 800;
+	cursor: pointer;
+}
+
+.beranda-simaggot-button a {
+	color: #212121;
+	font-size: 18px;
+	font-weight: 500;
+	cursor: pointer;
+}
