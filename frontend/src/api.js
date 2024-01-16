@@ -200,3 +200,37 @@ export const addProduct = async (formData) => {
     }
   }
 };
+
+export const GetAuthenticateSeller = async () => {
+  const userEndpoint = "/seller";
+  
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.get(apiUrl + userEndpoint, {
+      headers: headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getSellerProducts = async (sellerId) => {
+  const productEndpoint = `/seller/${sellerId}/products`;
+
+  try {
+    const response = await axios.get(apiUrl + productEndpoint);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
