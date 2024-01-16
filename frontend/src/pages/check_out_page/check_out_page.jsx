@@ -6,11 +6,11 @@ import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 
-import gambar1 from "../../assets/check_out/maggot_bsf.jpeg";
-import gambar2 from "../../assets/check_out/premium_dried_maggot.jpeg";
 import gambar3 from "../../assets/check_out/map_dunia.jpeg";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import isAuthenticated from "../../auth";
+import { getUserProfile, getCart, postTransaction } from "../../api";
 
 const CheckOutPage = () => {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -19,8 +19,23 @@ const CheckOutPage = () => {
 	const [selectedPaymentMethod, setSelectedPaymentMethod] =
 		useState("Transfer Bank");
 	const dropdownRef = useRef(null);
+	const [userProfile, setUserProfile] = useState(null);
+	const [cartData, setCartData] = useState(null);
 
 	const navigate = useNavigate();
+
+	// Add a default value for cartData and cartData.products
+	const productsBySeller = {};
+
+	if (cartData && cartData.products) {
+		cartData.products.forEach(product => {
+			const sellerId = product.seller.sellerId;
+			if (!productsBySeller[sellerId]) {
+				productsBySeller[sellerId] = [];
+			}
+			productsBySeller[sellerId].push(product);
+		});
+	}
 
 	const toggleDropdown = () => {
 		setIsDropdownOpen(!isDropdownOpen);
@@ -59,6 +74,39 @@ const CheckOutPage = () => {
 	};
 
 	useEffect(() => {
+		const fetchCartData = async () => {
+			try {
+				const data = await getCart();
+				console.log(data);
+				setCartData(data.data.carts);
+			} catch (error) {
+				console.error("Error fetching cart data:", error);
+			}
+		};
+
+		fetchCartData();
+	}, []);
+
+	useEffect(() => {
+		const fetchUserProfile = async () => {
+			try {
+				const profile = await getUserProfile();
+				setUserProfile(profile.data);
+			} catch (error) {
+				console.error("Error fetching user profile:", error);
+			}
+		};
+
+		if (isAuthenticated()) {
+			fetchUserProfile();
+		} else {
+			swal("Warning!", "Login terlebih dahulu!", "warning").then(() => {
+				navigate("/login");
+			});
+		}
+	}, [navigate]);
+
+	useEffect(() => {
 		document.addEventListener("click", handleOutsideClick);
 
 		return () => {
@@ -66,15 +114,44 @@ const CheckOutPage = () => {
 		};
 	}, []);
 
-	const handleBeliClick = () => {
-		swal({
-			title: "Checkout Berhasil",
-			text: "Lanjutkan pembayaran!",
-			icon: "success",
-		}).then(() => {
-			navigate("/payment");
-		});
+	const handleBeliClick = async () => {
+		try {
+			console.log("Attempting to create transaction...");
+			const transactionResult = await postTransaction();
+
+			console.log("Transaction result:", transactionResult);
+
+			swal({
+				title: "Checkout Berhasil",
+				text: "Lanjutkan pembayaran!",
+				icon: "success",
+			}).then(() => {
+				navigate("/payment");
+			});
+		} catch (error) {
+			console.error("Error creating transaction:", error);
+
+			if (error.response) {
+				console.error("Server responded with:", error.response.status, error.response.data);
+			}
+
+			swal("Error", "Gagal membuat transaksi", "error");
+		}
 	};
+
+	if (!cartData || !cartData.products) {
+		return (
+			<div className="check-out-page-container">
+				<Navbar />
+				<Header />
+				<div className="check-out-container">
+					<h1>Checkout</h1>
+					<p>Loading...</p>
+				</div>
+				<Footer />
+			</div>
+		);
+	}
 
 	return (
 		<div className="check-out-page-container">
@@ -92,12 +169,10 @@ const CheckOutPage = () => {
 							<div className="horizontal-line-check-out"></div>
 
 							<div className="penerima-container">
-								<h3>Nama Penerima</h3>
-								<h4>081234567891</h4>
+								<h3>{userProfile?.fullname}</h3>
+								<h4>{userProfile?.contact}</h4>
 								<p>
-									Jl. DI Panjaitan No.128, Karangreja,
-									Purwokerto Kidul, Kec. Purwokerto Sel.,
-									Kabupaten Banyumas, Jawa Tengah, 53147
+									{userProfile?.address}
 								</p>
 							</div>
 
@@ -144,8 +219,8 @@ const CheckOutPage = () => {
 														className="address-option-checkout-information"
 														htmlFor="addressOption1"
 													>
-														<h2>Nama Penerima</h2>
-														<h2>081234567891</h2>
+														<h2>Lintang</h2>
+														<h2>081234562290</h2>
 														<p>
 															Jl. DI Panjaitan
 															No.128, Karangreja,
@@ -172,8 +247,8 @@ const CheckOutPage = () => {
 														className="address-option-checkout-information"
 														htmlFor="addressOption2"
 													>
-														<h2>Nama Penerima</h2>
-														<h2>081234567891</h2>
+														<h2>Tiwi</h2>
+														<h2>081234562289</h2>
 														<p>
 															Jl. DI Panjaitan
 															No.128, Karangreja,
@@ -199,8 +274,8 @@ const CheckOutPage = () => {
 														className="address-option-checkout-information"
 														htmlFor="addressOption3"
 													>
-														<h2>Nama Penerima</h2>
-														<h2>081234567891</h2>
+														<h2>Azize</h2>
+														<h2>081234562279</h2>
 														<p>
 															Jl. DI Panjaitan
 															No.128, Karangreja,
@@ -313,7 +388,6 @@ const CheckOutPage = () => {
 								)}
 							</div>
 						</div>
-
 						<div className="produk-dipesan-container">
 							<div className="produk-dipesan-space-between">
 								<div className="produk-dipesan-title">
@@ -329,86 +403,53 @@ const CheckOutPage = () => {
 
 							<div className="horizontal-line-produk-dipesan"></div>
 
-							<div className="maggot-store-produk">
-								<h3>Literally Maggot Store</h3>
-								<p>Jakarta Selatan</p>
-								<div className="informasi-produk-dipesan-container">
-									<div className="informasi-produk-pesanan-space-between">
-										<div className="informasi-produk-pesanan">
-											<div className="gambar-produk-pesanan">
-												<img src={gambar1}></img>
-											</div>
+							{Object.entries(productsBySeller).map(([sellerId, products]) => (
+								<div className="maggot-store-produk" key={sellerId}>
+									<h3>{products[0].seller.name}</h3>
+									<p>{products[0].seller.address}</p>
 
-											<div className="product-information">
-												<h4>Tepung Maggot BSF</h4>
-												<p>Variasi : 1kg</p>
+									{products.map((product) => (
+										<div
+											className="informasi-produk-dipesan-container"
+											key={`product-${product.productId}-seller-${sellerId}`}
+										>
+											<div className="informasi-produk-pesanan-space-between">
+												<div className="informasi-produk-pesanan">
+													<div className="gambar-produk-pesanan">
+														<img src={product.cover} alt={product.productName} />
+													</div>
+													<div className="product-information">
+														<h4>{product.productName}</h4>
+														<p>Variasi: {product.quantity}kg</p>
+													</div>
+												</div>
+
+												<div className="harga-satuan-total-produk-pesanan">
+													<div className="harga-satuan-produk">
+														<h4 className="title-harga-total-produk-pesanan-430">
+															Harga Satuan
+														</h4>
+														<p>Rp. {product.price.toLocaleString()}</p>
+													</div>
+													<div className="kuantitas-produk">
+														<h4 className="title-harga-total-produk-pesanan-430">
+															Kuantitas
+														</h4>
+														<p>{product.quantity}</p>
+													</div>
+													<div className="total-harga-produk">
+														<h4 className="title-harga-total-produk-pesanan-430">
+															Total Harga
+														</h4>
+														<h5>Rp. {product.subtotal.toLocaleString()}</h5>
+													</div>
+												</div>
 											</div>
 										</div>
-
-										<div className="harga-satuan-total-produk-pesanan">
-											<div className="harga-satuan-produk">
-												<h4 className="title-harga-total-produk-pesanan-430">
-													Harga Satuan
-												</h4>
-												<p>Rp39.980</p>
-											</div>
-											<div className="kuantitas-produk">
-												<h4 className="title-harga-total-produk-pesanan-430">
-													Kuantitas
-												</h4>
-												<p>1</p>
-											</div>
-											<div className="total-harga-produk">
-												<h4 className="title-harga-total-produk-pesanan-430">
-													Total Harga
-												</h4>
-												<h5>Rp39.980</h5>
-											</div>
-										</div>
-									</div>
-
-									<div className="horizontal-line-informasi-produk-dipesan"></div>
-
-									<div className="informasi-produk-pesanan-space-between">
-										<div className="informasi-produk-pesanan">
-											<div className="gambar-produk-pesanan">
-												<img src={gambar2}></img>
-											</div>
-
-											<div className="product-information">
-												<h4>
-													Premium Dried Maggot /
-													Maggot Kering BSF Flake
-												</h4>
-												<p>Variasi : 100gr</p>
-											</div>
-										</div>
-
-										<div className="harga-satuan-total-produk-pesanan">
-											<div className="harga-satuan-produk">
-												<h4 className="title-harga-total-produk-pesanan-430">
-													Harga Satuan
-												</h4>
-												<p>Rp17.550</p>
-											</div>
-											<div className="kuantitas-produk">
-												<h4 className="title-harga-total-produk-pesanan-430">
-													Kuantitas
-												</h4>
-												<p>1</p>
-											</div>
-											<div className="total-harga-produk">
-												<h4 className="title-harga-total-produk-pesanan-430">
-													Total Harga
-												</h4>
-												<h5>Rp17.550</h5>
-											</div>
-										</div>
-									</div>
+									))}
 								</div>
-							</div>
+							))}
 
-							<div className="horizontal-line-produk-dipesan"></div>
 
 							<div className="pesan-penjual-pengiriman-container">
 								<div className="pesan-penjual-container">
@@ -425,9 +466,8 @@ const CheckOutPage = () => {
 									<h3>Pengiriman : </h3>
 									<div className="ubah-pengiriman-produk-pesanan">
 										<h4>Regular</h4>
-										<p>UBAH</p>
 									</div>
-									<h5>Rp15.500</h5>
+									<h5>Free Ongkir</h5>
 								</div>
 							</div>
 
@@ -435,8 +475,8 @@ const CheckOutPage = () => {
 
 							<div className="total-pesanan-pesanan-produk-width">
 								<div className="total-pesanan-pesanan-produk-container">
-									<p>Total Pesanan (2 Produk) :</p>
-									<h5>Rp73.030</h5>
+									<p>Total Pesanan ({cartData.products.length} Produk) :</p>
+									<h5>Rp. {cartData.total.toLocaleString()}</h5>
 								</div>
 							</div>
 						</div>
@@ -448,20 +488,20 @@ const CheckOutPage = () => {
 
 							<div className="barang-belanja-container">
 								<div className="total-harga-barang-container">
-									<p>Total Harga (2 Barang)</p>
-									<p>Rp 57.530</p>
+									<p>Total Harga ({cartData.products.length} Produk)</p>
+									<p>Rp. {cartData.total.toLocaleString()}</p>
 								</div>
 
 								<div className="total-ongkos-kirim-container">
 									<p>Total Ongkos Kirim</p>
-									<p>Rp 15.500</p>
+									<p>Rp 0</p>
 								</div>
 
 								<div className="horizontal-line-barang-belanja"></div>
 
 								<div className="total-belanja-container">
 									<p>Total belanja</p>
-									<p>Rp 73.030</p>
+									<p>Rp. {cartData.total.toLocaleString()}</p>
 								</div>
 							</div>
 

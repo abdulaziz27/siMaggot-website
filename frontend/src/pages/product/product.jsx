@@ -14,12 +14,40 @@ import productImage4 from "../../assets/product/img3.png";
 import productImage5 from "../../assets/product/img4.png";
 
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../api";
+import { getProductById, getAllProducts } from "../../api";
 
 
 function Product() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
+  const [productsRekomendasi, setProductsRekomendasi] = useState([]);
+  const [productsPilihan, setProductsPilihan] = useState([]);
+
+
+  const fetchRekomendasiProducts = async () => {
+    try {
+      const productsData = await getAllProducts();
+      const rekomendasi = productsData.data.slice(0, 6);
+      setProductsRekomendasi(rekomendasi);
+    } catch (error) {
+      console.error("Error fetching featured products:", error);
+    }
+  };
+
+  const fetchProductsPilihan = async () => {
+    try {
+      const productsData = await getAllProducts();
+      const selectedProduct = productsData.data.slice(6, 10); // Adjust the range as needed
+      setProductsPilihan(selectedProduct);
+    } catch (error) {
+      console.error("Error fetching shop selected products:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductsPilihan();
+    fetchRekomendasiProducts();
+  }, []);
 
   useEffect(() => {
     getProductById(productId).then(data => {
@@ -163,39 +191,21 @@ function Product() {
 
           <div className="produkLain">
             <p className="produkToko">Produk Pilihan Toko</p>
-            <Barang
-              gambarBarangR={productImage1}
-              namaBarangR="Nama Barang 1"
-              hargaBarangR="xx.xxx"
-              ratingBarangR="4.8"
-              barangTerjualR="xx+"
-            />
-            <Barang
-              gambarBarangR={productImage1}
-              namaBarangR="Nama Barang 1"
-              hargaBarangR="xx.xxx"
-              ratingBarangR="4.8"
-              barangTerjualR="xx+"
-            />
-            <Barang
-              gambarBarangR={productImage1}
-              namaBarangR="Nama Barang 1"
-              hargaBarangR="xx.xxx"
-              ratingBarangR="4.8"
-              barangTerjualR="xx+"
-            />
-            <Barang
-              gambarBarangR={productImage1}
-              namaBarangR="Nama Barang 1"
-              hargaBarangR="xx.xxx"
-              ratingBarangR="4.8"
-              barangTerjualR="xx+"
-            />
+            {productsPilihan.map((selectedProduct) => (
+              <Barang
+                key={selectedProduct.id}
+                gambarBarangR={selectedProduct.cover}
+                namaBarangR={selectedProduct.productName}
+                hargaBarangR={selectedProduct.price.toLocaleString()}
+                ratingBarangR={selectedProduct.rating}
+                barangTerjualR={`${selectedProduct.sold}+`}
+              />
+            ))}
           </div>
           <div className="rekomendasiProduk">
-            <ListRekomendasi titleList="Lainnya di toko ini" />
+            <ListRekomendasi titleList="Lainnya di toko ini" productsRekomendasi={productsRekomendasi} />
             <hr />
-            <ListRekomendasi titleList="Pilihan lainnya untukmu" />
+            <ListRekomendasi titleList="Pilihan lainnya untukmu" productsRekomendasi={productsRekomendasi} />
           </div>
         </div>
       </div>
@@ -247,66 +257,27 @@ function UlasanPembeli() {
   )
 }
 
-function ListRekomendasi({ titleList }) {
+function ListRekomendasi({ titleList, productsRekomendasi }) {
   return (
     <>
       <div className="rekomendasiContainer">
         <h2>{titleList}</h2>
         <a>Lihat Semua</a>
         <div className="barangRekomendasiContainer">
-          <Barang
-            gambarBarangR={productImage1}
-            namaBarangR="Nama Barang 1"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-          <Barang
-            gambarBarangR={productImage2}
-            namaBarangR="Nama Barang 2"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-          <Barang
-            gambarBarangR={productImage3}
-            namaBarangR="Nama Barang 3"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-          <Barang
-            gambarBarangR={productImage4}
-            namaBarangR="Nama Barang 4"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-          <Barang
-            gambarBarangR={productImage5}
-            namaBarangR="Nama Barang 5"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-          <Barang
-            gambarBarangR={productImage1}
-            namaBarangR="Nama Barang 6"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-
+          {productsRekomendasi.map((product) => (
+            <Barang
+              key={product.id}
+              gambarBarangR={product.cover}
+              namaBarangR={product.productName}
+              hargaBarangR={product.price.toLocaleString()}
+              ratingBarangR={product.rating}
+              barangTerjualR={`${product.sold}+`}
+            />
+          ))}
         </div>
       </div>
     </>
-  )
+  );
 }
 
 

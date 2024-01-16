@@ -41,7 +41,9 @@ const ProfilePage = () => {
 
 	useEffect(() => {
 		if (!isAuthenticated()) {
-			navigate("/login");
+			swal("Warning!", "Login terlebih dahulu!", "warning").then(() => {
+				navigate("/login");
+			});
 		}
 	}, [navigate]);
 
@@ -181,7 +183,7 @@ const ProfilePage = () => {
 									<p
 										className={
 											selectedOption ===
-											"Daftar Transaksi"
+												"Daftar Transaksi"
 												? "selected"
 												: ""
 										}

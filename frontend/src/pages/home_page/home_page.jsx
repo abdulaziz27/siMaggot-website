@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 //import { useSwipeable } from "react-swipeable";
 import "./home_page.css";
-import { getAllProducts } from "../../api";
+import { getAllProducts, addProductToCart } from "../../api";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -37,6 +37,27 @@ const HomePage = () => {
 	const [imagePaths, setImagePaths] = useState([]);
 	const [isHovered, setIsHovered] = useState(false);
 	const navigate = useNavigate();
+
+	const handleAddToCart = async (productId) => {
+		try {
+			const response = await addProductToCart(productId, 1);
+			swal(response.message, {
+				icon: "success",
+				buttons: {
+					confirm: "Lihat Keranjang",
+				},
+			}).then((willNavigate) => {
+				if (willNavigate) {
+					navigate("/cart");
+				}
+			});
+		} catch (error) {
+			console.error("Error adding product to cart:", error);
+			swal("Gagal menambahkan produk ke keranjang", {
+				icon: "error",
+			});
+		}
+	};
 
 	// slice for card produk
 	const imageFiles = imageFolder.keys().slice(0, 6);
@@ -154,27 +175,30 @@ const HomePage = () => {
 	const renderProducts = () => {
 		return products.map((product) => (
 			<div className="card-barang" key={product.id}>
-				<div className="gambar-barang">
+				<Link to={`/product/${product.id}`} className="gambar-barang">
 					{product.cover ? (
 						<img src={product.cover} alt={product.productName} />
 					) : (
 						<p>Cover image not available</p>
 					)}
-				</div>
+				</Link>
 
 				<div className="info-barang-container">
-					<h3>{product.productName}</h3>
-					<h4>Rp. {product.price.toLocaleString()}</h4>
-					<p>
-						<Icon
-							icon="material-symbols:star"
-							className="icon-star-filter"
-						/>
-						{product.rating} | {product.stock} terjual
-					</p>
-
-					<div className="button-beli">
-						<Link to={`/product/${product.id}`}>Beli</Link>
+					<Link to={`/product/${product.id}`} className="link-barang" style={{ textDecoration: 'none' }}>
+						<h3>{product.productName}</h3>
+						<h4>Rp. {product.price.toLocaleString()}</h4>
+						<p>
+							<Icon
+								icon="material-symbols:star"
+								className="icon-star-filter"
+							/>
+							{product.rating} | {product.stock} terjual
+						</p>
+					</Link>
+					<div
+						className="button-beli"
+						onClick={() => handleAddToCart(product.id)}>
+						beli
 					</div>
 				</div>
 			</div>
@@ -182,18 +206,6 @@ const HomePage = () => {
 	};
 
 
-	const handleAddToCart = () => {
-		swal("Berhasil ditambahkan ke keranjang!", {
-			icon: "success",
-			buttons: {
-				confirm: "Lihat Keranjang",
-			},
-		}).then((willNavigate) => {
-			if (willNavigate) {
-				navigate("/cart");
-			}
-		});
-	};
 
 	return (
 		<div className="main-page-container">
@@ -338,7 +350,9 @@ const HomePage = () => {
 										{product.rating} | {product.stock} terjual
 									</p>
 								</Link>
-								<div className="button-beli" onClick={handleAddToCart}>
+								<div
+									className="button-beli"
+									onClick={() => handleAddToCart(product.id)}>
 									beli
 								</div>
 							</div>

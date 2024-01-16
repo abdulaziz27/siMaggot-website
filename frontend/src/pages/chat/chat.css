@@ -1,30 +1,30 @@
 /* ======================== Variable ======================== */
 :root {
-	--ff-text: "Inter-Regular", Helvetica;
-	--clr-toggle-button: #728a1a;
-	--clr-button: #bbb;
-	--clr-arrow: #000;
-	--clr-text-produk: #212121;
-    --clr-border:rgb(212, 212, 212);
+    --ff-text: "Inter-Regular", Helvetica;
+    --clr-toggle-button: #728a1a;
+    --clr-button: #bbb;
+    --clr-arrow: #000;
+    --clr-text-produk: #212121;
+    --clr-border: rgb(212, 212, 212);
     --clr-header: #F0F3F7;
 }
 
 *,
 *::before,
 *::after {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .row::after {
-	content: "";
-	clear: both;
-	display: table;
+    content: "";
+    clear: both;
+    display: table;
 }
 
 div {
-	display: block;
+    display: block;
 }
 
 
@@ -34,14 +34,16 @@ div {
 
 .chat {
     font-family: var(--ff-body);
-	font-size: 0.95rem;
-	line-height: 1.5;
-	overflow-x: hidden;
-    margin: 45px 7%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    overflow-x: hidden;
+    margin: 45px 10%;
 }
 
 .chat .judulSesi {
     margin-bottom: 20px;
+    margin-left: 11px;
+    color: #728a1a;
 }
 
 .chat-container {
@@ -62,7 +64,7 @@ div {
     grid-area: kontak;
 }
 
-.kontak .cariKontak{
+.kontak .cariKontak {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,7 +77,7 @@ div {
     border-radius: 30px;
 }
 
-.kontak .cariKontak .searchbar input{
+.kontak .cariKontak .searchbar input {
     border-radius: 30px;
     width: 260px;
     height: 40px;
@@ -84,7 +86,7 @@ div {
     outline: none;
 }
 
-.kontak .cariKontak .filter{
+.kontak .cariKontak .filter {
     border: 1px solid var(--clr-border);
     border-radius: 50%;
     height: 40px;
@@ -92,7 +94,7 @@ div {
     padding: 0 2px 2px;
 }
 
-.kontak .cariKontak .filter span{
+.kontak .cariKontak .filter span {
     font-size: 2.1rem;
 }
 
@@ -124,13 +126,13 @@ div {
     margin-left: 10px;
 }
 
-.kontakContainer .namaKontak{
+.kontakContainer .namaKontak {
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 3px;
 }
 
-.kontakContainer .previewChat{
+.kontakContainer .previewChat {
     font-size: 0.9rem;
     opacity: 60%;
     max-width: 200px;
@@ -139,7 +141,7 @@ div {
     text-overflow: ellipsis;
 }
 
-.kontakContainer .lastOnline p{
+.kontakContainer .lastOnline p {
     font-size: 0.9rem;
     opacity: 50%;
     text-align: right;
@@ -155,7 +157,7 @@ div {
     border-left: 1.5px solid var(--clr-border);
 }
 
-.konten .tidakChat{
+.konten .tidakChat {
     width: 100%;
     height: 100%;
     display: flex;
@@ -163,7 +165,7 @@ div {
     justify-content: center;
 }
 
-.konten .tidakChat .sambutChat{
+.konten .tidakChat .sambutChat {
     text-align: center;
 }
 
@@ -174,7 +176,7 @@ div {
     flex-direction: column;
 }
 
-.konten .adaChat .headerChat{
+.konten .adaChat .headerChat {
     display: flex;
     background-color: white;
     border-bottom: 2px solid var(--clr-border);
@@ -188,7 +190,7 @@ div {
     border-radius: 50%;
 }
 
-.konten .namaKontak{
+.konten .namaKontak {
     font-size: 1.25rem;
     font-weight: 500;
     margin-left: 15px;
