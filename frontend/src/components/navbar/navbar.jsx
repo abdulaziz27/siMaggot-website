@@ -4,10 +4,10 @@ import "../navbar/navbar.css";
 const Navbar = () => {
 	return (
 		<div className="navbar-container">
-			<a href="./">Beranda</a>
-			<a href="./shop">Belanja</a>
+			<a href="/">Beranda</a>
+			<a href="/shop">Belanja</a>
 			<a>Tentang</a>
-			<a>Blog</a>
+			<a href="/blog">Blog</a>
 		</div>
 	);
 };

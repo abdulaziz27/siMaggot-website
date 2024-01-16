@@ -34,7 +34,11 @@ function Register() {
 				swal("Error!", "Registrasi gagal. Silakan coba lagi.", "error");
 			}
 		} catch (error) {
-			swal("Error!", "Terjadi kesalahan selama proses registrasi.", "error");
+			swal(
+				"Error!",
+				"Terjadi kesalahan selama proses registrasi.",
+				"error"
+			);
 			console.error("Error selama proses registrasi:", error);
 		}
 	};
@@ -96,7 +100,10 @@ function Register() {
 
 						<div className="centered">
 							<div className="register-button-container">
-								<button type="submit" className="registerButton">
+								<button
+									type="submit"
+									className="registerButton"
+								>
 									Daftar
 								</button>
 							</div>

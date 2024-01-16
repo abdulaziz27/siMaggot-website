@@ -8,11 +8,11 @@ const Footer = () => {
 			<div className="footer-about-container">
 				<div className="about footer-option">
 					<h1>Maggot Yahoot</h1>
-					<a href="./shop">
+					<a href="/shop">
 						<p>Toko</p>
 					</a>
 
-					<a>
+					<a href="/blog">
 						<p>Blog</p>
 					</a>
 

@@ -74,12 +74,12 @@ const HeaderLogin = () => {
 							<Icon icon="gg:close-o" />
 						</div>
 						<div className="menu-navbar-content">
-							<a href="./">Beranda</a>
-							<a href="./shop">Toko</a>
+							<a href="/">Beranda</a>
+							<a href="/shop">Toko</a>
 							<a>Tentang</a>
-							<a>Blog</a>
-							<a href="./profile">Profil</a>
-							<a href="./shop">Toko</a>
+							<a href="/blog">Blog</a>
+							<a href="/profile">Profil</a>
+							<a href="/shop">Toko</a>
 						</div>
 					</div>
 				)}
