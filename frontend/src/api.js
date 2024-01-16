@@ -201,7 +201,7 @@ export const addProduct = async (formData) => {
   }
 };
 
-export const GetAuthenticateSeller = async () => {
+export const getAuthenticateSeller = async () => {
   const userEndpoint = "/seller";
   
   try {
@@ -229,6 +229,52 @@ export const getSellerProducts = async (sellerId) => {
 
   try {
     const response = await axios.get(apiUrl + productEndpoint);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const updateProduct = async (productId, updatedData) => {
+  const sellerEndpoint = `/seller/products/${productId}/`;
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.put(apiUrl + sellerEndpoint, updatedData, {
+      headers: headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteProduct = async (productId) => {
+  const sellerEndpoint = `/seller/products/${productId}/`;
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.delete(apiUrl + sellerEndpoint, {
+      headers: headers,
+    });
+
     return response.data;
   } catch (error) {
     throw error;

@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import "../seller_page.css";
 import { useState, useEffect } from "react";
-import { getSellerProducts, GetAuthenticateSeller } from "../../../api";
+import { getSellerProducts, getAuthenticateSeller, deleteProduct } from "../../../api";
 
 const ProductListOption = () => {
   const [sellerProducts, setSellerProducts] = useState([]);
@@ -11,16 +11,12 @@ const ProductListOption = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const authenticateSeller = await GetAuthenticateSeller();
+        const authenticateSeller = await getAuthenticateSeller();
         const sellerId = authenticateSeller.data.sellerId;
-        console.log("Seller ID:", sellerId);
-
         const response = await getSellerProducts(sellerId);
 
         const products =
           response.data && Array.isArray(response.data) ? response.data : [];
-        console.log("API Response:", products);
-
         setSellerProducts(products);
         setLoading(false);
       } catch (error) {
@@ -35,6 +31,24 @@ const ProductListOption = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  const handleDeleteProduct = async (productId) => {
+    try {
+      await deleteProduct(productId);
+
+      const authenticateSeller = await getAuthenticateSeller();
+      const sellerId = authenticateSeller.data.sellerId;
+      const updatedProducts = await getSellerProducts(sellerId);
+      setSellerProducts(updatedProducts.data);
+    } catch (error) {
+      console.error("Error saat menghapus produk:", error.message);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="home-seller-option-menu-container">
       <div className="list-product-seller-option-menu-content">
@@ -154,6 +168,7 @@ const ProductListOption = () => {
                   <Icon
                     icon="bi:trash3"
                     className="list-product-seller-delete-icon"
+                    onClick={() => handleDeleteProduct(product.id)}
                   />
                 </div>
               </div>
