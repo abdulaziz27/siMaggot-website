@@ -39,7 +39,7 @@ const DoneTransactionProfileOption = () => {
 				</div>
 
 				<div>
-					<p>BELUM BAYAR</p>
+					<p>ARRIVED</p>
 				</div>
 			</div>
 
@@ -81,20 +81,20 @@ const DoneTransactionProfileOption = () => {
 
 			<div className="transaction-item-account-footer">
 				<div className="total-pay-item-transaction">
-					<h1>Jumlah Harus Dibayar :</h1>
+					<h1>Total Pembayaran :</h1>
 					<h2>Rp73.030</h2>
 				</div>
 
 				<div className="payment-time-button-container">
 					<p>
-						Bayar sebelum <u>09-11-2023 00:00</u> dengan Bank BNI
+						Terimakasih Telah Berbelanja di SiMaggot Web!
 					</p>
 					<div className="button-payment-transaction">
 						<div
 							className="score-payment-button"
 							onClick={scoreDropdown}
 						>
-							Nilai
+							Beri Rating
 						</div>
 						<div className="cancel-order-button">
 							Hubungi Penjual

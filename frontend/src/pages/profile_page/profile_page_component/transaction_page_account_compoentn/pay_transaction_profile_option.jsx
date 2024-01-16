@@ -20,7 +20,7 @@ const PayTransactionProfileOption = () => {
 		<div>
 			<div className="transaction-item-account-header">
 				<div className="row-direction-transaction">
-					<h3>Literally Maggot Store</h3>
+					<h3>Toko Maggot 1</h3>
 					<div className="chat-button-transaction">
 						<Icon
 							icon="bi:chat-dots"
@@ -40,6 +40,63 @@ const PayTransactionProfileOption = () => {
 
 				<div>
 					<p>BELUM BAYAR</p>
+				</div>
+			</div>
+
+			<div className="horizontal-line-transaction"></div>
+
+			<div className="item-transaction-information-contanier">
+				<div className="item-transaction">
+					<div className="row-direction-item-transaction">
+						<img src={image1}></img>
+						<div className="item-transaction-information">
+							<h1>Tepung Maggot BSF</h1>
+							<p>Variasi : 1kg</p>
+							<h2>x1</h2>
+						</div>
+					</div>
+
+					<h4>Rp39.980</h4>
+				</div>
+
+				<div className="horizontal-line-item-transaction"></div>
+
+				<div className="item-transaction">
+					<div className="row-direction-item-transaction">
+						<img src={image2}></img>
+						<div className="item-transaction-information">
+							<h1>
+								Premium Dried Maggot / Maggot Kering BSF Flake
+							</h1>
+							<p>Variasi : 100gr</p>
+							<h2>x1</h2>
+						</div>
+					</div>
+
+					<h4>Rp17.550</h4>
+				</div>
+			</div>
+
+			<div className="horizontal-line-transaction"></div>
+
+			<div className="transaction-item-account-header">
+				<div className="row-direction-transaction">
+					<h3>Toko Maggot 2</h3>
+					<div className="chat-button-transaction">
+						<Icon
+							icon="bi:chat-dots"
+							className="chat-transaction-icon"
+						/>
+						<p>Chat</p>
+					</div>
+
+					<div className="store-button-transaction">
+						<Icon
+							icon="bi:shop-window"
+							className="shop-transaction-icon"
+						/>
+						<p>Kunjungi Toko</p>
+					</div>
 				</div>
 			</div>
 

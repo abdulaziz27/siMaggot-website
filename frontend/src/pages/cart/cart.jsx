@@ -6,51 +6,57 @@ import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 
-import productImage from "../../assets/cart/img.jpg";
-import productImage1 from "../../assets/cart/img 1.jpg";
-import productImage2 from "../../assets/cart/img2.jpg";
-
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import { getCart } from "../../api";
+import isAuthenticated from "../../auth";
 
+import { getCart, editCartProduct, deleteCartItem, getAllProducts } from "../../api";
 
-const dataBarang = [
-  {
-    id: 1,
-    gambarBarang: { productImage },
-    namaBarang: "Telur Maggot BSF Lalat Indukan Super 1 gram",
-    hargaSatuan: "3.500",
-    totalTiapBarang: "7.000"
-  },
-
-  {
-    id: 2,
-    gambarBarang: { productImage2 },
-    namaBarang: "Tepung Maggot BSF - 1kg",
-    hargaSatuan: "39.980",
-    totalTiapBarang: "39.980"
-  },
-
-  {
-    id: 3,
-    gambarBarang: { productImage1 },
-    namaBarang: "Telur Premium Dried Maggot / Maggot Kering BSF Flake 100gr",
-    hargaSatuan: "17.550",
-    totalTiapBarang: "17.550"
-  }
-
-]
 
 function Cart() {
   const navigate = useNavigate();
   const [cartData, setCartData] = useState(null);
 
+  const [productsRekomendasi, setProductsRekomendasi] = useState([]);
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      swal("Warning!", "Login terlebih dahulu!", "warning").then(() => {
+        navigate("/login");
+      });
+    }
+  }, [navigate]);
+
+  const fetchRekomendasiProducts = async () => {
+    try {
+      const productsData = await getAllProducts();
+      const rekomendasi = productsData.data.slice(0, 4);
+      setProductsRekomendasi(rekomendasi);
+    } catch (error) {
+      console.error("Error fetching featured products:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRekomendasiProducts();
+  }, []);
+
+  const handleDeleteCartItem = async (productId) => {
+    try {
+      await deleteCartItem(productId);
+      const updatedCartData = await getCart();
+      setCartData(updatedCartData.data.carts);
+      swal("Success!", "Berhasil delete item!", "success");
+    } catch (error) {
+      console.error("Error deleting cart item:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchCartData = async () => {
       try {
         const data = await getCart();
-        console.log(data); // Log the data to inspect the structure
+        console.log(data);
         setCartData(data.data.carts);
       } catch (error) {
         console.error("Error fetching cart data:", error);
@@ -83,6 +89,16 @@ function Cart() {
     }
     productsBySeller[sellerId].push(product);
   });
+
+  const handleQuantityChange = async (productId, newQuantity) => {
+    try {
+      await editCartProduct(productId, newQuantity);
+      const updatedCartData = await getCart();
+      setCartData(updatedCartData.data.carts);
+    } catch (error) {
+      console.error("Error editing cart product:", error);
+    }
+  };
 
   return (
     <>
@@ -124,6 +140,8 @@ function Cart() {
                       hargaSatuan={product.price.toLocaleString()}
                       totalTiapBarang={(product.price * product.quantity).toLocaleString()}
                       quantity={product.quantity}
+                      onQuantityChange={(newQuantity) => handleQuantityChange(product.productId, newQuantity)}
+                      onDelete={() => handleDeleteCartItem(product.productId)}
                     />
                   ))}
                 </div>
@@ -133,9 +151,9 @@ function Cart() {
           </div>
 
           <div className="rekomendasiBarang">
-            <ListRekomendasi titleList="Terakhir Dilihat" />
+            <ListRekomendasi titleList="Terakhir Dilihat" productsRekomendasi={productsRekomendasi} />
             <hr />
-            <ListRekomendasi titleList="Rekomendasi Untukmu" />
+            <ListRekomendasi titleList="Rekomendasi Untukmu" productsRekomendasi={productsRekomendasi} />
           </div>
 
           <RingkasanBelanja cartData={cartData} handleBeliClick={handleBeliClick} />
@@ -183,90 +201,52 @@ function calculateTotalHarga(products) {
   }, 0);
 }
 
-function JenisBarang({ gambarBarang, namaBarang, hargaSatuan, totalTiapBarang }) {
+function JenisBarang({ gambarBarang, namaBarang, hargaSatuan, totalTiapBarang, quantity, onQuantityChange, onDelete }) {
   return (
-    <>
-      <form action="" className="listBarang">
-        <input type="checkbox" name="checkBarang" id="checkBarang" />
-        <img className="productImage" src={gambarBarang} alt="Gambar Produk" />
-        <label htmlFor="checkBarang" className="alignLeft">{namaBarang}</label>
-        <p>Rp. {hargaSatuan}</p>
-        <p><ButtonKuantitas /></p>
-        <p className="totalTiapBarang">Rp. {totalTiapBarang}</p>
-        <textarea className="isiCatatan" name="isiCatatan" id="isiCatatan" cols="30" rows="3"></textarea>
-        <a className="catatanBeli">Tulis Catatan</a>
-      </form>
-    </>
-  )
-}
-
-
-function ButtonKuantitas() {
-
-  const [counter, setCounter] = useState(1);
-
-  return (
-    <>
+    <form action="" className="listBarang">
+      <input type="checkbox" name="checkBarang" id="checkBarang" />
+      <img className="productImage" src={gambarBarang} alt="Gambar Produk" />
+      <label htmlFor="checkBarang" className="alignLeft">{namaBarang}</label>
+      <p>Rp. {hargaSatuan}</p>
       <div className="buttonKuantitas">
-        <a className="trashIcon" onClick={() => setCounter(1)}>
+        <div className="trashButton" onClick={() => onDelete()}>
           <Icon icon="bi:trash" color="red" />
-        </a>
+        </div>
         <div className="counter">
-          <button onClick={() => setCounter(counter - 1)}>一</button>
-          <input type="text" value={counter} />
-          <button onClick={() => setCounter(counter + 1)}>十</button>
+          <button>一</button>
+          <input value={quantity} readOnly />
+          <button>十</button>
         </div>
       </div>
-    </>
-  )
+      <p className="totalTiapBarang">Rp. {totalTiapBarang}</p>
+      <textarea className="isiCatatan" name="isiCatatan" id="isiCatatan" cols="30" rows="3"></textarea>
+      <span className="catatanBeli">Tulis Catatan</span>
+    </form>
+  );
 }
 
 
-
-function ListRekomendasi({ titleList }) {
+function ListRekomendasi({ titleList, productsRekomendasi }) {
   return (
     <>
       <div className="rekomendasiContainer">
         <h2>{titleList}</h2>
         <a>Lihat Semua</a>
         <div className="barangRekomendasiContainer">
-          <Barang
-            gambarBarangR={productImage}
-            namaBarangR="Nama Barang 1"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-          <Barang
-            gambarBarangR={productImage}
-            namaBarangR="Nama Barang 2"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-          <Barang
-            gambarBarangR={productImage}
-            namaBarangR="Nama Barang 3"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-          <Barang
-            gambarBarangR={productImage}
-            namaBarangR="Nama Barang 4"
-            hargaBarangR="xx.xxx"
-            ratingBarangR="4.8"
-            barangTerjualR="xx+"
-          />
-
-
+          {productsRekomendasi.map((product) => (
+            <Barang
+              key={product.id}
+              gambarBarangR={product.cover}
+              namaBarangR={product.productName}
+              hargaBarangR={product.price.toLocaleString()}
+              ratingBarangR={product.rating}
+              barangTerjualR={`${product.sold}+`}
+            />
+          ))}
         </div>
       </div>
     </>
-  )
+  );
 }
 
 

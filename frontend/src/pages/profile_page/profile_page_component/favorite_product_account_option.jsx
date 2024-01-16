@@ -2,11 +2,49 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import "../profile_page.css";
 
-import image from "../../../assets/images/1335919.png";
+import { useState, useEffect } from "react";
+import { getAllProducts, addProductToCart } from "../../../api";
+import swal from "sweetalert";
+import { Link, useNavigate } from "react-router-dom";
 
 const FavoriteProductAccountOption = () => {
-	// looping
-	const times = Array(30).fill(null);
+	const navigate = useNavigate();
+	const [favoriteProducts, setFavoriteProducts] = useState([]);
+
+	useEffect(() => {
+		const fetchFavoriteProducts = async () => {
+			try {
+				const response = await getAllProducts(true);
+				// const slicing = response.data.slice(0, 6);
+				setFavoriteProducts(response);
+			} catch (error) {
+				console.error("Error fetching favorite products:", error);
+			}
+		};
+
+		fetchFavoriteProducts();
+	}, []);
+
+	const handleAddToCart = async (productId) => {
+		try {
+			const response = await addProductToCart(productId, 1);
+			swal(response.message, {
+				icon: "success",
+				buttons: {
+					confirm: "Lihat Keranjang",
+				},
+			}).then((willNavigate) => {
+				if (willNavigate) {
+					navigate("/cart");
+				}
+			});
+		} catch (error) {
+			console.error("Error adding product to cart:", error);
+			swal("Gagal menambahkan produk ke keranjang", {
+				icon: "error",
+			});
+		}
+	};
 
 	return (
 		<div className="favorite-page-account-option">
@@ -24,25 +62,28 @@ const FavoriteProductAccountOption = () => {
 			</div>
 
 			<div className="card-barang-favorite-page-container">
-				{times.map((_, index) => (
-					<div className="card-barang-favorite-page">
-						<div className="gambar-barang-favorite-page">
-							<img src={image} />
-						</div>
+				{favoriteProducts.map((product) => (
+					<div key={product.id} className="card-barang-favorite-page">
+						<Link to={`/product/${product.id}`} className="gambar-barang-favorite-page">
+							<img src={product.cover} alt={product.productName} />
+						</Link>
 
 						<div className="info-barang-favorite-page-container">
-							<h3>Nama Barang</h3>
-							<h4>RP. xx.xxx</h4>
-							<p>
-								<Icon
-									icon="material-symbols:star"
-									className="icon-star-filter-favorite-page"
-								/>
-								4.8 | xx+ terjual
-							</p>
-
-							<div className="button-beli-favorite-page">
-								<a>Beli</a>
+							<Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
+								<h3>{product.productName}</h3>
+								<h4>RP. {product.price}</h4>
+								<p>
+									<Icon
+										icon="material-symbols:star"
+										className="icon-star-filter-favorite-page"
+									/>
+									{product.rating} | {product.sold} terjual
+								</p>
+							</Link>
+							<div
+								className="button-beli-favorite-page"
+								onClick={() => handleAddToCart(product.id)}>
+								beli
 							</div>
 						</div>
 					</div>
@@ -60,9 +101,6 @@ const FavoriteProductAccountOption = () => {
 						2
 					</a>
 					<a href="#">3</a>
-					<a href="#">4</a>
-					<a href="#">5</a>
-					<a href="#">6</a>
 					<a href="#">
 						<Icon
 							icon="ic:round-chevron-right"
