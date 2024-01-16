@@ -347,6 +347,10 @@ hr {
 	grid-template-columns: 1fr 1fr;
 }
 
+.buttonKuantitas .trashButton {
+	margin-right: 10px;
+}
+
 .jenisBarangDibeli .buttonKuantitas .trashIcon {
 	cursor: pointer;
 }

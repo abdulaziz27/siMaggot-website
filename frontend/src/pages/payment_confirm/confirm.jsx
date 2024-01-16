@@ -8,6 +8,8 @@ import Footer from "../../components/footer/footer";
 
 import methodIcon from "../../assets/payment_method/bni.png";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+import isAuthenticated from "../../auth";
 
 const Confirm = () => {
 	const navigate = useNavigate();
@@ -19,6 +21,14 @@ const Confirm = () => {
 	const handleBelanjaLagiClick = () => {
 		navigate("/shop");
 	};
+
+	useEffect(() => {
+		if (!isAuthenticated()) {
+			swal("Warning!", "Login terlebih dahulu!", "warning").then(() => {
+				navigate("/login");
+			});
+		}
+	}, [navigate]);
 
 	return (
 		<>
@@ -42,7 +52,7 @@ const Confirm = () => {
 						</div>
 						<div className="keteranganPembayaran">
 							<div className="rekening">
-								<label>Nomor rekenining</label>
+								<label>Nomor rekening</label>
 								<p className="nomorRekening">12345678901234</p>
 								<div className="iconSalin">
 									Salin

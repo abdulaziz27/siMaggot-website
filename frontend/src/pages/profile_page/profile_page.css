@@ -207,7 +207,7 @@ div {
 	border-radius: 5px;
 	border: 1px solid #46494e33;
 	background: #ff543e87;
-	width: 40%;
+	width: 50%;
 	padding: 3px;
 	gap: 5px;
 	color: #46494e;
@@ -539,6 +539,29 @@ div {
 	font-weight: 600;
 	cursor: pointer;
 	transition: 0.3s ease-in-out;
+}
+
+.button-container {
+	display: flex;
+	gap: 20px;
+}
+
+.button-cancel-information {
+	width: fit-content;
+	border-radius: 6px;
+	background: #e7635c;
+	padding: 9px 40px;
+	color: #fff;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.button-cancel-information:hover {
+	background: #e15850;
+	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
 }
 
 .button-save-information:hover {
@@ -1387,7 +1410,7 @@ div {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 29px;
-	justify-content: center;
+	/* justify-content: center; */
 	user-select: none;
 	margin-bottom: 60px;
 	padding: 5px 40px 70px 40px;
@@ -2114,10 +2137,20 @@ p {
 	align-items: center;
 }
 
+.red-text {
+	color: #e15850;
+}
+
 .payment-time-button-container p {
 	color: var(--clr-abu-agak-tua);
 	font-size: 17px;
 	font-weight: 400;
+}
+
+.tengah-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .button-payment-transaction {
@@ -2161,7 +2194,7 @@ p {
 	background-color: var(--clr-hijau-lumut);
 	color: #fff;
 	border: 1px solid var(--clr-hijau-lumut);
-	width: 120px;
+	width: 180px;
 	text-align: center;
 	letter-spacing: 1px;
 }

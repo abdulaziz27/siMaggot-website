@@ -14,9 +14,13 @@ import ComplainOption from "./seller_page_component/seller_komplain";
 import HelperSellerOption from "./seller_page_component/seller_bantuan";
 import ShopSettingOption from "./seller_page_component/seller_pengaturan_toko";
 import AdminSettingOption from "./seller_page_component/seller_pengatuan_admin";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+import isAuthenticated from "../../auth";
 
 const SellerPage = () => {
 	const [selectedOption, setSelectedOption] = useState("Home-Seller");
+	const navigate = useNavigate();
 	const [isOpen, setIsOpen] = useState({
 		produk: true,
 		pesanan: true,
@@ -27,6 +31,14 @@ const SellerPage = () => {
 	const toggleOption = (option) => {
 		setIsOpen((prevOpen) => ({ ...prevOpen, [option]: !prevOpen[option] }));
 	};
+
+	useEffect(() => {
+		if (!isAuthenticated()) {
+			swal("Warning!", "Login terlebih dahulu!", "warning").then(() => {
+				navigate("/login");
+			});
+		}
+	}, [navigate]);
 
 	useEffect(() => {
 		setIsOpen({
@@ -92,22 +104,20 @@ const SellerPage = () => {
 						<div className="seller-menu-option-container">
 							<div className="seller-menu-option-content">
 								<div
-									className={`seller-menu-option-header-choose ${
-										selectedOption === "Home-Seller"
-											? "selected"
-											: ""
-									}`}
+									className={`seller-menu-option-header-choose ${selectedOption === "Home-Seller"
+										? "selected"
+										: ""
+										}`}
 									onClick={() =>
 										setSelectedOption("Home-Seller")
 									}
 								>
 									<Icon icon="bi:house-fill" />
 									<h2
-										className={`seller-menu-option-header-h2 ${
-											selectedOption === "Home-Seller"
-												? "selected"
-												: ""
-										}`}
+										className={`seller-menu-option-header-h2 ${selectedOption === "Home-Seller"
+											? "selected"
+											: ""
+											}`}
 									>
 										Home
 									</h2>
@@ -124,28 +134,25 @@ const SellerPage = () => {
 										<h2>Produk</h2>
 									</div>
 									<div
-										className={`chevron-seller-option-header ${
-											isOpen.produk ? "open-seller" : ""
-										}`}
+										className={`chevron-seller-option-header ${isOpen.produk ? "open-seller" : ""
+											}`}
 									>
 										<Icon icon="tabler:chevron-up" />
 									</div>
 								</div>
 
 								<div
-									className={`seller-produk-option-content ${
-										isOpen.produk
-											? "show-seller-dropdown"
-											: ""
-									}`}
+									className={`seller-produk-option-content ${isOpen.produk
+										? "show-seller-dropdown"
+										: ""
+										}`}
 								>
 									<h3
-										className={`select-seller-option-menu ${
-											selectedOption ===
+										className={`select-seller-option-menu ${selectedOption ===
 											"Tambah-Produk-Seller"
-												? "selected"
-												: ""
-										}`}
+											? "selected"
+											: ""
+											}`}
 										onClick={() =>
 											setSelectedOption(
 												"Tambah-Produk-Seller"
@@ -155,12 +162,11 @@ const SellerPage = () => {
 										Tambah Produk
 									</h3>
 									<h3
-										className={`select-seller-option-menu ${
-											selectedOption ===
+										className={`select-seller-option-menu ${selectedOption ===
 											"Daftar-Produk-Seller"
-												? "selected"
-												: ""
-										}`}
+											? "selected"
+											: ""
+											}`}
 										onClick={() =>
 											setSelectedOption(
 												"Daftar-Produk-Seller"
@@ -182,28 +188,25 @@ const SellerPage = () => {
 										<h2>Pesanan</h2>
 									</div>
 									<div
-										className={`chevron-seller-option-header ${
-											isOpen.pesanan ? "open-seller" : ""
-										}`}
+										className={`chevron-seller-option-header ${isOpen.pesanan ? "open-seller" : ""
+											}`}
 									>
 										<Icon icon="tabler:chevron-up" />
 									</div>
 								</div>
 
 								<div
-									className={`seller-pengaturan-option-content ${
-										isOpen.pesanan
-											? "show-seller-dropdown"
-											: ""
-									}`}
+									className={`seller-pengaturan-option-content ${isOpen.pesanan
+										? "show-seller-dropdown"
+										: ""
+										}`}
 								>
 									<h3
-										className={`select-seller-option-menu ${
-											selectedOption ===
+										className={`select-seller-option-menu ${selectedOption ===
 											"Daftar-Pesanan-Seller"
-												? "selected"
-												: ""
-										}`}
+											? "selected"
+											: ""
+											}`}
 										onClick={() =>
 											setSelectedOption(
 												"Daftar-Pesanan-Seller"
@@ -213,11 +216,10 @@ const SellerPage = () => {
 										Daftar Pesanan
 									</h3>
 									<h3
-										className={`select-seller-option-menu ${
-											selectedOption === "Ulasan-Seller"
-												? "selected"
-												: ""
-										}`}
+										className={`select-seller-option-menu ${selectedOption === "Ulasan-Seller"
+											? "selected"
+											: ""
+											}`}
 										onClick={() =>
 											setSelectedOption("Ulasan-Seller")
 										}
@@ -241,27 +243,24 @@ const SellerPage = () => {
 										<h2>Chat</h2>
 									</div>
 									<div
-										className={`chevron-seller-option-header ${
-											isOpen.chat ? "open-seller" : ""
-										}`}
+										className={`chevron-seller-option-header ${isOpen.chat ? "open-seller" : ""
+											}`}
 									>
 										<Icon icon="tabler:chevron-up" />
 									</div>
 								</div>
 
 								<div
-									className={`seller-pengaturan-option-content ${
-										isOpen.chat
-											? "show-seller-dropdown"
-											: ""
-									}`}
+									className={`seller-pengaturan-option-content ${isOpen.chat
+										? "show-seller-dropdown"
+										: ""
+										}`}
 								>
 									<h3
-										className={`select-seller-option-menu ${
-											selectedOption === "Diskusi-Seller"
-												? "selected"
-												: ""
-										}`}
+										className={`select-seller-option-menu ${selectedOption === "Diskusi-Seller"
+											? "selected"
+											: ""
+											}`}
 										onClick={() =>
 											setSelectedOption("Diskusi-Seller")
 										}
@@ -269,11 +268,10 @@ const SellerPage = () => {
 										Diskusi
 									</h3>
 									<h3
-										className={`select-seller-option-menu ${
-											selectedOption === "Komplain-Seller"
-												? "selected"
-												: ""
-										}`}
+										className={`select-seller-option-menu ${selectedOption === "Komplain-Seller"
+											? "selected"
+											: ""
+											}`}
 										onClick={() =>
 											setSelectedOption("Komplain-Seller")
 										}
@@ -289,11 +287,10 @@ const SellerPage = () => {
 						<div className="seller-menu-option-container">
 							<div className="seller-menu-option-content">
 								<div
-									className={`seller-menu-option-header-choose ${
-										selectedOption === "Bantuan-Seller"
-											? "selected"
-											: ""
-									}`}
+									className={`seller-menu-option-header-choose ${selectedOption === "Bantuan-Seller"
+										? "selected"
+										: ""
+										}`}
 									onClick={() =>
 										setSelectedOption("Bantuan-Seller")
 									}
@@ -301,11 +298,10 @@ const SellerPage = () => {
 									<Icon icon="bi:house-heart-fill" />
 
 									<h2
-										className={`seller-menu-option-header-h2 ${
-											selectedOption === "Bantuan-Seller"
-												? "selected"
-												: ""
-										}`}
+										className={`seller-menu-option-header-h2 ${selectedOption === "Bantuan-Seller"
+											? "selected"
+											: ""
+											}`}
 									>
 										Bantuan Seller
 									</h2>
@@ -324,30 +320,27 @@ const SellerPage = () => {
 										<h2>Pengaturan</h2>
 									</div>
 									<div
-										className={`chevron-seller-option-header ${
-											isOpen.pengaturan
-												? "open-seller"
-												: ""
-										}`}
+										className={`chevron-seller-option-header ${isOpen.pengaturan
+											? "open-seller"
+											: ""
+											}`}
 									>
 										<Icon icon="tabler:chevron-up" />
 									</div>
 								</div>
 
 								<div
-									className={`seller-pengaturan-option-content ${
-										isOpen.pengaturan
-											? "show-seller-dropdown"
-											: ""
-									}`}
+									className={`seller-pengaturan-option-content ${isOpen.pengaturan
+										? "show-seller-dropdown"
+										: ""
+										}`}
 								>
 									<h3
-										className={`select-seller-option-menu ${
-											selectedOption ===
+										className={`select-seller-option-menu ${selectedOption ===
 											"Pengaturan-Toko-Seller"
-												? "selected"
-												: ""
-										}`}
+											? "selected"
+											: ""
+											}`}
 										onClick={() =>
 											setSelectedOption(
 												"Pengaturan-Toko-Seller"
@@ -357,12 +350,11 @@ const SellerPage = () => {
 										Pengaturan Toko
 									</h3>
 									<h3
-										className={`select-seller-option-menu ${
-											selectedOption ===
+										className={`select-seller-option-menu ${selectedOption ===
 											"Pengaturan-Admin-Seller"
-												? "selected"
-												: ""
-										}`}
+											? "selected"
+											: ""
+											}`}
 										onClick={() =>
 											setSelectedOption(
 												"Pengaturan-Admin-Seller"

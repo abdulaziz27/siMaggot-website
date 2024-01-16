@@ -5,18 +5,21 @@ import { Icon } from "@iconify/react";
 import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
-import image from "../../assets/images/1335919.png";
 
-import { getAllProducts } from "../../api";
+import swal from "sweetalert";
+import { getAllProducts, addProductToCart } from "../../api";
+import { useNavigate } from "react-router-dom";
 
 const ShopPage = () => {
 	const [products, setProducts] = useState([]);
 	const options = ["Harga Tertinggi", "Harga Terendah"];
+	const navigate = useNavigate();
 
 	const fetchAllProducts = async () => {
 		try {
 			const productsData = await getAllProducts();
 			setProducts(productsData.data);
+			console.log(productsData);
 		} catch (error) {
 			console.error("Error fetching products:", error);
 		}
@@ -25,6 +28,27 @@ const ShopPage = () => {
 	useEffect(() => {
 		fetchAllProducts();
 	}, []);
+
+	const handleAddToCart = async (productId) => {
+		try {
+			const response = await addProductToCart(productId, 1);
+			swal(response.message, {
+				icon: "success",
+				buttons: {
+					confirm: "Lihat Keranjang",
+				},
+			}).then((willNavigate) => {
+				if (willNavigate) {
+					navigate("/cart");
+				}
+			});
+		} catch (error) {
+			console.error("Error adding product to cart:", error);
+			swal("Gagal menambahkan produk ke keranjang", {
+				icon: "error",
+			});
+		}
+	};
 
 	const storedOption = localStorage.getItem("selectedOption");
 	const [selectedOption, setSelectedOption] = useState(
@@ -142,8 +166,11 @@ const ShopPage = () => {
 						{product.rating} | {product.stock} terjual
 					</p>
 
-					<div className="button-beli-shop">
-						<a href={`/product/${product.id}`}>Beli</a>
+					<div
+						className="button-beli-shop"
+						onClick={() => handleAddToCart(product.id)}
+					>
+						beli
 					</div>
 				</div>
 			</div>
@@ -385,15 +412,13 @@ const ShopPage = () => {
 								{selectedOption}
 								<Icon
 									icon="bx:chevron-down"
-									className={`arrow-icon ${
-										isDropdownOpen ? "open" : ""
-									}`}
+									className={`arrow-icon ${isDropdownOpen ? "open" : ""
+										}`}
 								/>
 							</div>
 							<ul
-								className={`dropdown-list ${
-									isDropdownOpen ? "show" : ""
-								}`}
+								className={`dropdown-list ${isDropdownOpen ? "show" : ""
+									}`}
 							>
 								{renderOptions()}
 							</ul>

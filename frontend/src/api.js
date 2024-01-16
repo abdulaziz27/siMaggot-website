@@ -125,15 +125,27 @@ export const updateUserProfile = async (updatedData) => {
 	}
 };
 
-export const getAllProducts = async () => {
-	const productEndpoint = "/product";
+export const getAllProducts = async (isFavorite) => {
+  const productEndpoint = "/product";
+  try {
+    const response = await axios.get(apiUrl + productEndpoint);
+    if (response.data.status === "Success") {
+      const allProductsFavorite = response.data.data;
+      const allProducts = response.data;
 
-	try {
-		const response = await axios.get(apiUrl + productEndpoint);
-		return response.data;
-	} catch (error) {
-		throw error;
-	}
+      // If isFavorite is true, filter only favorite products
+      if (isFavorite) {
+        const favoriteProducts = allProductsFavorite.filter((product) => product.isFavorite === "true");
+        return favoriteProducts;
+      }
+
+      return allProducts;
+    } else {
+      throw new Error("Error fetching products");
+    }
+  } catch (error) {
+    throw new Error(error.message || "Error fetching products");
+  }
 };
 
 export const getProductById = async (productId) => {
@@ -205,27 +217,27 @@ export const addProduct = async (formData) => {
 	}
 };
 
-export const GetAuthenticateSeller = async () => {
-	const userEndpoint = "/seller";
+export const getAuthenticateSeller = async () => {
+  const userEndpoint = "/seller";
+  
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
 
-	try {
-		const accessToken = localStorage.getItem("accessToken");
-		if (!accessToken) {
-			throw new Error("Access token not found");
-		}
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
 
-		const headers = {
-			Authorization: `Bearer ${accessToken}`,
-		};
+    const response = await axios.get(apiUrl + userEndpoint, {
+      headers: headers,
+    });
 
-		const response = await axios.get(apiUrl + userEndpoint, {
-			headers: headers,
-		});
-
-		return response.data;
-	} catch (error) {
-		throw error;
-	}
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getSellerProducts = async (sellerId) => {
@@ -237,4 +249,215 @@ export const getSellerProducts = async (sellerId) => {
 	} catch (error) {
 		throw error;
 	}
+};
+
+export const addProductToCart = async (productId, quantity) => {
+  const cartEndpoint = "/cart/product";
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const data = {
+      productId: productId,
+      quantity: quantity,
+    };
+
+    const response = await axios.post(apiUrl + cartEndpoint, data, {
+      headers: headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const editCartProduct = async (productId, quantity) => {
+  const endpoint = `/cart/product/${productId}`;
+  
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const data = {
+      quantity,
+    };
+
+    const response = await axios.put(apiUrl + endpoint, data, {
+      headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteCartItem = async (productId) => {
+  const endpoint = `/cart/product/${productId}`;
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.delete(apiUrl + endpoint, {
+      headers,
+    });
+
+    console.log(response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting cart item:', error);
+    throw error;
+  }
+};
+
+
+export const getTransactionDetails = async (transactionId, accessToken) => {
+  const endpoint = `/transaction/${transactionId}`;
+
+  try {
+
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.get(apiUrl + endpoint, {
+      headers: headers,
+    });
+
+    if (response.data.status === 'success') {
+      return response.data.data.transaction;
+    } else {
+      throw new Error('Error fetching transaction details');
+    }
+  } catch (error) {
+    throw new Error(error.message || 'Error fetching transaction details');
+  }
+};
+
+export const getTransactions = async () => {
+  const transactionEndpoint = "/transaction";
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.get(apiUrl + transactionEndpoint, {
+      headers: headers,
+    });
+
+    if (response.data.status === 'success') {
+      return response.data.data.transactions;
+    } else {
+      throw new Error('Error fetching transactions');
+    }
+  } catch (error) {
+    throw new Error(error.message || 'Error fetching transactions');
+  }
+};
+
+export const postTransaction = async (status, message, data) => {
+  const transactionEndpoint = "/transaction";
+  const transactionData = {
+    status: status,
+    message: message,
+    data: data,
+  };
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.post(apiUrl + transactionEndpoint, transactionData, {
+      headers
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+ }
+};
+
+export const updateProduct = async (productId, updatedData) => {
+  const sellerEndpoint = `/seller/products/${productId}/`;
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.put(apiUrl + sellerEndpoint, updatedData, {
+      headers: headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteProduct = async (productId) => {
+  const sellerEndpoint = `/seller/products/${productId}/`;
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("Access token not found");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    const response = await axios.delete(apiUrl + sellerEndpoint, {
+      headers: headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
