@@ -6,6 +6,8 @@ import image_profile from "../../assets/profile_page_image/profile_image.jpeg";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { getUserProfile } from "../../api";
+import { getAuthenticateSeller } from "../../api";
+
 
 
 const Header = () => {
@@ -82,7 +84,29 @@ const Header = () => {
 	const closeMenu = () => {
 		setIsMenuOpen(false);
 	};
-
+	const handleShopClick = async () => {
+		try {
+		  const authenticateSeller = await getAuthenticateSeller();
+		  const sellerId = authenticateSeller.data.sellerId;
+	  
+		  if (!sellerId) {
+			swal({
+			  title: "Error!",
+			  text: "Daftar jadi seller dulu",
+			  icon: "error",
+			  buttons: {
+				confirm: "OK",
+			  },
+			}).then(() => {
+			  navigate("/register/seller");
+			});
+		  } else {
+			navigate(`/seller`);
+		  }
+		} catch (error) {
+		  console.error("Error checking seller authentication:", error);
+		}
+	  };
 	return (
 		<div className="header-container">
 			<div className="header">
@@ -121,7 +145,7 @@ const Header = () => {
 
 				{isLoggedIn ? (
 					<>
-						<a href="/seller" className="button-shop">
+						<a className="button-shop" onClick={handleShopClick}>
 							<img src={image_toko}></img>
 							<h2>Toko</h2>
 						</a>

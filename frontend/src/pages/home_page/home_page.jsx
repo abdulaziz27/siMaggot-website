@@ -47,7 +47,6 @@ const HomePage = () => {
 	};
 
 	// slice for card produk
-	const imageFiles = imageFolder.keys().slice(0, 6);
 
 	const plusSlides = (n) => {
 		let newIndex = slideIndex + n;
