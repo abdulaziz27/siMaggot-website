@@ -461,3 +461,38 @@ export const deleteProduct = async (productId) => {
     throw error;
   }
 };
+
+export const addSeller = async (formData) => {
+	const productEndpoint = "/seller";
+
+	try {
+		const accessToken = localStorage.getItem("accessToken");
+		if (!accessToken) {
+			throw new Error("Access token not found");
+		}
+
+		const headers = {
+			Authorization: `Bearer ${accessToken}`,
+			"Content-Type": "multipart/form-data",
+		};
+
+		const response = await axios.post(apiUrl + productEndpoint, formData, {
+			headers,
+		});
+
+		return response.data;
+	} catch (error) {
+		if (error.response) {
+			console.error("Server error:", error.response.data);
+			throw new Error("Server error. Please try again later.");
+		} else if (error.request) {
+			console.error("No response from the server:", error.request);
+			throw new Error(
+				"No response from the server. Please try again later."
+			);
+		} else {
+			console.error("Request setup error:", error.message);
+			throw new Error("Request setup error. Please try again later.");
+		}
+	}
+};

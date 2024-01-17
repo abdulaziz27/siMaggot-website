@@ -2,6 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import "../seller_page.css";
 import { useState, useEffect } from "react";
+import swal from "sweetalert";
 import { getSellerProducts, getAuthenticateSeller, deleteProduct } from "../../../api";
 
 const ProductListOption = () => {
@@ -40,6 +41,7 @@ const ProductListOption = () => {
       const sellerId = authenticateSeller.data.sellerId;
       const updatedProducts = await getSellerProducts(sellerId);
       setSellerProducts(updatedProducts.data);
+      swal("Success!", "Berhasil Mendaftarkan Seller.", "success")
     } catch (error) {
       console.error("Error saat menghapus produk:", error.message);
     }

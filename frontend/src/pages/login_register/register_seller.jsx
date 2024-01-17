@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import LoginImage from "../../assets/login_register/login_hero.png";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import { registerSeller } from "../../api";
+import { addSeller } from "../../api";
 
 function RegisterSeller() {
 	const navigate = useNavigate();
@@ -14,69 +14,67 @@ function RegisterSeller() {
 	const [description, setDescription] = useState("");
 	const [cover, setCover] = useState("");
 	const [imagePreview, setImagePreview] = useState("");
-
+  
 	const handleNameChange = (event) => {
-		setName(event.target.value);
+	  setName(event.target.value);
 	};
-
+  
 	const handeAddressChange = (event) => {
-		setAddress(event.target.value);
+	  setAddress(event.target.value);
 	};
-
+  
 	const handleDescriptionChange = (event) => {
-		setDescription(event.target.value);
+	  setDescription(event.target.value);
 	};
-
+  
 	const handleCoverChange = (event) => {
-		const file = event.target.files[0];
-		setCover(file);
-
-		const reader = new FileReader();
-		reader.onload = (e) => {
-			const imagePreview = e.target.result;
-			setImagePreview(imagePreview);
-		};
-
-		if (file) {
-			reader.readAsDataURL(file);
-		}
+	  const file = event.target.files[0];
+	  setCover(file);
+  
+	  const reader = new FileReader();
+	  reader.onload = (e) => {
+		const imagePreview = e.target.result;
+		setImagePreview(imagePreview);
+	  };
+  
+	  if (file) {
+		reader.readAsDataURL(file);
+	  }
 	};
-
-	const handleRegister = async () => {
-		try {
-			if (!name || !address || !description || !cover) {
-				console.error("Semua Bidang Harus diisi");
-				swal("Error!", "Semua Bidang Harus diisi.", "error");
-				return;
-			}
-
-			const formData = new FormData();
-			formData.append("name", name);
-			formData.append("address", address);
-			formData.append("description", description);
-			formData.append("cover", cover);
-
-			const response = await registerSeller(formData);
-
-			swal("Success!", "Berhasil Menambahkan Produk", "success").then(
-				() => {
-					navigate("/seller");
-				}
-			);
-			console.log("Berhasil Menambahkan Produk", response);
-
-			setName("");
-			setAddress("");
-			setDescription("");
-			setCover("");
-		} catch (error) {
-			console.error("Terjadi Kesalahan Dalam Menambahkan Produk", error);
-			swal(
-				"Error!",
-				"Terjadi Kesalahan Dalam Menambahkan Produk.",
-				"error"
-			);
+  
+	const handleFormSubmit = async () => {
+	  try {
+		if (!name || !address || !description || !cover) {
+		  console.error("Semua Bidang Harus diisi");
+		  swal("Error!", "Semua Bidang Harus diisi.", "error");
+		  return;
 		}
+  
+		const formData = new FormData();
+		formData.append("name", name);
+		formData.append("address", address);
+		formData.append("description", description);
+		formData.append("cover", cover);
+  
+		const response = await addSeller(formData);
+  
+		if (response.status === "Success") {
+		  const sellerId = response.data.sellerId;
+		  swal("Success!", "Berhasil Mendaftarkan Seller.", "success").then(() => {
+			navigate(`/seller`);
+		  });
+		} else {
+		  console.error("Terjadi Kesalahan Dalam Menambahkan Produk", response);
+		  swal("Error!", "Terjadi Kesalahan Dalam Menambahkan Produk.", "error");
+		}
+		setName("");
+		setAddress("");
+		setDescription("");
+		setCover("");
+	  } catch (error) {
+		console.error("Terjadi Kesalahan", error);
+		swal("Error!", "Terjadi Kesalahan.", "error");
+	  }
 	};
 
 	return (
@@ -103,13 +101,15 @@ function RegisterSeller() {
 
 				<div className="loginform">
 					<h2>Daftar Seller</h2>
-					<form onSubmit={handleRegister}>
+					<form >
 						<label htmlFor="name">Nama</label>
 						<input
 							className="username-register"
 							type="text"
 							id="name"
 							placeholder="Masukkan Nama disini"
+							value={name}
+  onChange={handleNameChange}
 						/>
 
 						<label htmlFor="address">Alamat</label>
@@ -151,7 +151,9 @@ function RegisterSeller() {
 						<div className="centered">
 							<div className="register-button-container">
 								<button
-									type="submit"
+														onClick={handleFormSubmit}
+
+									type="button"
 									className="registerButton"
 								>
 									Daftar
