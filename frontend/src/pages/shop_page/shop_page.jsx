@@ -156,7 +156,7 @@ const ShopPage = () => {
 				</Link>
 
 				<div className="info-barang-shop-container">
-					<Link to={`/product/${product.id}`}>
+					<Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
 						<h3>{product.productName}</h3>
 						<h4>Rp. {product.price.toLocaleString()}</h4>
 						<p>

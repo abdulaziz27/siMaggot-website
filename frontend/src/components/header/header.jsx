@@ -86,27 +86,38 @@ const Header = () => {
 	};
 	const handleShopClick = async () => {
 		try {
-		  const authenticateSeller = await getAuthenticateSeller();
-		  const sellerId = authenticateSeller.data.sellerId;
-	  
-		  if (!sellerId) {
-			swal({
-			  title: "Error!",
-			  text: "Daftar jadi seller dulu",
-			  icon: "error",
-			  buttons: {
-				confirm: "OK",
-			  },
-			}).then(() => {
-			  navigate("/register/seller");
-			});
-		  } else {
-			navigate(`/seller`);
-		  }
+			const authenticateSeller = await getAuthenticateSeller();
+			const sellerId = authenticateSeller.data.sellerId;
+			console.log(sellerId);
+
+			if (!sellerId) {
+				swal({
+					title: "Error!",
+					text: "Daftar jadi seller dulu",
+					icon: "error",
+					buttons: {
+						confirm: "OK",
+					},
+				}).then(() => {
+					navigate("/register/seller");
+				});
+			} else {
+				navigate(`/seller`);
+			}
 		} catch (error) {
-		  console.error("Error checking seller authentication:", error);
+			swal({
+				title: "Error!",
+				text: "Silahkan daftar menjadi seller terlebih dahulu",
+				icon: "error",
+				buttons: {
+					confirm: "OK",
+				},
+			}).then(() => {
+				navigate("/register/seller");
+			});
+			console.error("Error checking seller authentication:", error);
 		}
-	  };
+	};
 	return (
 		<div className="header-container">
 			<div className="header">
