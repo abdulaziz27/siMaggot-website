@@ -14,67 +14,67 @@ function RegisterSeller() {
 	const [description, setDescription] = useState("");
 	const [cover, setCover] = useState("");
 	const [imagePreview, setImagePreview] = useState("");
-  
+
 	const handleNameChange = (event) => {
-	  setName(event.target.value);
+		setName(event.target.value);
 	};
-  
+
 	const handeAddressChange = (event) => {
-	  setAddress(event.target.value);
+		setAddress(event.target.value);
 	};
-  
+
 	const handleDescriptionChange = (event) => {
-	  setDescription(event.target.value);
+		setDescription(event.target.value);
 	};
-  
+
 	const handleCoverChange = (event) => {
-	  const file = event.target.files[0];
-	  setCover(file);
-  
-	  const reader = new FileReader();
-	  reader.onload = (e) => {
-		const imagePreview = e.target.result;
-		setImagePreview(imagePreview);
-	  };
-  
-	  if (file) {
-		reader.readAsDataURL(file);
-	  }
+		const file = event.target.files[0];
+		setCover(file);
+
+		const reader = new FileReader();
+		reader.onload = (e) => {
+			const imagePreview = e.target.result;
+			setImagePreview(imagePreview);
+		};
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
 	};
-  
+
 	const handleFormSubmit = async () => {
-	  try {
-		if (!name || !address || !description || !cover) {
-		  console.error("Semua Bidang Harus diisi");
-		  swal("Error!", "Semua Bidang Harus diisi.", "error");
-		  return;
+		try {
+			if (!name || !address || !description || !cover) {
+				console.error("Semua Bidang Harus diisi");
+				swal("Error!", "Semua Bidang Harus diisi.", "error");
+				return;
+			}
+
+			const formData = new FormData();
+			formData.append("name", name);
+			formData.append("address", address);
+			formData.append("description", description);
+			formData.append("cover", cover);
+
+			const response = await addSeller(formData);
+
+			if (response.status === "Success") {
+				const sellerId = response.data.sellerId;
+				swal("Success!", "Berhasil Mendaftarkan Seller.", "success").then(() => {
+					navigate(`/seller`);
+				});
+			} else {
+				console.error("Terjadi Kesalahan Dalam Menambahkan Produk", response);
+				swal("Error!", "Terjadi Kesalahan Dalam Menambahkan Produk.", "error");
+			}
+			setName("");
+			setAddress("");
+			setDescription("");
+			setCover("");
+		} catch (error) {
+			console.error("Terjadi Kesalahan", error);
+			swal("Error!", "Terjadi Kesalahan.", "error");
 		}
-  
-		const formData = new FormData();
-		formData.append("name", name);
-		formData.append("address", address);
-		formData.append("description", description);
-		formData.append("cover", cover);
-  
-		const response = await addSeller(formData);
-  
-		if (response.status === "Success") {
-		  const sellerId = response.data.sellerId;
-		  swal("Success!", "Berhasil Mendaftarkan Seller.", "success").then(() => {
-			navigate(`/seller`);
-		  });
-		} else {
-		  console.error("Terjadi Kesalahan Dalam Menambahkan Produk", response);
-		  swal("Error!", "Terjadi Kesalahan Dalam Menambahkan Produk.", "error");
-		}
-		setName("");
-		setAddress("");
-		setDescription("");
-		setCover("");
-	  } catch (error) {
-		console.error("Terjadi Kesalahan", error);
-		swal("Error!", "Terjadi Kesalahan.", "error");
-	  }
 	};
 
 	return (
@@ -109,7 +109,7 @@ function RegisterSeller() {
 							id="name"
 							placeholder="Masukkan Nama disini"
 							value={name}
-  onChange={handleNameChange}
+							onChange={handleNameChange}
 						/>
 
 						<label htmlFor="address">Alamat</label>
@@ -151,7 +151,7 @@ function RegisterSeller() {
 						<div className="centered">
 							<div className="register-button-container">
 								<button
-														onClick={handleFormSubmit}
+									onClick={handleFormSubmit}
 
 									type="button"
 									className="registerButton"
@@ -159,22 +159,6 @@ function RegisterSeller() {
 									Daftar
 								</button>
 							</div>
-
-							<p className="otherAccount">atau masuk dengan</p>
-
-							<div className="google-button-container">
-								<a className="googleButton">
-									<Icon
-										icon="devicon:google"
-										className="icon-google"
-									/>
-									<h3>Google</h3>
-								</a>
-							</div>
-
-							<p className="existAccount">
-								Sudah punya akun? <a href="./login">Masuk</a>
-							</p>
 						</div>
 					</form>
 				</div>

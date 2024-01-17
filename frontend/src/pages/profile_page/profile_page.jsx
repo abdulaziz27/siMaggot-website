@@ -6,7 +6,7 @@ import Footer from "../../components/footer/footer";
 import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/header/header";
 
-import image from "../../assets/profile_page_image/profile_image.jpeg";
+import image from "../../assets/profile_page_image/profile_image.png";
 import ProfilePageAccountOption from "./profile_page_component/profile_page_account_option";
 import AddressPageAccountOption from "./profile_page_component/address_page_account_option";
 import FavoriteProductAccountOption from "./profile_page_component/favorite_product_account_option";

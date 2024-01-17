@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../header/header.css";
 import { Icon } from "@iconify/react";
 import image_toko from "../../assets/profile_page_image/shop_icon.jpeg";
-import image_profile from "../../assets/profile_page_image/profile_image.jpeg";
+import image_profile from "../../assets/profile_page_image/profile_image.png";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { getUserProfile } from "../../api";
