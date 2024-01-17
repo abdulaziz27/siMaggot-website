@@ -170,9 +170,8 @@ const HomePage = () => {
 					{imagePaths.map((image, index) => (
 						<div
 							key={index}
-							className={`mySlides fade ${
-								index + 1 === slideIndex ? "active" : ""
-							}`}
+							className={`mySlides fade ${index + 1 === slideIndex ? "active" : ""
+								}`}
 						>
 							<img src={image} alt={`Slide ${index + 1}`} />
 						</div>
@@ -195,9 +194,8 @@ const HomePage = () => {
 						{imagePaths.map((image, index) => (
 							<span
 								key={index}
-								className={`dot ${
-									index + 1 === slideIndex ? "active-dot" : ""
-								}`}
+								className={`dot ${index + 1 === slideIndex ? "active-dot" : ""
+									}`}
 								onClick={() => currentSlide(index + 1)}
 							></span>
 						))}
@@ -216,7 +214,7 @@ const HomePage = () => {
 							<img src={image1}></img>
 						</div>
 
-						<a>
+						<Link to="/shop">
 							<div
 								className="big-category-title"
 								id="button-kategori"
@@ -227,7 +225,7 @@ const HomePage = () => {
 									className="right-arrow"
 								/>
 							</div>
-						</a>
+						</Link>
 					</div>
 
 					<div className="wide-category">
@@ -236,7 +234,7 @@ const HomePage = () => {
 								<img src={image2}></img>
 							</div>
 
-							<a>
+							<Link to="/shop">
 								<div
 									className="wide-category-title"
 									id="button-kategori"
@@ -247,7 +245,7 @@ const HomePage = () => {
 										className="right-arrow"
 									/>
 								</div>
-							</a>
+							</Link>
 						</div>
 
 						<div className="kategori-2" id="kategori-2">
@@ -255,7 +253,7 @@ const HomePage = () => {
 								<img src={image3}></img>
 							</div>
 
-							<a>
+							<Link to="/shop">
 								<div
 									className="wide-category-title"
 									id="button-kategori"
@@ -266,7 +264,7 @@ const HomePage = () => {
 										className="right-arrow"
 									/>
 								</div>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

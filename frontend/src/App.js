@@ -60,7 +60,7 @@ function App() {
 						/>
 						<Route exact path="/payment" element={<Confirm />} />
 						<Route exact path="/seller" element={<SellerPage />} />
-						<Route exact path="/store" element={<Store />} />
+						<Route exact path="/store/:sellerId" element={<Store />} />
 						<Route exact path="/chat" element={<Chat />} />
 						<Route
 							exact

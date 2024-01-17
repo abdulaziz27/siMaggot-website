@@ -8,7 +8,7 @@ import Footer from "../../components/footer/footer";
 
 import swal from "sweetalert";
 import { getAllProducts, addProductToCart } from "../../api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ShopPage = () => {
 	const [products, setProducts] = useState([]);
@@ -147,25 +147,26 @@ const ShopPage = () => {
 	const renderProducts = () => {
 		return products.map((product) => (
 			<div className="card-barang-shop" key={product.id}>
-				<div className="gambar-barang-shop">
+				<Link to={`/product/${product.id}`} className="gambar-barang-shop">
 					{product.cover ? (
 						<img src={product.cover} alt={product.productName} />
 					) : (
 						<p>Cover image not available</p>
 					)}
-				</div>
+				</Link>
 
 				<div className="info-barang-shop-container">
-					<h3>{product.productName}</h3>
-					<h4>Rp. {product.price.toLocaleString()}</h4>
-					<p>
-						<Icon
-							icon="material-symbols:star"
-							className="icon-star-filter"
-						/>
-						{product.rating} | {product.stock} terjual
-					</p>
-
+					<Link to={`/product/${product.id}`}>
+						<h3>{product.productName}</h3>
+						<h4>Rp. {product.price.toLocaleString()}</h4>
+						<p>
+							<Icon
+								icon="material-symbols:star"
+								className="icon-star-filter"
+							/>
+							{product.rating} | {product.stock} terjual
+						</p>
+					</Link>
 					<div
 						className="button-beli-shop"
 						onClick={() => handleAddToCart(product.id)}

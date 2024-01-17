@@ -13,7 +13,7 @@ import productImage3 from "../../assets/product/img2.png";
 import productImage4 from "../../assets/product/img3.png";
 import productImage5 from "../../assets/product/img4.png";
 
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getProductById, getAllProducts } from "../../api";
 
 
@@ -128,16 +128,16 @@ function Product() {
           <div className="toko">
             <div className="profilToko">
               <img src={shopLogo} alt="Logo Toko" />
-              <h3>Tendo Animal Feed</h3>
+              <h3>Agyl's Toko</h3>
               <p className="statusToko">Aktif 25 menit lalu</p>
               <a className="chatSekarang">
                 <span><Icon icon="ep:chat-dot-round" color="#728a1a" /></span>
                 <p className="hubungiToko">Chat Sekarang</p>
               </a>
-              <a className="kunjungiToko">
+              <Link to={`/store/${product.data.sellerId}`} className="kunjungiToko">
                 <span><Icon icon="bi:shop-window" /></span>
                 <p className="hubungiToko">Kunjungi Toko</p>
-              </a>
+              </Link>
             </div>
 
             <div className="infoToko">

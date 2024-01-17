@@ -229,6 +229,7 @@ hr {
 	padding: 6px;
 	transition: 0.5s ease;
 	cursor: pointer;
+	text-decoration: none;
 }
 
 .big-category-title,
@@ -446,6 +447,7 @@ p {
 
 /* ======================== Responsive ======================== */
 @media only screen and (max-width: 2048px) and (min-width: 1921px) {
+
 	/* ======================== Produk Terlaris dan Produk Terbaru ======================== */
 	.button-beli {
 		margin-top: auto;
@@ -460,6 +462,7 @@ p {
 }
 
 @media only screen and (max-width: 1728px) and (min-width: 1281px) {
+
 	/* ======================== Kategori Produk ======================== */
 	.big-category img {
 		object-fit: contain;
@@ -478,6 +481,7 @@ p {
 }
 
 @media only screen and (max-width: 1440px) and (min-width: 1281px) {
+
 	/* ======================== Main Home Page ======================== */
 	.horizontal-line {
 		overflow: hidden;
@@ -547,6 +551,7 @@ p {
 }
 
 @media only screen and (max-width: 1280px) {
+
 	/* ======================== Main Home Page ======================== */
 	.horizontal-line {
 		overflow: hidden;
@@ -677,6 +682,7 @@ p {
 }
 
 @media only screen and (max-width: 800px) {
+
 	/* ======================== Slide Banner ======================== */
 	.slide-event-banner {
 		position: relative;
@@ -691,6 +697,7 @@ p {
 }
 
 @media only screen and (max-width: 430px) {
+
 	/* ======================== Slide Banner ======================== */
 	.slide-event-banner {
 		width: 90%;

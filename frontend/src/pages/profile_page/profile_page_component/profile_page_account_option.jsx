@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Icon } from "@iconify/react";
 import "../profile_page.css";
-import image from "../../../assets/profile_page_image/profile_image.jpeg";
+import image from "../../../assets/profile_page_image/profile_image.png";
 import { getUserProfile, updateUserProfile } from "../../../api";
 
 const ProfilePageAccountOption = () => {
