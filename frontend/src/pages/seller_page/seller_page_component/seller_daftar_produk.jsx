@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
-import "../seller_page.css";
-import { useState, useEffect } from "react";
 import swal from "sweetalert";
-import { getSellerProducts, getAuthenticateSeller, deleteProduct } from "../../../api";
+import {
+  getSellerProducts,
+  getAuthenticateSeller,
+  deleteProduct,
+  updateProduct,
+} from "../../../api";
 
 const ProductListOption = () => {
   const [sellerProducts, setSellerProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editProductId, setEditProductId] = useState(null);
+  const [editedProductName, setEditedProductName] = useState("");
+  const [editedProductCover, setEditedProductCover] = useState("");
+  const [editedProductPrice, setEditedProductPrice] = useState("");
+  const [editedProductStock, setEditedProductStock] = useState("");
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,21 +38,67 @@ const ProductListOption = () => {
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   const handleDeleteProduct = async (productId) => {
     try {
       await deleteProduct(productId);
 
       const authenticateSeller = await getAuthenticateSeller();
       const sellerId = authenticateSeller.data.sellerId;
-      const updatedProducts = await getSellerProducts(sellerId);
-      setSellerProducts(updatedProducts.data);
-      swal("Success!", "Berhasil Mendaftarkan Seller.", "success")
+
+      const updatedProductsResponse = await getSellerProducts(sellerId);
+      const updatedProducts = updatedProductsResponse.data;
+
+      setSellerProducts(updatedProducts);
+
+      swal("Success!", "Berhasil menghapus produk.", "success");
     } catch (error) {
       console.error("Error saat menghapus produk:", error.message);
+    }
+  };
+
+  const handleEditProduct = (productId, productName, cover, price, stock) => {
+    console.log("Editing product:", productId);
+    setEditProductId(productId);
+    setEditedProductName(productName);
+    setEditedProductCover(cover);
+    setEditedProductPrice(price);
+    setEditedProductStock(stock);
+
+    setIsEditFormVisible(true);
+  };
+
+  const handleUpdateProduct = async () => {
+    try {
+      const updatedProductData = {
+        productName: editedProductName,
+        cover: editedProductCover,
+        price: editedProductPrice,
+        stock: editedProductStock,
+      };
+
+      // Filter out undefined values
+      const filteredProductData = Object.fromEntries(
+        Object.entries(updatedProductData).filter(([_, value]) => value !== undefined)
+      );
+
+      await updateProduct(editProductId, filteredProductData);
+
+      const authenticateSeller = await getAuthenticateSeller();
+      const sellerId = authenticateSeller.data.sellerId;
+
+      const updatedProductsResponse = await getSellerProducts(sellerId);
+      const updatedProducts = updatedProductsResponse.data;
+
+      setSellerProducts(updatedProducts);
+      setEditProductId(null);
+      setEditedProductName("");
+      setEditedProductCover("");
+      setEditedProductPrice("");
+      setEditedProductStock("");
+
+      swal("Success!", "Berhasil mengupdate produk.", "success");
+    } catch (error) {
+      console.error("Error saat mengupdate produk:", error.message);
     }
   };
 
@@ -166,6 +221,15 @@ const ProductListOption = () => {
                   <Icon
                     icon="bi:pencil-square"
                     className="list-product-seller-edit-icon"
+                    onClick={() =>
+                      handleEditProduct(
+                        product.id,
+                        product.productName,
+                        product.cover,
+                        product.price,
+                        product.stock
+                      )
+                    }
                   />
                   <Icon
                     icon="bi:trash3"
@@ -177,6 +241,50 @@ const ProductListOption = () => {
             </div>
           </div>
         ))}
+        {/* Tampilkan formulir pengeditan produk jika sedang dalam mode pengeditan */}
+        {isEditFormVisible && editProductId && (
+          <div className="edit-product-form-container">
+            <h2>Edit Product</h2>
+            <label>
+              Product Name:
+              <input
+                type="text"
+                value={editedProductName}
+                onChange={(e) => setEditedProductName(e.target.value)}
+              />
+            </label>
+            <label>
+              Price:
+              <input
+                type="text"
+                value={editedProductPrice}
+                onChange={(e) => setEditedProductPrice(e.target.value)}
+              />
+            </label>
+            <label>
+              Cover Image:
+              <div className="cover-image-preview">
+                <img src={editedProductCover} alt="Cover Preview"
+                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              </div>
+              <input
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                onChange={(e) => setEditedProductCover(e.target.files[0])}
+              />
+            </label>
+            <label>
+              Stock:
+              <input
+                type="text"
+                value={editedProductStock}
+                onChange={(e) => setEditedProductStock(e.target.value)}
+              />
+            </label>
+            <button onClick={handleUpdateProduct}>Update Product</button>
+            <button onClick={() => { setEditProductId(null); setIsEditFormVisible(false); }}>Cancel</button>
+          </div>
+        )}
       </div>
     </div>
   );

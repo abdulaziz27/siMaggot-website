@@ -235,16 +235,14 @@
 	overflow: hidden;
 	border-radius: 15px;
 	box-shadow: 0px 2px 6px 0px rgba(109, 117, 136, 0.5);
-	background: linear-gradient(
-		180deg,
-		#728a1a 0.04%,
-		rgba(114, 138, 26, 0.84) 0.04%,
-		rgba(114, 138, 26, 0.55) 12.79%,
-		rgba(114, 138, 26, 0.43) 27.25%,
-		rgba(114, 138, 26, 0.24) 59.56%,
-		rgba(114, 138, 26, 0.2) 100.63%,
-		rgba(114, 138, 26, 0) 100.64%
-	);
+	background: linear-gradient(180deg,
+			#728a1a 0.04%,
+			rgba(114, 138, 26, 0.84) 0.04%,
+			rgba(114, 138, 26, 0.55) 12.79%,
+			rgba(114, 138, 26, 0.43) 27.25%,
+			rgba(114, 138, 26, 0.24) 59.56%,
+			rgba(114, 138, 26, 0.2) 100.63%,
+			rgba(114, 138, 26, 0) 100.64%);
 }
 
 .home-seller-option-menu-header {
@@ -287,22 +285,18 @@
 	width: 120px;
 	height: 100%;
 	border-radius: 5px;
-	background: linear-gradient(
-		267deg,
-		rgba(179, 194, 122, 0.6) -128.66%,
-		rgba(179, 194, 122, 0) 113.61%
-	);
+	background: linear-gradient(267deg,
+			rgba(179, 194, 122, 0.6) -128.66%,
+			rgba(179, 194, 122, 0) 113.61%);
 }
 
 .seller-order-card-2 {
 	width: 120px;
 	height: 100%;
 	border-radius: 5px;
-	background: linear-gradient(
-		265deg,
-		rgba(179, 194, 122, 0.78) -8.12%,
-		rgba(179, 194, 122, 0) 135.76%
-	);
+	background: linear-gradient(265deg,
+			rgba(179, 194, 122, 0.78) -8.12%,
+			rgba(179, 194, 122, 0) 135.76%);
 }
 
 .seller-order-card-3 {
@@ -344,11 +338,9 @@
 	height: 100%;
 	transform: scale(-1);
 	border-radius: 5px;
-	background: linear-gradient(
-		265deg,
-		rgba(179, 194, 122, 0.78) -8.12%,
-		rgba(179, 194, 122, 0) 135.76%
-	);
+	background: linear-gradient(265deg,
+			rgba(179, 194, 122, 0.78) -8.12%,
+			rgba(179, 194, 122, 0) 135.76%);
 }
 
 .seller-order-card-5 {
@@ -356,11 +348,9 @@
 	height: 100%;
 	border-radius: 5px;
 	transform: scale(-1);
-	background: linear-gradient(
-		267deg,
-		rgba(179, 194, 122, 0.6) -128.66%,
-		rgba(179, 194, 122, 0) 113.61%
-	);
+	background: linear-gradient(267deg,
+			rgba(179, 194, 122, 0.6) -128.66%,
+			rgba(179, 194, 122, 0) 113.61%);
 }
 
 .chevron-seller-order {
@@ -624,7 +614,7 @@
 }
 
 .add-product-seller-option-product-photo-fill-content {
-	width: 60%;
+	/* width: 60%; */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -1063,13 +1053,11 @@
 	cursor: pointer;
 }
 
-.add-product-seller-option-variant-delivery-type-content
-	input[type="radio"]:checked {
+.add-product-seller-option-variant-delivery-type-content input[type="radio"]:checked {
 	background-color: #fff;
 }
 
-.add-product-seller-option-variant-delivery-type-content
-	input[type="radio"]:checked::before {
+.add-product-seller-option-variant-delivery-type-content input[type="radio"]:checked::before {
 	content: "";
 	align-items: center;
 	position: absolute;
@@ -1434,9 +1422,7 @@
 	background-color: none;
 }
 
-.list-product-seller-checkbox-content
-	input:checked
-	~ .checkmark-list-product-seller {
+.list-product-seller-checkbox-content input:checked~.checkmark-list-product-seller {
 	background-color: var(--clr-hijau-lumut);
 	border-color: var(--clr-hijau-lumut);
 }
@@ -1447,9 +1433,7 @@
 	display: none;
 }
 
-.list-product-seller-checkbox-content
-	input:checked
-	~ .checkmark-list-product-seller:after {
+.list-product-seller-checkbox-content input:checked~.checkmark-list-product-seller:after {
 	display: block;
 }
 
@@ -1609,4 +1593,53 @@
 .list-product-seller-view-varian-product-button:hover {
 	box-shadow: 0px 2px 6px 0px rgba(164, 170, 184, 0.5);
 	transform: scale(1.002);
+}
+
+
+/* Edit Produk */
+.edit-product-form-container {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding: 20px;
+	max-width: 400px;
+	margin: 20px auto;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-product-form-container h2 {
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+.edit-product-form-container label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.edit-product-form-container input {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 15px;
+	box-sizing: border-box;
+}
+
+.edit-product-form-container button {
+	background-color: #4caf50;
+	color: #fff;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+
+.edit-product-form-container button:disabled {
+	background-color: #ddd;
+	cursor: not-allowed;
+}
+
+.edit-product-form-container button+button {
+	margin-left: 10px;
 }

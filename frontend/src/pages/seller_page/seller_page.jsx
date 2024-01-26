@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../seller_page/seller_page.css";
 import { Icon } from "@iconify/react";
 

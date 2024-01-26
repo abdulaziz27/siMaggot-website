@@ -82,7 +82,7 @@ const HomePage = () => {
 		return () => {
 			clearInterval(interval);
 		};
-	}, [slideIndex, imagePaths]);
+	}, [slideIndex, imagePaths, plusSlides]);
 
 	const handleMouseEnter = () => {
 		setIsHovered(true);

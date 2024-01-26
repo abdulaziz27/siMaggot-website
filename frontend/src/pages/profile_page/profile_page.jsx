@@ -15,7 +15,7 @@ import TransactionProductAccountOption from "./profile_page_component/transactio
 import OrderStatusAccountOption from "./profile_page_component/order_status_account_option";
 
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { logoutUser, getUserProfile } from "../../api";
 import isAuthenticated from "../../auth";
 
@@ -73,7 +73,7 @@ const ProfilePage = () => {
 			case "Alamat":
 				return <AddressPageAccountOption />;
 			case "Ubah Password":
-				return <a href="/change_password"></a>;
+				return <Link to="/change_password"></Link>;
 			case "Produk Favorit":
 				return <FavoriteProductAccountOption />;
 			case "Daftar Transaksi":

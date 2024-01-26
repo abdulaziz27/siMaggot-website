@@ -8,7 +8,7 @@ const ArticlePage3 = () => {
 			<h1>Budidaya Maggot dan Potensi Keuntungannya</h1>
 
 			<div className="article-image-content">
-				<img src={image}></img>
+				<img src={image} alt="banner artikel"></img>
 			</div>
 
 			<p>

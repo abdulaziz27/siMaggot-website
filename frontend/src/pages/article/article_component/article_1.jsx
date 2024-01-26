@@ -1,14 +1,14 @@
 import React from "react";
 import "../../article/article_page.css";
-import image from "../../../assets/article/artikel_maggot4.png";
+import image from "../../../assets/article/artikel_maggot1.png";
 
-const ArticlePage4 = () => {
+const ArticlePage1 = () => {
 	return (
 		<div className="article-information-container">
 			<h1>Budidaya Maggot dan Potensi Keuntungannya</h1>
 
 			<div className="article-image-content">
-				<img src={image}></img>
+				<img src={image} alt="banner artikel"></img>
 			</div>
 
 			<p>
@@ -253,4 +253,4 @@ const ArticlePage4 = () => {
 	);
 };
 
-export default ArticlePage4;
+export default ArticlePage1;

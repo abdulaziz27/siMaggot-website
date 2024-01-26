@@ -8,7 +8,7 @@ const ArticlePage2 = () => {
 			<h1>Tangani Sampah Organik dengan Budi Daya Maggot</h1>
 
 			<div className="article-image-content">
-				<img src={image}></img>
+				<img src={image} alt="banner artikel"></img>
 			</div>
 
 			<p>
