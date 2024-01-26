@@ -60,10 +60,10 @@ const Store = () => {
             <div className="profilToko">
               <img src={shopLogo} alt="Logo Toko" />
               <div className='isiProfilToko'>
-                <h3>Agyl's Shop</h3>
+                <h3>agyl's shop</h3>
                 <p className="statusToko">Aktif 25 menit lalu</p>
                 <div className='tombolProfilToko'>
-                  <a className="chatSekarang">
+                  <a className="chatSekarang" href='/chat'>
                     <span><Icon icon="ep:chat-dot-round" color="#728a1a" /></span>
                     <p className="hubungiToko">Chat Penjual</p>
                   </a>

@@ -1,14 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "../article/article_page.css";
-import image from "../../assets/article/artikel_maggot1.png";
 import HeaderBlog from "../../components/header_blog/header_blog";
 import Footer from "../../components/footer/footer";
-import ArticlePage1 from "./article_component/articel_1";
-import ArticlePage2 from "./article_component/articel_2";
-import ArticlePage3 from "./article_component/articel_3";
-import ArticlePage4 from "./article_component/articel_4";
-import ArticlePage5 from "./article_component/articel_5";
+import ArticlePage1 from "./article_component/article_1";
+import ArticlePage2 from "./article_component/article_2";
+import ArticlePage3 from "./article_component/article_3";
+import ArticlePage4 from "./article_component/article_4";
+import ArticlePage5 from "./article_component/article_5";
 
 const ArticlePage = () => {
 	const { id } = useParams();

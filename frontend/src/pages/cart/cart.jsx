@@ -95,6 +95,7 @@ function Cart() {
       await editCartProduct(productId, newQuantity);
       const updatedCartData = await getCart();
       setCartData(updatedCartData.data.carts);
+      console.log(setCartData);
     } catch (error) {
       console.error("Error editing cart product:", error);
     }
@@ -202,26 +203,36 @@ function calculateTotalHarga(products) {
 }
 
 function JenisBarang({ gambarBarang, namaBarang, hargaSatuan, totalTiapBarang, quantity, onQuantityChange, onDelete }) {
+  const handleQuantityIncrement = () => {
+    onQuantityChange(quantity + 1);
+  };
+
+  const handleQuantityDecrement = () => {
+    if (quantity > 1) {
+      onQuantityChange(quantity - 1);
+    }
+  };
+
   return (
-    <form action="" className="listBarang">
+    <div className="listBarang">
       <input type="checkbox" name="checkBarang" id="checkBarang" />
       <img className="productImage" src={gambarBarang} alt="Gambar Produk" />
       <label htmlFor="checkBarang" className="alignLeft">{namaBarang}</label>
       <p>Rp. {hargaSatuan}</p>
       <div className="buttonKuantitas">
-        <div className="trashButton" onClick={() => onDelete()}>
+        <div className="trashButton" onClick={onDelete}>
           <Icon icon="bi:trash" color="red" />
         </div>
         <div className="counter">
-          <button>一</button>
+          <button onClick={handleQuantityDecrement}>一</button>
           <input value={quantity} readOnly />
-          <button>十</button>
+          <button onClick={handleQuantityIncrement}>十</button>
         </div>
       </div>
       <p className="totalTiapBarang">Rp. {totalTiapBarang}</p>
       <textarea className="isiCatatan" name="isiCatatan" id="isiCatatan" cols="30" rows="3"></textarea>
       <span className="catatanBeli">Tulis Catatan</span>
-    </form>
+    </div>
   );
 }
 

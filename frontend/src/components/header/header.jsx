@@ -8,8 +8,6 @@ import swal from "sweetalert";
 import { getUserProfile } from "../../api";
 import { getAuthenticateSeller } from "../../api";
 
-
-
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -37,7 +37,7 @@ function Product() {
   const fetchProductsPilihan = async () => {
     try {
       const productsData = await getAllProducts();
-      const selectedProduct = productsData.data.slice(6, 10); // Adjust the range as needed
+      const selectedProduct = productsData.data.slice(6, 10);
       setProductsPilihan(selectedProduct);
     } catch (error) {
       console.error("Error fetching shop selected products:", error);
@@ -112,7 +112,6 @@ function Product() {
               </div>
             </div>
             <button className="keranjang"> + Keranjang</button>
-            <button className="beliLangsung">Beli Langsung</button>
             <div className="tandai">
               <a className="favorit">
                 <span><Icon icon="ph:heart" color="#728a1a" /></span>
@@ -128,9 +127,9 @@ function Product() {
           <div className="toko">
             <div className="profilToko">
               <img src={shopLogo} alt="Logo Toko" />
-              <h3>Agyl's Toko</h3>
+              <h3>agyl's shop</h3>
               <p className="statusToko">Aktif 25 menit lalu</p>
-              <a className="chatSekarang">
+              <a className="chatSekarang" href="/chat">
                 <span><Icon icon="ep:chat-dot-round" color="#728a1a" /></span>
                 <p className="hubungiToko">Chat Sekarang</p>
               </a>

@@ -1,7 +1,6 @@
 import React from "react";
-import { Icon } from "@iconify/react";
 import "../seller_page.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { addProduct } from "../../../api";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
@@ -178,7 +177,11 @@ const AddProductOption = () => {
 								</div>
 								{cover && (
 									<div className="image-preview-container">
-										<img src={imagePreview} alt="Preview" />
+										<img
+											src={imagePreview}
+											alt="Preview"
+											style={{ maxWidth: '300px', maxHeight: '300px' }}
+										/>
 									</div>
 								)}
 							</div>

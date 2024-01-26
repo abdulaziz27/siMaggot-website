@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Icon } from "@iconify/react";
+import React, { useState, useEffect } from "react";
 import "../profile_page.css";
 import image from "../../../assets/profile_page_image/profile_image.png";
 import { getUserProfile, updateUserProfile } from "../../../api";
@@ -179,8 +178,6 @@ const ProfilePageAccountOption = () => {
 							<h2 placeholder="Jalan, Perumahan, Blok, Provinsi, Kota, Kecamatan, Kode Pos">{editedUserData?.address}</h2>
 						)}
 					</div>
-					{/* Penghapusan gender-information flex-row-profile-page */}
-					{/* Penghapusan birth-date-information-container flex-row-profile-page */}
 					{editMode ? (
 						<div className="button-container">
 							<div className="button-cancel-information" onClick={handleCancelEdit}>
