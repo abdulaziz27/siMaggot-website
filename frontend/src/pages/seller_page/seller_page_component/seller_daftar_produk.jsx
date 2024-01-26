@@ -56,11 +56,10 @@ const ProductListOption = () => {
     }
   };
 
-  const handleEditProduct = (productId, productName, cover, price, stock) => {
+  const handleEditProduct = (productId, productName, price, stock) => {
     console.log("Editing product:", productId);
     setEditProductId(productId);
     setEditedProductName(productName);
-    setEditedProductCover(cover);
     setEditedProductPrice(price);
     setEditedProductStock(stock);
 
@@ -71,7 +70,6 @@ const ProductListOption = () => {
     try {
       const updatedProductData = {
         productName: editedProductName,
-        cover: editedProductCover,
         price: editedProductPrice,
         stock: editedProductStock,
       };
@@ -92,7 +90,6 @@ const ProductListOption = () => {
       setSellerProducts(updatedProducts);
       setEditProductId(null);
       setEditedProductName("");
-      setEditedProductCover("");
       setEditedProductPrice("");
       setEditedProductStock("");
 
@@ -225,7 +222,6 @@ const ProductListOption = () => {
                       handleEditProduct(
                         product.id,
                         product.productName,
-                        product.cover,
                         product.price,
                         product.stock
                       )
@@ -259,18 +255,6 @@ const ProductListOption = () => {
                 type="text"
                 value={editedProductPrice}
                 onChange={(e) => setEditedProductPrice(e.target.value)}
-              />
-            </label>
-            <label>
-              Cover Image:
-              <div className="cover-image-preview">
-                <img src={editedProductCover} alt="Cover Preview"
-                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
-              </div>
-              <input
-                type="file"
-                accept=".jpg, .jpeg, .png"
-                onChange={(e) => setEditedProductCover(e.target.files[0])}
               />
             </label>
             <label>
